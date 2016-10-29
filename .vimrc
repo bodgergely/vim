@@ -117,9 +117,6 @@ endif
 
 
 
-
-
-
 " File: autoclose.vim
 " Author: Karl Guertin <grayrest@gr.ayre.st>
 " Version: 1.2
