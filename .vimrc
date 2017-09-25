@@ -27,6 +27,7 @@ set expandtab
 
 set number
 "key mappings
+vnoremap <C-c> "+y
 imap fj <esc>
 imap jf <esc>
 nnoremap ; :
