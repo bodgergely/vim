@@ -54,7 +54,6 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-noremap a <NOP>
 "map arrows to navigate windows!
 map <Up>   <C-W>k
 map <Down> <C-W>j
