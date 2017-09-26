@@ -1,0 +1,5 @@
+imap fj <esc>
+imap jf <esc>
+map noremap ; :
+nnoremap : ;
+
