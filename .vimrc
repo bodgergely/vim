@@ -52,6 +52,8 @@ augroup auto_comment
     au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
 
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_enable_diagnostic_highlighting = 0
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
 
@@ -61,7 +63,8 @@ inoremap <silent> <C-S>         <C-O>:update<CR>
 
 "key mappings
 vnoremap <C-c> "+y
-imap jj <esc>
+imap jk <esc>
+imap kj <esc>
 nnoremap ; :
 nnoremap : ;
 noremap <Up> <NOP>
