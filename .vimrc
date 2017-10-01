@@ -16,6 +16,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'bling/vim-airline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -57,8 +59,7 @@ inoremap <silent> <C-S>         <C-O>:update<CR>
 
 "key mappings
 vnoremap <C-c> "+y
-imap fj <esc>
-imap jf <esc>
+imap jj <esc>
 nnoremap ; :
 nnoremap : ;
 noremap <Up> <NOP>
