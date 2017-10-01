@@ -44,6 +44,7 @@ set expandtab
 " press F2 to enable/disable clipboard pasting
 set pastetoggle=<F2>
 set number
+set incsearch
 "turn off auto commenting
 augroup auto_comment
     au!
@@ -72,3 +73,4 @@ map <Down> <C-W>j
 map <Left> <C-W>h
 map <Right> <C-W>l
 let g:user_emmet_expandword_key = '<C-y>h'
+:noremap <F4> :set hlsearch! hlsearch?<CR>
