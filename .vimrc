@@ -45,6 +45,7 @@ set expandtab
 set pastetoggle=<F2>
 set number
 set incsearch
+set path+=**
 "turn off auto commenting
 augroup auto_comment
     au!
