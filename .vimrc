@@ -18,7 +18,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
-
+Plugin 'mattn/emmet-vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -71,3 +71,4 @@ map <Up>   <C-W>k
 map <Down> <C-W>j
 map <Left> <C-W>h
 map <Right> <C-W>l
+let g:user_emmet_expandword_key = '<C-y>h'
