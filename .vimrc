@@ -65,6 +65,8 @@ inoremap <silent> <C-S>         <C-O>:update<CR>
 vnoremap <C-c> "+y
 imap jk <esc>
 imap kj <esc>
+imap jj <esc>
+imap kk <esc>
 nnoremap ; :
 nnoremap : ;
 noremap <Up> <NOP>
