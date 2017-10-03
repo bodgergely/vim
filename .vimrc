@@ -77,5 +77,7 @@ map <Left> <C-W>h
 map <Right> <C-W>l
 map vv 0
 map nn <S-$>
+map c y
+map m p
 let g:user_emmet_expandword_key = '<C-y>h'
 :noremap <F4> :set hlsearch! hlsearch?<CR>
