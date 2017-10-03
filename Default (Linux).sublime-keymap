@@ -25,5 +25,6 @@
     },
     {"keys": ["n", "n"], "command": "press_key", "args": {"key": "$"}, "context": [{"key": "vi_command_mode_aware"}]},
     {"keys": ["v", "v"], "command": "press_key", "args": {"key": "0"}, "context": [{"key": "vi_command_mode_aware"}]},
-    {"keys": ["m"], "command": "press_key", "args": {"key": "p"}, "context": [{"key": "vi_command_mode_aware"}]}
+    {"keys": ["m"], "command": "press_key", "args": {"key": "p"}, "context": [{"key": "vi_command_mode_aware"}]},
+    {"keys": ["f"], "command": "press_key", "args": {"key": "y"}, "context": [{"key": "vi_command_mode_aware"}]}
 ]
