@@ -79,5 +79,8 @@ map vv 0
 map nn <S-$>
 map f y
 map m p
+" autocompletion remap to ctrl space
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
 let g:user_emmet_expandword_key = '<C-y>h'
 :noremap <F4> :set hlsearch! hlsearch?<CR>
