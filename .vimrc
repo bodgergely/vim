@@ -19,6 +19,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
+Plugin 'rust-lang/rust.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,6 +53,8 @@ augroup auto_comment
     au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
 
+let g:rustfmt_autosave = 1
+
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_enable_diagnostic_highlighting = 0
 " If the current buffer has never been saved, it will have no name,
@@ -84,3 +87,5 @@ inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
 let g:user_emmet_expandword_key = '<C-y>h'
 :noremap <F4> :set hlsearch! hlsearch?<CR>
+"highlight all occurences of word under cursor
+:autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
