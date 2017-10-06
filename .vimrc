@@ -60,6 +60,8 @@ let g:ycm_enable_diagnostic_highlighting = 0
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
 
+let mapleader = ","
+
 noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
@@ -88,4 +90,12 @@ inoremap <C-@> <C-Space>
 let g:user_emmet_expandword_key = '<C-y>h'
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 "highlight all occurences of word under cursor
-:autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+":autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+
+" toggle pase/nopaste
+set pastetoggle=<F3>
+" copy to clipboard
+noremap <Leader>Y "*y
+noremap <Leader>P "*p
+noremap <Leader>y "+y
+noremap <Leader>p "+p
