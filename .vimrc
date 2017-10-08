@@ -1,6 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
+" 256-color terminal
+set t_Co=256
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -20,8 +21,12 @@ Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+syntax on
+colorscheme badwolf
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -52,6 +57,10 @@ augroup auto_comment
     au!
     au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
+
+" cpp synatx plugin settings
+let c_no_curly_error=1
+let g:cpp_member_variable_highlight = 1
 
 let g:rustfmt_autosave = 1
 
