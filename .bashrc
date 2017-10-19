@@ -117,14 +117,18 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export GOPATH=/home/geri/gocode
+export GOROOT=/usr/local/go
+export GOBIN=$GOROOT/bin
+export PATH=$PATH:$GOBIN
+export GOPATH=/home/geri/workspace/go_projects
+
 export PATH=$PATH:~/premake
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/bin
 
-alias python=python3
+alias python=/usr/bin/python3
 alias pip=pip3
-alias ipython=ipython3
+alias ipython=/usr/local/bin/ipython3
 
 stty -ixon

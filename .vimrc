@@ -23,6 +23,8 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'fatih/vim-go'
+Plugin 'davidhalter/jedi-vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 syntax on
@@ -57,6 +59,21 @@ augroup auto_comment
     au!
     au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
+
+"ctrlP auto cache clearing.
+" ----------------------------------------------------------------------------
+function! SetupCtrlP()
+  if exists("g:loaded_ctrlp") && g:loaded_ctrlp
+    augroup CtrlPExtension
+      autocmd!
+      autocmd FocusGained  * CtrlPClearCache
+      autocmd BufWritePost * CtrlPClearCache
+    augroup END
+  endif
+endfunction
+if has("autocmd")
+  autocmd VimEnter * :call SetupCtrlP()
+endif
 
 " cpp synatx plugin settings
 let c_no_curly_error=1
@@ -108,3 +125,5 @@ noremap <Leader>Y "*y
 noremap <Leader>P "*p
 noremap <Leader>y "+y
 noremap <Leader>p "+p
+
+let g:pymode_python = 'python3'
