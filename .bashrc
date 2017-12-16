@@ -127,8 +127,13 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/bin
 
-alias python=/usr/bin/python3
-alias pip=pip3
-alias ipython=/usr/local/bin/ipython3
+#alias python=/usr/bin/python3
+#alias pip=pip3
+#alias ipython=/usr/bin/ipython3
+export PYTHONSTARTUP=~/.pystartup
 
 stty -ixon
+set -o emacs
+
+# added by Anaconda3 installer
+export PATH="/home/geri/anaconda3/bin:$PATH"
