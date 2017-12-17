@@ -130,7 +130,7 @@ export PATH=$PATH:~/bin
 #alias python=/usr/bin/python3
 #alias pip=pip3
 #alias ipython=/usr/bin/ipython3
-export PYTHONSTARTUP=~/.pystartup
+#export PYTHONSTARTUP=~/.pystartup
 
 stty -ixon
 set -o emacs
