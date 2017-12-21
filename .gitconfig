@@ -1,0 +1,10 @@
+[user]
+	email = bodgergely@hotmail.com
+	name = Gergely Bod
+[merge]
+	tool = vimdiff
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
