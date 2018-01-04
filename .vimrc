@@ -119,6 +119,10 @@ let g:user_emmet_expandword_key = '<C-y>h'
 "highlight all occurences of word under cursor
 ":autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
+
+let Tlist_Use_Right_Window = 1
+
+
 " toggle pase/nopaste
 set pastetoggle=<F3>
 " copy to clipboard
