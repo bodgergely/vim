@@ -9,7 +9,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/syntastic'
@@ -19,7 +19,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
-Plugin 'rust-lang/rust.vim'
+"Plugin 'rust-lang/rust.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -53,6 +53,9 @@ set shiftwidth=4
 set expandtab
 " press F2 to enable/disable clipboard pasting
 set pastetoggle=<F2>
+
+nmap <F8> :TagbarToggle<CR>
+
 set number
 set incsearch
 set path+=**
@@ -83,17 +86,23 @@ let g:cpp_member_variable_highlight = 1
 
 let g:rustfmt_autosave = 1
 
-"let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-"let g:ycm_enable_diagnostic_highlighting = 0
-
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_enable_diagnostic_highlighting = 0
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
 
 let mapleader = ","
 
+" nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
+" nnoremap <leader>df :YcmCompleter GoToDefinition<CR>
+" nnoremap <leader>dd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
+
+noremap <silent> <C-m> :cn<CR>
+noremap <silent> <C-n> :cp<CR>
 
 "key mappings
 vnoremap <C-c> "+y
@@ -121,9 +130,7 @@ let g:user_emmet_expandword_key = '<C-y>h'
 "highlight all occurences of word under cursor
 :autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
-
 let Tlist_Use_Right_Window = 1
-
 
 " toggle pase/nopaste
 set pastetoggle=<F3>
@@ -131,48 +138,13 @@ set pastetoggle=<F3>
 noremap <Leader>Y "*y
 noremap <Leader>P "*p
 noremap <Leader>y "+y
+noremap <Leader>f "+y
 noremap <Leader>p "+p
-
 let g:pymode_python = 'python3'
-
-" disable Preview window
+" disable preview window of code completion
 set completeopt-=preview
 
-if exists('$TMUX')
-  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-    let previous_winnr = winnr()
-    silent! execute "wincmd " . a:wincmd
-    if previous_winnr == winnr()
-      call system("tmux select-pane -" . a:tmuxdir)
-      redraw!
-    endif
-  endfunction
-
-  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
-  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
-
-  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
-else
-  map <C-h> <C-w>h
-  map <C-j> <C-w>j
-  map <C-k> <C-w>k
-  map <C-l> <C-w>l
-endif
-
-
-" Enable to copy to clipboard for operations like yank, delete, change and put
-" http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
-if has('unnamedplus')
-  set clipboard^=unnamed
-  set clipboard^=unnamedplus
-endif
-
-" This enables us to undo files even if you exit Vim.
-if has('persistent_undo')
-  set undofile
-  set undodir=~/.config/vim/tmp/undo//
-endif
+" Quickfix window - use enter to open the file
+autocmd FileType qf nnoremap <buffer> <Enter> <C-W><Enter>
+" Quickfix window - use enter to open file in NEW TAB
+"autocmd FileType qf nnoremap <buffer> <Enter> <C-W><Enter><C-W>T
