@@ -1,6 +1,10 @@
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
 [user]
 	email = bodgergely@hotmail.com
 	name = Gergely Bod
+
 [merge]
 	tool = vimdiff
 [alias]
@@ -9,5 +13,4 @@
 	ci = commit
 	st = status
 	unstage = reset HEAD --
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+	add-commit = !git add -A && git commit
