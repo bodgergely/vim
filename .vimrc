@@ -56,6 +56,10 @@ set pastetoggle=<F2>
 set number
 set incsearch
 set path+=**
+
+" reload files automatically
+set autoread
+
 "turn off auto commenting
 augroup auto_comment
     au!
