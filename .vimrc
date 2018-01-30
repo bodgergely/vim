@@ -127,7 +127,7 @@ let g:user_emmet_expandword_key = '<C-y>h'
 
 
 let Tlist_Use_Right_Window = 1
-
+let g:jedi#goto_definitions_command = "gd"
 
 " toggle pase/nopaste
 set pastetoggle=<F3>
