@@ -27,6 +27,7 @@ Plugin 'fatih/vim-go'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
+Plugin 'ervandew/supertab'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 syntax on
@@ -87,6 +88,9 @@ let g:cpp_member_variable_highlight = 1
 
 let g:rustfmt_autosave = 1
 
+
+let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '(', ')', '{', '}']
+
 "let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "let g:ycm_enable_diagnostic_highlighting = 0
 
@@ -128,6 +132,7 @@ let g:user_emmet_expandword_key = '<C-y>h'
 
 let Tlist_Use_Right_Window = 1
 let g:jedi#goto_definitions_command = "gd"
+let g:force_py_version = 3
 
 " toggle pase/nopaste
 set pastetoggle=<F3>
