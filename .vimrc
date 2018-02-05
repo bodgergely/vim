@@ -58,6 +58,10 @@ set number
 set incsearch
 set path+=**
 
+" scrolling should be only 5 lines (c-d and ctrl-u)
+set scroll=5
+
+
 " reload files automatically
 set autoread
 
