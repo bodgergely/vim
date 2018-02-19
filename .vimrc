@@ -9,7 +9,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/syntastic'
@@ -28,6 +28,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
+Plugin 'dkprice/vim-easygrep'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 syntax on
@@ -57,10 +58,12 @@ set pastetoggle=<F2>
 set number
 set incsearch
 set path+=**
+set modifiable
 
 " scrolling should be only 5 lines (c-d and ctrl-u)
 set scroll=5
-
+noremap <C-u> 5<C-u>
+noremap <C-d> 5<C-d>
 
 " reload files automatically
 set autoread
@@ -95,7 +98,7 @@ let g:rustfmt_autosave = 1
 
 let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '(', ')', '{', '}']
 
-"let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "let g:ycm_enable_diagnostic_highlighting = 0
 
 " If the current buffer has never been saved, it will have no name,
@@ -109,7 +112,9 @@ inoremap <silent> <C-S>         <C-O>:update<CR>
 
 "key mappings
 vnoremap <C-c> "+y
-imap jj <esc>
+"imap jj <esc>
+imap jk <esc>
+imap kj <esc>
 nnoremap ; :
 nnoremap : ;
 noremap <Up> <NOP>
@@ -189,3 +194,6 @@ if has('persistent_undo')
   set undofile
   set undodir=~/.config/vim/tmp/undo//
 endif
+
+" change the current directory
+autocmd BufEnter * silent! lcd %:p:h
