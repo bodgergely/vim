@@ -1,5 +1,8 @@
 set nocompatible              " be iMproved, required
-filetype on                  " required
+filetype on " required
+
+" enable mouse support
+:set mouse=a
 " 256-color terminal
 set t_Co=256
 " set the runtime path to include Vundle and initialize
@@ -197,3 +200,5 @@ endif
 
 " change the current directory
 autocmd BufEnter * silent! lcd %:p:h
+
+
