@@ -102,6 +102,7 @@ let g:rustfmt_autosave = 1
 let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '(', ')', '{', '}']
 
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_python_binary_path = '/usr/bin/python3'
 "let g:ycm_enable_diagnostic_highlighting = 0
 
 " If the current buffer has never been saved, it will have no name,
@@ -199,6 +200,7 @@ if has('persistent_undo')
 endif
 
 " change the current directory
-autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufEnter * silent! lcd %:p:h
+"autocmd TextChanged,TextChangedI <buffer> silent write
 
-
+set dictionary+=/usr/share/dict/words
