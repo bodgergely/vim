@@ -17,7 +17,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
@@ -32,10 +31,19 @@ Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
 Plugin 'dkprice/vim-easygrep'
+"Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'hdima/python-syntax'
+Plugin 'altercation/vim-colors-solarized'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 syntax on
-colorscheme badwolf
+syntax enable
+"set termguicolors     " enable true colors support
+set background=light
+colorscheme solarized
+"colorscheme PaperColor
+"colorscheme badwolf
+"colorscheme murphy
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -104,6 +112,7 @@ let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_python_binary_path = '/usr/bin/python3'
 "let g:ycm_enable_diagnostic_highlighting = 0
+nnoremap gd         :YcmCompleter GoTo<CR>
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
