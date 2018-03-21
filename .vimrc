@@ -31,7 +31,7 @@ Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
 Plugin 'dkprice/vim-easygrep'
-"Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'hdima/python-syntax'
 Plugin 'altercation/vim-colors-solarized'
 " All of your Plugins must be added before the following line
@@ -40,8 +40,8 @@ syntax on
 syntax enable
 "set termguicolors     " enable true colors support
 set background=light
-colorscheme solarized
-"colorscheme PaperColor
+colorscheme PaperColor
+"colorscheme solarized
 "colorscheme badwolf
 "colorscheme murphy
 filetype plugin indent on    " required
@@ -142,7 +142,6 @@ map <Right> <C-W>l
 map vv 0
 map nn <S-$>
 map f y
-map m p
 " autocompletion remap to ctrl space
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
