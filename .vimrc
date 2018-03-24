@@ -39,7 +39,7 @@ call vundle#end()            " required
 syntax on
 syntax enable
 "set termguicolors     " enable true colors support
-set background=light
+set background=dark
 colorscheme PaperColor
 "colorscheme solarized
 "colorscheme badwolf
@@ -111,7 +111,7 @@ let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '
 
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_python_binary_path = '/usr/bin/python3'
-"let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 nnoremap gd         :YcmCompleter GoTo<CR>
 
 " If the current buffer has never been saved, it will have no name,
@@ -212,3 +212,11 @@ autocmd BufEnter * silent! lcd %:p:h
 autocmd TextChanged,TextChangedI <buffer> silent write
 
 set dictionary+=/usr/share/dict/words
+
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
+
