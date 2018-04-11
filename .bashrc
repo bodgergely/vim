@@ -118,21 +118,36 @@ if ! shopt -oq posix; then
 fi
 
 export GOROOT=~/go/go1.9.2
-export GOBIN=$GOROOT/bin
-export PATH=$PATH:$GOBIN
+export PATH=$PATH:$GOROOT/bin
 export GOPATH=/home/geri/workspace/go_projects
 
 export PATH=$PATH:~/premake
 export PATH=$HOME/.cargo/bin:$PATH
-export PATH=$PATH:~/bin
 
 #alias python=/usr/bin/python3
 #alias pip=pip3
 #alias ipython=/usr/bin/ipython3
-#export PYTHONSTARTUP=~/.pystartup
+#export PYTHONPATH=$PYTHONPATH:$HOME/anaconda3/lib/python3.6/site-packages/
+export PYTHONSTARTUP=~/.pystartup
+
+alias p=python
+alias ipy=ipython
 
 stty -ixon
 set -o emacs
 
 # added by Anaconda3 installer
 export PATH="/home/geri/anaconda3/bin:$PATH"
+cd $HOME/workspace
+
+tmux source-file ~/.tmux.conf
+# Yavide alias
+alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc"
+# Yavide alias
+alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc -u /opt/yavide/.vimrc"
+# Yavide alias
+alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc -u /opt/yavide/.vimrc -u /home/geri/yavide/yavide/.vimrc"
+# Yavide alias
+alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc -u /opt/yavide/.vimrc -u /home/geri/yavide/yavide/.vimrc -u /opt/yavide/.vimrc"
+# Yavide alias
+alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc -u /opt/yavide/.vimrc -u /home/geri/yavide/yavide/.vimrc -u /opt/yavide/.vimrc -u /opt/yavide/.vimrc"
