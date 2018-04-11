@@ -34,6 +34,10 @@ Plugin 'dkprice/vim-easygrep'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'hdima/python-syntax'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'rdnetto/YCM-Generator'  " generate YouCompleteMe config file for C++ projects
+Plugin 'SirVer/ultisnips'       " snippet engine
+Plugin 'honza/vim-snippets'     " actual snippets for languages
+" ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 syntax on
@@ -76,8 +80,10 @@ set scroll=5
 noremap <C-u> 5<C-u>
 noremap <C-d> 5<C-d>
 
+let g:NERDTreeWinSize=20
 " reload files automatically
 set autoread
+
 
 "turn off auto commenting
 augroup auto_comment
@@ -113,6 +119,7 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_enable_diagnostic_highlighting = 0
 nnoremap gd         :YcmCompleter GoTo<CR>
+nnoremap gd <C-]>
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
@@ -208,8 +215,8 @@ if has('persistent_undo')
 endif
 
 " change the current directory
-autocmd BufEnter * silent! lcd %:p:h
-autocmd TextChanged,TextChangedI <buffer> silent write
+" autocmd BufEnter * silent! lcd %:p:h
+" autocmd TextChanged,TextChangedI <buffer> silent write
 
 set dictionary+=/usr/share/dict/words
 
@@ -219,4 +226,18 @@ if &term =~ '256color'
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
+" Scheme support
+if has("autocmd")
+    au BufReadPost *.rkt,*.rktl set filetype=scheme
+endif
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsExpandTrigger="<C-a>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 
