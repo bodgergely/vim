@@ -18,6 +18,10 @@ export BOTO3_PATH="$SITE_PACKAGES/boto3/"
 #export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/home/geri/boost/boost_1_66_0/include"
 #export LD_LIBRARY_PATH:/home/geri/boost/boost_1_66_0/lib"
 
+# YouCompleteMe ycm generator
+alias ycm_generate=$WORKSPACE/vim_plugins/c++/YCM-Generator/config_gen.py
+
+alias pcalc=$HOME/bin/pcalc.py
 
 alias clion=$HOME/clion/clion-2018.1/bin/clion.sh
 #commands
