@@ -1,0 +1,9 @@
+nnoremap ; :
+nnoremap : ;
+imap jk <esc>
+imap kj <esc>
+map vv 0
+map nn <S-$>
+map f y
+
+set pastetoggle=<F3>
