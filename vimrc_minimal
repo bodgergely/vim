@@ -1,0 +1,20 @@
+" to load custom vim config file
+" vim -u <config_file_path> or set
+" alias vim='vim -u <config_file_path>'
+
+set nocompatible              " be iMproved, required
+filetype on " required
+filetype plugin indent on    " required
+filetype plugin on
+syntax on
+syntax enable
+set number
+set pastetoggle=<F3>
+nnoremap ; :
+nnoremap : ;
+imap jk <esc>
+imap kj <esc>
+map vv 0
+map nn <S-$>
+map f y
+
