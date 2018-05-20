@@ -3,12 +3,14 @@ alias ae="vim $HOME/.bash_aliases; aer"
 alias reload="source $HOME/.bashrc"
 
 export PATH=$PATH:~/bin
+export PATH=$PATH:~/arduino/arduino-1.8.5-linux64/arduino-1.8.5
 
 # gcc cross compiler
 export PATH=$PATH:$HOME/opt/cross/bin
 alias cross_gcc=i686-elf-gcc
 
 export WORKSPACE=$HOME/workspace
+export UI=/usr/include
 export AI_PATH="$WORKSPACE/AI/"
 export HANDSON_ML_PATH="$AI_PATH/handson-ml/"
 export SITE_PACKAGES="$HOME/anaconda3/lib/python3.6/site-packages"
@@ -24,6 +26,14 @@ alias ycm_generate=$WORKSPACE/vim_plugins/c++/YCM-Generator/config_gen.py
 alias pcalc=$HOME/bin/pcalc.py
 
 alias clion=$HOME/clion/clion-2018.1/bin/clion.sh
+
+# copy paste - xclip
+alias "cs=xclip -selection clipboard"
+alias "vs=xclip -o -selection clipboard"
+alias "c=xclip"
+alias "v=xclip -o"
+
+
 #commands
 alias p="python"
 alias p2="python2"
@@ -31,6 +41,7 @@ alias ipy="ipython"
 alias psi="python setup.py install"
 alias psc="python setup.py clean"
 alias convert_ipy_notebook="jupyter nbconvert --to script"
+alias linecount=loc
 
 alias lha="ls -lha"
 
@@ -38,7 +49,7 @@ ff() {
     find . -name "$1"
 }
 
-alias greprec=grep.py
+alias gr=grep.py "$@"
 
 
 #vim
@@ -55,6 +66,11 @@ alias gb="git branch"
 alias ga="git add"
 alias gc="git checkout"
 alias gco="git commit"
+alias gd="git diff"
+
+# wargames !!!
+alias cdlev="cd $WORKSPACE/wargames/leviathan"
+# end of wargames
 
 #directories
 alias cdworkspace="cd $HOME/workspace/"
@@ -69,6 +85,10 @@ alias cdhandson_ml="cd $HANDSON_ML_PATH"
 alias cdplayground="cd $WORKSPACE/playground"
 alias cdgym="cd $WORKSPACE/AI/openai/gym"
 alias cdnand="cd $WORKSPACE/coursera/nand2tetris"
+alias cdtlpi="cd $WORKSPACE/sysprog/tlpi"
+alias cdbooks="cd $HOME/Dropbox/books"
+alias cdlinux="cd $WORKSPACE/linux"
+alias cdkernelhacking="cd $WORKSPACE/kernel_hacking"
 
 #ansible
 source $WORKSPACE/ansible/hacking/env-setup -q
