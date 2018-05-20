@@ -1,0 +1,8 @@
+vim
+===
+
+To load custom vimrc:
+
+- vim -u <path_to_vim_config_file>
+- set MYVIMRC env var
+- alias vim='vim -u <vim_config_file>'
