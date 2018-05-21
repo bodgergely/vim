@@ -49,8 +49,8 @@ colorscheme PaperColor
 "colorscheme badwolf
 "colorscheme murphy
 filetype plugin indent on    " required
+filetype plugin on
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -140,15 +140,15 @@ imap jk <esc>
 imap kj <esc>
 nnoremap ; :
 nnoremap : ;
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+"noremap <Up> <NOP>
+"noremap <Down> <NOP>
+"noremap <Left> <NOP>
+"noremap <Right> <NOP>
 "map arrows to navigate windows!
-map <Up>   <C-W>k
-map <Down> <C-W>j
-map <Left> <C-W>h
-map <Right> <C-W>l
+"map <Up>   <C-W>k
+"map <Down> <C-W>j
+"map <Left> <C-W>h
+"map <Right> <C-W>l
 map vv 0
 map nn <S-$>
 map f y
@@ -255,3 +255,22 @@ function ExpandSnippetOrCarriageReturn()
 endfunction
 inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 " END OF INSTER
+
+
+"If one has a particular extension that one uses for binary files (such as exe,
+"bin, etc), you may find it helpful to automate the process with the following
+"bit of autocmds for your <.vimrc>.  Change that "*.bin" to whatever
+"comma-separated list of extension(s) you find yourself wanting to edit:
+
+" vim -b : edit binary using xxd-format!
+augroup Binary
+  au!
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
+  au BufReadPost *.bin set ft=xxd | endif
+  au BufWritePre *.bin if &bin | %!xxd -r
+  au BufWritePre *.bin endif
+  au BufWritePost *.bin if &bin | %!xxd
+  au BufWritePost *.bin set nomod | endif
+augroup END
+
