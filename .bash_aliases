@@ -33,6 +33,7 @@ alias "vs=xclip -o -selection clipboard"
 alias "c=xclip"
 alias "v=xclip -o"
 
+alias vimrc_min="cat $WORKSPACE/vimrc/vimrc_minimal | cs"
 
 #commands
 alias p="python"
