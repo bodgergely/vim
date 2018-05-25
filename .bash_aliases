@@ -34,10 +34,12 @@ alias "c=xclip"
 alias "v=xclip -o"
 
 alias vimrc_min="cat $WORKSPACE/vimrc/vimrc_minimal | cs"
+alias vim_hex="cat $WORKSPACE/vimrc/vim_hex | cs"
 
 #commands
 alias p="python"
 alias p2="python2"
+alias ipy2=$HOME/miniconda2/bin/ipython2
 alias ipy="ipython"
 alias psi="python setup.py install"
 alias psc="python setup.py clean"
@@ -70,7 +72,7 @@ alias gco="git commit"
 alias gd="git diff"
 
 # wargames !!!
-alias cdlev="cd $WORKSPACE/wargames/leviathan"
+alias cdnar="cd $WORKSPACE/wargames/narnia"
 # end of wargames
 
 #directories
@@ -85,7 +87,6 @@ alias cdbayes="cd $WORKSPACE/stats/ThinkBayes"
 alias cdhandson_ml="cd $HANDSON_ML_PATH"
 alias cdplayground="cd $WORKSPACE/playground"
 alias cdgym="cd $WORKSPACE/AI/openai/gym"
-alias cdnand="cd $WORKSPACE/coursera/nand2tetris"
 alias cdtlpi="cd $WORKSPACE/sysprog/tlpi"
 alias cdbooks="cd $HOME/Dropbox/books"
 alias cdlinux="cd $WORKSPACE/linux"
