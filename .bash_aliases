@@ -33,9 +33,6 @@ alias "vs=xclip -o -selection clipboard"
 alias "c=xclip"
 alias "v=xclip -o"
 
-alias vimrc_min="cat $WORKSPACE/vimrc/vimrc_minimal | cs"
-alias vim_hex="cat $WORKSPACE/vimrc/vim_hex | cs"
-
 #commands
 alias p="python"
 alias p2="python2"
@@ -56,6 +53,8 @@ alias gr=grep.py "$@"
 
 
 #vim
+alias vimrc_min="cat $WORKSPACE/vimrc/vimrc_minimal | cs"
+alias vim_hex="cat $WORKSPACE/vimrc/vim_hex | cs"
 alias vim="PYTHONPATH=$PYTHONPATH:$HOME/anaconda3/lib/python3.6/site-packages/ vim"
 alias scheme_vim="MYVIMRC=~/.scheme_vimrc vim"
 
@@ -72,6 +71,7 @@ alias gco="git commit"
 alias gd="git diff"
 
 # wargames !!!
+alias wargame_environ_setup="cat $WORKSPACE/wargames/scripts/env.sh | cs"
 alias cdnar="cd $WORKSPACE/wargames/narnia"
 # end of wargames
 
@@ -92,9 +92,7 @@ alias cdbooks="cd $HOME/Dropbox/books"
 alias cdlinux="cd $WORKSPACE/linux"
 alias cdkernelhacking="cd $WORKSPACE/kernel_hacking"
 
-#ansible
-source $WORKSPACE/ansible/hacking/env-setup -q
-
 export PATH=$PATH:$HOME/nodejs/node-v9.8.0-linux-x64/bin/
 export PATH=$PATH:$HOME/workspace/pyflame/src
 
+tmux source-file ~/.tmux.conf
