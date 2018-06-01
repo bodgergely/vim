@@ -3,4 +3,4 @@ set disassembly-flavor intel
 source ~/peda/peda.py
 # below is for peda to work in tui
 pset option ansicolor off
-set prompt (gdb)
+set prompt (gdb-peda) 
