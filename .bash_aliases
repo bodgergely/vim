@@ -75,6 +75,7 @@ alias gd="git diff"
 export WARGAMES="$HACKING/wargames/"
 alias cdwar="cd $WARGAMES"
 alias wargame_environ_setup="cat $WARGAMES/scripts/env.sh | cs"
+alias shellcode_generate="$WARGAMES/shellcode/shellcode.py"
 alias cdnar="cd $WARGAMES/narnia"
 alias cdbehemoth="cd $WARGAMES/behemoth"
 # end of wargames
