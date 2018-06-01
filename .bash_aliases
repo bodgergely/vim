@@ -12,6 +12,7 @@ alias cross_gcc=i686-elf-gcc
 export WORKSPACE=$HOME/workspace
 export UI=/usr/include
 export AI_PATH="$WORKSPACE/AI/"
+export HACKING="$WORKSPACE/hacking/"
 export HANDSON_ML_PATH="$AI_PATH/handson-ml/"
 export SITE_PACKAGES="$HOME/anaconda3/lib/python3.6/site-packages"
 export BOTO3_PATH="$SITE_PACKAGES/boto3/"
@@ -71,11 +72,15 @@ alias gco="git commit"
 alias gd="git diff"
 
 # wargames !!!
-alias wargame_environ_setup="cat $WORKSPACE/wargames/scripts/env.sh | cs"
-alias cdnar="cd $WORKSPACE/wargames/narnia"
+export WARGAMES="$HACKING/wargames/"
+alias cdwar="cd $WARGAMES"
+alias wargame_environ_setup="cat $WARGAMES/scripts/env.sh | cs"
+alias cdnar="cd $WARGAMES/narnia"
+alias cdbehemoth="cd $WARGAMES/behemoth"
 # end of wargames
 
 #directories
+alias cdhacking="cd $HACKING"
 alias cdworkspace="cd $HOME/workspace/"
 alias cdbodos="cd $WORKSPACE/bodos/src"
 alias cdlazyprogrammer="cd $HOME/workspace/AI/lazyprogrammer/machine_learning_examples"
@@ -90,7 +95,7 @@ alias cdgym="cd $WORKSPACE/AI/openai/gym"
 alias cdtlpi="cd $WORKSPACE/sysprog/tlpi"
 alias cdbooks="cd $HOME/Dropbox/books"
 alias cdlinux="cd $WORKSPACE/linux"
-alias cdkernelhacking="cd $WORKSPACE/kernel_hacking"
+alias cdkernelhacking="cd $HACKING/kernel_hacking"
 
 export PATH=$PATH:$HOME/nodejs/node-v9.8.0-linux-x64/bin/
 export PATH=$PATH:$HOME/workspace/pyflame/src
