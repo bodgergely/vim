@@ -6,4 +6,4 @@ set disassembly-flavor intel
 # below is for peda to work in tui
 # pset option ansicolor off
 # set prompt (gdb-peda) 
-source $WORKSPACE/hacking/pwndbg/gdbinit.py
+source ~/workspace/hacking/pwndbg/gdbinit.py
