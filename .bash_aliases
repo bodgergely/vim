@@ -71,6 +71,9 @@ alias gc="git checkout"
 alias gco="git commit"
 alias gd="git diff"
 
+# gdb
+alias debug="gdb --command $WORKSPACE/vimrc/gdb_scripts/gdbvanilla --args"
+
 # wargames !!!
 export WARGAMES="$HACKING/wargames/"
 alias cdwar="cd $WARGAMES"
@@ -78,6 +81,7 @@ alias wargame_environ_setup="cat $WARGAMES/scripts/env.sh | cs"
 alias shellcode_generate="$WARGAMES/shellcode/shellcode.py"
 alias cdnar="cd $WARGAMES/narnia"
 alias cdbehemoth="cd $WARGAMES/behemoth"
+alias cdvortex="cd $WARGAMES/vortex"
 # end of wargames
 
 #directories
@@ -102,3 +106,4 @@ export PATH=$PATH:$HOME/nodejs/node-v9.8.0-linux-x64/bin/
 export PATH=$PATH:$HOME/workspace/pyflame/src
 
 tmux source-file ~/.tmux.conf
+alias diskspace_check='ncdu'
