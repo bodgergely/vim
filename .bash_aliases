@@ -43,6 +43,7 @@ alias psi="python setup.py install"
 alias psc="python setup.py clean"
 alias convert_ipy_notebook="jupyter nbconvert --to script"
 alias linecount=loc
+alias objd='objdump -Mintel -d'
 
 alias lha="ls -lha"
 
@@ -73,6 +74,8 @@ alias gd="git diff"
 
 # gdb
 alias debug="gdb --command $WORKSPACE/vimrc/gdb_scripts/gdbvanilla --args"
+alias debug_peda="gdb --command $WORKSPACE/vimrc/gdb_scripts/peda.gdb --args"
+alias debug_pwndbg="gdb --command $WORKSPACE/vimrc/gdb_scripts/pwndbg.gdb --args"
 
 # wargames !!!
 export WARGAMES="$HACKING/wargames/"
