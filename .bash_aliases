@@ -43,7 +43,7 @@ alias psi="python setup.py install"
 alias psc="python setup.py clean"
 alias convert_ipy_notebook="jupyter nbconvert --to script"
 alias linecount=loc
-alias objd='objdump -Mintel -d'
+alias objd='objdump -Mintel -D'
 
 alias lha="ls -lha"
 
