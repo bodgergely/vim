@@ -9,3 +9,6 @@ set follow-fork-mode child
 # pset option ansicolor off
 # set prompt (gdb-peda) 
 #source ~/workspace/hacking/pwndbg/gdbinit.py
+
+# below is a kernel debug security disabling command
+set auto-load safe-path /
