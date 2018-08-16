@@ -35,14 +35,16 @@ alias "c=xclip"
 alias "v=xclip -o"
 
 #commands
+alias python2=$HOME/miniconda2/bin/python2
 alias p="python"
-alias p2="python2"
+alias p2=$HOME/miniconda2/bin/python2
 alias ipy2=$HOME/miniconda2/bin/ipython2
 alias ipy="ipython"
 alias psi="python setup.py install"
 alias psc="python setup.py clean"
 alias convert_ipy_notebook="jupyter nbconvert --to script"
 alias linecount=loc
+alias objd='objdump -Mintel -D'
 
 alias lha="ls -lha"
 
@@ -63,6 +65,7 @@ alias scheme_vim="MYVIMRC=~/.scheme_vimrc vim"
 alias nvim=nvim.appimage
 
 # git
+alias gpu='git push'
 alias gs="git status"
 alias gl="git log"
 alias gb="git branch"
@@ -71,16 +74,25 @@ alias gc="git checkout"
 alias gco="git commit"
 alias gd="git diff"
 
+# gdb
+alias gdb_vanilla="gdb --command $WORKSPACE/vimrc/gdb_scripts/gdbvanilla --args"
+alias gdb_peda="gdb --command $WORKSPACE/vimrc/gdb_scripts/peda.gdb --args"
+alias gdb_pwndbg="gdb --command $WORKSPACE/vimrc/gdb_scripts/pwndbg.gdb --args"
+
 # wargames !!!
 export WARGAMES="$HACKING/wargames/"
+export PWNABLE="$WARGAMES/pwnable_kr/"
+alias cdpwn="cd $WARGAMES/pwnable_kr"
 alias cdwar="cd $WARGAMES"
 alias wargame_environ_setup="cat $WARGAMES/scripts/env.sh | cs"
 alias shellcode_generate="$WARGAMES/shellcode/shellcode.py"
 alias cdnar="cd $WARGAMES/narnia"
 alias cdbehemoth="cd $WARGAMES/behemoth"
+alias cdvortex="cd $WARGAMES/vortex"
 # end of wargames
 
 #directories
+alias cdblog="cd $WORKSPACE/bodgergely.github.io"
 alias cdhacking="cd $HACKING"
 alias cdworkspace="cd $HOME/workspace/"
 alias cdbodos="cd $WORKSPACE/bodos/src"
@@ -102,3 +114,8 @@ export PATH=$PATH:$HOME/nodejs/node-v9.8.0-linux-x64/bin/
 export PATH=$PATH:$HOME/workspace/pyflame/src
 
 tmux source-file ~/.tmux.conf
+alias diskspace_check='ncdu'
+
+# jekyll (blog generator)
+alias jekyll_serve="bundle exec jekyll serve"
+

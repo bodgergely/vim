@@ -137,7 +137,7 @@ stty -ixon
 set -o emacs
 
 # added by Anaconda3 installer
-export PATH="/home/geri/anaconda3/bin:$PATH"
+export PATH="~/anaconda3/bin:$PATH"
 cd $HOME/workspace
 
 tmux source-file ~/.tmux.conf
