@@ -4,6 +4,7 @@ alias reload="source $HOME/.bashrc"
 
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/arduino/arduino-1.8.5-linux64/arduino-1.8.5
+export PATH=~/anaconda3/bin/:$PATH
 
 # gcc cross compiler
 export PATH=$PATH:$HOME/opt/cross/bin
@@ -35,6 +36,7 @@ alias "c=xclip"
 alias "v=xclip -o"
 
 #commands
+alias python=$HOME/anaconda3/bin/python3
 alias python2=$HOME/miniconda2/bin/python2
 alias p="python"
 alias p2=$HOME/miniconda2/bin/python2
@@ -56,6 +58,7 @@ alias gr=grep.py "$@"
 
 
 #vim
+alias vim_background_color="$HOME/vim_background_color.py"
 alias vimrc_min="cat $WORKSPACE/vimrc/vimrc_minimal | cs"
 alias vim_hex="cat $WORKSPACE/vimrc/vim_hex | cs"
 alias vim="PYTHONPATH=$PYTHONPATH:$HOME/anaconda3/lib/python3.6/site-packages/ vim"
@@ -82,6 +85,7 @@ alias gdb_pwndbg="gdb --command $WORKSPACE/vimrc/gdb_scripts/pwndbg.gdb --args"
 # wargames !!!
 export WARGAMES="$HACKING/wargames/"
 export PWNABLE="$WARGAMES/pwnable_kr/"
+alias cdsoftmmu="cd $PWNABLE/HackersSecret/softmmu"
 alias cdpwn="cd $WARGAMES/pwnable_kr"
 alias cdwar="cd $WARGAMES"
 alias wargame_environ_setup="cat $WARGAMES/scripts/env.sh | cs"
@@ -109,6 +113,10 @@ alias cdtlpi="cd $WORKSPACE/sysprog/tlpi"
 alias cdbooks="cd $HOME/Dropbox/books"
 alias cdlinux="cd $WORKSPACE/linux"
 alias cdkernelhacking="cd $HACKING/kernel_hacking"
+alias cdnand2tetris="cd $WORKSPACE/coursera/nand2tetris"
+
+#metasploit
+alias cdmetasploit="cd /opt/metasploit-framework/embedded/framework"
 
 export PATH=$PATH:$HOME/nodejs/node-v9.8.0-linux-x64/bin/
 export PATH=$PATH:$HOME/workspace/pyflame/src
@@ -118,4 +126,11 @@ alias diskspace_check='ncdu'
 
 # jekyll (blog generator)
 alias jekyll_serve="bundle exec jekyll serve"
+
+# make
+alias configure_debug_build='./configure CFLAGS="-ggdb3 -O0" CXXFLAGS="-ggdb3 -O0" LDFLAGS="-ggdb3"'
+alias configure_32='./configure CFLAGS="-m32 -O2" CXXFLAGS="-m32 -O2" LDFLAGS="-m32"'
+
+# tor browser
+alias tor='~/tor-browser_en-US/start-tor-browser.desktop'
 
