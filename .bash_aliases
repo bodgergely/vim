@@ -5,6 +5,7 @@ alias reload="source $HOME/.bashrc"
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/arduino/arduino-1.8.5-linux64/arduino-1.8.5
 export PATH=~/anaconda3/bin/:$PATH
+export PATH=$HOME/Qt/5.9.1/gcc_64/bin:$PATH
 
 # gcc cross compiler
 export PATH=$PATH:$HOME/opt/cross/bin
@@ -113,7 +114,13 @@ alias cdtlpi="cd $WORKSPACE/sysprog/tlpi"
 alias cdbooks="cd $HOME/Dropbox/books"
 alias cdlinux="cd $WORKSPACE/linux"
 alias cdkernelhacking="cd $HACKING/kernel_hacking"
+alias cdbusybox="cd $HOME/busybox/build"
 alias cdnand2tetris="cd $WORKSPACE/coursera/nand2tetris"
+alias cdweb="cd /var/www/html"
+
+#apt-get
+alias agi="sudo apt-get install"
+alias agr="sudo apt-get remove"
 
 #metasploit
 alias cdmetasploit="cd /opt/metasploit-framework/embedded/framework"
@@ -133,4 +140,13 @@ alias configure_32='./configure CFLAGS="-m32 -O2" CXXFLAGS="-m32 -O2" LDFLAGS="-
 
 # tor browser
 alias tor='~/tor-browser_en-US/start-tor-browser.desktop'
+
+#terminal theme chooser
+alias terminal_theme_chooser='wget -O gogh https://git.io/vQgMr && chmod +x gogh && ./gogh && rm gogh'
+
+alias network_restart='sudo systemctl restart network-manager.service'
+
+#radare
+alias Cutter='~/workspace/hacking/radare2/cutter/build/Cutter'
+
 
