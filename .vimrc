@@ -24,6 +24,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'liuchengxu/space-vim-dark'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'fatih/vim-go'
 Plugin 'davidhalter/jedi-vim'
@@ -44,7 +45,10 @@ syntax on
 syntax enable
 "set termguicolors     " enable true colors support
 set background=dark
-colorscheme PaperColor
+"colorscheme black_angus
+"colorscheme space-vim-dark
+"hi Comment guifg=#5C6370 ctermfg=59
+"colorscheme PaperColor
 "colorscheme solarized
 "colorscheme badwolf
 "colorscheme murphy
