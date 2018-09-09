@@ -143,7 +143,7 @@ vnoremap <C-c> "+y
 imap jk <esc>
 imap kj <esc>
 nnoremap ; :
-nnoremap : ;
+"nnoremap : ;
 "noremap <Up> <NOP>
 "noremap <Down> <NOP>
 "noremap <Left> <NOP>
