@@ -20,10 +20,13 @@ tmux source-file ~/.tmux.conf
 
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
+~/.vim/bundle/YouCompleteMe/install.py --clang-completer
+
 git clone git@github.com:cgag/loc.git 
 git clone https://github.com/longld/peda.git ~/peda
 git clone https://github.com/pwndbg/pwndbg ~/pwndbg
-cd pwndbg
+cd ~/pwndbg
 ./setup.sh
 
 mkdir -p $HACKING/radare
