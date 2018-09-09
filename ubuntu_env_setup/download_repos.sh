@@ -16,6 +16,7 @@ ln -s $WORKSPACE/vimrc/.gitconfig ~/.gitconfig
 ln -s $WORKSPACE/vimrc/.gdbinit ~/.gdbinit
 
 source ~/.bashrc
+tmux source-file ~/.tmux.conf
 
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

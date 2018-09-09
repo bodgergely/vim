@@ -120,6 +120,7 @@ alias cdweb="cd /var/www/html"
 
 #apt-get
 alias agi="sudo apt-get install"
+alias agi_yes="sudo apt-get -y install"
 alias agr="sudo apt-get remove"
 
 #metasploit
