@@ -159,7 +159,7 @@ map f y
 " autocompletion remap to ctrl space
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
-let g:user_emmet_expandword_key = '<C-y>h'
+let g:user_emmet_expandword_key = '<C-c>,'
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 "highlight all occurences of word under cursor
 :autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
