@@ -31,6 +31,8 @@ sudo apt-get -y install qemu-utils
 sudo apt-get -y install apache2
 sudo apt-get -y install php
 sudo apt-get -y install php-pear php-fpm php-dev php-zip php-curl php-xmlrpc php-gd php-mysql php-mbstring php-xml libapache2-mod-php
+sudo apt-get -y install libapache2-mod-php
+sudo apt-get -y install php-cli
 sudo apt-get -y install virtualbox && sudo apt-get -y install virtualbox-guest-utils
 
 
