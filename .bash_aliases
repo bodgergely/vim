@@ -2,9 +2,10 @@ alias aer="source $HOME/.bash_aliases"
 alias ae="vim $HOME/.bash_aliases; aer"
 alias reload="source $HOME/.bashrc"
 
+
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/arduino/arduino-1.8.5-linux64/arduino-1.8.5
-export PATH=~/anaconda3/bin/:$PATH
+#export PATH=~/anaconda3/bin/:$PATH
 export PATH=$HOME/Qt/5.9.1/gcc_64/bin:$PATH
 
 # gcc cross compiler
@@ -16,7 +17,7 @@ export UI=/usr/include
 export AI_PATH="$WORKSPACE/AI/"
 export HACKING="$WORKSPACE/hacking/"
 export HANDSON_ML_PATH="$AI_PATH/handson-ml/"
-export SITE_PACKAGES="$HOME/anaconda3/lib/python3.6/site-packages"
+export SITE_PACKAGES="/usr/lib/python3.6/site-packages"
 export BOTO3_PATH="$SITE_PACKAGES/boto3/"
 
 #export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/include/python3.6m"
@@ -37,12 +38,10 @@ alias "c=xclip"
 alias "v=xclip -o"
 
 #commands
-alias python=$HOME/anaconda3/bin/python3
-alias python2=$HOME/miniconda2/bin/python2
 alias p="python"
-alias p2=$HOME/miniconda2/bin/python2
-alias ipy2=$HOME/miniconda2/bin/ipython2
-alias ipy="ipython"
+alias p2=/usr/bin/python2
+alias ipy2=/usr/bin/ipython
+alias ipy="ipython3"
 alias psi="python setup.py install"
 alias psc="python setup.py clean"
 alias convert_ipy_notebook="jupyter nbconvert --to script"
@@ -62,7 +61,7 @@ alias gr=grep.py "$@"
 alias vim_background_color="$HOME/vim_background_color.py"
 alias vimrc_min="cat $WORKSPACE/vimrc/vimrc_minimal | cs"
 alias vim_hex="cat $WORKSPACE/vimrc/vim_hex | cs"
-alias vim="PYTHONPATH=$PYTHONPATH:$HOME/anaconda3/lib/python3.6/site-packages/ vim"
+alias vim="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim -X"
 alias scheme_vim="MYVIMRC=~/.scheme_vimrc vim"
 
 #nvim
@@ -97,6 +96,7 @@ alias cdvortex="cd $WARGAMES/vortex"
 # end of wargames
 
 #directories
+alias cdvimrc="cd $WORKSPACE/vimrc"
 alias cdblog="cd $WORKSPACE/bodgergely.github.io"
 alias cdhacking="cd $HACKING"
 alias cdworkspace="cd $HOME/workspace/"
@@ -104,7 +104,7 @@ alias cdbodos="cd $WORKSPACE/bodos/src"
 alias cdlazyprogrammer="cd $HOME/workspace/AI/lazyprogrammer/machine_learning_examples"
 alias cdlongshot="cd $HOME/workspace/longshot"
 alias cdgoprojects_longshot="cd $HOME/workspace/longshot/go_projects/src/github.com/longshotsyndicate"
-alias cdsitepackages="cd $HOME/anaconda3/lib/python3.6/site-packages"
+alias cdsitepackages="cd /usr/lib/python3.6/site-packages"
 alias cdstats="cd $WORKSPACE/stats"
 alias cdbayes="cd $WORKSPACE/stats/ThinkBayes"
 alias cdhandson_ml="cd $HANDSON_ML_PATH"
@@ -117,6 +117,7 @@ alias cdkernelhacking="cd $HACKING/kernel_hacking"
 alias cdbusybox="cd $HOME/busybox/build"
 alias cdnand2tetris="cd $WORKSPACE/coursera/nand2tetris"
 alias cdweb="cd /var/www/html"
+alias apache_restart="sudo systemctl restart apache2.service"
 
 #apt-get
 alias agi="sudo apt-get install"
@@ -149,5 +150,4 @@ alias network_restart='sudo systemctl restart network-manager.service'
 
 #radare
 alias Cutter='~/workspace/hacking/radare2/cutter/build/Cutter'
-
 
