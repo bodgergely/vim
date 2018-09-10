@@ -72,8 +72,6 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
-" press F2 to enable/disable clipboard pasting
-set pastetoggle=<F2>
 set number
 set incsearch
 set path+=**
