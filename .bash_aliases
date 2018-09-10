@@ -1,6 +1,6 @@
 alias aer="source $HOME/.bash_aliases"
-alias ae="vim $HOME/.bash_aliases; aer"
 alias reload="source $HOME/.bashrc"
+alias ae="vim $HOME/.bash_aliases; aer; reload"
 
 
 export PATH=$PATH:~/bin
@@ -62,12 +62,14 @@ alias vim_background_color="$HOME/vim_background_color.py"
 alias vimrc_min="cat $WORKSPACE/vimrc/vimrc_minimal | cs"
 alias vim_hex="cat $WORKSPACE/vimrc/vim_hex | cs"
 alias vim="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim -X"
+alias v="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim -X"
 alias scheme_vim="MYVIMRC=~/.scheme_vimrc vim"
 
 #nvim
 alias nvim=nvim.appimage
 
 # git
+alias gcl='git clone'
 alias gpu='git push'
 alias gs="git status"
 alias gl="git log"
@@ -93,6 +95,7 @@ alias shellcode_generate="$WARGAMES/shellcode/shellcode.py"
 alias cdnar="cd $WARGAMES/narnia"
 alias cdbehemoth="cd $WARGAMES/behemoth"
 alias cdvortex="cd $WARGAMES/vortex"
+alias cdnatas="cd $WARGAMES/natas"
 # end of wargames
 
 #directories
