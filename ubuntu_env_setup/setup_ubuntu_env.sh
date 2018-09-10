@@ -34,6 +34,7 @@ sudo apt-get -y install php-pear php-fpm php-dev php-zip php-curl php-xmlrpc php
 sudo apt-get -y install libapache2-mod-php
 sudo apt-get -y install php-cli
 sudo apt-get -y install virtualbox && sudo apt-get -y install virtualbox-guest-utils
+sudo -H pip install scapy
 
 
 # java - installer is interactive - needs human input
