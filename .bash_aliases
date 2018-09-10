@@ -61,8 +61,8 @@ alias gr=grep.py "$@"
 alias vim_background_color="$HOME/vim_background_color.py"
 alias vimrc_min="cat $WORKSPACE/vimrc/vimrc_minimal | cs"
 alias vim_hex="cat $WORKSPACE/vimrc/vim_hex | cs"
-alias vim="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim -X"
-alias v="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim -X"
+alias vim="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim"
+alias v="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim"
 alias scheme_vim="MYVIMRC=~/.scheme_vimrc vim"
 
 #nvim
@@ -153,4 +153,16 @@ alias network_restart='sudo systemctl restart network-manager.service'
 
 #radare
 alias Cutter='~/workspace/hacking/radare2/cutter/build/Cutter'
+
+#webassembly
+export WEBASSEMBLY=$WORKSPACE/webassembly
+alias webassembly_setup_env='source $WEBASSEMBLY/emsdk/emsdk_env.sh'
+#source $WEBASSEMBLY/emsdk/emsdk_env.sh 
+# compile the program like below
+# emcc hello.c -s WASM=1 -o hello.html
+# emscripten webserver can serve it like below
+alias emrun_here='emrun --no_browser --port 8080 .'
+
+
+
 
