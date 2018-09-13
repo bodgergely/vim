@@ -124,7 +124,7 @@ let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_enable_diagnostic_highlighting = 0
 nnoremap gd         :YcmCompleter GoTo<CR>
 let g:ycm_autoclose_preview_window_after_insertion = 1
-nnoremap gd <C-]>
+"nnoremap gd <C-]>
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
