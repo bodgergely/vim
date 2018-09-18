@@ -19,6 +19,10 @@ sudo apt-get -y install git
 sudo apt-get -y install cmake
 sudo apt-get -y install ctags
 sudo apt-get -y install cscope
+sudo apt-get -y install libncurses-dev  # for busybox menuconfig
+sudo apt-get -y install bison        # linux kernel dev
+sudo apt-get -y install flex         # linux kernel dev
+sudo apt-get -y install libelf-dev   # linux kernel dev
 sudo apt-get -y install wireshark
 sudo apt-get -y install python-ipython
 sudo apt-get -y install ipython

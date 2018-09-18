@@ -26,6 +26,7 @@ export BOTO3_PATH="$SITE_PACKAGES/boto3/"
 
 # YouCompleteMe ycm generator
 alias ycm_generate=$WORKSPACE/vim_plugins/c++/YCM-Generator/config_gen.py
+alias ycm_tern_gen='touch $PWD/.tern-project'
 
 alias pcalc=$HOME/bin/pcalc.py
 
@@ -69,6 +70,7 @@ alias scheme_vim="MYVIMRC=~/.scheme_vimrc vim"
 alias nvim=nvim.appimage
 
 # git
+alias git_developers='git shortlog -sne'
 alias gcl='git clone'
 alias gpu='git push'
 alias gs="git status"
@@ -120,6 +122,9 @@ alias cdkernelhacking="cd $HACKING/kernel_hacking"
 alias cdbusybox="cd $HOME/busybox/build"
 alias cdnand2tetris="cd $WORKSPACE/coursera/nand2tetris"
 alias cdweb="cd /var/www/html"
+alias cdhtb='cd $HOME/workspace/hacking/pentestlabs/hackthebox'
+
+#apache
 alias apache_restart="sudo systemctl restart apache2.service"
 
 #apt-get
@@ -152,7 +157,7 @@ alias terminal_theme_chooser='wget -O gogh https://git.io/vQgMr && chmod +x gogh
 alias network_restart='sudo systemctl restart network-manager.service'
 
 #radare
-alias Cutter='~/workspace/hacking/radare2/cutter/build/Cutter'
+alias Cutter='~/cutter/Cutter-v1.7.1-x86_64.AppImage'
 
 #webassembly
 export WEBASSEMBLY=$WORKSPACE/webassembly
@@ -162,6 +167,12 @@ alias webassembly_setup_env='source $WEBASSEMBLY/emsdk/emsdk_env.sh'
 # emcc hello.c -s WASM=1 -o hello.html
 # emscripten webserver can serve it like below
 alias emrun_here='emrun --no_browser --port 8080 .'
+
+#nmap
+#alias nmap_1='sudo nmap -v -A -sS -oX nmap_output'
+alias nmap_syn='sudo nmap -v -A -sS'
+
+
 
 
 

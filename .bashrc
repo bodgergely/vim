@@ -136,8 +136,11 @@ alias ipy=ipython
 stty -ixon
 set -o emacs
 
+# generate core file if crash happens
+ulimit -c unlimited
+
 # added by Anaconda3 installer
-cd $HOME/workspace
+# cd $HOME/workspace
 
 tmux source-file ~/.tmux.conf
 # Yavide alias
