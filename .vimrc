@@ -3,8 +3,14 @@ filetype on " required
 
 " enable mouse support
 :set mouse=a
+
+" set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+
 " 256-color terminal
-set t_Co=256
+"set t_Co=256
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -38,6 +44,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'rdnetto/YCM-Generator'  " generate YouCompleteMe config file for C++ projects
 Plugin 'SirVer/ultisnips'       " snippet engine
 Plugin 'honza/vim-snippets'     " actual snippets for languages
+Plugin 'prettier/vim-prettier'
+Plugin 'ternjs/tern_for_vim'    " javascript
+
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
