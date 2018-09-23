@@ -36,17 +36,25 @@ sudo apt-get -y install qemuctl
 sudo apt-get -y install qemu-utils
 sudo apt-get -y install gcc-multilib
 sudo apt-get -y install apache2
+sudo apt-get -y install libapache2-mod-wsgi
 sudo apt-get -y install mysql-server
 sudo apt-get -y install php
 sudo apt-get -y install php-pear php-fpm php-dev php-zip php-curl php-xmlrpc php-gd php-mysql php-mbstring php-xml libapache2-mod-php
 sudo apt-get -y install libapache2-mod-php
 sudo apt-get -y install php-cli
 sudo apt-get -y install virtualbox && sudo apt-get -y install virtualbox-guest-utils
+sudo apt-get -y install virtualenv
 sudo -H pip install scapy
 sudo apt-get -y install openvpn
 sudo apt-get -y install curl
 #rust
 curl https://sh.rustup.rs -sSf | sh
+
+sudo apt-get -y install python3.7
+sudo apt-get -y install python3.7-dev
+sudo apt-get -y install python3-pip
+
+pip3.6 install mod_wsgi
 
 
 # java - installer is interactive - needs human input
