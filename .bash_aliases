@@ -1,6 +1,8 @@
 alias aer="source $HOME/.bash_aliases"
 alias reload="source $HOME/.bashrc"
 alias ae="vim $HOME/.bash_aliases; aer; reload"
+alias vimrc='vim $HOME/.vimrc'
+alias bashrc='vim $HOME/.bashrc; reload'
 
 
 export PATH=$PATH:~/bin
@@ -17,7 +19,7 @@ export UI=/usr/include
 export AI_PATH="$WORKSPACE/AI/"
 export HACKING="$WORKSPACE/hacking/"
 export HANDSON_ML_PATH="$AI_PATH/handson-ml/"
-export SITE_PACKAGES="/usr/lib/python3.6/site-packages"
+export SITE_PACKAGES="/usr/local/lib/python3.6/site-packages"
 export BOTO3_PATH="$SITE_PACKAGES/boto3/"
 
 #export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/include/python3.6m"
@@ -26,7 +28,7 @@ export BOTO3_PATH="$SITE_PACKAGES/boto3/"
 
 # YouCompleteMe ycm generator
 alias ycm_generate=$WORKSPACE/vim_plugins/c++/YCM-Generator/config_gen.py
-alias ycm_tern_gen='touch $PWD/.tern-project'
+alias ycm_tern_gen='cp $WORKSPACE/vimrc/.tern-project $PWD'
 
 alias pcalc=$HOME/bin/pcalc.py
 
@@ -122,7 +124,7 @@ alias cdkernelhacking="cd $HACKING/kernel_hacking"
 alias cdbusybox="cd $HOME/busybox/build"
 alias cdnand2tetris="cd $WORKSPACE/coursera/nand2tetris"
 alias cdweb="cd /var/www/html"
-alias cdhtb='cd $HOME/workspace/hacking/pentestlabs/hackthebox'
+alias cdhtb='cd $WARGAMES/pentestlabs/hackthebox'
 
 #apache
 alias apache_restart="sudo systemctl restart apache2.service"

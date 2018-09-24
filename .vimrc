@@ -39,25 +39,27 @@ Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'dracula/vim'
 Plugin 'hdima/python-syntax'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'rdnetto/YCM-Generator'  " generate YouCompleteMe config file for C++ projects
 Plugin 'SirVer/ultisnips'       " snippet engine
 Plugin 'honza/vim-snippets'     " actual snippets for languages
 Plugin 'prettier/vim-prettier'
-Plugin 'ternjs/tern_for_vim'    " javascript
+"Plugin 'ternjs/tern_for_vim'    " javascript
+Plugin 'pangloss/vim-javascript'
 
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 syntax on
 syntax enable
-"set termguicolors     " enable true colors support
 set background=dark
+"colorscheme dracula
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-"colorscheme PaperColor
+colorscheme PaperColor
 "colorscheme solarized
 "colorscheme badwolf
 "colorscheme murphy
@@ -133,6 +135,11 @@ let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_enable_diagnostic_highlighting = 0
 nnoremap gd         :YcmCompleter GoTo<CR>
 let g:ycm_autoclose_preview_window_after_insertion = 1
+" Start autocompletion after 4 chars
+"let g:ycm_min_num_of_chars_for_completion = 4
+"let g:ycm_min_num_identifier_candidate_chars = 4
+" Don't show YCM's preview window [ I find it really annoying ]
+let g:ycm_add_preview_to_completeopt = 0
 "nnoremap gd <C-]>
 
 " If the current buffer has never been saved, it will have no name,
@@ -164,8 +171,8 @@ map vv 0
 map nn <S-$>
 map f y
 " autocompletion remap to ctrl space
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-Space>
+"inoremap <C-Space> <C-x><C-o>
+"inoremap <C-@> <C-Space>
 let g:user_emmet_expandword_key = '<C-c>,'
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 "highlight all occurences of word under cursor
@@ -188,6 +195,11 @@ let g:pymode_python = 'python3'
 
 " disable Preview window
 set completeopt-=preview
+autocmd FileType python setlocal completeopt-=preview
+
+
+" javascript
+
 
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
@@ -284,4 +296,6 @@ augroup Binary
   au BufWritePost *.bin if &bin | %!xxd
   au BufWritePost *.bin set nomod | endif
 augroup END
+
+
 

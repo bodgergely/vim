@@ -124,10 +124,10 @@ export GOPATH=/home/geri/workspace/go_projects
 export PATH=$PATH:~/premake
 export PATH=$HOME/.cargo/bin:$PATH
 
-#alias python=/usr/bin/python3
-#alias pip=pip3
-#alias ipython=/usr/bin/ipython3
-#export PYTHONPATH=$PYTHONPATH:$HOME/anaconda3/lib/python3.6/site-packages/
+alias python=/usr/bin/python3
+alias pip=/usr/bin/pip3
+alias ipython=/usr/bin/ipython3
+# export PYTHONPATH=$PYTHONPATH:$HOME/.local/lib/python3.6/site-packages/
 export PYTHONSTARTUP=~/.pystartup
 
 alias p=python

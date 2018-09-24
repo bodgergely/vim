@@ -47,6 +47,7 @@ sudo apt-get -y install virtualenv
 sudo -H pip install scapy
 sudo apt-get -y install openvpn
 sudo apt-get -y install curl
+sudo apt-get -y install libcap-dev
 #rust
 curl https://sh.rustup.rs -sSf | sh
 
