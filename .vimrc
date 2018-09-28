@@ -46,8 +46,10 @@ Plugin 'rdnetto/YCM-Generator'  " generate YouCompleteMe config file for C++ pro
 Plugin 'SirVer/ultisnips'       " snippet engine
 Plugin 'honza/vim-snippets'     " actual snippets for languages
 Plugin 'prettier/vim-prettier'
-"Plugin 'ternjs/tern_for_vim'    " javascript
+Plugin 'ternjs/tern_for_vim'   " javascript
 Plugin 'pangloss/vim-javascript'
+Plugin 'moll/vim-node'          " nodejs
+Plugin 'nikvdp/ejs-syntax'
 
 " ---------------------------------------
 " All of your Plugins must be added before the following line
@@ -78,9 +80,9 @@ filetype plugin on
 "tab length config
 "https://stackoverflow.com/questions/234564/tab-key-4-spaces-and-auto-indent-after-curly-braces-in-vim
 " show existing tab with 4 spaces width
-set tabstop=4
+set tabstop=2
 " when indenting with '>', use 4 spaces width
-set shiftwidth=4
+set shiftwidth=2
 " On pressing tab, insert 4 spaces
 set expandtab
 set number
@@ -173,7 +175,7 @@ map f y
 " autocompletion remap to ctrl space
 "inoremap <C-Space> <C-x><C-o>
 "inoremap <C-@> <C-Space>
-let g:user_emmet_expandword_key = '<C-c>,'
+let g:user_emmet_expandword_key = '<C-c>,' " html tag expansion keyword
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 "highlight all occurences of word under cursor
 :autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
@@ -199,6 +201,10 @@ autocmd FileType python setlocal completeopt-=preview
 
 
 " javascript
+autocmd FileType js UltiSnipsAddFiletypes javascript-jasmine
+" enhance YCM JS completion with tern's smarts
+"autocmd FileType javascript setlocal omnifunc=tern#Complete
+"au BufNewFile,BufRead *.ejs set filetype=html     "ejs syntax highlighting
 
 
 if exists('$TMUX')
