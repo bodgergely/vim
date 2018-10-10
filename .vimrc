@@ -56,12 +56,12 @@ Plugin 'nikvdp/ejs-syntax'
 call vundle#end()            " required
 syntax on
 syntax enable
-set background=dark
+"set background=dark
 "colorscheme dracula
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-colorscheme PaperColor
+"colorscheme PaperColor
 "colorscheme solarized
 "colorscheme badwolf
 "colorscheme murphy
@@ -80,9 +80,9 @@ filetype plugin on
 "tab length config
 "https://stackoverflow.com/questions/234564/tab-key-4-spaces-and-auto-indent-after-curly-braces-in-vim
 " show existing tab with 4 spaces width
-set tabstop=2
+set tabstop=4
 " when indenting with '>', use 4 spaces width
-set shiftwidth=2
+set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 set number
@@ -193,7 +193,7 @@ noremap <Leader>P "*p
 noremap <Leader>y "+y
 noremap <Leader>p "+p
 
-let g:pymode_python = 'python3'
+let g:pymode_python = 'python2'
 
 " disable Preview window
 set completeopt-=preview
