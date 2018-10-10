@@ -41,12 +41,17 @@ alias "c=xclip"
 alias "v=xclip -o"
 
 #commands
+# export PYTHONPATH=$PYTHONPATH:$HOME/.local/lib/python3.6/site-packages/
+export PYTHONSTARTUP=~/.pystartup
+alias pip=/usr/bin/pip2
 alias p="python"
 alias p2=/usr/bin/python2
-alias ipy2=/usr/bin/ipython
-alias ipy="ipython3"
+alias p3=/usr/bin/python3
+alias ipy3=/usr/bin/ipython3
+alias ipy="ipython"
 alias psi="python setup.py install"
 alias psc="python setup.py clean"
+alias pydebug='pudb'
 alias convert_ipy_notebook="jupyter nbconvert --to script"
 alias linecount=loc
 alias objd='objdump -Mintel -D'
@@ -125,6 +130,7 @@ alias cdbusybox="cd $HOME/busybox/build"
 alias cdnand2tetris="cd $WORKSPACE/coursera/nand2tetris"
 alias cdweb="cd /var/www/html"
 alias cdhtb='cd $WARGAMES/pentestlabs/hackthebox'
+alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python'
 
 #apache
 alias apache_restart="sudo systemctl restart apache2.service"
@@ -157,6 +163,7 @@ alias tor='~/tor-browser_en-US/start-tor-browser.desktop'
 alias terminal_theme_chooser='wget -O gogh https://git.io/vQgMr && chmod +x gogh && ./gogh && rm gogh'
 
 alias network_restart='sudo systemctl restart network-manager.service'
+alias ping_google='ping www.google.com'
 
 #radare
 alias Cutter='~/cutter/Cutter-v1.7.1-x86_64.AppImage'
@@ -173,9 +180,18 @@ alias emrun_here='emrun --no_browser --port 8080 .'
 #nmap
 #alias nmap_1='sudo nmap -v -A -sS -oX nmap_output'
 alias nmap_syn='sudo nmap -v -A -sS'
+alias nmap_top_ports_20='sudo nmap -sT --top-ports 20'
 
-
-
+#kali
+alias mount_shared='~/Desktop/mount-shared-folders.sh'
+alias cdshared='cd ~/operating_systems/linux/kali/shared'
+export OFFSEC_DIR=$HOME'/Desktop/offsec/'
+alias conn_offsec_network='cd $OFFSEC_DIR/offsec_connectivity_pack; cat auth.txt | cs; ./connect.sh'
+alias test_offsec_connection='ping 10.11.1.220'
+alias win7_machine_connect='cd $OFFSEC_DIR/offsec_connectivity_pack; ./win7_remote_desktop.sh'
+alias win7_machine_connect_fullscreen='cd $OFFSEC_DIR/offsec_connectivity_pack; ./win7_remote_desktop_fullscreen.sh'
+export WIN7_offsec_machine_ip='10.11.11.142'
+export EXPLOITDB='~/workspace/hacking/exploitdb/'
 
 
 
