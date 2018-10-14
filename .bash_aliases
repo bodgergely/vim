@@ -134,6 +134,9 @@ alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python'
 
 #apache
 alias apache_restart="sudo systemctl restart apache2.service"
+alias apache_status="sudo systemctl status apache2.service"
+alias apache_start="sudo systemctl start apache2.service"
+alias apache_stop="sudo systemctl stop apache2.service"
 
 #apt-get
 alias agi="sudo apt-get install"
@@ -157,13 +160,14 @@ alias configure_debug_build='./configure CFLAGS="-ggdb3 -O0" CXXFLAGS="-ggdb3 -O
 alias configure_32='./configure CFLAGS="-m32 -O2" CXXFLAGS="-m32 -O2" LDFLAGS="-m32"'
 
 # tor browser
-alias tor='~/tor-browser_en-US/start-tor-browser.desktop'
+alias tor='~/tor/tor-browser_en-US/start-tor-browser.desktop'
 
 #terminal theme chooser
 alias terminal_theme_chooser='wget -O gogh https://git.io/vQgMr && chmod +x gogh && ./gogh && rm gogh'
 
 alias network_restart='sudo systemctl restart network-manager.service'
 alias ping_google='ping www.google.com'
+alias ports_open='sudo netstat -peanut'
 
 #radare
 alias Cutter='~/cutter/Cutter-v1.7.1-x86_64.AppImage'
@@ -182,6 +186,14 @@ alias emrun_here='emrun --no_browser --port 8080 .'
 alias nmap_syn='sudo nmap -v -A -sS'
 alias nmap_top_ports_20='sudo nmap -sT --top-ports 20'
 
+#ssh
+alias ssh_start='sudo service ssh start'
+alias ssh_stop='sudo service ssh stop'
+alias ssh_status='sudo service ssh status'
+
+#sql
+alias sqlmap='python ~/bin/sqlmap.py'
+
 #kali
 alias mount_shared='~/Desktop/mount-shared-folders.sh'
 alias cdshared='cd ~/operating_systems/linux/kali/shared'
@@ -193,5 +205,4 @@ alias win7_machine_connect_fullscreen='cd $OFFSEC_DIR/offsec_connectivity_pack; 
 export WIN7_offsec_machine_ip='10.11.11.142'
 export EXPLOITDB='~/workspace/hacking/exploitdb/'
 
-
-
+export RASPBERRY_1=192.168.1.10
