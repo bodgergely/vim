@@ -145,6 +145,7 @@ alias agr="sudo apt-get remove"
 
 #metasploit
 alias cdmetasploit="cd /opt/metasploit-framework/embedded/framework"
+export METASPLOIT_DIR=/opt/metasploit-framework/embedded/framework
 
 export PATH=$PATH:$HOME/nodejs/node-v9.8.0-linux-x64/bin/
 export PATH=$PATH:$HOME/workspace/pyflame/src
@@ -194,6 +195,9 @@ alias ssh_status='sudo service ssh status'
 #sql
 alias sqlmap='python ~/bin/sqlmap.py'
 
+export RASPBERRY_1=192.168.1.10
+alias ssh_raspberry_1='ssh pi@$RASPBERRY_1' 
+
 #kali
 alias mount_shared='~/Desktop/mount-shared-folders.sh'
 alias cdshared='cd ~/operating_systems/linux/kali/shared'
@@ -205,4 +209,16 @@ alias win7_machine_connect_fullscreen='cd $OFFSEC_DIR/offsec_connectivity_pack; 
 export WIN7_offsec_machine_ip='10.11.11.142'
 export EXPLOITDB='~/workspace/hacking/exploitdb/'
 
-export RASPBERRY_1=192.168.1.10
+#metasploit
+alias msfconsole='sudo msfconsole'
+
+#ssl key log file
+export SSLKEYLOGFILE=~/sslkeylog.log
+
+#MINGW - mingw
+alias mingw_32_g++=i686-w64-mingw32-g++
+alias mingw_64_g++=x86_64-w64-mingw32-g++
+
+
+
+
