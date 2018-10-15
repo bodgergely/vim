@@ -54,8 +54,8 @@ Plugin 'nikvdp/ejs-syntax'
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-syntax on
-syntax enable
+syntax off
+"syntax enable
 "set background=dark
 "colorscheme dracula
 "colorscheme black_angus
