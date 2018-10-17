@@ -208,6 +208,9 @@ alias win7_machine_connect='cd $OFFSEC_DIR/offsec_connectivity_pack; ./win7_remo
 alias win7_machine_connect_fullscreen='cd $OFFSEC_DIR/offsec_connectivity_pack; ./win7_remote_desktop_fullscreen.sh'
 export WIN7_offsec_machine_ip='10.11.11.142'
 export EXPLOITDB='~/workspace/hacking/exploitdb/'
+export LAB=$HOME'/Desktop/lab'
+alias cdlab='cd $LAB'
+export NET=10.11.1
 
 #metasploit
 alias msfconsole='sudo msfconsole'
@@ -219,6 +222,10 @@ export SSLKEYLOGFILE=~/sslkeylog.log
 alias mingw_32_g++=i686-w64-mingw32-g++
 alias mingw_64_g++=x86_64-w64-mingw32-g++
 
-
+#compression
+alias compress_targz='tar -czvf'
+alias compress_bzip='tar -cjvf'
+alias uncompress_tar='tar -xzvf'
+alias uncompress_bzip='tar -xjvf'
 
 
