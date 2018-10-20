@@ -161,7 +161,8 @@ alias configure_debug_build='./configure CFLAGS="-ggdb3 -O0" CXXFLAGS="-ggdb3 -O
 alias configure_32='./configure CFLAGS="-m32 -O2" CXXFLAGS="-m32 -O2" LDFLAGS="-m32"'
 
 # tor browser
-alias tor='~/tor/tor-browser_en-US/start-tor-browser.desktop'
+#alias tor='~/tor/tor-browser_en-US/start-tor-browser.desktop'
+alias torbrowser='xhost si:localuser:geri;sudo -u geri -H torbrowser-launcher'
 
 #terminal theme chooser
 alias terminal_theme_chooser='wget -O gogh https://git.io/vQgMr && chmod +x gogh && ./gogh && rm gogh'
@@ -193,7 +194,7 @@ alias ssh_stop='sudo service ssh stop'
 alias ssh_status='sudo service ssh status'
 
 #sql
-alias sqlmap='python ~/bin/sqlmap.py'
+#alias sqlmap='python ~/bin/sqlmap.py'
 
 export RASPBERRY_1=192.168.1.10
 alias ssh_raspberry_1='ssh pi@$RASPBERRY_1' 
@@ -207,10 +208,11 @@ alias test_offsec_connection='ping 10.11.1.220'
 alias win7_machine_connect='cd $OFFSEC_DIR/offsec_connectivity_pack; ./win7_remote_desktop.sh'
 alias win7_machine_connect_fullscreen='cd $OFFSEC_DIR/offsec_connectivity_pack; ./win7_remote_desktop_fullscreen.sh'
 export WIN7_offsec_machine_ip='10.11.11.142'
-export EXPLOITDB='~/workspace/hacking/exploitdb/'
+export EXPLOITDB='/usr/share/exploitdb/'
 export LAB=$HOME'/Desktop/lab'
 alias cdlab='cd $LAB'
 export NET=10.11.1
+
 
 #metasploit
 alias msfconsole='sudo msfconsole'
@@ -228,4 +230,12 @@ alias compress_bzip='tar -cjvf'
 alias uncompress_tar='tar -xzvf'
 alias uncompress_bzip='tar -xjvf'
 
+alias cl='clear'
 
+alias php5_enable='sudo a2enmod php5.6'
+alias php7_enable='sudo a2enmod php7.2'
+alias php5_disable='sudo a2dismod php5.6'
+alias php7_disable='sudo a2dismod php7.2'
+
+
+alias chrome_kali='xhost si:localuser:geri;sudo -u geri -H google-chrome'
