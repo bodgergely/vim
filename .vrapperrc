@@ -1,5 +1,11 @@
-imap fj <esc>
-imap jf <esc>
-map noremap ; :
+nnoremap ; :
 nnoremap : ;
+imap jk <esc>
+imap kj <esc>
+map vv 0
+map nn <S-$>
+map f y
+set scroll=5
+noremap <C-u> 5<C-u>
+noremap <C-d> 5<C-d>
 

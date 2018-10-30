@@ -1,5 +1,4 @@
 set nocompatible              " be iMproved, required
-filetype on " required
 
 " enable mouse support
 :set mouse=a
@@ -28,6 +27,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
 Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'liuchengxu/space-vim-dark'
@@ -50,13 +50,19 @@ Plugin 'ternjs/tern_for_vim'   " javascript
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'          " nodejs
 Plugin 'nikvdp/ejs-syntax'
+Plugin 'dbgx/lldb.nvim'
+Plugin 'cocopon/iceberg.vim'
 
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-syntax off
-"syntax enable
-"set background=dark
+filetype on " required
+syntax on
+syntax enable
+set background=dark
+
+colorscheme baycomb     " really nice blue!
+"colorscheme birds-of-paradise
 "colorscheme dracula
 "colorscheme black_angus
 "colorscheme space-vim-dark
@@ -127,6 +133,9 @@ let c_no_curly_error=1
 let g:cpp_member_variable_highlight = 1
 
 let g:rustfmt_autosave = 1
+set hidden
+let g:racer_cmd = "~/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
 
 
 let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '(', ')', '{', '}']
@@ -303,5 +312,8 @@ augroup Binary
   au BufWritePost *.bin set nomod | endif
 augroup END
 
-
-
+" rust language code browsing stuff
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)

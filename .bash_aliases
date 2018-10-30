@@ -9,6 +9,7 @@ export PATH=$PATH:~/bin
 export PATH=$PATH:~/arduino/arduino-1.8.5-linux64/arduino-1.8.5
 #export PATH=~/anaconda3/bin/:$PATH
 export PATH=$HOME/Qt/5.9.1/gcc_64/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 
 # gcc cross compiler
 export PATH=$PATH:$HOME/opt/cross/bin
@@ -73,9 +74,6 @@ alias vim="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim"
 alias v="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim"
 alias scheme_vim="MYVIMRC=~/.scheme_vimrc vim"
 
-#nvim
-alias nvim=nvim.appimage
-
 # git
 alias git_developers='git shortlog -sne'
 alias gcl='git clone'
@@ -131,6 +129,7 @@ alias cdnand2tetris="cd $WORKSPACE/coursera/nand2tetris"
 alias cdweb="cd /var/www/html"
 alias cdhtb='cd $WARGAMES/pentestlabs/hackthebox'
 alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python'
+alias cdrust='cd $WORKSPACE/my_repos/lang-tut/rust'
 
 #apache
 alias apache_restart="sudo systemctl restart apache2.service"
@@ -223,9 +222,14 @@ alias mingw_32_g++=i686-w64-mingw32-g++
 alias mingw_64_g++=x86_64-w64-mingw32-g++
 
 #compression
-alias compress_targz='tar -czvf'
-alias compress_bzip='tar -cjvf'
-alias uncompress_tar='tar -xzvf'
-alias uncompress_bzip='tar -xjvf'
+alias targz_compress='tar -czvf'
+alias bzip_compress='tar -cjvf'
+alias targz_uncompress='tar -xzvf'
+alias bzip_uncompress='tar -xjvf'
 
+alias cl='clear'
+
+alias trace='sudo trace-cmd record -p function_graph'
+
+alias eclipse='~/eclipse/eclipse/eclipse'
 
