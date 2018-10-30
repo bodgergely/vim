@@ -38,9 +38,7 @@ sudo apt-get -y install gcc-multilib
 sudo apt-get -y install apache2
 sudo apt-get -y install libapache2-mod-wsgi
 sudo apt-get -y install mysql-server
-sudo apt-get -y install php
-sudo apt-get -y install php-pear php-fpm php-dev php-zip php-curl php-xmlrpc php-gd php-mysql php-mbstring php-xml libapache2-mod-php
-sudo apt-get -y install libapache2-mod-php
+sudo apt-get -y install php php-pear php-fpm php-dev php-zip php-curl php-xmlrpc php-gd php-mysql php-mbstring php-xml libapache2-mod-php
 sudo apt-get -y install php-cli
 sudo apt-get -y install virtualbox && sudo apt-get -y install virtualbox-guest-utils
 sudo apt-get -y install virtualenv
@@ -62,4 +60,6 @@ pip3.6 install mod_wsgi
 sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-get -y update
 sudo apt -y install oracle-java8-installer
+
+sudo apt-get install remmina            # remote desktop
 
