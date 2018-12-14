@@ -1,0 +1,43 @@
+{
+    "vim.useCtrlKeys": false,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["f"],
+            "after": ["y"]
+        }
+    ],
+    
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["v","v"],
+            "after": ["0"]
+        }
+    ],
+    
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["n", "n"],
+            "after": ["<S>", "4"]
+        }
+    ],
+    "editor.minimap.enabled": false,
+    "window.zoomLevel": 0,
+    "vim.leader": ",",
+    "rust.mode": "legacy",
+    "rust.rustup": {
+        "toolchain": "stable-x86_64-unknown-linux-gnu",
+        "nightlyToolchain": "nightly-x86_64-unknown-linux-gnu"
+    },
+    "workbench.colorTheme": "Kimbie Dark",
+    "files.autoSave": "afterDelay",
+    "explorer.confirmDragAndDrop": false,
+    "workbench.iconTheme": "eq-material-theme-icons-palenight"
+}
+
