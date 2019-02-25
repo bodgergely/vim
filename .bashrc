@@ -132,9 +132,6 @@ set -o emacs
 # generate core file if crash happens
 ulimit -c unlimited
 
-# added by Anaconda3 installer
-# cd $HOME/workspace
-
 tmux source-file ~/.tmux.conf
 # Yavide alias
 alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc"
@@ -146,3 +143,19 @@ alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc -u /opt/yavid
 alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc -u /opt/yavide/.vimrc -u /home/geri/yavide/yavide/.vimrc -u /opt/yavide/.vimrc"
 # Yavide alias
 alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc -u /opt/yavide/.vimrc -u /home/geri/yavide/yavide/.vimrc -u /opt/yavide/.vimrc -u /opt/yavide/.vimrc"
+# added by Anaconda3 5.3.0 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/geri/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    \eval "$__conda_setup"
+#else
+#    if [ -f "/home/geri/anaconda3/etc/profile.d/conda.sh" ]; then
+#        . "/home/geri/anaconda3/etc/profile.d/conda.sh"
+#        CONDA_CHANGEPS1=false conda activate base
+#    else
+#        \export PATH="/home/geri/anaconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+# <<< conda init <<<

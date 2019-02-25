@@ -21,14 +21,13 @@ export AI_PATH="$WORKSPACE/AI/"
 export HACKING="$WORKSPACE/hacking/"
 export HANDSON_ML_PATH="$AI_PATH/handson-ml/"
 export SITE_PACKAGES="/usr/local/lib/python3.6/site-packages"
-export BOTO3_PATH="$SITE_PACKAGES/boto3/"
 
 #export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/include/python3.6m"
 #export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/home/geri/boost/boost_1_66_0/include"
 #export LD_LIBRARY_PATH:/home/geri/boost/boost_1_66_0/lib"
 
 # YouCompleteMe ycm generator
-alias ycm_generate=$WORKSPACE/vim_plugins/c++/YCM-Generator/config_gen.py
+alias ycm_generate=$HOME/.vim/bundle/YCM-Generator/config_gen.py
 alias ycm_tern_gen='cp $WORKSPACE/vimrc/.tern-project $PWD'
 
 alias pcalc=$HOME/bin/pcalc.py
@@ -44,12 +43,12 @@ alias "v=xclip -o"
 #commands
 # export PYTHONPATH=$PYTHONPATH:$HOME/.local/lib/python3.6/site-packages/
 export PYTHONSTARTUP=~/.pystartup
-alias pip=/usr/bin/pip2
-alias p="python"
-alias p2=/usr/bin/python2
-alias p3=/usr/bin/python3
-alias ipy3=/usr/bin/ipython3
-alias ipy="ipython"
+#alias pip=/usr/bin/pip2
+alias p="python3"
+alias p2=python2
+alias p3=python3
+alias ipy3=ipython3
+alias ipy=ipython3
 alias psi="python setup.py install"
 alias psc="python setup.py clean"
 alias pydebug='pudb'
@@ -126,10 +125,12 @@ alias cdlinux="cd $WORKSPACE/linux"
 alias cdkernelhacking="cd $HACKING/kernel_hacking"
 alias cdbusybox="cd $HOME/busybox/build"
 alias cdnand2tetris="cd $WORKSPACE/coursera/nand2tetris"
+alias cdembedded="cd $WORKSPACE/coursera/embedded_boulder/ese-coursera-course1"
 alias cdweb="cd /var/www/html"
 alias cdhtb='cd $WARGAMES/pentestlabs/hackthebox'
-alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python'
+alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python/BHP-Code'
 alias cdrust='cd $WORKSPACE/my_repos/lang-tut/rust'
+alias cddropbox='cd $HOME/Dropbox'
 
 #apache
 alias apache_restart="sudo systemctl restart apache2.service"
@@ -160,8 +161,8 @@ alias configure_debug_build='./configure CFLAGS="-ggdb3 -O0" CXXFLAGS="-ggdb3 -O
 alias configure_32='./configure CFLAGS="-m32 -O2" CXXFLAGS="-m32 -O2" LDFLAGS="-m32"'
 
 # tor browser
-#alias tor='~/tor/tor-browser_en-US/start-tor-browser.desktop'
-alias torbrowser='xhost si:localuser:geri;sudo -u geri -H torbrowser-launcher'
+alias torbrowser='~/tor/tor-browser_en-US/start-tor-browser.desktop'
+#alias torbrowser='xhost si:localuser:geri;sudo -u geri -H torbrowser-launcher'
 
 #terminal theme chooser
 alias terminal_theme_chooser='wget -O gogh https://git.io/vQgMr && chmod +x gogh && ./gogh && rm gogh'
@@ -185,7 +186,7 @@ alias emrun_here='emrun --no_browser --port 8080 .'
 #nmap
 #alias nmap_1='sudo nmap -v -A -sS -oX nmap_output'
 alias nmap_syn='sudo nmap -v -A -sS'
-alias nmap_top_ports_20='sudo nmap -sT --top-ports 20'
+alias nmap_top_ports_20='sudo nmap -v -sT --top-ports 20'
 
 #ssh
 alias ssh_start='sudo service ssh start'
@@ -240,3 +241,6 @@ alias php5_enable='sudo a2enmod php5.6'
 alias php7_enable='sudo a2enmod php7.2'
 alias php5_disable='sudo a2dismod php5.6'
 alias php7_disable='sudo a2dismod php7.2'
+
+export LD_LIBRARY_PATH=$HOME/lib
+

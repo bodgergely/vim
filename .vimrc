@@ -60,14 +60,15 @@ filetype on " required
 syntax on
 syntax enable
 set background=dark
+"set background=light
 
-colorscheme baycomb     " really nice blue!
+"colorscheme baycomb     " really nice blue!
 "colorscheme birds-of-paradise
 "colorscheme dracula
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-"colorscheme PaperColor
+colorscheme PaperColor
 "colorscheme solarized
 "colorscheme badwolf
 "colorscheme murphy
@@ -139,19 +140,19 @@ let g:racer_experimental_completer = 1
 
 
 let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '(', ')', '{', '}']
-
+let g:ycm_server_python_interpreter="/usr/bin/python3.6"
 let g:ycm_confirm_extra_conf = 0 " do not ask for confirmation to load the ycm_extra_conf.py
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_python_binary_path = '/usr/bin/python2'
 let g:ycm_enable_diagnostic_highlighting = 0
 nnoremap gd         :YcmCompleter GoTo<CR>
+"nnoremap gd <C-]>
 let g:ycm_autoclose_preview_window_after_insertion = 1
 " Start autocompletion after 4 chars
 "let g:ycm_min_num_of_chars_for_completion = 4
 "let g:ycm_min_num_identifier_candidate_chars = 4
 " Don't show YCM's preview window [ I find it really annoying ]
 let g:ycm_add_preview_to_completeopt = 0
-"nnoremap gd <C-]>
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
