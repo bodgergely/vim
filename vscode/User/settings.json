@@ -41,5 +41,7 @@
         "**/.git/subtree-cache/**": true,
         "**/node_modules/**": true,
         "**/target/**": true
-    }
+    },
+    "workbench.colorTheme": "Red",
+    "editor.renderIndentGuides": false
 }
