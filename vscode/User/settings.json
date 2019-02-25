@@ -1,32 +1,24 @@
 {
     "vim.useCtrlKeys": false,
-    "vim.insertModeKeyBindings": [
-        {
-            "before": ["j", "k"],
-            "after": ["<Esc>"]
-        }
-    ],
-    
-    "vim.normalModeKeyBindings": [
-        {
-            "before": ["f"],
-            "after": ["y"]
-        }
-    ],
-    
-    "vim.normalModeKeyBindings": [
-        {
-            "before": ["v","v"],
-            "after": ["0"]
-        }
-    ],
-    
-    "vim.normalModeKeyBindings": [
-        {
-            "before": ["n", "n"],
-            "after": ["<S>", "4"]
-        }
-    ],
+    "vim.insertModeKeyBindings": [{
+        "before": ["j", "k"],
+        "after": ["<Esc>"]
+    }],
+
+    "vim.normalModeKeyBindings": [{
+        "before": ["f"],
+        "after": ["y"]
+    }],
+
+    "vim.normalModeKeyBindings": [{
+        "before": ["v", "v"],
+        "after": ["0"]
+    }],
+
+    "vim.normalModeKeyBindings": [{
+        "before": ["n", "n"],
+        "after": ["<S>", "4"]
+    }],
     "editor.minimap.enabled": false,
     "window.zoomLevel": 0,
     "vim.leader": ",",
@@ -35,9 +27,19 @@
         "toolchain": "stable-x86_64-unknown-linux-gnu",
         "nightlyToolchain": "nightly-x86_64-unknown-linux-gnu"
     },
-    "workbench.colorTheme": "Kimbie Dark",
     "files.autoSave": "afterDelay",
     "explorer.confirmDragAndDrop": false,
-    "workbench.iconTheme": "eq-material-theme-icons-palenight"
-}
+    "workbench.iconTheme": null,
+    "editor.wordWrap": "on",
+    "python.condaPath": "/home/geri/anaconda3/bin/conda",
+    "python.venvPath": "~/anaconda3/envs",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnSave": true,
 
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/target/**": true
+    }
+}

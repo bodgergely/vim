@@ -57,5 +57,25 @@
     {
         "key": "alt+z",
         "command": "-editor.action.toggleWordWrap"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "workbench.action.navigateForward"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "-workbench.action.navigateForward"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.focusActiveEditorGroup"
     }
 ]
