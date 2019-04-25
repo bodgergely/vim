@@ -118,9 +118,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export GOROOT=~/go/go1.9.2
-export PATH=$PATH:$GOROOT/bin
-export GOPATH=/home/geri/workspace/go_projects
 
 export PATH=$PATH:~/premake
 export PATH=$HOME/.cargo/bin:$PATH
