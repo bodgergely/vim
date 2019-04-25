@@ -4,12 +4,19 @@ alias ae="vim $HOME/.bash_aliases; aer; reload"
 alias vimrc='vim $HOME/.vimrc'
 alias bashrc='vim $HOME/.bashrc; reload'
 
+# golang
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/workspace/go
+export PATH=$PATH:$HOME/workspace/go/bin
+
 
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/arduino/arduino-1.8.5-linux64/arduino-1.8.5
 #export PATH=~/anaconda3/bin/:$PATH
 export PATH=$HOME/Qt/5.9.1/gcc_64/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
+
+export JAVA_HOME=/usr/lib/jvm/java-11-oracle
 
 # gcc cross compiler
 export PATH=$PATH:$HOME/opt/cross/bin
