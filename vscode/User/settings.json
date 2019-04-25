@@ -43,5 +43,7 @@
         "**/target/**": true
     },
     "workbench.colorTheme": "Red",
-    "editor.renderIndentGuides": false
+    "editor.renderIndentGuides": false,
+    "C_Cpp.clang_format_style": "WebKit",
+    "C_Cpp.clang_format_fallbackStyle": "WebKit"
 }
