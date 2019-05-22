@@ -1,26 +1,50 @@
 {
     "vim.useCtrlKeys": false,
-    "vim.insertModeKeyBindings": [{
-        "before": ["j", "k"],
-        "after": ["<Esc>"]
-    }],
-
-    "vim.normalModeKeyBindings": [{
-        "before": ["f"],
-        "after": ["y"]
-    }],
-
-    "vim.normalModeKeyBindings": [{
-        "before": ["v", "v"],
-        "after": ["0"]
-    }],
-
-    "vim.normalModeKeyBindings": [{
-        "before": ["n", "n"],
-        "after": ["<S>", "4"]
-    }],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "f"
+            ],
+            "after": [
+                "y"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "v",
+                "v"
+            ],
+            "after": [
+                "0"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "n",
+                "n"
+            ],
+            "after": [
+                "<S>",
+                "4"
+            ]
+        }
+    ],
     "editor.minimap.enabled": false,
-    "window.zoomLevel": 0,
     "vim.leader": ",",
     "rust.mode": "legacy",
     "rust.rustup": {
@@ -29,21 +53,34 @@
     },
     "files.autoSave": "afterDelay",
     "explorer.confirmDragAndDrop": false,
-    "workbench.iconTheme": null,
+    "workbench.iconTheme": "vscode-icons",
     "editor.wordWrap": "on",
     "python.condaPath": "/home/geri/anaconda3/bin/conda",
     "python.venvPath": "~/anaconda3/envs",
     "editor.multiCursorModifier": "ctrlCmd",
-    "editor.formatOnSave": true,
-
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
+        "**/*.o": true,
         "**/node_modules/**": true,
         "**/target/**": true
     },
-    "workbench.colorTheme": "Red",
     "editor.renderIndentGuides": false,
     "C_Cpp.clang_format_style": "WebKit",
-    "C_Cpp.clang_format_fallbackStyle": "WebKit"
+    "C_Cpp.clang_format_fallbackStyle": "WebKit",
+    "editor.mouseWheelZoom": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.jediEnabled": true,
+    "debug.console.fontSize": 16,
+    "workbench.colorTheme": "Default Light+",
+    "window.zoomLevel": -1,
+    "files.exclude": {
+        "**/*.a": true,
+        "**/*.o": true
+    },
+    "search.exclude": {
+        "**/*.o": true
+    },
+    "workbench.tree.indent": 20
 }
