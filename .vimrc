@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+set encoding=utf-8
 
 " enable mouse support
 :set mouse=a
@@ -17,13 +18,15 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 "Plugin 'scrooloose/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
 Plugin 'rust-lang/rust.vim'
@@ -32,7 +35,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'liuchengxu/space-vim-dark'
 Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'fatih/vim-go'
+" Plugin 'fatih/vim-go'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
@@ -52,15 +55,18 @@ Plugin 'moll/vim-node'          " nodejs
 Plugin 'nikvdp/ejs-syntax'
 Plugin 'dbgx/lldb.nvim'
 Plugin 'cocopon/iceberg.vim'
-
+Plugin 'xolox/vim-misc'          " for lua
+Plugin 'xolox/vim-lua-ftplugin'  " for lua
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype on " required
 syntax on
 syntax enable
-set background=dark
-"set background=light
+"set background=dark
+set background=light
 
 "colorscheme baycomb     " really nice blue!
 "colorscheme birds-of-paradise
@@ -97,15 +103,61 @@ set incsearch
 set path+=**
 set modifiable
 
+let mapleader = ","
+
 " scrolling should be only 5 lines (c-d and ctrl-u)
 set scroll=5
 noremap <C-u> 5<C-u>
 noremap <C-d> 5<C-d>
 
-let g:NERDTreeWinSize=20
+" NERDtree
+let g:NERDTreeWinSize=30
 let NERDTreeIgnore = ['\.o$', '\.ko$']
+nmap <silent><leader>nt :NERDTreeToggle<CR>
+nmap <silent><leader>nf :NERDTreeFind<CR>
+" NERDCommenter
+map <leader>/ <plug>NERDCommenterToggle<CR>
+
+" fzf
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-t> :Tags<CR>
+
 " reload files automatically
 set autoread
+
+" grep
+if executable('rg')
+  set grepprg=rg\ --ignore-case\ --no-heading\ --vimgrep
+  set grepformat=%f:%l:%c:%m
+endif
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" bind \ (backward slash) to grep shortcut
+command! -bang -nargs=* GGrep silent! grep! <args>|cwindow|redraw!
+nmap <leader>f :GGrep<SPACE>
+
+" quickfix
+nmap <leader>q :copen<CR>
+nmap <leader>qc :cclose<CR>
+
+" http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
+" hacks from above (the url, not jesus) to delete fugitive buffers when we
+" leave them - otherwise the buffer list gets poluted
+" add a mapping on .. to view parent tree
+au BufReadPost fugitive://* set bufhidden=delete
+au BufReadPost fugitive://*
+  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \   nnoremap <buffer> .. :edit %:h<CR> |
+  \ endif
+
+" Make sure Vim returns to the same line when you reopen a file.
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
 
 
 "turn off auto commenting
@@ -113,21 +165,6 @@ augroup auto_comment
     au!
     au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
-
-"ctrlP auto cache clearing.
-" ----------------------------------------------------------------------------
-function! SetupCtrlP()
-  if exists("g:loaded_ctrlp") && g:loaded_ctrlp
-    augroup CtrlPExtension
-      autocmd!
-      autocmd FocusGained  * CtrlPClearCache
-      autocmd BufWritePost * CtrlPClearCache
-    augroup END
-  endif
-endfunction
-if has("autocmd")
-  autocmd VimEnter * :call SetupCtrlP()
-endif
 
 " cpp synatx plugin settings
 let c_no_curly_error=1
@@ -145,8 +182,8 @@ let g:ycm_confirm_extra_conf = 0 " do not ask for confirmation to load the ycm_e
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_python_binary_path = '/usr/bin/python2'
 let g:ycm_enable_diagnostic_highlighting = 0
-nnoremap gd         :YcmCompleter GoTo<CR>
-"nnoremap gd <C-]>
+"nnoremap gd         :YcmCompleter GoTo<CR>
+nnoremap gd <C-]>
 let g:ycm_autoclose_preview_window_after_insertion = 1
 " Start autocompletion after 4 chars
 "let g:ycm_min_num_of_chars_for_completion = 4
@@ -157,7 +194,6 @@ let g:ycm_add_preview_to_completeopt = 0
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
 
-let mapleader = ","
 
 noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
@@ -318,3 +354,15 @@ au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
