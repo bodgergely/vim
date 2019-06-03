@@ -1,8 +1,14 @@
+# load tmux if we are not in tmux
+#if command -v tmux>/dev/null; then
+#  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+#fi
+
 alias aer="source $HOME/.bash_aliases"
 alias reload="source $HOME/.bashrc"
 alias ae="vim $HOME/.bash_aliases; aer; reload"
 alias vimrc='vim $HOME/.vimrc'
 alias bashrc='vim $HOME/.bashrc; reload'
+alias fzfrc='vim $HOME/.fzf.bash'
 
 # golang
 export PATH=$PATH:/usr/local/go/bin
@@ -12,7 +18,7 @@ export PATH=$PATH:$HOME/workspace/go/bin
 
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/arduino/arduino-1.8.5-linux64/arduino-1.8.5
-#export PATH=~/anaconda3/bin/:$PATH
+export PATH=~/anaconda3/bin/:$PATH
 export PATH=$HOME/Qt/5.9.1/gcc_64/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 
@@ -63,7 +69,8 @@ alias convert_ipy_notebook="jupyter nbconvert --to script"
 alias linecount=loc
 alias objd='objdump -Mintel -D'
 
-alias lha="ls -lha"
+alias ls="ls -X --color=auto"
+alias l="ls -XFlha"
 
 ff() {
     find . -name "$1"
@@ -91,6 +98,9 @@ alias ga="git add"
 alias gc="git checkout"
 alias gco="git commit"
 alias gd="git diff"
+alias git_submodule_recursive="git submodule update --init --recursive"
+alias git_log_pretty="git log --graph --decorate --pretty=oneline --abbrev-commit"
+alias gg="git grep -n --color"
 
 # gdb
 alias gdb_vanilla="gdb --command $WORKSPACE/vimrc/gdb_scripts/gdbvanilla --args"
@@ -251,3 +261,31 @@ alias php7_disable='sudo a2dismod php7.2'
 
 export LD_LIBRARY_PATH=$HOME/lib
 
+# cloudflare vpn
+alias vpn_connect_1=$HOME/vpn/vpn_sf.sh
+alias vpn_connect_2=$HOME/vpn/vpn_lhr.sh
+
+# cloudflare
+alias cdcf='cd $HOME/workspace/cf'
+alias cheatsheet='vim $HOME/Dropbox/cloudflare/cheatsheet.md'
+alias questions='vim $HOME/Dropbox/cloudflare/questions.md'
+alias learn_nginx='vim $HOME/Dropbox/cloudflare/nginx.md'
+alias learn_opentracing='vim $HOME/Dropbox/cloudflare/opentracing.md'
+
+# chrome detach the gchat
+alias chrome-chat="google-chrome --app=https://chat.google.com/ --profile-directory='Profile 1'"
+
+# nginx - openresty
+export PATH=$HOME/openresty/bin:$HOME/openresty/nginx/sbin:$PATH
+
+#traceroute
+alias traceroute_icmp='sudo traceroute -I'
+
+export VISUAL=nvim
+export EDITOR=nvim
+#export BROWSER=google-chrome
+alias r=ranger
+alias t='tree -FC'
+
+#perf
+perf_paranoid_disable() { echo "echo -1 > /proc/sys/kernel/perf_event_paranoid" | cs ; }
