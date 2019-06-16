@@ -148,6 +148,7 @@ alias cdhtb='cd $WARGAMES/pentestlabs/hackthebox'
 alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python/BHP-Code'
 alias cdrust='cd $WORKSPACE/my_repos/lang-tut/rust'
 alias cddropbox='cd $HOME/Dropbox'
+alias cdlangtut='cd $HOME/workspace/my_repos/lang-tut/'
 
 #apache
 alias apache_restart="sudo systemctl restart apache2.service"
@@ -283,9 +284,22 @@ alias traceroute_icmp='sudo traceroute -I'
 
 export VISUAL=nvim
 export EDITOR=nvim
-#export BROWSER=google-chrome
+export BROWSER=google-chrome
 alias r=ranger
 alias t='tree -FC'
 
 #perf
 perf_paranoid_disable() { echo "echo -1 > /proc/sys/kernel/perf_event_paranoid" | cs ; }
+
+#perf flamegraph system wide
+alias flame="perf_flame.sh &"
+
+if [ -f ~/.cf_aliases.rc ]; then
+    . ~/.cf_aliases.rc
+fi
+
+#smtp server in python
+smtp_server() { sudo python -m smtpd -n -c DebuggingServer :25; }
+#http server in python
+http_server() { python3 -m http.server $1; }
+http_server_python2() { python2 -m SimpleHTTPServer $1; }
