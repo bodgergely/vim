@@ -96,6 +96,7 @@ alias gl="git log"
 alias gb="git branch"
 alias ga="git add"
 alias gc="git checkout"
+alias git_discard="git checkout --"
 alias gco="git commit"
 alias gd="git diff"
 alias git_submodule_recursive="git submodule update --init --recursive"
@@ -129,7 +130,6 @@ alias cdworkspace="cd $HOME/workspace/"
 alias cdbodos="cd $WORKSPACE/bodos/src"
 alias cdlazyprogrammer="cd $HOME/workspace/AI/lazyprogrammer/machine_learning_examples"
 alias cdlongshot="cd $HOME/workspace/longshot"
-alias cdgoprojects_longshot="cd $HOME/workspace/longshot/go_projects/src/github.com/longshotsyndicate"
 alias cdsitepackages="cd /usr/lib/python3.6/site-packages"
 alias cdstats="cd $WORKSPACE/stats"
 alias cdbayes="cd $WORKSPACE/stats/ThinkBayes"
@@ -149,7 +149,10 @@ alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python/BHP-Code'
 alias cdrust='cd $WORKSPACE/my_repos/lang-tut/rust'
 alias cddropbox='cd $HOME/Dropbox'
 alias cdlangtut='cd $HOME/workspace/my_repos/lang-tut/'
-
+#go
+alias cdgosrc='cd $HOME/workspace/go/src'
+#tools
+alias cdutility_tools='cd $WORKSPACE/my_repos/utility_tools'
 #apache
 alias apache_restart="sudo systemctl restart apache2.service"
 alias apache_status="sudo systemctl status apache2.service"
@@ -278,6 +281,7 @@ alias chrome-chat="google-chrome --app=https://chat.google.com/ --profile-direct
 
 # nginx - openresty
 export PATH=$HOME/openresty/bin:$HOME/openresty/nginx/sbin:$PATH
+alias cdopenresty='cd $HOME/openresty'
 
 #traceroute
 alias traceroute_icmp='sudo traceroute -I'
@@ -303,3 +307,14 @@ smtp_server() { sudo python -m smtpd -n -c DebuggingServer :25; }
 #http server in python
 http_server() { python3 -m http.server $1; }
 http_server_python2() { python2 -m SimpleHTTPServer $1; }
+
+# go playground
+go_playground()
+{
+    code $GOPATH/src/tutorial
+}
+
+
+
+
+
