@@ -313,8 +313,3 @@ go_playground()
 {
     code $GOPATH/src/tutorial
 }
-
-
-
-
-
