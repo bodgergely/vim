@@ -20,7 +20,7 @@ export PATH=$HOME/neovim/bin:$PATH
 
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/arduino/arduino-1.8.5-linux64/arduino-1.8.5
-#export PATH=~/anaconda3/bin:$PATH
+export PATH=~/anaconda3/bin:$PATH
 export PATH=$HOME/Qt/5.9.1/gcc_64/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 
@@ -78,7 +78,7 @@ ff() {
     find . -name "$1"
 }
 
-alias gr=grep.py "$@"
+alias g=grep.py "$@"
 
 
 #vim
@@ -104,6 +104,7 @@ alias gd="git diff"
 alias git_submodule_recursive="git submodule update --init --recursive"
 alias git_log_pretty="git log --graph --decorate --pretty=oneline --abbrev-commit"
 alias gg="git grep -n --color"
+
 
 # gdb
 alias gdb_vanilla="gdb --command $WORKSPACE/vimrc/gdb_scripts/gdbvanilla --args"
