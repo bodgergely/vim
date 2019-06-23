@@ -15,10 +15,12 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/workspace/go
 export PATH=$PATH:$HOME/workspace/go/bin
 
+#neovim
+export PATH=$HOME/neovim/bin:$PATH
 
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/arduino/arduino-1.8.5-linux64/arduino-1.8.5
-export PATH=~/anaconda3/bin/:$PATH
+#export PATH=~/anaconda3/bin:$PATH
 export PATH=$HOME/Qt/5.9.1/gcc_64/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 
@@ -80,7 +82,7 @@ alias gr=grep.py "$@"
 
 
 #vim
-alias vim_background_color="$HOME/vim_background_color.py"
+alias vim_background_color="$HOME/bin/vim_background_color.py"
 alias vimrc_min="cat $WORKSPACE/vimrc/vimrc_minimal | cs"
 alias vim_hex="cat $WORKSPACE/vimrc/vim_hex | cs"
 alias vim="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim"
@@ -151,6 +153,7 @@ alias cddropbox='cd $HOME/Dropbox'
 alias cdlangtut='cd $HOME/workspace/my_repos/lang-tut/'
 #go
 alias cdgosrc='cd $HOME/workspace/go/src'
+alias cdgo_playground='cd $GOPATH/src/playground'
 #tools
 alias cdutility_tools='cd $WORKSPACE/my_repos/utility_tools'
 #apache
@@ -296,10 +299,10 @@ alias t='tree -FC'
 perf_paranoid_disable() { echo "echo -1 > /proc/sys/kernel/perf_event_paranoid" | cs ; }
 
 #perf flamegraph system wide
-alias flame="perf_flame.sh &"
+alias perf_flame="perf_flame.sh &"
 
-if [ -f ~/.cf_aliases.rc ]; then
-    . ~/.cf_aliases.rc
+if [ -f ~/.cf_aliasesrc ]; then
+    source ~/.cf_aliasesrc
 fi
 
 #smtp server in python
@@ -311,5 +314,10 @@ http_server_python2() { python2 -m SimpleHTTPServer $1; }
 # go playground
 go_playground()
 {
-    code $GOPATH/src/tutorial
+    code $GOPATH/src/playground
+}
+go_playground_vim()
+{
+    cdgo_playground
+    vim $GOPATH/src/playground/play.go
 }
