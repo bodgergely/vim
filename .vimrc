@@ -18,7 +18,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
@@ -27,34 +27,34 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
 "Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
 Plugin 'rust-lang/rust.vim'
-Plugin 'racer-rust/vim-racer'
+"Plugin 'racer-rust/vim-racer'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'liuchengxu/space-vim-dark'
+"Plugin 'liuchengxu/space-vim-dark'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'fatih/vim-go'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
-Plugin 'dkprice/vim-easygrep'
+"Plugin 'dkprice/vim-easygrep'
 Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'dracula/vim'
+"Plugin 'dracula/vim'
 Plugin 'hdima/python-syntax'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'rdnetto/YCM-Generator'  " generate YouCompleteMe config file for C++ projects
 Plugin 'SirVer/ultisnips'       " snippet engine
 Plugin 'honza/vim-snippets'     " actual snippets for languages
 Plugin 'prettier/vim-prettier'
-Plugin 'ternjs/tern_for_vim'   " javascript
-Plugin 'pangloss/vim-javascript'
-Plugin 'moll/vim-node'          " nodejs
-Plugin 'nikvdp/ejs-syntax'
-Plugin 'dbgx/lldb.nvim'
-Plugin 'cocopon/iceberg.vim'
+"Plugin 'ternjs/tern_for_vim'   " javascript
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'moll/vim-node'          " nodejs
+"Plugin 'nikvdp/ejs-syntax'
+"Plugin 'dbgx/lldb.nvim'
+"Plugin 'cocopon/iceberg.vim'
 Plugin 'xolox/vim-misc'          " for lua
 Plugin 'xolox/vim-lua-ftplugin'  " for lua
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -292,9 +292,9 @@ if has('persistent_undo')
   set undodir=~/.config/vim/tmp/undo//
 endif
 
-" change the current directory
-" autocmd BufEnter * silent! lcd %:p:h
-" autocmd TextChanged,TextChangedI <buffer> silent write
+"change the current directory
+autocmd BufEnter * silent! lcd %:p:h
+autocmd TextChanged,TextChangedI <buffer> silent write
 
 set dictionary+=/usr/share/dict/words
 
@@ -357,9 +357,9 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 
 " syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
