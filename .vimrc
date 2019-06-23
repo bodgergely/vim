@@ -224,7 +224,7 @@ map f y
 let g:user_emmet_expandword_key = '<C-c>,' " html tag expansion keyword
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 "highlight all occurences of word under cursor
-:autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+":autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 
 let Tlist_Use_Right_Window = 1
