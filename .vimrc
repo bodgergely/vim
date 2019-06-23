@@ -239,7 +239,7 @@ noremap <Leader>P "*p
 noremap <Leader>y "+y
 noremap <Leader>p "+p
 
-let g:pymode_python = 'python2'
+let g:pymode_python = 'python3'
 
 " disable Preview window
 set completeopt-=preview
