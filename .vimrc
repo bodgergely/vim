@@ -40,7 +40,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
-"Plugin 'dkprice/vim-easygrep'
+Plugin 'dkprice/vim-easygrep'
 Plugin 'NLKNguyen/papercolor-theme'
 "Plugin 'dracula/vim'
 Plugin 'hdima/python-syntax'
@@ -138,6 +138,16 @@ nmap <leader>f :GGrep<SPACE>
 " quickfix
 nmap <leader>q :copen<CR>
 nmap <leader>qc :cclose<CR>
+
+" Fugitive
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>dp :diffput<CR>
+nnoremap <leader>dg :diffget<CR>
+
+" Goimport
+let g:go_fmt_command = "goimports"
 
 " http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
 " hacks from above (the url, not jesus) to delete fugitive buffers when we
