@@ -6,23 +6,23 @@ fi
 
 
 #creating vimrc
-touch vimrc
-echo "set nocompatible" >> vimrc
-echo "filetype on" >> vimrc
-echo "filetype plugin indent on" >> vimrc
-echo "filetype plugin on" >> vimrc
-echo "syntax on" >> vimrc
-echo "syntax enable" >> vimrc
-echo "set number" >> vimrc
-echo "set pastetoggle=<F3>" >> vimrc
-echo "nnoremap ; :" >> vimrc
-echo "nnoremap : ;" >> vimrc
-echo "imap jk <esc>" >> vimrc
-echo "imap kj <esc>" >> vimrc
-echo "map vv 0" >> vimrc
-echo "map nn <S-$>" >> vimrc
-echo "map f y" >> vimrc
-echo "set tabstop=4" >> vimrc
-echo "set shiftwidth=4" >> vimrc
-echo "set expandtab" >> vimrc
-
+touch $VIMFILE
+echo "set nocompatible" >> $VIMFILE
+echo "filetype on" >> $VIMFILE
+echo "filetype plugin indent on" >> $VIMFILE
+echo "filetype plugin on" >> $VIMFILE
+echo "syntax on" >> $VIMFILE
+echo "syntax enable" >> $VIMFILE
+echo "set number" >> $VIMFILE
+echo "set pastetoggle=<F3>" >> $VIMFILE
+echo "nnoremap ; :" >> $VIMFILE
+echo "nnoremap : ;" >> $VIMFILE
+echo "imap jk <esc>" >> $VIMFILE
+echo "imap kj <esc>" >> $VIMFILE
+echo "map vv 0" >> $VIMFILE
+echo "map nn <S-$>" >> $VIMFILE
+echo "map f y" >> $VIMFILE
+echo "set tabstop=4" >> $VIMFILE
+echo "set shiftwidth=4" >> $VIMFILE
+echo "set expandtab" >> $VIMFILE
+echo "set mouse=a" >> $VIMFILE
