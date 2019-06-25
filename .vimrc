@@ -73,10 +73,10 @@ set background=dark
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-colorscheme PaperColor
+"colorscheme PaperColor
 "colorscheme solarized
 "colorscheme badwolf
-"colorscheme murphy
+colorscheme murphy
 filetype plugin indent on    " required
 filetype plugin on
 " To ignore plugin indent changes, instead use:
@@ -130,10 +130,10 @@ if executable('rg')
   set grepformat=%f:%l:%c:%m
 endif
 " bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+"nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " bind \ (backward slash) to grep shortcut
-command! -bang -nargs=* GGrep silent! grep! <args>|cwindow|redraw!
-nmap <leader>f :GGrep<SPACE>
+"command! -bang -nargs=* GGrep silent! grep! <args>|cwindow|redraw!
+nmap <leader>f :grep -R<SPACE>
 
 " quickfix
 nmap <leader>q :copen<CR>
