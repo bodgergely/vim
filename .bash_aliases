@@ -151,6 +151,7 @@ alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python/BHP-Code'
 alias cdrust='cd $WORKSPACE/my_repos/lang-tut/rust'
 alias cddropbox='cd $HOME/Dropbox'
 alias cdlangtut='cd $HOME/workspace/my_repos/lang-tut/'
+alias cdtmp='cd /tmp'
 #go
 alias cdgosrc='cd $HOME/workspace/go/src'
 alias cdgo_playground='cd $GOPATH/src/playground'
