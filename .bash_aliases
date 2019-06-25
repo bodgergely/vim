@@ -322,3 +322,6 @@ go_playground_vim()
     cdgo_playground
     vim $GOPATH/src/playground/play.go
 }
+
+alias f='fzf | xargs vim'
+
