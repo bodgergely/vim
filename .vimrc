@@ -2,7 +2,7 @@ set nocompatible              " be iMproved, required
 set encoding=utf-8
 
 " enable mouse support
-:set mouse=a
+set mouse=a
 
 " set Vim-specific sequences for RGB colors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
