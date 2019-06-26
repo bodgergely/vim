@@ -155,7 +155,7 @@ let g:go_fmt_command = "goimports"
 " add a mapping on .. to view parent tree
 au BufReadPost fugitive://* set bufhidden=delete
 au BufReadPost fugitive://*
-  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \ if get(b:, 'fugitive_type', '') =~# '^\%(tree\|blob\)$' |
   \   nnoremap <buffer> .. :edit %:h<CR> |
   \ endif
 
