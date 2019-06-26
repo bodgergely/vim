@@ -78,7 +78,7 @@ ff() {
     find . -name "$1"
 }
 
-alias grep='grep --color'
+alias grep='grep --color -n'
 alias g=grep.py "$@"
 
 
