@@ -120,6 +120,7 @@ map <leader>/ <plug>NERDCommenterToggle<CR>
 " fzf
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-t> :Tags<CR>
+nmap <silent><leader>t :TagbarOpen<CR>
 
 " reload files automatically
 set autoread
