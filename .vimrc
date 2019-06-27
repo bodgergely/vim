@@ -305,7 +305,7 @@ endif
 
 "change the current directory
 "autocmd BufEnter * silent! lcd %:p:h
-autocmd TextChanged,TextChangedI <buffer> silent write
+"autocmd TextChanged,TextChangedI <buffer> silent write
 
 set dictionary+=/usr/share/dict/words
 
