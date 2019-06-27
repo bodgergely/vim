@@ -1,4 +1,4 @@
-VIMFILE=vimrc
+VIMFILE=/dev/stdout
 
 if [ "$#" -gt 0 ]; then
     VIMFILE=$1
