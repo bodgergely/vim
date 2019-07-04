@@ -78,7 +78,7 @@ ff() {
     find . -name "$1"
 }
 
-alias grep='grep --color -n'
+alias grep='grep --color'
 alias g=grep.py "$@"
 
 
@@ -325,4 +325,12 @@ go_playground_vim()
 }
 
 alias f='fzf | xargs vim'
+
+# disk/harddrive utilities
+alias parted_l='sudo parted -l'
+alias fdisk_l='sudo fdisk -l'
+# Use below to get filesystems mount points/ sizes
+# $ df -h
+# $ lsblk
+alias hwinfo_block='hwinfo --block --short'
 
