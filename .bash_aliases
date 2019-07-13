@@ -11,7 +11,8 @@ alias bashrc='vim $HOME/.bashrc; reload'
 alias fzfrc='vim $HOME/.fzf.bash'
 
 # golang
-export PATH=$PATH:/usr/local/go/bin
+export GOROOT=/usr/local/go
+export PATH=$GOROOT/bin:$PATH
 export GOPATH=$HOME/workspace/go
 export PATH=$PATH:$HOME/workspace/go/bin
 
@@ -78,6 +79,12 @@ ff() {
     find . -name "$1"
 }
 
+# to find files ending with .c or .h
+findc() 
+{ 
+    find $1 -name '*.[ch]'
+}
+
 alias grep='grep --color'
 alias g=grep.py "$@"
 
@@ -131,6 +138,7 @@ alias cdvimrc="cd $WORKSPACE/vimrc"
 alias cdblog="cd $WORKSPACE/bodgergely.github.io"
 alias cdhacking="cd $HACKING"
 alias cdworkspace="cd $HOME/workspace/"
+alias cdmyrepos='cd $WORKSPACE/my_repos'
 alias cdbodos="cd $WORKSPACE/bodos/src"
 alias cdlazyprogrammer="cd $HOME/workspace/AI/lazyprogrammer/machine_learning_examples"
 alias cdsitepackages="cd /usr/lib/python3.6/site-packages"
@@ -286,7 +294,7 @@ alias chrome-chat="google-chrome --app=https://chat.google.com/ --profile-direct
 
 # nginx - openresty
 export PATH=$HOME/openresty/bin:$HOME/openresty/nginx/sbin:$PATH
-alias cdopenresty='cd $HOME/openresty'
+alias cdopenresty='cd $HOME/openresty_debug'
 
 #traceroute
 alias traceroute_icmp='sudo traceroute -I'
@@ -332,5 +340,3 @@ alias fdisk_l='sudo fdisk -l'
 # Use below to get filesystems mount points/ sizes
 # $ df -h
 # $ lsblk
-alias hwinfo_block='hwinfo --block --short'
-
