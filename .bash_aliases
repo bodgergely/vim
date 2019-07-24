@@ -340,3 +340,9 @@ alias fdisk_l='sudo fdisk -l'
 # Use below to get filesystems mount points/ sizes
 # $ df -h
 # $ lsblk
+
+function psg()
+{
+    ps aux | grep $1;
+}
+

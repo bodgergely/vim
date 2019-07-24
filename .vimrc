@@ -62,6 +62,7 @@ Plugin 'junegunn/fzf.vim'
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+set rtp+=~/workspace/go/src/golang.org/x/lint/misc/vim
 filetype on " required
 syntax on
 syntax enable
@@ -74,7 +75,7 @@ set background=dark
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
 "colorscheme PaperColor
-"colorscheme solarized
+""colorscheme solarized
 "colorscheme badwolf
 colorscheme murphy
 filetype plugin indent on    " required
