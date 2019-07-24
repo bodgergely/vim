@@ -19,9 +19,7 @@
             "after": [
                 "y"
             ]
-        }
-    ],
-    "vim.normalModeKeyBindings": [
+        },
         {
             "before": [
                 "v",
@@ -30,9 +28,7 @@
             "after": [
                 "0"
             ]
-        }
-    ],
-    "vim.normalModeKeyBindings": [
+        },
         {
             "before": [
                 "n",
@@ -46,14 +42,13 @@
     ],
     "editor.minimap.enabled": false,
     "vim.leader": ",",
-    "rust.mode": "legacy",
+    "rust.mode": "rls",
     "rust.rustup": {
         "toolchain": "stable-x86_64-unknown-linux-gnu",
         "nightlyToolchain": "nightly-x86_64-unknown-linux-gnu"
     },
     "files.autoSave": "afterDelay",
     "explorer.confirmDragAndDrop": false,
-    "workbench.iconTheme": "vscode-icons",
     "editor.wordWrap": "on",
     "python.condaPath": "/home/geri/anaconda3/bin/conda",
     "python.venvPath": "~/anaconda3/envs",
@@ -63,7 +58,8 @@
         "**/.git/subtree-cache/**": true,
         "**/*.o": true,
         "**/node_modules/**": true,
-        "**/target/**": true
+        "**/target/**": true,
+        "build": true
     },
     "editor.renderIndentGuides": false,
     "C_Cpp.clang_format_style": "WebKit",
@@ -73,14 +69,28 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "python.jediEnabled": true,
     "debug.console.fontSize": 16,
-    "workbench.colorTheme": "Default Light+",
     "window.zoomLevel": -1,
     "files.exclude": {
+        ".GOPATH": true,
         "**/*.a": true,
-        "**/*.o": true
+        "**/*.o": true,
+        "build": true
     },
     "search.exclude": {
-        "**/*.o": true
+        "**/*.o": true,
+        "build/**": true
     },
-    "workbench.tree.indent": 20
+    "workbench.tree.indent": 20,
+    "rust.rls": {
+        "useRustfmt": false
+    },
+    "go.inferGopath": true,
+    "editor.formatOnSave": true,
+    "go.lintTool": "golangci-lint",
+    "vs-kubernetes": {
+        "vs-kubernetes.helm-path": "/home/greg/.vs-kubernetes/tools/helm/linux-amd64/helm",
+        "vs-kubernetes.minikube-path": "/home/greg/.vs-kubernetes/tools/minikube/linux-amd64/minikube",
+        "vs-kubernetes.draft-path": "/home/greg/.vs-kubernetes/tools/draft/linux-amd64/draft"
+    },
+    "workbench.colorTheme": "Default Light+",
 }
