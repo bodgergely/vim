@@ -5,7 +5,7 @@
 
 alias aer="source $HOME/.bash_aliases"
 alias reload="source $HOME/.bashrc"
-alias ae="vim $HOME/.bash_aliases; aer; reload"
+alias ae="vim $HOME/.bash_aliases; aer;"
 alias vimrc='vim $HOME/.vimrc'
 alias bashrc='vim $HOME/.bashrc; reload'
 alias fzfrc='vim $HOME/.fzf.bash'
@@ -93,8 +93,10 @@ alias g=grep.py "$@"
 alias vim_background_color="$HOME/bin/vim_background_color.py"
 alias vimrc_min="cat $WORKSPACE/vimrc/vimrc_minimal | cs"
 alias vim_hex="cat $WORKSPACE/vimrc/vim_hex | cs"
-alias vim="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim"
-alias v="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim"
+#alias vim="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim"
+#alias v="PYTHONPATH=$PYTHONPATH:/usr/lib/python3.6/site-packages/ vim"
+alias vim="PYTHONPATH=$PYTHONPATH:$HOME/anaconda3/lib/python3.7/site-packages/ vim"
+alias v="PYTHONPATH=$PYTHONPATH:$HOME/anaconda3/lib/python3.7/site-packages/ vim"
 alias scheme_vim="MYVIMRC=~/.scheme_vimrc vim"
 
 # git
@@ -154,7 +156,7 @@ alias cdkernelhacking="cd $HACKING/kernel_hacking"
 alias cdbusybox="cd $HOME/busybox/build"
 alias cdnand2tetris="cd $WORKSPACE/coursera/nand2tetris"
 alias cdembedded="cd $WORKSPACE/coursera/embedded_boulder/ese-coursera-course1"
-alias cdweb="cd /var/www/html"
+alias cdweb="cd $WORKSPACE/my_repos/website"
 alias cdhtb='cd $WARGAMES/pentestlabs/hackthebox'
 alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python/BHP-Code'
 alias cdrust='cd $WORKSPACE/my_repos/lang-tut/rust'
