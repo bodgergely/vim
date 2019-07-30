@@ -259,15 +259,17 @@ Documentation tool
     C-n: new node
     C-S-n: new child node
 
-Bash
+bash
 ----
 
 Learn bash:
 http://www.tldp.org/LDP/abs/html/
 
-
+Links:
 https://www.linux.com/learn/intro-to-linux/2017/4/fabulous-bash-navigation-shortcuts
 https://www.ostechnix.com/list-useful-bash-keyboard-shortcuts/
+https://unix.stackexchange.com/questions/231605/search-for-a-previous-command-with-the-prefix-i-just-typed
+
 history: get the command history
 ctrl-u: clear stuff before cursor
 ctrl-c: erase the command
@@ -280,6 +282,12 @@ ctrl-p: prev command
 ctrl-n: next command
 alt-b: move bach one word
 alt-f: move forward one word
+ctrl+left arrow: move bach one word
+ctrl+right arrow: move forward one word
+
+alt+.: inserts the last "word" of the previous command at the cursor. Repeat it to get the last word from older commands. 
+ctrl+/: undo previosuly typed word
+
 
 tmux shortcuts
 --------------
@@ -296,6 +304,16 @@ C-b + [ : to escape the command line and scroll into the text buffer
     - search down: '/'
 Also possible to copy the tmux window contents by simply highlighting using the mouse and releasing it and it will
     be copied to the clipboard
+
+
+apt, dpkg, package, apt-get
+---------------------------
+
+Links
+
+
+[Ubuntu apt repo guide](https://help.ubuntu.com/community/Repositories)
+[Create local apt repo](https://askubuntu.com/questions/170348/how-to-create-a-local-apt-repository)
 
 gdb shortcuts
 -------------

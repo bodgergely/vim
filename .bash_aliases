@@ -163,6 +163,7 @@ alias cdrust='cd $WORKSPACE/my_repos/lang-tut/rust'
 alias cddropbox='cd $HOME/Dropbox'
 alias cdlangtut='cd $HOME/workspace/my_repos/lang-tut/'
 alias cdtmp='cd /tmp'
+alias cdudemy='cd $WORKSPACE/my_repos/udemy'
 #go
 alias cdgosrc='cd $HOME/workspace/go/src'
 alias cdgo_playground='cd $GOPATH/src/playground'
@@ -286,7 +287,6 @@ alias vpn_connect_2=$HOME/vpn/vpn_lhr.sh
 
 # cloudflare
 alias cdcf='cd $HOME/workspace/cf'
-alias cheatsheet='vim $HOME/Dropbox/cloudflare/cheatsheet.md'
 alias questions='vim $HOME/Dropbox/cloudflare/questions.md'
 alias learn_nginx='vim $HOME/Dropbox/cloudflare/nginx.md'
 alias learn_opentracing='vim $HOME/Dropbox/cloudflare/opentracing.md'
@@ -347,4 +347,6 @@ function psg()
 {
     ps aux | grep $1;
 }
+
+alias cheatsheet='vim $WORKSPACE/vimrc/CHEATSHEET.md'
 
