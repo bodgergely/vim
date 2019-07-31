@@ -109,9 +109,11 @@ alias gb="git branch"
 alias ga="git add"
 alias gc="git checkout"
 alias git_discard="git checkout --"
+alias git_unstage="git reset HEAD"
 alias gco="git commit"
 alias gd="git diff"
 alias git_submodule_recursive="git submodule update --init --recursive"
+alias git_submodule_sync='git submodule sync'
 alias git_log_pretty="git log --graph --decorate --pretty=oneline --abbrev-commit"
 alias gg="git grep -n --color"
 
@@ -159,9 +161,9 @@ alias cdembedded="cd $WORKSPACE/coursera/embedded_boulder/ese-coursera-course1"
 alias cdweb="cd $WORKSPACE/my_repos/website"
 alias cdhtb='cd $WARGAMES/pentestlabs/hackthebox'
 alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python/BHP-Code'
-alias cdrust='cd $WORKSPACE/my_repos/lang-tut/rust'
+alias cdrust='cd $WARGAMES/tutorials/lang-tut/rust'
 alias cddropbox='cd $HOME/Dropbox'
-alias cdlangtut='cd $HOME/workspace/my_repos/lang-tut/'
+alias cdlangtut='cd $WARGAMES/tutorials/lang-tut/'
 alias cdtmp='cd /tmp'
 alias cdudemy='cd $WORKSPACE/my_repos/udemy'
 #go

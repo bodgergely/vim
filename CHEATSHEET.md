@@ -270,6 +270,9 @@ https://www.linux.com/learn/intro-to-linux/2017/4/fabulous-bash-navigation-short
 https://www.ostechnix.com/list-useful-bash-keyboard-shortcuts/
 https://unix.stackexchange.com/questions/231605/search-for-a-previous-command-with-the-prefix-i-just-typed
 
+cd ~ : to go to home dir
+cd - : to go back to previous dir
+
 history: get the command history
 ctrl-u: clear stuff before cursor
 ctrl-c: erase the command
@@ -288,6 +291,11 @@ ctrl+right arrow: move forward one word
 alt+.: inserts the last "word" of the previous command at the cursor. Repeat it to get the last word from older commands. 
 ctrl+/: undo previosuly typed word
 
+
+lua
+---
+
+Lua in 15 minutes: http://tylerneylon.com/a/learn-lua/
 
 tmux shortcuts
 --------------
@@ -321,13 +329,6 @@ gdb shortcuts
 C-x + a - enter tui window/exit tui window
 C-x + o - switch to next focus (focus cmd -> focus src)
 
-
-python
-======
-
-navigate back and forth with C+p and C+n to get prev, next command
-Better to use ipython for code completion
-
 awk
 ===
 
@@ -336,6 +337,13 @@ https://likegeeks.com/awk-command/
 
 Sum numbers on each line the first element and save to file
     awk '{s+=$1} END {print s}' mydatafile
+
+
+python
+======
+
+navigate back and forth with C+p and C+n to get prev, next command
+Better to use ipython for code completion
 
 
 requests
@@ -381,6 +389,8 @@ int bash() {
     execve("/bin/bash", NULL, NULL);
 }
 ```
+
+
 
 gcc
 ---
