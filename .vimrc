@@ -59,6 +59,7 @@ Plugin 'xolox/vim-misc'          " for lua
 Plugin 'xolox/vim-lua-ftplugin'  " for lua
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
+Plugin 'easymotion/vim-easymotion'
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
