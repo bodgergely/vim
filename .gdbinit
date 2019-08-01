@@ -12,3 +12,4 @@ set follow-fork-mode child
 
 # below is a kernel debug security disabling command
 set auto-load safe-path /
+set print pretty on
