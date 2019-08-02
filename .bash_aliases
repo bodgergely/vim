@@ -209,6 +209,7 @@ alias terminal_theme_chooser='wget -O gogh https://git.io/vQgMr && chmod +x gogh
 alias network_restart='sudo systemctl restart network-manager.service'
 alias ping_google='ping www.google.com'
 alias ports_open='sudo netstat -peanut'
+alias ports_listening='sudo netstat -ltup'
 
 #radare
 alias Cutter='~/cutter/Cutter-v1.7.1-x86_64.AppImage'

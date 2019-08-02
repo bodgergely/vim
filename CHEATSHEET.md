@@ -250,6 +250,11 @@ Address: 10.10.10.29#53
 > 10.10.10.29
 ```
 
+netstat, ports, tcp, ip
+-----------------------
+
+sudo netstat -ltup - listening ports
+
 Documentation tool
 ------------------
 
@@ -398,6 +403,11 @@ gcc
 Sharedlib:
     gcc -shared -fPIC -o libbash.so bash.c
 
+gdb
+---
+https://ftp.gnu.org/old-gnu/Manuals/gdb/html_node/gdb_57.html
+set print array on
+set print pretty on
 
 Kernel debugging
 ================
