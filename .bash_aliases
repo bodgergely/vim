@@ -167,7 +167,7 @@ alias cdlangtut='cd $WARGAMES/tutorials/lang-tut/'
 alias cdtmp='cd /tmp'
 alias cdudemy='cd $WORKSPACE/my_repos/udemy'
 #go
-alias cdgosrc='cd $HOME/workspace/go/src'
+alias cdgo='cd $HOME/workspace/go/src'
 alias cdgo_playground='cd $GOPATH/src/playground'
 #tools
 alias cdutility_tools='cd $WORKSPACE/my_repos/utility_tools'

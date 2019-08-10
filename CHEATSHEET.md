@@ -311,7 +311,7 @@ C-b + % : split tab vertically
 C-b + " : split tab horizontally
 C-b + , : rename tab
 C-b + x : kill tab
-C-b + [ : to escape the command line and scroll into the text buffer
+C-b + <bracket> : to escape the command line and scroll into the text buffer
     Once in the text buffer mode:
     - search up: '?'
     - search down: '/'
@@ -381,6 +381,12 @@ Binary hacking
         Dynamic loader config is at: /etc/ld.so.conf.d/ and just create a new file with
         a folder in it where you have your own hijacker library with printf redefined.
 
+
+Exploitable binary list
+-----------------------
+
+https://gtfobins.github.io/
+
     
 Bash in C
 ---------
@@ -404,10 +410,28 @@ Sharedlib:
     gcc -shared -fPIC -o libbash.so bash.c
 
 gdb
----
+===
 https://ftp.gnu.org/old-gnu/Manuals/gdb/html_node/gdb_57.html
 set print array on
 set print pretty on
+
+GDB python API:
+---------------
+http://blog.scottt.tw/2012/01/exploring-gdb-python-api-with-ipython_31.html
+
+example:
+t.py
+```
+import gdb
+gdb.execute('file /bin/cat')
+o = gdb.execute('disassemble exit', to_string=True)
+print(o)
+gdb.execute('quit')
+```
+```
+gdb -x t.py
+```
+
 
 Kernel debugging
 ================
