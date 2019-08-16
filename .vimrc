@@ -75,10 +75,10 @@ set background=dark
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-"colorscheme PaperColor
+colorscheme PaperColor
 ""colorscheme solarized
 "colorscheme badwolf
-colorscheme murphy
+"colorscheme murphy
 filetype plugin indent on    " required
 filetype plugin on
 " To ignore plugin indent changes, instead use:
@@ -189,14 +189,14 @@ let g:racer_experimental_completer = 1
 
 
 let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '(', ')', '{', '}']
-let g:ycm_server_python_interpreter="/usr/bin/python3.6"
+let g:ycm_server_python_interpreter="/usr/bin/python2.7"
 "let g:ycm_server_python_interpreter="/usr/bin/python3.7"
 let g:ycm_confirm_extra_conf = 0 " do not ask for confirmation to load the ycm_extra_conf.py
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-let g:ycm_python_binary_path = '/usr/bin/python3.6'
+let g:ycm_python_binary_path = '/usr/bin/python2.7'
 let g:ycm_enable_diagnostic_highlighting = 0
-"nnoremap gd         :YcmCompleter GoTo<CR>
-nnoremap gd <C-]>
+nnoremap gd         :YcmCompleter GoTo<CR>
+"nnoremap gd <C-]>
 let g:ycm_autoclose_preview_window_after_insertion = 1
 " Start autocompletion after 4 chars
 "let g:ycm_min_num_of_chars_for_completion = 4
