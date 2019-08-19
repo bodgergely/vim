@@ -16,7 +16,7 @@ Basic tools
 - burp or BurpSuiteCommunity, ProxyFoxy for firefox
 - owasp-zap - it is like an open source Burp
 - netstat
-- ifconfig, ip
+- ifconfig, ip, ss
 - msfconsole 
 - python for simple webserver
 - gcc
@@ -254,6 +254,14 @@ netstat, ports, tcp, ip
 -----------------------
 
 sudo netstat -ltup - listening ports
+ip route show table local
+
+ss - show sockets - another utility to investigate sockets 
+
+ss -tuln          - -t: TCP, -u: UDP, -l: Listening, -n: do not resolve service names  
+
+
+
 
 Documentation tool
 ------------------
