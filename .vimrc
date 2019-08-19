@@ -383,3 +383,14 @@ let g:syntastic_check_on_wq = 0
 
 " vim-go related
 nnoremap gb         :GoDefPop<CR>
+
+"-- vim-maximizer ---
+" do not set F3 to MaximizeToggle - 
+let g:maximizer_set_default_mapping = 0
+" bind it to F5 instead 
+nnoremap <silent><F5> :MaximizerToggle<CR>
+vnoremap <silent><F5> :MaximizerToggle<CR>gv
+inoremap <silent><F5> <C-o>:MaximizerToggle<CR>
+" -- end of vim-maximizer
+
+
