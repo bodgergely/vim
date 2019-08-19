@@ -60,6 +60,7 @@ Plugin 'xolox/vim-lua-ftplugin'  " for lua
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'szw/vim-maximizer'
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -189,11 +190,12 @@ let g:racer_experimental_completer = 1
 
 
 let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '(', ')', '{', '}']
-let g:ycm_server_python_interpreter="/usr/bin/python2.7"
-"let g:ycm_server_python_interpreter="/usr/bin/python3.7"
+"let g:ycm_server_python_interpreter="/usr/bin/python2.7"
+let g:ycm_server_python_interpreter="/usr/bin/python3.6"
 let g:ycm_confirm_extra_conf = 0 " do not ask for confirmation to load the ycm_extra_conf.py
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-let g:ycm_python_binary_path = '/usr/bin/python2.7'
+"let g:ycm_python_binary_path = '/usr/bin/python2.7'
+let g:ycm_python_binary_path = '/usr/bin/python3.6'
 let g:ycm_enable_diagnostic_highlighting = 0
 nnoremap gd         :YcmCompleter GoTo<CR>
 "nnoremap gd <C-]>
