@@ -410,6 +410,14 @@ int bash() {
 ```
 
 
+vim
+---
+
+zz  - center view on current line
+Tab - go forward
+C-o - go back
+C-] - go to tag
+:tag NameOfTag  - go to tag
 
 gcc
 ---
@@ -448,6 +456,7 @@ ftrace
 ------
 - trace-cmd
 - kernelshark
+
 
 
 
