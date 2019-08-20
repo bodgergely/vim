@@ -310,6 +310,9 @@ export BROWSER=google-chrome
 alias r=ranger
 alias t='tree -FC'
 
+# kubernetes
+alias k='kubectl'
+
 #perf
 perf_paranoid_disable() { echo "echo -1 > /proc/sys/kernel/perf_event_paranoid" | cs ; }
 
