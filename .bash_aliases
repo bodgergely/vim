@@ -356,3 +356,5 @@ function psg()
 
 alias cheatsheet='vim $WORKSPACE/vimrc/CHEATSHEET.md'
 
+alias truecolor_test='curl -s https://raw.githubusercontent.com/JohnMorales/dotfiles/master/colors/24-bit-color.sh | bash'
+

@@ -5,9 +5,15 @@ set encoding=utf-8
 set mouse=a
 
 " set Vim-specific sequences for RGB colors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
+"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"set termguicolors
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " 256-color terminal
 "set t_Co=256
@@ -313,12 +319,12 @@ endif
 
 set dictionary+=/usr/share/dict/words
 
-if &term =~ '256color'
+"if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
   " render properly when inside 256-color tmux and GNU screen.
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
-endif
+  " set t_ut=
+"endif
 " Scheme support
 if has("autocmd")
     au BufReadPost *.rkt,*.rktl set filetype=scheme
