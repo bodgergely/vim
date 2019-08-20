@@ -48,6 +48,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'morhetz/gruvbox'
 "Plugin 'dracula/vim'
 Plugin 'hdima/python-syntax'
 "Plugin 'altercation/vim-colors-solarized'
@@ -82,7 +83,8 @@ set background=dark
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-colorscheme PaperColor
+"colorscheme PaperColor
+colorscheme gruvbox
 ""colorscheme solarized
 "colorscheme badwolf
 "colorscheme murphy
