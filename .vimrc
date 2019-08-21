@@ -145,7 +145,7 @@ endif
 "nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " bind \ (backward slash) to grep shortcut
 "command! -bang -nargs=* GGrep silent! grep! <args>|cwindow|redraw!
-nmap <leader>f :grep -R<SPACE>
+nmap <leader>f :grep -R -I<SPACE>
 
 " quickfix
 nmap <leader>q :copen<CR>
