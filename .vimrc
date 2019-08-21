@@ -116,6 +116,9 @@ set modifiable
 
 let mapleader = ","
 
+" easymotion - bind to <leader>(easymotion prefix) - byu default it is <leader><leader>(prefix)
+map <Leader> <Plug>(easymotion-prefix)
+
 " scrolling should be only 5 lines (c-d and ctrl-u)
 set scroll=5
 noremap <C-u> 5<C-u>
