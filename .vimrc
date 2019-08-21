@@ -239,7 +239,7 @@ nnoremap ; :
 "map <Left> <C-W>h
 "map <Right> <C-W>l
 map vv 0
-map nn <S-$>
+"map nn <S-$>
 map f y
 " autocompletion remap to ctrl space
 "inoremap <C-Space> <C-x><C-o>
