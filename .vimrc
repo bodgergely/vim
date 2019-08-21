@@ -68,6 +68,7 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'szw/vim-maximizer'
+Plugin 'yssl/QFEnter'
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
