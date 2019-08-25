@@ -156,3 +156,5 @@ alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc -u /opt/yavid
 #fi
 #unset __conda_setup
 # <<< conda init <<<
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
