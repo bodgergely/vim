@@ -412,12 +412,75 @@ int bash() {
 
 vim
 ---
+:wq - write and quit
+:q! - write and discard changes
+:w  - save
+C-s - save
+:q - quit
+:tabe - open new tab
+:vs - open vertical split
+:%s/foo/bar/g   - replace 'foo' with 'bar' globally
+:%!xdd - invoke HEX editor
 
+:help - invoke help on subject
+a - insert mode, append after cursor
+i - insert mode, before cursor
+o - insert empty line below curr line
+O - insert empty line above curr line
+v - enter visual mode
+p - paste clipboard
+gt - go to next tab
+C-d - go down by many lines
+C-u - go up by many lines
+cw - delete word starting from cursor (insert mode)
+dw - delete word starting from cursor (normal mode)
+ciw - delete word  (insert mode)
+diw - delete word  (normal mode)
+/ - search forward
+? - search backwards
+* - highlight words and cycle through occurences
+n - jump to next occurence
+N - jump to prev occurence
+ff - yank current line (originally yy)
+dd - delete line
+cc - delete line and insert mode
+S-a - jump to end in insert mode 
+S-d - delete up to end of line from current cursor pos
+S-c - delete up to end of line from current cursor pos and insert mode
 zz  - center view on current line
-Tab - go forward
-C-o - go back
+Tab - go forward to cursor pos
+C-o - go back to prev cursor pos
 C-] - go to tag
 :tag NameOfTag  - go to tag
+gg - jump to top
+S-g - jump to buttom
+$ - jump end of line
+0 - jump beginning of line
+u - undo
+C-r - redo
+,-t - Tagbar
+:tag <TagName> - jump to tag name
+:YcmCompleter GoTo - jump to tag
+,-nt - Nerdtree
+,-f - grep
+,ww - grep for word under cursor (EasyGrep)
+,-w - easymotion forward
+,-b - easymotion backward
+,q - quick open search results
+,gb - GitBlame (fugitive - git)
+Recording:
+    - q-<alphanum>
+    - do your things to be recorded
+    - press q
+    - apply the recording with @-<alphanum>, or simply @-@ 
+. - to apply prev command
+C-v - block select mode
+Changing a block selection:
+    - C-v to block select text area
+    - hit c to get into insert mode
+    - Write your change
+    - escape from insert mode -> replaces with your text all block selection
+
 
 gcc
 ---
