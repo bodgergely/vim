@@ -326,6 +326,9 @@ C-b + <bracket> : to escape the command line and scroll into the text buffer
 Also possible to copy the tmux window contents by simply highlighting using the mouse and releasing it and it will
     be copied to the clipboard
 
+alt-h - go to left pane
+alt-l - go to right pane
+
 
 apt, dpkg, package, apt-get
 ---------------------------
@@ -423,6 +426,7 @@ C-s - save
 :%!xdd - invoke HEX editor
 
 :help - invoke help on subject
+r - replace character
 a - insert mode, append after cursor
 i - insert mode, before cursor
 o - insert empty line below curr line
@@ -430,6 +434,11 @@ O - insert empty line above curr line
 v - enter visual mode
 p - paste clipboard
 gt - go to next tab
+C-h - go to left pane
+C-l - go to right pane
+C-k - go to up pane
+C-j - go to down pane
+
 C-d - go down by many lines
 C-u - go up by many lines
 cw - delete word starting from cursor (insert mode)
@@ -521,8 +530,12 @@ ftrace
 - kernelshark
 
 
+kubernetes
+==========
 
-
+alias k=kubectl
+k get pods
+k cluster-info
 
 
 
