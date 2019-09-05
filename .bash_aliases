@@ -20,6 +20,7 @@ export PATH=$PATH:$HOME/workspace/go/bin
 export PATH=$HOME/neovim/bin:$PATH
 
 export PATH=$PATH:~/bin
+export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:~/arduino/arduino-1.8.5-linux64/arduino-1.8.5
 export PATH=~/anaconda3/bin:$PATH
 export PATH=$HOME/Qt/5.9.1/gcc_64/bin:$PATH
@@ -163,7 +164,7 @@ alias cdhtb='cd $WARGAMES/pentestlabs/hackthebox'
 alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python/BHP-Code'
 alias cdrust='cd $WARGAMES/tutorials/lang-tut/rust'
 alias cddropbox='cd $HOME/Dropbox'
-alias cdlangtut='cd $WARGAMES/tutorials/lang-tut/'
+alias cdlangtut='cd $HOME/tutorials/lang-tut/'
 alias cdtmp='cd /tmp'
 alias cdudemy='cd $WORKSPACE/my_repos/udemy'
 #go
@@ -349,6 +350,8 @@ alias fdisk_l='sudo fdisk -l'
 # $ df -h
 # $ lsblk
 
+alias mex='chmod +x'
+
 function psg()
 {
     ps aux | grep $1;
@@ -358,3 +361,12 @@ alias cheatsheet='vim $WORKSPACE/vimrc/CHEATSHEET.md'
 
 alias truecolor_test='curl -s https://raw.githubusercontent.com/JohnMorales/dotfiles/master/colors/24-bit-color.sh | bash'
 
+function k_set_namespace()
+{
+    kubectl config set-context $(kubectl config current-context) --namespace=$1
+}
+
+function k_get_namespace()
+{
+    kubectl config view --minify --output 'jsonpath={..namespace}'
+}
