@@ -49,6 +49,7 @@ Plugin 'ervandew/supertab'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'morhetz/gruvbox'
+Plugin 'ayu-theme/ayu-vim'
 "Plugin 'dracula/vim'
 Plugin 'hdima/python-syntax'
 "Plugin 'altercation/vim-colors-solarized'
@@ -69,6 +70,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'szw/vim-maximizer'
 Plugin 'yssl/QFEnter'   " plugin to quickly open Quick Window results - open file in vertical split: <leader><Enter>, horizontal split: <leader>,
+Plugin 'guns/vim-clojure-static'
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -77,6 +79,11 @@ filetype on " required
 syntax on
 syntax enable
 set background=dark
+
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+"let ayucolor="dark"   " for dark version of theme
+"colorscheme ayu
 
 "colorscheme baycomb     " really nice blue!
 "colorscheme birds-of-paradise
