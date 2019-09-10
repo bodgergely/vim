@@ -52,10 +52,10 @@ alias pcalc=$HOME/bin/pcalc.py
 alias clion=$HOME/clion/clion-2018.1/bin/clion.sh
 
 # copy paste - xclip
-alias "cs=xclip -selection clipboard"
-alias "vs=xclip -o -selection clipboard"
-alias "c=xclip"
-alias "v=xclip -o"
+alias cs="xclip -selection clipboard"
+alias vs="xclip -o -selection clipboard"
+alias c="xclip"
+alias v="xclip -o"
 
 #commands
 # export PYTHONPATH=$PYTHONPATH:$HOME/.local/lib/python3.6/site-packages/
@@ -370,4 +370,21 @@ function k_set_namespace()
 function k_get_namespace()
 {
     kubectl config view --minify --output 'jsonpath={..namespace}'
+}
+
+function gen_bash_file()
+{
+    if [[ ! -z $1 ]]; then
+        echo "#!/usr/bin/env bash" > $1
+        chmod +x $1
+        vim $1
+    else
+        echo "Usage: gen_bash_file <filename>"
+    fi
+}
+
+function get_mem_info()
+{
+    cat /proc/meminfo | grep -E '(MemTotal|MemFree|MemAvailable|Cached|Active\(anon\)|Inactive\(anon\)|Active\(file\)|Inactive\(file\)|AnonPages)' | \
+        awk '{print $1 " " $2/1000/1000 " GB"}'
 }
