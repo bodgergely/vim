@@ -344,12 +344,15 @@ go_playground_vim()
 
 alias f='fzf | xargs vim'
 
-# disk/harddrive utilities
+# disk/harddrive/filesystem utilities
 alias parted_l='sudo parted -l'
 alias fdisk_l='sudo fdisk -l'
 # Use below to get filesystems mount points/ sizes
-# $ df -h
+# $ df -Th
 # $ lsblk
+# $ fsck
+# $ mke2fs - create ext2/3/4 file systems
+# $ fstab
 
 alias mex='chmod +x'
 
@@ -382,6 +385,8 @@ function gen_bash_file()
         echo "Usage: gen_bash_file <filename>"
     fi
 }
+# memory
+# $ free
 
 function get_mem_info()
 {
