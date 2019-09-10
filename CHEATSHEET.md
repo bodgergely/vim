@@ -538,7 +538,22 @@ alias k=kubectl
 k get pods
 k cluster-info
 
+Filesystem
+==========
 
+sudo apt install xfsprogs
+$ mkfs.xfs
+$ mkfs.ext4
+
+Create ext4/xfs RAM filesystem:
+https://unix.stackexchange.com/questions/401295/how-can-i-create-an-ext4-ramdisk
+
+mkdir /mnt/ramdisk
+mount -t ramfs ramfs /mnt/ramdisk
+dd if=/dev/zero of=/mnt/ramdisk/ext4.image bs=1M count=512
+mkfs.ext4 /mnt/ramdisk/ext4.image
+mkdir /mnt/ext4ramdisk
+mount -o loop /mnt/ramdisk/ext4.image /mnt/ext4ramdisk
 
 
 
