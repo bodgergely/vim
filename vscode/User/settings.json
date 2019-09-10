@@ -29,18 +29,7 @@
                 "0"
             ]
         },
-        {
-            "before": [
-                "n",
-                "n"
-            ],
-            "after": [
-                "<S>",
-                "4"
-            ]
-        }
     ],
-    "editor.minimap.enabled": false,
     "vim.leader": ",",
     "rust.mode": "rls",
     "rust.rustup": {
@@ -62,14 +51,14 @@
         "build": true
     },
     "editor.renderIndentGuides": false,
-    "C_Cpp.clang_format_style": "WebKit",
-    "C_Cpp.clang_format_fallbackStyle": "WebKit",
+    "C_Cpp.clang_format_style": "none",
+    "C_Cpp.clang_format_fallbackStyle": "none",
     "editor.mouseWheelZoom": true,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "python.jediEnabled": true,
     "debug.console.fontSize": 16,
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 2,
     "files.exclude": {
         ".GOPATH": true,
         "**/*.a": true,
@@ -80,7 +69,7 @@
         "**/*.o": true,
         "build/**": true
     },
-    "workbench.tree.indent": 20,
+    "workbench.tree.indent": 25,
     "rust.rls": {
         "useRustfmt": false
     },
@@ -92,5 +81,12 @@
         "vs-kubernetes.minikube-path": "/home/greg/.vs-kubernetes/tools/minikube/linux-amd64/minikube",
         "vs-kubernetes.draft-path": "/home/greg/.vs-kubernetes/tools/draft/linux-amd64/draft"
     },
-    "workbench.colorTheme": "Default Light+",
+    "[python]": {},
+    "yaml.validate": false,
+    "yaml.format.enable": false,
+    "python.linting.enabled": false,
+    "python.terminal.activateEnvironment": false,
+    "editor.minimap.maxColumn": 1200,
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Gruvbox Dark Hard",
 }

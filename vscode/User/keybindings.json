@@ -1,8 +1,5 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-    { "key": "tab",                  "command": "selectNextSuggestion",
-        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible" },
-    { "key": "tab",                   "command": "-acceptSelectedSuggestion"},
     {
         "key": "ctrl+-",
         "command": "workbench.action.quickInputBack",
@@ -84,5 +81,10 @@
     {
         "key": "ctrl+e",
         "command": "-workbench.action.quickOpen"
-    }
+    },
+    {
+        "key": "ctrl+'",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
+    
 ]
