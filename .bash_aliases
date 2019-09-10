@@ -388,3 +388,8 @@ function get_mem_info()
     cat /proc/meminfo | grep -E '(MemTotal|MemFree|MemAvailable|Cached|Active\(anon\)|Inactive\(anon\)|Active\(file\)|Inactive\(file\)|AnonPages|Swap)' | \
         awk '{print $1 " " $2/1000/1000 " GB"}'
 }
+
+function get_kernel_configs()
+{
+    cat /boot/config-`uname -r`
+}
