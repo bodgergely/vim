@@ -3,6 +3,7 @@ Useful tools
 
 Basic tools
 -----------
+- whatis - Basic info about a program
 - nmap, nc, socat
 - vi, vim
 - bash, tmux
