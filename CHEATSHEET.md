@@ -10,6 +10,26 @@ https://github.com/awesome-lists/awesome-bash
 https://github.com/alebcay/awesome-shell
 https://github.com/vinta/awesome-python
 
+How2
+----
+git clone https://github.com/VladimirMikulic/how2
+or git@github.com:bodgergely/how2.git
+sudo npm i -g ./how2
+
+History (hstr)
+--------------
+sudo add-apt-repository ppa:ultradvorka/ppa && sudo apt-get update && sudo apt-get install hstr && hstr --show-configuration >> ~/.bashrc && . ~/.bashrc
+
+Jump (jump to directory)
+------------------------
+https://github.com/gsamokovarov/jump
+
+go get github.com/gsamokovarov/jump
+eval "$(jump shell)"
+or 
+jump shell >> ~/.bashrc
+
+
 Basic tools
 -----------
 - whatis - Basic info about a program
