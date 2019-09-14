@@ -1,6 +1,15 @@
 Useful tools
 ============
 
+github-awesome
+--------------
+
+https://github.com/chubin/awesome-console-services
+https://github.com/agarrharr/awesome-cli-apps
+https://github.com/awesome-lists/awesome-bash
+https://github.com/alebcay/awesome-shell
+https://github.com/vinta/awesome-python
+
 Basic tools
 -----------
 - whatis - Basic info about a program

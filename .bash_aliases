@@ -319,7 +319,7 @@ alias k='kubectl'
 perf_paranoid_disable() { echo "echo -1 > /proc/sys/kernel/perf_event_paranoid" | cs ; }
 
 #perf flamegraph system wide
-alias perf_flame="perf_flame.sh &"
+alias perf_flame="perf_flame.sh"
 
 if [ -f ~/.cf_aliasesrc ]; then
     source ~/.cf_aliasesrc
@@ -398,3 +398,23 @@ function get_kernel_configs()
 {
     cat /boot/config-`uname -r`
 }
+
+function whatismyip()
+{
+    # https://github.com/chubin/awesome-console-services
+    curl l2.io/ip
+}
+
+function text_share()
+{
+    curl -F 'clbin=<-' https://clbin.com
+}
+
+function dictionary()
+{
+    what=$@
+    echo Getting description for: $what
+    curl 'dict://dict.org/d:'"$what"
+}
+
+
