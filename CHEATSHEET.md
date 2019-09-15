@@ -7,7 +7,7 @@ github-awesome
 https://github.com/chubin/awesome-console-services
 https://github.com/agarrharr/awesome-cli-apps
 https://github.com/awesome-lists/awesome-bash
-https://github.com/alebcay/awesome-shell
+https://github.com/alebcay/awesome-shell  -- AWESOME!!!!
 https://github.com/vinta/awesome-python
 
 How2
@@ -28,6 +28,27 @@ go get github.com/gsamokovarov/jump
 eval "$(jump shell)"
 or 
 jump shell >> ~/.bashrc
+
+Terminal Color database
+-----------------------
+
+bash -c  "$(wget -qO- https://git.io/vQgMr)"
+
+Digital Ocean cmd line
+----------------------
+https://github.com/omgimanerd/doclt
+npm install -g doclt
+doclt
+
+Git extras
+----------
+https://github.com/tj/git-extras/blob/master/Commands.md
+sudo apt-get install git-extras
+
+sudo npm install --global git-open
+
+https://github.com/arzzen/git-quick-stats
+git-quick-stats
 
 
 Basic tools
@@ -62,6 +83,17 @@ Basic tools
 - hashid: Identify the different types of hashes used to encrypt data
 - tee: write stdin to file and to stdout
 - jq: JSON decoding, `jq . filename`
+
+
+Perf tools
+----------
+- atop
+- htop
+- top
+- powertop
+- glances (https://github.com/nicolargo/glances)
+- gprof
+- perf
 
 Binary analysis
 ---------------

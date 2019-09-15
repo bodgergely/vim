@@ -453,3 +453,35 @@ j() {
 }
 
 complete -o dirnames -C '__jump_hint' j
+
+####### END OF JUMP aliases ####################################
+################################################################
+
+function color_picker()
+{
+    # can't run under tmux - use it without tmux
+    bash -c  "$(curl -sLo- https://git.io/vQgMr)"
+}
+
+## digital ocean
+# $ doclt
+
+function git_extra_help()
+{
+    firefox https://github.com/tj/git-extras/blob/master/Commands.md
+}
+
+function weather_quick()
+{
+    ansiweather -l London
+}
+
+function weather()
+{
+    curl wttr.in/London
+}
+
+function bash_wiki()
+{
+    firefox http://mywiki.wooledge.org/
+}
