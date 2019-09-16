@@ -485,3 +485,9 @@ function bash_wiki()
 {
     firefox http://mywiki.wooledge.org/
 }
+
+function gen_go_project()
+{
+    cookiecutter https://github.com/lacion/cookiecutter-golang.git
+}
+

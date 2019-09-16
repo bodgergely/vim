@@ -8,7 +8,6 @@ case $- in
       *) return;;
 esac
 
-export GTEST_COLOR=1
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -26,7 +25,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -36,6 +35,8 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+# TERM=screen-256color
+# TERM=xterm-color
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
@@ -91,8 +92,7 @@ fi
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
-#alias l='ls -CF'
-alias l='ls -lha'
+alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -118,10 +118,24 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/home/greg/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/home/greg/anaconda3/etc/profile.d/conda.sh" ]; then
+#        . "/home/greg/anaconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/home/greg/anaconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+# <<< conda initialize <<<
 
-export PATH=$PATH:~/premake
-export PATH=$HOME/.cargo/bin:$PATH
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source <(kubectl completion bash | sed s/kubectl/k/g)
 
 stty -ixon
 set -o emacs
@@ -129,32 +143,20 @@ set -o emacs
 # generate core file if crash happens
 ulimit -c unlimited
 
-tmux source-file ~/.tmux.conf
-# Yavide alias
-alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc"
-# Yavide alias
-alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc -u /opt/yavide/.vimrc"
-# Yavide alias
-alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc -u /opt/yavide/.vimrc -u /home/geri/yavide/yavide/.vimrc"
-# Yavide alias
-alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc -u /opt/yavide/.vimrc -u /home/geri/yavide/yavide/.vimrc -u /opt/yavide/.vimrc"
-# Yavide alias
-alias yavide="gvim --servername yavide -f -N -u /opt/yavide/.vimrc -u /opt/yavide/.vimrc -u /home/geri/yavide/yavide/.vimrc -u /opt/yavide/.vimrc -u /opt/yavide/.vimrc"
-# added by Anaconda3 5.3.0 installer
-# >>> conda init >>>
-# !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/geri/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    \eval "$__conda_setup"
-#else
-#    if [ -f "/home/geri/anaconda3/etc/profile.d/conda.sh" ]; then
-#        . "/home/geri/anaconda3/etc/profile.d/conda.sh"
-#        CONDA_CHANGEPS1=false conda activate base
-#    else
-#        \export PATH="/home/geri/anaconda3/bin:$PATH"
-#    fi
-#fi
-#unset __conda_setup
-# <<< conda init <<<
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# HSTR configuration - add this to ~/.bashrc
+alias hh=hstr                    # hh to be alias for hstr
+export HSTR_CONFIG=hicolor       # get more colors
+shopt -s histappend              # append new history items to .bash_history
+export HISTCONTROL=ignorespace   # leading space hides commands from history
+export HISTFILESIZE=10000        # increase history file size (default is 500)
+export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
+# ensure synchronization between Bash memory and history file
+export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
+# if this is interactive shell, then bind hstr to Ctrl-r (for Vi mode check doc)
+if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
+# if this is interactive shell, then bind 'kill last command' to Ctrl-x k
+if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
+export HSTR_CONFIG=raw-history-view
+############ END of hstr ######################################################

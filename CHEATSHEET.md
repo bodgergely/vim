@@ -5,6 +5,7 @@ github-awesome
 --------------
 
 https://github.com/chubin/awesome-console-services
+https://github.com/herrbischoff/awesome-command-line-apps#readme
 https://github.com/agarrharr/awesome-cli-apps
 https://github.com/awesome-lists/awesome-bash
 https://github.com/alebcay/awesome-shell  -- AWESOME!!!!
@@ -28,6 +29,11 @@ go get github.com/gsamokovarov/jump
 eval "$(jump shell)"
 or 
 jump shell >> ~/.bashrc
+
+CookieCutter
+------------
+
+Generate templates for projects based on language
 
 Terminal Color database
 -----------------------
