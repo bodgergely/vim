@@ -340,7 +340,7 @@ Documentation tool
     C-n: new node
     C-S-n: new child node
 
-bash
+Bash
 ----
 
 Learn bash:
@@ -373,12 +373,12 @@ alt+.: inserts the last "word" of the previous command at the cursor. Repeat it 
 ctrl+/: undo previosuly typed word
 
 
-lua
+Lua
 ---
 
 Lua in 15 minutes: http://tylerneylon.com/a/learn-lua/
 
-tmux shortcuts
+Tmux shortcuts
 --------------
 
 C-b + n : next tab
@@ -398,7 +398,7 @@ alt-h - go to left pane
 alt-l - go to right pane
 
 
-apt, dpkg, package, apt-get
+Apt, dpkg, package, apt-get
 ---------------------------
 
 Links
@@ -413,7 +413,7 @@ gdb shortcuts
 C-x + a - enter tui window/exit tui window
 C-x + o - switch to next focus (focus cmd -> focus src)
 
-awk
+Awk
 ===
 
 https://stackoverflow.com/questions/450799/shell-command-to-sum-integers-one-per-line
@@ -423,7 +423,7 @@ Sum numbers on each line the first element and save to file
     awk '{s+=$1} END {print s}' mydatafile
 
 
-python
+Python
 ======
 
 navigate back and forth with C+p and C+n to get prev, next command
@@ -481,7 +481,7 @@ int bash() {
 ```
 
 
-vim
+Vim
 ---
 :wq - write and quit
 :q! - write and discard changes
@@ -598,7 +598,7 @@ ftrace
 - kernelshark
 
 
-kubernetes
+Kubernetes
 ==========
 
 alias k=kubectl
