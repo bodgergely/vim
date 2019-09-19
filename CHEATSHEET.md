@@ -46,6 +46,12 @@ https://github.com/omgimanerd/doclt
 npm install -g doclt
 doclt
 
+Git
+---
+
+To tell your current branch to start tracking another remote branch:
+git branch -u origin/dev
+
 Git extras
 ----------
 https://github.com/tj/git-extras/blob/master/Commands.md
