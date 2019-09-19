@@ -119,6 +119,12 @@ alias git_submodule_recursive="git submodule update --init --recursive"
 alias git_submodule_sync='git submodule sync'
 alias git_log_pretty="git log --graph --decorate --pretty=oneline --abbrev-commit"
 alias gg="git grep -n --color"
+git_lazy_push()
+{
+    if [[ -z $1 ]]; then echo "Usage: git_lazy_push <filepath>"; return 127; fi
+    git add $1 && git commit -m "random message" && git push
+}
+
 
 
 # gdb
