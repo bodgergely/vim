@@ -122,7 +122,7 @@ alias gg="git grep -n --color"
 git_lazy_push()
 {
     if [[ -z $1 ]]; then echo "Usage: git_lazy_push <filepath>"; return 127; fi
-    git add $1 && git commit -m "random message" && git push
+    git add $1 && git commit -m "chaning $1" && git push
 }
 
 
