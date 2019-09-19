@@ -9,6 +9,7 @@ alias ae="vim $HOME/.bash_aliases; aer;"
 alias vimrc='vim $HOME/.vimrc'
 alias bashrc='vim $HOME/.bashrc; reload'
 alias fzfrc='vim $HOME/.fzf.bash'
+alias info='info --vi-keys'
 
 # golang
 export GOROOT=/usr/local/go
