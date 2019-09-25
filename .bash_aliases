@@ -490,7 +490,7 @@ function weather()
 
 function bash_wiki()
 {
-    firefox http://mywiki.wooledge.org/
+    firefox http://mywiki.wooledge.org/ http://www.tldp.org/LDP/abs/html
 }
 
 function gen_go_project()
