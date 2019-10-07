@@ -173,6 +173,7 @@ alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python/BHP-Code'
 alias cdrust='cd $WARGAMES/tutorials/lang-tut/rust'
 alias cddropbox='cd $HOME/Dropbox'
 alias cdlangtut='cd $HOME/tutorials/lang-tut/'
+alias cdsysprog='cd $HOME/tutorials/sysprog/'
 alias cdtmp='cd /tmp'
 alias cdudemy='cd $WORKSPACE/my_repos/udemy'
 #go
