@@ -275,9 +275,9 @@ alias mingw_64_g++=x86_64-w64-mingw32-g++
 
 #compression
 alias targz_compress='tar -czvf'
-alias bzip_compress='tar -cjvf'
+alias bzip2_compress='tar -cjvf'
 alias targz_uncompress='tar -xzvf'
-alias bzip_uncompress='tar -xjvf'
+alias bzip2_uncompress='tar -xjvf'
 
 alias cl='clear'
 

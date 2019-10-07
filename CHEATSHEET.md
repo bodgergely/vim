@@ -77,7 +77,7 @@ Basic tools
 - msfconsole 
 - python for simple webserver
 - gcc
-- curl, wget, dig, nslookup, whois
+- curl, wget, dig, nslookup, whois, host
 - md5sum, base64, `base64 -d <file>`, `base64 <file>`
 - radare2, xxd, hexdump, objdump
 - tcpdump, Wireshark
@@ -304,7 +304,7 @@ MOTD - PAM - Pluggable Authentication Module (searchsploit motd)
 DNS
 ---
 Tools:
-    - nslookup, dig, dnsrecon
+    - nslookup, dig, host, dnsrecon
 
 Usually on port 53 and UDP. If TCP then probably dns zone transfer is enabled.
     `dig axfr @<dnsserverIP>` - does zone transfer
