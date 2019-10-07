@@ -110,7 +110,7 @@ Network tools
 
 Perf tools
 ----------
-- /usr/share/bcc/tools
+- /usr/share/bcc/tools - eBPF profiling
 - atop
 - htop
 - top
@@ -119,6 +119,7 @@ Perf tools
 - gprof
 - perf
 - /proc/loadavg (1,5,15min loadavg, running/total, last proc pid)
+- /proc/<pid>/schedstat - task scheduling related statistics
 
 bcc
 ---
@@ -629,6 +630,14 @@ gdb
 https://ftp.gnu.org/old-gnu/Manuals/gdb/html_node/gdb_57.html
 set print array on
 set print pretty on
+layout split (asm + src)
+Ctrl-x + a  - enter tui graphical mode
+focus cmd
+focus src
+Can focus with shortcut: Ctrl-x + o
+apropos REGEX - get help
+help
+
 
 GDB python API:
 ---------------
