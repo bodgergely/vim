@@ -173,6 +173,7 @@ alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python/BHP-Code'
 alias cdrust='cd $WARGAMES/tutorials/lang-tut/rust'
 alias cddropbox='cd $HOME/Dropbox'
 alias cdlangtut='cd $HOME/tutorials/lang-tut/'
+alias cdsysprog='cd $HOME/tutorials/sysprog/'
 alias cdtmp='cd /tmp'
 alias cdudemy='cd $WORKSPACE/my_repos/udemy'
 #go
@@ -180,6 +181,7 @@ alias cdgo='cd $HOME/workspace/go/src'
 alias cdgo_playground='cd $GOPATH/src/playground'
 #tools
 alias cdutility_tools='cd $WORKSPACE/my_repos/utility_tools'
+alias cdbcc='cd /usr/share/bcc'
 #apache
 alias apache_restart="sudo systemctl restart apache2.service"
 alias apache_status="sudo systemctl status apache2.service"
