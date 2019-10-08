@@ -51,6 +51,8 @@ Git
 
 To tell your current branch to start tracking another remote branch:
 git branch -u origin/dev
+To change the default upstream branch:
+git branch --set-upstream-to=origin/master
 
 Git extras
 ----------
@@ -110,6 +112,8 @@ Network tools
 
 Perf tools
 ----------
+- schedtool - change scheduler policy of processes etc
+- vmstat - cs field shows the context switches
 - /usr/share/bcc/tools - eBPF profiling
 - atop
 - htop
