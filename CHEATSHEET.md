@@ -117,13 +117,29 @@ Perf tools
 - /usr/share/bcc/tools - eBPF profiling
 - atop
 - htop
+- hardinfo - GTK UI based hardware information
+- mpstat
+- schedtool
+- numastat, numactl
+- kernelshark
 - top
+- ps
+- pstree - awesome tool, to see child-parent relatinships
+    $ ps auxf -> to print in tree style all processes
 - powertop
 - glances (https://github.com/nicolargo/glances)
 - gprof
 - perf
 - /proc/loadavg (1,5,15min loadavg, running/total, last proc pid)
 - /proc/<pid>/schedstat - task scheduling related statistics
+- /proc/schedstat
+- /proc/sched_debug
+
+
+irq, interrupts, softirq
+-------------------------
+- /proc/softirqs
+- /proc/interrupts
 
 bcc
 ---
@@ -132,6 +148,51 @@ bpf tools
 on github iovisor/bcc
 
 /usr/share/bcc/tools
+
+cpu accounting, scheduler stats
+-------------------------------
+
+Files and directories under:
+/sys/fs/cgroup/cpu,cpuacct/
+
+or
+
+/proc/sys/kernel/sched_*
+
+schedstat
+---------
+Doc: https://www.kernel.org/doc/Documentation/scheduler/sched-stats.txt
+
+System wide schedstat:
+cat /proc/schedstat
+
+Process schedstat:
+$ cat /proc/166976/schedstat
+3635064734 423220815 40840
+
+     1) time spent on the cpu
+     2) time spent waiting on a runqueue
+     3) # of timeslices run on this cpu
+
+Process's all threads listed under this and those have shcedstat 
+/proc/166976/task/*
+
+cat /proc/166976/task/166983/schedstat
+
+
+taskset, cpu affinity
+---------------------
+
+TO see the cpu affinity of a given process/thread:
+$ taskset -p <pid>
+
+psi, pressure stall information
+-------------------------------
+
+$ ls /proc/pressure/
+cpu  io  memory
+$ cat /proc/pressure/cpu
+some avg10=0.00 avg60=0.04 avg300=0.05 total=1107850106
 
 htop
 ----
@@ -142,6 +203,51 @@ Shift-P - cpu sort
 Shift-M - mem sort
 https://peteris.rocks/blog/htop/
 https://www.maketecheasier.com/power-user-guide-htop/
+
+mpstat - Report processors related statistics
+------
+
+
+schedtool - query and set CPU scheduling parameters
+---------
+
+hardinfo - great UI hardware and resource info app
+--------
+
+
+sar - Collect, report, or save system activity information
+---
+
+pgpgin/s
+                     Total number of kilobytes the system paged in from disk per second.
+
+              pgpgout/s
+                     Total number of kilobytes the system paged out to disk per second.
+
+              fault/s
+                     Number of page faults (major + minor) made by the system per second.  This is not
+                     a  count  of  page  faults  that  generate  I/O,  because some page faults can be
+                     resolved without I/O.
+
+              majflt/s
+                     Number of major faults the system has made per second, those which have  required
+                     loading a memory page from disk.
+
+              pgfree/s
+                     Number of pages placed on the free list by the system per second.
+
+              pgscank/s
+                     Number of pages scanned by the kswapd daemon per second.
+
+              pgscand/s
+                     Number of pages scanned directly per second.
+
+              pgsteal/s
+                     Number of pages the system has reclaimed from cache (pagecache and swapcache) per
+                     second to satisfy its memory demands.
+
+
+
 
 top
 ---
@@ -382,8 +488,11 @@ Address: 10.10.10.29#53
 > 10.10.10.29
 ```
 
-netstat, ports, tcp, ip
------------------------
+Networking stuff
+================
+
+netstat, ports, tcp, ip, tc
+---------------------------
 
 sudo netstat -ltup - listening ports
 ip route show table local
@@ -392,6 +501,36 @@ ss - show sockets - another utility to investigate sockets
 
 ss -tuln          - -t: TCP, -u: UDP, -l: Listening, -n: do not resolve service names  
 
+iptables
+--------
+
+Manipulate iptable rules. Chain of rules triggered when packet matches etc
+man iptables
+
+ipset
+-----
+ipset  is  used to set up, maintain and inspect so called IP sets in the Linux kernel. 
+
+ip
+--
+
+show / manipulate routing, network devices, interfaces and tunnels
+
+$ ip link 
+$ ip route
+
+
+
+tc - traffic control
+--------------------
+
+https://netbeez.net/blog/how-to-use-the-linux-traffic-control/
+$ sudo apt-get install iproute
+
+netem (Network Emulation)
+-------------------------
+
+https://wiki.linuxfoundation.org/networking/netem
 
 
 
