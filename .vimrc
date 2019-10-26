@@ -78,7 +78,7 @@ set rtp+=~/workspace/go/src/golang.org/x/lint/misc/vim
 filetype on " required
 syntax on
 syntax enable
-set background=light
+set background=dark
 
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
@@ -91,8 +91,8 @@ set background=light
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-colorscheme PaperColor
-"colorscheme gruvbox
+"colorscheme PaperColor
+colorscheme gruvbox
 ""colorscheme solarized
 "colorscheme badwolf
 "colorscheme murphy
@@ -156,7 +156,8 @@ endif
 "nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " bind \ (backward slash) to grep shortcut
 "command! -bang -nargs=* GGrep silent! grep! <args>|cwindow|redraw!
-nmap <leader>f :grep -R -I<SPACE>
+"nmap <leader>f :grep -R -I<SPACE>
+nmap <leader>f :Ggrep<SPACE>
 
 " quickfix
 nmap <leader>q :copen<CR>
