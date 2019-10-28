@@ -179,6 +179,10 @@ Process's all threads listed under this and those have shcedstat
 
 cat /proc/166976/task/166983/schedstat
 
+Procfs
+------
+/proc/<pid>/status - lots of process information
+/proc/<pid>/task   - all the threads belonging to the pid group
 
 taskset, cpu affinity
 ---------------------
