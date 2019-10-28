@@ -765,6 +765,12 @@ Changing a block selection:
     - Write your change
     - escape from insert mode -> replaces with your text all block selection
 
+Move windows/panes:
+Ctrl W + L - Move the current window to the "far right"
+Ctrl W + H - Move the current window to the "far left"
+Ctrl W + J - Move the current window to the "very bottom"
+Ctrl W + K - Move the current window to the "very top"
+
 
 gcc
 ---
