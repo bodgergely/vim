@@ -148,17 +148,18 @@ nmap <silent><leader>t :TagbarOpen<CR>
 " reload files automatically
 set autoread
 
-" grep
+" grep - ripgrep - rg
 if executable('rg')
-  set grepprg=rg\ --ignore-case\ --no-heading\ --vimgrep
-  set grepformat=%f:%l:%c:%m
+  set grepprg=rg\ --no-heading\ --vimgrep
+  set grepformat^=%f:%l:%c:%m
 endif
 " bind K to grep word under cursor
 "nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " bind \ (backward slash) to grep shortcut
 "command! -bang -nargs=* GGrep silent! grep! <args>|cwindow|redraw!
 "nmap <leader>f :grep -R -I<SPACE>
-nmap <leader>f :Ggrep<SPACE>
+"nmap <leader>f :Ggrep<SPACE>
+nmap <leader>f :grep<SPACE>
 
 " quickfix
 nmap <leader>q :copen<CR>
@@ -218,8 +219,8 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "let g:ycm_python_binary_path = '/usr/bin/python2.7'
 let g:ycm_python_binary_path = '/usr/bin/python3.6'
 let g:ycm_enable_diagnostic_highlighting = 0
-nnoremap gd         :YcmCompleter GoTo<CR>
-"nnoremap gd <C-]>
+"nnoremap gd         :YcmCompleter GoTo<CR>
+nnoremap gd <C-]>
 let g:ycm_autoclose_preview_window_after_insertion = 1
 " Start autocompletion after 4 chars
 "let g:ycm_min_num_of_chars_for_completion = 4
