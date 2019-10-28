@@ -64,7 +64,7 @@ git format-patch -2
 git format-patch -2 --stdout > /tmp/patch
 
 To apply patch:
-git am .*patch
+git am <star>.patch   --- <star> means the asterix here just cannot use with markdown
 git am < /tmp/patch
 
 Or use git diff
@@ -72,6 +72,15 @@ Or use git diff
 git diff tag1..tag2 > mypatch.patch
 git apply mypatch.patch
 
+
+Git diff - to see changes
+--------
+
+See the diff between two branches on a given directory path:
+git diff --stat torvalds/master tip/master ./kernel/sched/
+
+To see files changed:
+git diff --stat torvalds/master tip/master ./kernel/sched/
 
 
 
