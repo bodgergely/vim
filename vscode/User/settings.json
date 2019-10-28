@@ -88,4 +88,6 @@
     "editor.minimap.enabled": false,
     "workbench.colorTheme": "Quiet Light",
     "editor.cursorBlinking": "solid",
+    "C_Cpp.updateChannel": "Insiders",
+    "window.zoomLevel": -1,
 }
