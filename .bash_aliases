@@ -181,7 +181,7 @@ alias cdgo='cd $HOME/workspace/go/src'
 alias cdgo_playground='cd $GOPATH/src/playground'
 #tools
 alias cdutility_tools='cd $WORKSPACE/my_repos/utility_tools'
-alias cdbcc='cd /usr/share/bcc'
+alias cdbcc='cd $WORKSPACE/bcc'
 #apache
 alias apache_restart="sudo systemctl restart apache2.service"
 alias apache_status="sudo systemctl status apache2.service"
