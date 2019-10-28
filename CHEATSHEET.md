@@ -54,6 +54,27 @@ git branch -u origin/dev
 To change the default upstream branch:
 git branch --set-upstream-to=origin/master
 
+Git patches
+-----------
+
+https://stackoverflow.com/questions/28192623/create-patch-or-diff-file-from-git-repository-and-apply-it-to-another-different
+
+To create patches for the last 2 commits:
+git format-patch -2
+git format-patch -2 --stdout > /tmp/patch
+
+To apply patch:
+git am .*patch
+git am < /tmp/patch
+
+Or use git diff
+
+git diff tag1..tag2 > mypatch.patch
+git apply mypatch.patch
+
+
+
+
 Git extras
 ----------
 https://github.com/tj/git-extras/blob/master/Commands.md
