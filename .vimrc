@@ -148,6 +148,7 @@ nmap <silent><leader>t :TagbarOpen<CR>
 " reload files automatically
 set autoread
 
+set wildignore+=tags,**/tags
 " grep - ripgrep - rg
 if executable('rg')
   set grepprg=rg\ --no-heading\ --vimgrep
