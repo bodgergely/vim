@@ -46,6 +46,7 @@ https://github.com/omgimanerd/doclt
 npm install -g doclt
 doclt
 
+
 Git
 ---
 
@@ -94,6 +95,13 @@ sudo npm install --global git-open
 https://github.com/arzzen/git-quick-stats
 git-quick-stats
 
+Git Hub
+-------
+Makes checking out remote pull requests easy. Download a binary from here:
+https://github.com/github/hub/releases
+
+Then you can checkout a PR like below:
+hub checkout https://github.com/neovim/neovim/pull/1820
 
 Basic tools
 -----------
@@ -127,6 +135,7 @@ Basic tools
 - hashid: Identify the different types of hashes used to encrypt data
 - tee: write stdin to file and to stdout
 - jq: JSON decoding, `jq . filename`
+- ctags - https://github.com/universal-ctags/ctags-snap
 
 
 Network tools
@@ -209,6 +218,10 @@ Process's all threads listed under this and those have shcedstat
 
 cat /proc/166976/task/166983/schedstat
 
+Procfs
+------
+/proc/<pid>/status - lots of process information
+/proc/<pid>/task   - all the threads belonging to the pid group
 
 taskset, cpu affinity
 ---------------------
