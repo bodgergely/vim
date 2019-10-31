@@ -79,7 +79,7 @@ set rtp+=~/workspace/go/src/golang.org/x/lint/misc/vim
 filetype on " required
 syntax on
 syntax enable
-set background=dark
+set background=light
 
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
@@ -154,6 +154,7 @@ if executable('rg')
   set grepprg=rg\ --no-heading\ --vimgrep
   set grepformat^=%f:%l:%c:%m
 endif
+let g:EasyGrepCommand=1
 " bind K to grep word under cursor
 "nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " bind \ (backward slash) to grep shortcut
@@ -161,6 +162,7 @@ endif
 "nmap <leader>f :grep -R -I<SPACE>
 "nmap <leader>f :Ggrep<SPACE>
 nmap <leader>f :grep<SPACE>
+nmap <leader>f :grep %<SPACE>
 
 " quickfix
 nmap <leader>q :copen<CR>

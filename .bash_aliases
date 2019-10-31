@@ -500,3 +500,4 @@ function gen_go_project()
     cookiecutter https://github.com/lacion/cookiecutter-golang.git
 }
 
+alias sshconfig='vim $HOME/.ssh/config'
