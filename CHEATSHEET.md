@@ -63,6 +63,8 @@ https://stackoverflow.com/questions/28192623/create-patch-or-diff-file-from-git-
 To create patches for the last 2 commits:
 git format-patch -2
 git format-patch -2 --stdout > /tmp/patch
+Output 11 patch lists starting from a certain commit:
+git format-patch -11 57abff067a084889b6e06137e61a3dc3458acd56
 
 To apply patch:
 git am <star>.patch   --- <star> means the asterix here just cannot use with markdown
@@ -83,6 +85,12 @@ git diff --stat torvalds/master tip/master ./kernel/sched/
 To see files changed:
 git diff --stat torvalds/master tip/master ./kernel/sched/
 
+Compare the parent of a commit with the commit - basically to diff a commit with the previous one
+^ - means parent
+git diff 57abff067a084889b6e06137e61a3dc3458acd56^ 57abff067a084889b6e06137e61a3dc3458acd56
+
+Can also use rev~3, which means rev^^^ - comparing against the 3rd parent to the commit
+git diff 57abff067a084889b6e06137e61a3dc3458acd56~3 57abff067a084889b6e06137e61a3dc3458acd56
 
 
 Git extras
