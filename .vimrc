@@ -154,6 +154,7 @@ if executable('rg')
   set grepprg=rg\ --no-heading\ --vimgrep
   set grepformat^=%f:%l:%c:%m
 endif
+" make EasyGrep use grepprg (basically to use rg otherwise it will use the slow vimgrep)
 let g:EasyGrepCommand=1
 " bind K to grep word under cursor
 "nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
