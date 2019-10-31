@@ -163,7 +163,7 @@ let g:EasyGrepCommand=1
 "nmap <leader>f :grep -R -I<SPACE>
 "nmap <leader>f :Ggrep<SPACE>
 nmap <leader>f :grep<SPACE>
-nmap <leader>f :grep %<SPACE>
+"nmap <leader>f :grep %<SPACE>   " % with vimgrep means CURRENT FILE
 
 " quickfix
 nmap <leader>q :copen<CR>
