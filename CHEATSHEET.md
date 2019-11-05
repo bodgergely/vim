@@ -182,6 +182,15 @@ Perf tools
 - /proc/schedstat
 - /proc/sched_debug
 
+Perf commands
+-------------
+https://github.com/brendangregg/perf-tools
+
+Measure syscall rate:
+sudo perf stat -e raw_syscalls:sys_enter -a -I 1000
+sudo ~/bin/perf-tools/bin/funccount -i 1 -d 10 '[sS]y[sS]_*'
+
+
 
 irq, interrupts, softirq
 -------------------------
@@ -196,6 +205,19 @@ on github iovisor/bcc
 
 /usr/share/bcc/tools
 
+cpu info
+--------
+Use Awk to filter output from below commands
+
+- cat /proc/cpuinfo
+    - core id
+    - processor
+- lscpu
+- cat /sys/devices/system/cpu/cpu0/topology/thread_siblings_list  - to see which hardware threads share a given cpu
+    0, 4
+
+
+
 cpu accounting, scheduler stats
 -------------------------------
 
@@ -205,6 +227,8 @@ Files and directories under:
 or
 
 /proc/sys/kernel/sched_*
+
+while true; do echo $(date '+%Y-%m-%dT%H:%M:%S') $(cat /sys/fs/cgroup/unified/cpu.pressure | awk -F= '{ print $NF }'); sleep 1; done | awk -W interactive 'BEGIN { prev = 0; } { curr = $2; if (prev > 0) { printf("%s %7.2f ms\n", $1, (curr - prev) / 1e3); }; prev = curr; }'
 
 schedstat
 ---------
@@ -225,6 +249,9 @@ Process's all threads listed under this and those have shcedstat
 /proc/166976/task/*
 
 cat /proc/166976/task/166983/schedstat
+
+sched stat interactive:
+while true; do echo $(date '+%Y-%m-%dT%H:%M:%S') $(for pid in $(cat /sys/fs/cgroup/systemd/system.slice/rsyslog.service/tasks); do cat /proc/$pid/schedstat | awk '{ print $2 }'; done | awk '{ s += $1 / 1e6 } END { printf("%.2f\n", s) }'); sleep 1; done | awk -W interactive 'BEGIN { prev = 0; } { curr = $2; if (prev > 0) { printf("%s %7.2f ms\n", $1, (curr - prev)); }; prev = curr; }'
 
 Procfs
 ------
