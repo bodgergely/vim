@@ -117,7 +117,7 @@ Basic tools
 - nmap, nc, socat
 - vi, vim
 - bash, tmux
-- less, more, cat
+- less, more, cat, most
 - wc, sort, uniq, bc, column
 - sed, awk
 - searchsploit
@@ -190,6 +190,12 @@ Measure syscall rate:
 sudo perf stat -e raw_syscalls:sys_enter -a -I 1000
 sudo ~/bin/perf-tools/bin/funccount -i 1 -d 10 '[sS]y[sS]_*'
 
+Perf Scheduler Analysis
+-----------------------
+
+Links:
+http://www.brendangregg.com/blog/2017-03-16/perf-sched.html
+http://www.brendangregg.com/perf.html#SchedulerAnalysis
 
 
 irq, interrupts, softirq
