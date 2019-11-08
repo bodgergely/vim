@@ -79,7 +79,7 @@ set rtp+=~/workspace/go/src/golang.org/x/lint/misc/vim
 filetype on " required
 syntax on
 syntax enable
-set background=light
+set background=dark
 
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
@@ -94,6 +94,7 @@ set background=light
 "hi Comment guifg=#5C6370 ctermfg=59
 "colorscheme PaperColor
 colorscheme gruvbox
+"colorscheme abbott
 ""colorscheme solarized
 "colorscheme badwolf
 "colorscheme murphy
@@ -419,4 +420,5 @@ vnoremap <silent><F5> :MaximizerToggle<CR>gv
 inoremap <silent><F5> <C-o>:MaximizerToggle<CR>
 " -- end of vim-maximizer
 
-
+highlight ColorColumn ctermbg=gray
+"set colorcolumn=80
