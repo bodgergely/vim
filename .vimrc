@@ -166,6 +166,10 @@ let g:EasyGrepCommand=1
 nmap <leader>f :grep<SPACE>
 "nmap <leader>f :grep %<SPACE>   " % with vimgrep means CURRENT FILE
 
+noremap  <C-F> /
+vnoremap <C-F> <C-C>/
+inoremap <C-F> <C-O>/
+
 " quickfix
 nmap <leader>q :copen<CR>
 nmap <leader>qc :cclose<CR>
@@ -264,6 +268,7 @@ map f y
 "inoremap <C-Space> <C-x><C-o>
 "inoremap <C-@> <C-Space>
 let g:user_emmet_expandword_key = '<C-c>,' " html tag expansion keyword
+"let g:user_emmet_expand_abbr_key = '<C-c>,' " html tag expansion keyword
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 "highlight all occurences of word under cursor
 ":autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
