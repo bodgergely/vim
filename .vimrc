@@ -79,7 +79,7 @@ set rtp+=~/workspace/go/src/golang.org/x/lint/misc/vim
 filetype on " required
 syntax on
 syntax enable
-set background=light
+set background=dark
 
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
@@ -94,6 +94,7 @@ set background=light
 "hi Comment guifg=#5C6370 ctermfg=59
 "colorscheme PaperColor
 colorscheme gruvbox
+"colorscheme abbott
 ""colorscheme solarized
 "colorscheme badwolf
 "colorscheme murphy
@@ -164,6 +165,10 @@ let g:EasyGrepCommand=1
 "nmap <leader>f :Ggrep<SPACE>
 nmap <leader>f :grep<SPACE>
 "nmap <leader>f :grep %<SPACE>   " % with vimgrep means CURRENT FILE
+
+noremap  <C-F> /
+vnoremap <C-F> <C-C>/
+inoremap <C-F> <C-O>/
 
 " quickfix
 nmap <leader>q :copen<CR>
@@ -263,6 +268,7 @@ map f y
 "inoremap <C-Space> <C-x><C-o>
 "inoremap <C-@> <C-Space>
 let g:user_emmet_expandword_key = '<C-c>,' " html tag expansion keyword
+"let g:user_emmet_expand_abbr_key = '<C-c>,' " html tag expansion keyword
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 "highlight all occurences of word under cursor
 ":autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
@@ -419,4 +425,5 @@ vnoremap <silent><F5> :MaximizerToggle<CR>gv
 inoremap <silent><F5> <C-o>:MaximizerToggle<CR>
 " -- end of vim-maximizer
 
-
+highlight ColorColumn ctermbg=gray
+"set colorcolumn=80

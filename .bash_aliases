@@ -508,4 +508,8 @@ function gen_go_project()
     cookiecutter https://github.com/lacion/cookiecutter-golang.git
 }
 
+function yamltojson () {
+        python -c 'import json; import yaml; import sys; print(json.dumps(yaml.load(sys.stdin)))'
+}
+
 alias sshconfig='vim $HOME/.ssh/config'
