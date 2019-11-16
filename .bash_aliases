@@ -316,8 +316,8 @@ alias cdopenresty='cd $HOME/openresty_debug'
 #traceroute
 alias traceroute_icmp='sudo traceroute -I'
 
-export VISUAL=nvim
-export EDITOR=nvim
+export VISUAL=vim
+export EDITOR=vim
 export BROWSER=google-chrome
 alias r=ranger
 alias t='tree -FC'
