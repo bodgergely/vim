@@ -240,6 +240,13 @@ alias emrun_here='emrun --no_browser --port 8080 .'
 alias nmap_syn='sudo nmap -v -A -sS'
 alias nmap_top_ports_20='sudo nmap -v -sT --top-ports 20'
 
+# first arg should be the IP
+# places results inside nmap directory
+function nmap_all()
+{
+    nmap -v -sC -sV -oA nmap $1
+}
+
 #ssh
 alias ssh_start='sudo service ssh start'
 alias ssh_stop='sudo service ssh stop'
