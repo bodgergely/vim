@@ -157,6 +157,21 @@ Network tools
 - curl
 - nc
 
+Curl
+----
+### Links:
+This is very good:
+https://curl.haxx.se/docs/sslcerts.html
+### Cheatsheet:
+https://devhints.io/curl
+
+If certificate validation fails:
+curl --insecure host:port
+
+To send a HEAD request:
+curl -I host:port
+
+
 Perf tools
 ----------
 - schedtool - change scheduler policy of processes etc
