@@ -689,6 +689,7 @@ C-b + % : split tab vertically
 C-b + " : split tab horizontally
 C-b + , : rename tab
 C-b + x : kill tab
+C-b + z : zoom/unzoom
 C-b + <bracket> : to escape the command line and scroll into the text buffer
     Once in the text buffer mode:
     - search up: '?'
