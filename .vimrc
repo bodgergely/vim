@@ -72,6 +72,7 @@ Plugin 'szw/vim-maximizer'
 Plugin 'yssl/QFEnter'   " plugin to quickly open Quick Window results - open file in vertical split: <leader><Enter>, horizontal split: <leader>,
 Plugin 'guns/vim-clojure-static'
 Plugin 'saltstack/salt-vim'
+Plugin 'benmills/vimux'  " plugin to interact with tmux - to run commands, use :Vimux..., or <leader>vp
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -427,3 +428,10 @@ inoremap <silent><F5> <C-o>:MaximizerToggle<CR>
 
 highlight ColorColumn ctermbg=gray
 "set colorcolumn=80
+
+" Vimux
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+" end of Vimux
