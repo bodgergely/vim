@@ -201,7 +201,9 @@ export METASPLOIT_DIR=/opt/metasploit-framework/embedded/framework
 export PATH=$PATH:$HOME/nodejs/node-v9.8.0-linux-x64/bin/
 export PATH=$PATH:$HOME/workspace/pyflame/src
 
+alias tmux_conf='vim ~/.tmux.conf'
 tmux source-file ~/.tmux.conf
+
 alias diskspace_check='ncdu'
 
 # jekyll (blog generator)
