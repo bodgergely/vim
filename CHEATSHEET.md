@@ -699,6 +699,10 @@ Also possible to copy the tmux window contents by simply highlighting using the 
 alt-h - go to left pane
 alt-l - go to right pane
 
+Links:
+https://www.bugsnag.com/blog/tmux-and-vim
+https://pragprog.com/book/bhtmux/tmux
+
 
 Apt, dpkg, package, apt-get
 ---------------------------
