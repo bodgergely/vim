@@ -703,6 +703,7 @@ alt-l - go to right pane
 Links:
 https://www.bugsnag.com/blog/tmux-and-vim
 https://pragprog.com/book/bhtmux/tmux
+https://tmuxcheatsheet.com/
 
 
 Apt, dpkg, package, apt-get
