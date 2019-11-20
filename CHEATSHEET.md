@@ -704,7 +704,8 @@ Links:
 https://www.bugsnag.com/blog/tmux-and-vim
 https://pragprog.com/book/bhtmux/tmux
 https://tmuxcheatsheet.com/
-
+https://github.com/tmux-plugins/tpm     -- Tmux plugin manager
+https://github.com/tmux-plugins         -- Tmux plugins
 
 Apt, dpkg, package, apt-get
 ---------------------------

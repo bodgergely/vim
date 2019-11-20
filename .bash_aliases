@@ -515,3 +515,4 @@ function yamltojson () {
 }
 
 alias sshconfig='vim $HOME/.ssh/config'
+alias tmux_source='tmux source ~/.tmux.conf'
