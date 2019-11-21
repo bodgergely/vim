@@ -323,7 +323,7 @@ export PATH=$HOME/openresty/bin:$HOME/openresty/nginx/sbin:$PATH
 alias cdopenresty='cd $HOME/openresty_debug'
 
 #traceroute
-alias traceroute_icmp='sudo traceroute -I'
+alias traceroute_icmp='sudo traceroute -I --max-hops=60'
 
 export VISUAL=vim
 export EDITOR=vim
