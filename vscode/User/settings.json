@@ -28,14 +28,9 @@
             "after": [
                 "0"
             ]
-        },
+        }
     ],
     "vim.leader": ",",
-    "rust.mode": "rls",
-    "rust.rustup": {
-        "toolchain": "stable-x86_64-unknown-linux-gnu",
-        "nightlyToolchain": "nightly-x86_64-unknown-linux-gnu"
-    },
     "files.autoSave": "afterDelay",
     "explorer.confirmDragAndDrop": false,
     "editor.wordWrap": "on",
@@ -69,9 +64,6 @@
         "build/**": true
     },
     "workbench.tree.indent": 25,
-    "rust.rls": {
-        "useRustfmt": false
-    },
     "go.inferGopath": true,
     "editor.formatOnSave": true,
     "vs-kubernetes": {
@@ -86,8 +78,8 @@
     "python.terminal.activateEnvironment": false,
     "editor.minimap.maxColumn": 1200,
     "editor.minimap.enabled": false,
-    "workbench.colorTheme": "Quiet Light",
+    "workbench.colorTheme": "Visual Studio Light",
     "editor.cursorBlinking": "solid",
     "C_Cpp.updateChannel": "Insiders",
-    "window.zoomLevel": -1,
+    "window.zoomLevel": -1
 }
