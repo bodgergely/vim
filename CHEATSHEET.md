@@ -564,6 +564,17 @@ Injectable Web Exploit Code: /usr/share/laudanum/README   -- make sure to use th
       python tcp_pty_shell_handler.py -b <IP>:<PORT>
         then we execute the reverse shell on the remote machine and we get the shell.
 
+- Nice real bash pty using python once you have a reverse shell using nc
+
+    python -c 'import pty; pty.spawn("/bin/bash")'
+    bash$ then you hit C-Z to put the connection to background
+    $ stty raw -echo
+    $ fg
+    bash$
+    
+    And now you have a nice bash with good completion and input.
+
+
 Vulnerabilities
 ---------------
 
