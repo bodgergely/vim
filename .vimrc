@@ -35,7 +35,7 @@ Plugin 'jiangmiao/auto-pairs'
 "Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
-Plugin 'rust-lang/rust.vim'
+"Plugin 'rust-lang/rust.vim'
 "Plugin 'racer-rust/vim-racer'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'flazz/vim-colorschemes'
@@ -93,8 +93,8 @@ set background=dark
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-"colorscheme PaperColor
-colorscheme gruvbox
+colorscheme PaperColor
+"colorscheme gruvbox
 "colorscheme abbott
 ""colorscheme solarized
 "colorscheme badwolf
