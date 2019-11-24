@@ -931,6 +931,11 @@ ftrace
 - trace-cmd
 - kernelshark
 
+Kernel modules
+==============
+$ lsmod
+$ ls /lib/modules/`uname -r`/kernel
+
 
 Kubernetes
 ==========
