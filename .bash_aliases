@@ -517,3 +517,6 @@ function yamltojson () {
 
 alias sshconfig='vim $HOME/.ssh/config'
 alias tmux_source='tmux source ~/.tmux.conf'
+
+alias syscall_numbers='cat /usr/include/x86_64-linux-gnu/asm/unistd_64.h'
+
