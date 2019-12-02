@@ -195,6 +195,8 @@ alias agi="sudo apt-get install"
 alias agi_yes="sudo apt-get -y install"
 alias agr="sudo apt-get remove"
 
+alias bt="sudo bpftrace"
+
 #metasploit
 alias cdmetasploit="cd /opt/metasploit-framework/embedded/framework"
 export METASPLOIT_DIR=/opt/metasploit-framework/embedded/framework
