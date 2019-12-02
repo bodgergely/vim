@@ -53,7 +53,7 @@ Plugin 'ayu-theme/ayu-vim'
 "Plugin 'dracula/vim'
 Plugin 'hdima/python-syntax'
 "Plugin 'altercation/vim-colors-solarized'
-Plugin 'rdnetto/YCM-Generator'  " generate YouCompleteMe config file for C++ projects
+"Plugin 'rdnetto/YCM-Generator'  " generate YouCompleteMe config file for C++ projects
 Plugin 'SirVer/ultisnips'       " snippet engine
 Plugin 'honza/vim-snippets'     " actual snippets for languages
 Plugin 'prettier/vim-prettier'
