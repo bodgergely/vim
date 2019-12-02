@@ -24,7 +24,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
@@ -80,7 +80,7 @@ set rtp+=~/workspace/go/src/golang.org/x/lint/misc/vim
 filetype on " required
 syntax on
 syntax enable
-set background=dark
+set background=light
 
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
@@ -93,8 +93,8 @@ set background=dark
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-colorscheme PaperColor
-"colorscheme gruvbox
+"colorscheme PaperColor
+colorscheme gruvbox
 "colorscheme abbott
 ""colorscheme solarized
 "colorscheme badwolf
