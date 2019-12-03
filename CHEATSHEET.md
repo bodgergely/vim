@@ -245,6 +245,7 @@ Use Awk to filter output from below commands
 - cat /sys/devices/system/cpu/cpu0/topology/thread_siblings_list  - to see which hardware threads share a given cpu
     0, 4
 
+ls /sys/devices/system/cpu/
 
 
 cpu accounting, scheduler stats
