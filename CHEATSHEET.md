@@ -75,6 +75,14 @@ Or use git diff
 git diff tag1..tag2 > mypatch.patch
 git apply mypatch.patch
 
+Git log
+-------
+See changes between tags:
+git log tag..tag
+
+Cheatsheet:
+https://devhints.io/git-log
+
 
 Git diff - to see changes
 --------
