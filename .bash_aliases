@@ -332,6 +332,7 @@ export VISUAL=vim
 export EDITOR=vim
 export BROWSER=google-chrome
 alias r=ranger
+alias fm=vifm
 alias t='tree -FC'
 
 # kubernetes
@@ -341,7 +342,7 @@ alias k='kubectl'
 perf_paranoid_disable() { echo "echo -1 > /proc/sys/kernel/perf_event_paranoid" | cs ; }
 
 #perf flamegraph system wide
-alias perf_flame="perf_flame.sh"
+alias flame_graph="perf_flame.sh"
 
 if [ -f ~/.cf_aliasesrc ]; then
     source ~/.cf_aliasesrc
