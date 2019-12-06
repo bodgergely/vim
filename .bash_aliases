@@ -527,10 +527,12 @@ function syscall_numbers()
     syscallfile_print | grep '#define' | awk '{print $3 " " $2}'
 }
 
-function kernel-changelog() {
+function kernel-changelog-v4() {
   major=$1
   shift
   minor=$1
   shift
-  for i in $(seq $minor 0); do echo $major.$i $(curl -s https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-$major.$i | fgrep -i "$@"); done
+  echo $major, $minor
+  echo $@
+  for i in $(seq $minor -1 0); do echo $major.$i $(curl -s https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-$major.$i | fgrep -i "$@"); done
 }
