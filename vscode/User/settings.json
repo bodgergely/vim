@@ -78,8 +78,12 @@
     "python.terminal.activateEnvironment": false,
     "editor.minimap.maxColumn": 1200,
     "editor.minimap.enabled": false,
-    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.colorTheme": "Solarized Light",
     "editor.cursorBlinking": "solid",
     "C_Cpp.updateChannel": "Insiders",
-    "window.zoomLevel": -1
+    "window.zoomLevel": -1,
+    "files.associations": {
+        "*.html": "html"
+    },
+    "editor.fontSize": 15
 }
