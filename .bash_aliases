@@ -90,6 +90,8 @@ findc()
 alias grep='grep --color'
 alias g=grep.py "$@"
 
+#ripgrep, rg
+alias rgg='rg -uuu'
 
 #vim
 alias vim_background_color="$HOME/bin/vim_background_color.py"
