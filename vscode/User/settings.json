@@ -11,7 +11,7 @@
             ]
         }
     ],
-    "vim.normalModeKeyBindings": [
+    "vim.visualModeKeyBindings": [
         {
             "before": [
                 "f"
@@ -19,14 +19,15 @@
             "after": [
                 "y"
             ]
-        },
+        }
+    ],
+    "vim.normalModeKeyBindings": [
         {
             "before": [
-                "v",
-                "v"
+                "f"
             ],
             "after": [
-                "0"
+                "y"
             ]
         }
     ],
