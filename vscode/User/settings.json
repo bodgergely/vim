@@ -21,12 +21,14 @@
             ]
         }
     ],
-    "vim.normalModeKeyBindings": [
+    "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
+                "f",
                 "f"
             ],
             "after": [
+                "y",
                 "y"
             ]
         }
@@ -86,4 +88,7 @@
         "*.html": "html"
     },
     "sqltools.useNodeRuntime": true,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
 }
