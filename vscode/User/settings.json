@@ -52,7 +52,6 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "python.jediEnabled": true,
-    "debug.console.fontSize": 16,
     "files.exclude": {
         ".GOPATH": true,
         "**/*.a": true,
@@ -81,9 +80,9 @@
     "workbench.colorTheme": "Solarized Light",
     "editor.cursorBlinking": "solid",
     "C_Cpp.updateChannel": "Insiders",
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
     "files.associations": {
         "*.html": "html"
     },
-    "editor.fontSize": 15
+    "sqltools.useNodeRuntime": true,
 }
