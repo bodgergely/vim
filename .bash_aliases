@@ -179,6 +179,7 @@ alias cdlangtut='cd $HOME/tutorials/lang-tut/'
 alias cdsysprog='cd $HOME/tutorials/sysprog/'
 alias cdtmp='cd /tmp'
 alias cdudemy='cd $WORKSPACE/my_repos/udemy'
+alias cdflasktut='cd $HOME/flask_tutorial/microblog'
 #go
 alias cdgo='cd $HOME/workspace/go/src'
 alias cdgo_playground='cd $GOPATH/src/playground'
