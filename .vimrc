@@ -82,6 +82,9 @@ syntax on
 syntax enable
 set background=light
 
+let g:gruvbox_contrast_dark='hard'  " needs to come before setting the gruvbox colorscheme
+"let g:gruvbox_contrast_light='hard'
+
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
 "let ayucolor="dark"   " for dark version of theme
