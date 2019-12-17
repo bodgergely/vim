@@ -46,7 +46,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
-Plugin 'dkprice/vim-easygrep'
+Plugin 'dkprice/vim-easygrep'   " very good!! - visual select text and use <leader> vv to grep for the text - make it use ripgrep! (vimgrep is slow)
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'morhetz/gruvbox'
 Plugin 'ayu-theme/ayu-vim'
@@ -80,7 +80,7 @@ set rtp+=~/workspace/go/src/golang.org/x/lint/misc/vim
 filetype on " required
 syntax on
 syntax enable
-set background=dark
+set background=light
 
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
