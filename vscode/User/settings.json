@@ -73,7 +73,9 @@
         "vs-kubernetes.minikube-path": "/home/greg/.vs-kubernetes/tools/minikube/linux-amd64/minikube",
         "vs-kubernetes.draft-path": "/home/greg/.vs-kubernetes/tools/draft/linux-amd64/draft"
     },
-    "[python]": {},
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
     "yaml.validate": false,
     "yaml.format.enable": false,
     "python.linting.enabled": false,
@@ -91,4 +93,5 @@
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
     },
+    "python.formatting.autopep8Path": "",
 }
