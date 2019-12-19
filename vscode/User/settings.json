@@ -54,7 +54,7 @@
     "editor.mouseWheelZoom": true,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "python.jediEnabled": true,
+    "python.jediEnabled": false,
     "files.exclude": {
         ".GOPATH": true,
         "**/*.a": true,
@@ -86,12 +86,13 @@
     "C_Cpp.updateChannel": "Insiders",
     "window.zoomLevel": 0,
     "files.associations": {
-        "*.html": "html"
+        "*.html": "jinja-html"
     },
     "sqltools.useNodeRuntime": true,
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
     },
     "python.formatting.autopep8Path": "",
+    "editor.fontLigatures": true,
     "workbench.colorTheme": "Default Light+",
 }
