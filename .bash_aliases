@@ -148,6 +148,9 @@ alias cdvortex="cd $WARGAMES/vortex"
 alias cdnatas="cd $WARGAMES/natas"
 # end of wargames
 
+# htb/hackthebox/HACKTHEBOX
+alias cdcraft='cd $HOME/htb/boxes/Craft'
+
 #directories
 alias cdvimrc="cd $WORKSPACE/vimrc"
 alias cdblog="cd $WORKSPACE/bodgergely.github.io"
