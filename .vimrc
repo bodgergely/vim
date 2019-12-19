@@ -33,7 +33,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
 "Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mattn/emmet-vim'
 "Plugin 'rust-lang/rust.vim'
 "Plugin 'racer-rust/vim-racer'
@@ -80,9 +81,9 @@ set rtp+=~/workspace/go/src/golang.org/x/lint/misc/vim
 filetype on " required
 syntax on
 syntax enable
-set background=light
+set background=dark
 
-let g:gruvbox_contrast_dark='hard'  " needs to come before setting the gruvbox colorscheme
+let g:gruvbox_contrast_dark='medium'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
 "let g:gruvbox_contrast_light='hard'
 
 "let ayucolor="light"  " for light version of theme
