@@ -1,6 +1,5 @@
 // Place your key bindings in this file to overwrite the defaults
-[
-    {
+[{
         "key": "ctrl+-",
         "command": "workbench.action.quickInputBack",
         "when": "inQuickOpen"
@@ -79,12 +78,8 @@
         "command": "workbench.action.focusActiveEditorGroup"
     },
     {
-        "key": "ctrl+e",
-        "command": "-workbench.action.quickOpen"
-    },
-    {
         "key": "ctrl+'",
         "command": "workbench.action.toggleMaximizedPanel"
     },
-    
+
 ]
