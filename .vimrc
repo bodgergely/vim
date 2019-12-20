@@ -81,10 +81,10 @@ set rtp+=~/workspace/go/src/golang.org/x/lint/misc/vim
 filetype on " required
 syntax on
 syntax enable
-set background=dark
+set background=light
 
 let g:gruvbox_contrast_dark='medium'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
-"let g:gruvbox_contrast_light='hard'
+let g:gruvbox_contrast_light='hard'
 
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme

@@ -355,7 +355,7 @@ if [ -f ~/.cf_aliasesrc ]; then
 fi
 
 #smtp server in python
-smtp_server() { sudo python -m smtpd -n -c DebuggingServer :25; }
+smtp_server() { python -m smtpd -n -c DebuggingServer localhost:8025; }
 #http server in python
 http_server() { python3 -m http.server $1; }
 http_server_python2() { python2 -m SimpleHTTPServer $1; }
