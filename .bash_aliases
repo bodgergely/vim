@@ -81,6 +81,10 @@ ff() {
     find . -name "$1"
 }
 
+ffi() {
+    find . -iname "$1"
+}
+
 # to find files ending with .c or .h
 findc() 
 { 
