@@ -547,3 +547,13 @@ function kernel-changelog-v4() {
   echo $@
   for i in $(seq $minor -1 0); do echo $major.$i $(curl -s https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-$major.$i | fgrep -i "$@"); done
 }
+
+function url_dec() {
+    if [[ -z $1 ]]; then
+        echo "Usage: url_dec <encoded_url>"
+        exit -1
+    fi
+    encoded=$1
+    python3 -c "import urllib.parse; print(urllib.parse.unquote('$encoded'))"
+}
+
