@@ -84,8 +84,10 @@ syntax on
 syntax enable
 set background=dark
 
-let g:gruvbox_contrast_dark='medium'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
+let g:gruvbox_contrast_dark='hard'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
 let g:gruvbox_contrast_light='medium'
+"let g:airline_theme='papercolor'
+"let g:airline_theme='gruvbox'
 
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
@@ -98,8 +100,8 @@ let g:gruvbox_contrast_light='medium'
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-colorscheme PaperColor
-"colorscheme gruvbox
+"colorscheme PaperColor
+colorscheme gruvbox
 "colorscheme abbott
 ""colorscheme solarized
 "colorscheme badwolf

@@ -86,7 +86,7 @@
     "C_Cpp.updateChannel": "Insiders",
     "window.zoomLevel": 0,
     "files.associations": {
-        "*.html": "jinja-html"
+        "*.html": "html"
     },
     "sqltools.useNodeRuntime": true,
     "[html]": {
@@ -94,5 +94,5 @@
     },
     "python.formatting.autopep8Path": "",
     "editor.fontLigatures": true,
-    "workbench.colorTheme": "Default Light+",
+    "workbench.colorTheme": "Gruvbox Dark Medium",
 }
