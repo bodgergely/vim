@@ -74,7 +74,7 @@ Plugin 'yssl/QFEnter'   " plugin to quickly open Quick Window results - open fil
 Plugin 'guns/vim-clojure-static'
 Plugin 'saltstack/salt-vim'
 Plugin 'benmills/vimux'  " plugin to interact with tmux - to run commands, use :Vimux..., or <leader>vp
-Plugin 'neovim/nvim-lsp' " Language Server Plugin - need to sinstall individual language servers with LspInstall, LspInstallInfo
+"Plugin 'neovim/nvim-lsp' " Language Server Plugin - need to sinstall individual language servers with LspInstall, LspInstallInfo
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -82,7 +82,7 @@ set rtp+=~/workspace/go/src/golang.org/x/lint/misc/vim
 filetype on " required
 syntax on
 syntax enable
-set background=light
+set background=dark
 
 let g:gruvbox_contrast_dark='medium'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
 let g:gruvbox_contrast_light='medium'
@@ -98,8 +98,8 @@ let g:gruvbox_contrast_light='medium'
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-"colorscheme PaperColor
-colorscheme gruvbox
+colorscheme PaperColor
+"colorscheme gruvbox
 "colorscheme abbott
 ""colorscheme solarized
 "colorscheme badwolf
