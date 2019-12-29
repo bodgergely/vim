@@ -103,7 +103,9 @@ let g:gruvbox_contrast_light='hard'
 "hi Comment guifg=#5C6370 ctermfg=59
 "colorscheme PaperColor
 "colorscheme gruvbox
-colorscheme focuspoint
+"colorscheme focuspoint
+"colorscheme happy_hacking
+colorscheme hybrid_reverse
 "colorscheme abbott
 ""colorscheme solarized
 "colorscheme badwolf
