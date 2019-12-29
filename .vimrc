@@ -39,7 +39,8 @@ Plugin 'mattn/emmet-vim'
 "Plugin 'rust-lang/rust.vim'
 "Plugin 'racer-rust/vim-racer'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'flazz/vim-colorschemes'
+"Plugin 'flazz/vim-colorschemes'
+Plugin 'rafi/awesome-vim-colorschemes'
 "Plugin 'liuchengxu/space-vim-dark'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'fatih/vim-go'
@@ -84,8 +85,8 @@ syntax on
 syntax enable
 set background=dark
 
-let g:gruvbox_contrast_dark='hard'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
-let g:gruvbox_contrast_light='medium'
+let g:gruvbox_contrast_dark='medium'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
+let g:gruvbox_contrast_light='hard'
 "let g:airline_theme='papercolor'
 "let g:airline_theme='gruvbox'
 
@@ -101,7 +102,8 @@ let g:gruvbox_contrast_light='medium'
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
 "colorscheme PaperColor
-colorscheme gruvbox
+"colorscheme gruvbox
+colorscheme focuspoint
 "colorscheme abbott
 ""colorscheme solarized
 "colorscheme badwolf
