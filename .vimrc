@@ -39,8 +39,8 @@ Plugin 'mattn/emmet-vim'
 "Plugin 'rust-lang/rust.vim'
 "Plugin 'racer-rust/vim-racer'
 Plugin 'christoomey/vim-tmux-navigator'
-"Plugin 'flazz/vim-colorschemes'
-Plugin 'rafi/awesome-vim-colorschemes'
+Plugin 'flazz/vim-colorschemes'
+"Plugin 'rafi/awesome-vim-colorschemes'
 "Plugin 'liuchengxu/space-vim-dark'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'fatih/vim-go'
@@ -83,15 +83,15 @@ set rtp+=~/workspace/go/src/golang.org/x/lint/misc/vim
 filetype on " required
 syntax on
 syntax enable
-set background=dark
+set background=light
 
 let g:gruvbox_contrast_dark='medium'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
-let g:gruvbox_contrast_light='hard'
+let g:gruvbox_contrast_light='medium'
 "let g:airline_theme='papercolor'
 "let g:airline_theme='gruvbox'
 
 "let ayucolor="light"  " for light version of theme
-"let ayucolor="mirage" " for mirage version of theme
+let ayucolor="mirage" " for mirage version of theme
 "let ayucolor="dark"   " for dark version of theme
 "colorscheme ayu
 
@@ -101,11 +101,14 @@ let g:gruvbox_contrast_light='hard'
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-"colorscheme PaperColor
+colorscheme PaperColor
 "colorscheme gruvbox
 "colorscheme focuspoint
+"colorscheme hybrid         " very basic, not much syntax coloring
+"colorscheme dracula        " nice blueish with white text
 "colorscheme happy_hacking
-colorscheme hybrid_reverse
+"colorscheme mustang
+"colorscheme hybrid_reverse
 "colorscheme abbott
 ""colorscheme solarized
 "colorscheme badwolf
