@@ -24,7 +24,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
