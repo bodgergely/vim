@@ -5,13 +5,13 @@ set -e
 if [[ -z $1 ]]
 then
     echo Provide the path for install location!
-    exit(-1)
+    exit -1
 fi
 
 if [[ $1 == "--help" ]] || [[ $1 == "-h" ]]
 then
     echo "neovim-build.sh <install-path>"
-    exit(0)
+    exit 0
 fi
 
 sudo rm /usr/bin/python
