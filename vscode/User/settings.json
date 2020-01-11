@@ -94,5 +94,6 @@
     },
     "python.formatting.autopep8Path": "",
     "editor.fontLigatures": true,
-    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "cmake.configureOnOpen": false,
+    "workbench.colorTheme": "Default Light+",
 }
