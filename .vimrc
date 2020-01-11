@@ -36,8 +36,8 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mattn/emmet-vim'
-"Plugin 'rust-lang/rust.vim'
-"Plugin 'racer-rust/vim-racer'
+Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'flazz/vim-colorschemes'
 "Plugin 'rafi/awesome-vim-colorschemes'
@@ -47,7 +47,7 @@ Plugin 'fatih/vim-go'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 Plugin 'dkprice/vim-easygrep'   " very good!! - visual select text and use <leader> vv to grep for the text - make it use ripgrep! (vimgrep is slow)
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'morhetz/gruvbox'
@@ -76,6 +76,19 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'saltstack/salt-vim'
 Plugin 'benmills/vimux'  " plugin to interact with tmux - to run commands, use :Vimux..., or <leader>vp
 "Plugin 'neovim/nvim-lsp' " Language Server Plugin - need to sinstall individual language servers with LspInstall, LspInstallInfo
+"Plugin 'autozimu/LanguageClient-neovim'  " Language Server Plugin
+" START OF NCM2
+Plugin 'ncm2/ncm2'
+Plugin 'roxma/nvim-yarp'
+Plugin 'ncm2/ncm2-bufword'
+"Plugin 'ncm2/ncm2-path'
+Plugin 'ncm2/ncm2-racer'
+"Plugin 'ncm2/ncm2-pyclang'
+"Plugin 'ncm2/ncm2-go'
+Plugin 'ncm2/ncm2-jedi'
+Plugin 'ncm2/ncm2-ultisnips'
+" END OF NCM2
+
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -84,6 +97,38 @@ filetype on " required
 syntax on
 syntax enable
 set background=dark
+
+" START of autozimu/LanguageClient-neovim
+" Required for operations modifying multiple buffers like rename.
+"set hidden
+"let g:LanguageClient_serverCommands = {
+"    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+"    \ 'python': ['/usr/local/bin/pyls'],
+"    \ }
+"autocmd BufNewFile,BufRead *.rs nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+"" Or map each action separately
+"autocmd BufNewFile,BufRead *.rs nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+"autocmd BufNewFile,BufRead *.rs nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+"autocmd BufNewFile,BufRead *.rs nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+" EOF autozimu/LanguageClient-neovim
+
+" NCM2/NCM2 related ncm2
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+" NOTE: you need to install completion sources to get completions. Check
+" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+"Plug 'ncm2/ncm2-bufword'
+"Plug 'ncm2/ncm2-path'
+set shortmess+=c
+inoremap <c-c> <ESC>
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+" EOF NCM2
 
 let g:gruvbox_contrast_dark='hard'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
 let g:gruvbox_contrast_light='medium'
@@ -376,14 +421,15 @@ endif
 "let g:UltiSnipsJumpForwardTrigger="<c-j>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " Set ultisnips triggers
-let g:UltiSnipsExpandTrigger="<tab>"                                            
+"let g:UltiSnipsExpandTrigger="<tab>"                                            
 let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsRemoveSelectModeMappings = 0
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 " START OF INSERT source: https://github.com/Valloric/YouCompleteMe/issues/420
-"let g:UltiSnipsExpandTrigger = "<nop>"
+let g:UltiSnipsExpandTrigger = "<nop>"
 let g:ulti_expand_or_jump_res = 0
 function ExpandSnippetOrCarriageReturn()
     let snippet = UltiSnips#ExpandSnippetOrJump()
