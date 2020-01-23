@@ -282,7 +282,7 @@ let g:racer_experimental_completer = 1
 
 let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '(', ')', '{', '}']
 "let g:ycm_server_python_interpreter="/usr/bin/python2.7"
-let g:ycm_server_python_interpreter="/usr/bin/python3.6"
+let g:ycm_server_python_interpreter="/usr/bin/python3.7"
 let g:ycm_confirm_extra_conf = 0 " do not ask for confirmation to load the ycm_extra_conf.py
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "let g:ycm_python_binary_path = '/usr/bin/python2.7'
