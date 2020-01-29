@@ -101,4 +101,6 @@
     "rust.rustup": {
         "toolchain": "nightly-x86_64-unknown-linux-gnu"
     },
+    "cmake.configureOnOpen": false,
+    "workbench.colorTheme": "Default Light+"
 }
