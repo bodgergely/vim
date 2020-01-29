@@ -94,5 +94,11 @@
     },
     "python.formatting.autopep8Path": "",
     "editor.fontLigatures": true,
-    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "workbench.colorTheme": "Default Light+",
+    "rust.mode": "rls",
+    "rust-client.channel": "nightly",
+    "terminal.integrated.inheritEnv": false,
+    "rust.rustup": {
+        "toolchain": "nightly-x86_64-unknown-linux-gnu"
+    },
 }
