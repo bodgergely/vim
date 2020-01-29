@@ -4,13 +4,13 @@
 #eval "$(ssh-agent -s)"
 #ssh-add ~/.ssh/id_rsa
 # end of ssh
-sudo apt-get -y update
-sudo apt-get -y upgrade
+#sudo apt-get -y update
+#sudo apt-get -y upgrade
 
-sudo apt-get -y install tmux
-sudo apt-get -y install htop
+#sudo apt-get -y install tmux
+#sudo apt-get -y install htop
 sudo apt-get -y install ranger
-sudo apt-get -y install vim-gtk
+#sudo apt-get -y install vim-gtk
 sudo apt-get -y install okular
 sudo apt-get -y install okular okular-extra-backends
 sudo apt-get -y install net-tools
@@ -35,14 +35,14 @@ sudo apt-get -y install qemu-system-arm
 sudo apt-get -y install qemuctl
 sudo apt-get -y install qemu-utils
 sudo apt-get -y install gcc-multilib
-sudo apt-get -y install apache2
-sudo apt-get -y install libapache2-mod-wsgi
-sudo apt-get -y install mysql-server
-sudo apt-get -y install php php-pear php-fpm php-dev php-zip php-curl php-xmlrpc php-gd php-mysql php-mbstring php-xml libapache2-mod-php
-sudo apt-get -y install php-cli
-sudo apt-get -y install virtualbox && sudo apt-get -y install virtualbox-guest-utils
+#sudo apt-get -y install apache2
+#sudo apt-get -y install libapache2-mod-wsgi
+#sudo apt-get -y install mysql-server
+#sudo apt-get -y install php php-pear php-fpm php-dev php-zip php-curl php-xmlrpc php-gd php-mysql php-mbstring php-xml libapache2-mod-php
+#sudo apt-get -y install php-cli
+#sudo apt-get -y install virtualbox && sudo apt-get -y install virtualbox-guest-utils
 sudo apt-get -y install virtualenv
-sudo -H pip install scapy
+#sudo -H pip install scapy
 sudo apt-get -y install openvpn
 sudo apt-get -y install curl
 sudo apt-get -y install libcap-dev
@@ -53,13 +53,13 @@ sudo apt-get -y install python3.7
 sudo apt-get -y install python3.7-dev
 sudo apt-get -y install python3-pip
 
-pip3.6 install mod_wsgi
+#pip3.6 install mod_wsgi
 
 
 # java - installer is interactive - needs human input
-sudo add-apt-repository -y ppa:webupd8team/java
-sudo apt-get -y update
-sudo apt -y install oracle-java8-installer
+#sudo add-apt-repository -y ppa:webupd8team/java
+#sudo apt-get -y update
+#sudo apt -y install oracle-java8-installer
 
-sudo apt-get install remmina            # remote desktop
+#sudo apt-get install remmina            # remote desktop
 
