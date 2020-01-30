@@ -107,5 +107,6 @@
     "go.useLanguageServer": true,
     "rust.rls": {
         "useRustfmt": true
-    }
+    },
+    "code-runner.clearPreviousOutput": true
 }
