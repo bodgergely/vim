@@ -99,8 +99,13 @@
     "rust-client.channel": "nightly",
     "terminal.integrated.inheritEnv": false,
     "rust.rustup": {
-        "toolchain": "nightly-x86_64-unknown-linux-gnu"
+        "toolchain": "nightly-x86_64-unknown-linux-gnu",
+        "nightlyToolchain": "nightly-x86_64-unknown-linux-gnu"
     },
     "cmake.configureOnOpen": false,
-    "[rust]": {}
+    "[rust]": {},
+    "go.useLanguageServer": true,
+    "rust.rls": {
+        "useRustfmt": true
+    }
 }
