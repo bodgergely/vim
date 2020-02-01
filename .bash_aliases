@@ -551,9 +551,18 @@ function kernel-changelog-v4() {
 function url_dec() {
     if [[ -z $1 ]]; then
         echo "Usage: url_dec <encoded_url>"
-        exit -1
+    else
+        encoded=$1
+        python3 -c "import urllib.parse; print(urllib.parse.unquote('$encoded'))"
     fi
-    encoded=$1
-    python3 -c "import urllib.parse; print(urllib.parse.unquote('$encoded'))"
+}
+
+function url_enc() {
+    if [[ -z $1 ]]; then
+        echo "Usage: url_enc <str>"
+    else
+        encoded=$1
+        python3 -c "import urllib.parse; print(urllib.parse.quote('$encoded'))"
+    fi
 }
 
