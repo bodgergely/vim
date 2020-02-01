@@ -47,7 +47,7 @@ Plugin 'fatih/vim-go'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
-"Plugin 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 Plugin 'dkprice/vim-easygrep'   " very good!! - visual select text and use <leader> vv to grep for the text - make it use ripgrep! (vimgrep is slow)
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'morhetz/gruvbox'
@@ -78,15 +78,15 @@ Plugin 'benmills/vimux'  " plugin to interact with tmux - to run commands, use :
 "Plugin 'neovim/nvim-lsp' " Language Server Plugin - need to sinstall individual language servers with LspInstall, LspInstallInfo
 "Plugin 'autozimu/LanguageClient-neovim'  " Language Server Plugin
 " START OF NCM2
-Plugin 'ncm2/ncm2'
-Plugin 'roxma/nvim-yarp'
-Plugin 'ncm2/ncm2-bufword'
+"Plugin 'ncm2/ncm2'
+"Plugin 'roxma/nvim-yarp'
+"Plugin 'ncm2/ncm2-bufword'
 "Plugin 'ncm2/ncm2-path'
-Plugin 'ncm2/ncm2-racer'
+"Plugin 'ncm2/ncm2-racer'
 "Plugin 'ncm2/ncm2-pyclang'
 "Plugin 'ncm2/ncm2-go'
-Plugin 'ncm2/ncm2-jedi'
-Plugin 'ncm2/ncm2-ultisnips'
+"Plugin 'ncm2/ncm2-jedi'
+"Plugin 'ncm2/ncm2-ultisnips'
 " END OF NCM2
 
 " ---------------------------------------
@@ -114,20 +114,20 @@ set background=dark
 
 " NCM2/NCM2 related ncm2
 " enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-" IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-" NOTE: you need to install completion sources to get completions. Check
-" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
-"Plug 'ncm2/ncm2-bufword'
-"Plug 'ncm2/ncm2-path'
-set shortmess+=c
-inoremap <c-c> <ESC>
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+"autocmd BufEnter * call ncm2#enable_for_buffer()
+"" IMPORTANT: :help Ncm2PopupOpen for more information
+"set completeopt=noinsert,menuone,noselect
+"" NOTE: you need to install completion sources to get completions. Check
+"" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+""Plug 'ncm2/ncm2-bufword'
+""Plug 'ncm2/ncm2-path'
+"set shortmess+=c
+"inoremap <c-c> <ESC>
+"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+"" Use <TAB> to select the popup menu:
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 " EOF NCM2
 
 let g:gruvbox_contrast_dark='hard'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
