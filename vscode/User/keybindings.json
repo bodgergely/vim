@@ -1,5 +1,6 @@
 // Place your key bindings in this file to overwrite the defaults
-[{
+[
+    {
         "key": "ctrl+-",
         "command": "workbench.action.quickInputBack",
         "when": "inQuickOpen"
@@ -120,4 +121,14 @@
         "command": "-SQLTools.formatSql",
         "when": "editorTextFocus && !editorReadonly"
     },
+    {
+        "key": "tab",
+        "command": "selectNextSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "down",
+        "command": "-selectNextSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    }
 ]
