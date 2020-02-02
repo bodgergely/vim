@@ -150,5 +150,10 @@
         "key": "ctrl+u",
         "command": "-extension.vim_ctrl+u",
         "when": "editorTextFocus && vim.active && vim.use<C-u> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "-cursorUndo",
+        "when": "textInputFocus"
     }
 ]
