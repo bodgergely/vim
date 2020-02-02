@@ -17,6 +17,9 @@ export PATH=$GOROOT/bin:$PATH
 export GOPATH=$HOME/workspace/go
 export PATH=$PATH:$HOME/workspace/go/bin
 
+# rust
+export RUSTLIB=$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust
+
 #neovim
 export PATH=$HOME/neovim/bin:$PATH
 
@@ -191,6 +194,9 @@ alias cdflasktut='cd $HOME/flask_tutorial/microblog'
 #go
 alias cdgo='cd $HOME/workspace/go/src'
 alias cdgo_playground='cd $GOPATH/src/playground'
+#rust
+alias cdrustlib_nightly='cd $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust'
+
 #tools
 alias cdutility_tools='cd $WORKSPACE/my_repos/utility_tools'
 alias cdbcc='cd $WORKSPACE/iovisor/bcc'
@@ -568,3 +574,9 @@ function url_enc() {
     fi
 }
 
+# completions
+#rust
+#if type rustup 2> /dev/null; then
+#    source < rustup completions bash
+#fi
+# EOF completions
