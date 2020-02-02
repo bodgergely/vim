@@ -145,5 +145,5 @@
         "key": "ctrl+u",
         "command": "-cursorUndo",
         "when": "textInputFocus"
-    },
+    }
 ]
