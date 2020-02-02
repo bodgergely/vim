@@ -55,8 +55,8 @@ alias clion=$HOME/clion/clion-2018.1/bin/clion.sh
 # copy paste - xclip
 alias cs="xclip -selection clipboard"
 alias vs="xclip -o -selection clipboard"
-alias c="xclip"
-alias v="xclip -o"
+#alias c="xclip"
+#alias v="xclip -o"
 
 #commands
 # export PYTHONPATH=$PYTHONPATH:$HOME/.local/lib/python3.6/site-packages/
@@ -106,6 +106,7 @@ alias vim_hex="cat $WORKSPACE/vimrc/vim_hex | cs"
 #alias vim="PYTHONPATH=$PYTHONPATH:$HOME/anaconda3/lib/python3.7/site-packages/ vim"
 #alias v="PYTHONPATH=$PYTHONPATH:$HOME/anaconda3/lib/python3.7/site-packages/ vim"
 alias v=vim
+alias c='code'  # vscode alias
 alias scheme_vim="MYVIMRC=~/.scheme_vimrc vim"
 
 # git
