@@ -109,6 +109,7 @@ alias vim_hex="cat $WORKSPACE/vimrc/vim_hex | cs"
 #alias vim="PYTHONPATH=$PYTHONPATH:$HOME/anaconda3/lib/python3.7/site-packages/ vim"
 #alias v="PYTHONPATH=$PYTHONPATH:$HOME/anaconda3/lib/python3.7/site-packages/ vim"
 alias v=vim
+alias vim_min='vim -u $WORKSPACE/vimrc/vimrc_minimal'
 alias c='code'  # vscode alias
 alias scheme_vim="MYVIMRC=~/.scheme_vimrc vim"
 
@@ -443,7 +444,7 @@ function get_kernel_configs()
 function whatismyip()
 {
     # https://github.com/chubin/awesome-console-services
-    curl l2.io/ip
+    curl --silent l2.io/ip
 }
 
 function text_share()
