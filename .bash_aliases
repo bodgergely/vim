@@ -341,8 +341,9 @@ alias learn_opentracing='vim $HOME/Dropbox/cloudflare/opentracing.md'
 alias chrome-chat="google-chrome --app=https://chat.google.com/ --profile-directory='Profile 1'"
 
 # nginx - openresty
-export PATH=$HOME/openresty/bin:$HOME/openresty/nginx/sbin:$PATH
-alias cdopenresty='cd $HOME/openresty_debug'
+export OPENRESTY_PATH=$HOME/openresty/openresty-1.15.8.2
+export PATH=$OPENRESTY_PATH/bin:$OPENRESTY_PATH/nginx/sbin:$PATH
+alias cdopenresty='cd $HOME/openresty/openresty-1.15.8.2'
 
 #traceroute
 alias traceroute_icmp='sudo traceroute -I --max-hops=60'
