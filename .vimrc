@@ -130,7 +130,7 @@ inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 " EOF NCM2
 
 set background=dark
-let g:gruvbox_contrast_dark='hard'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
+let g:gruvbox_contrast_dark='medium'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
 let g:gruvbox_contrast_light='medium'
 "let g:airline_theme='papercolor'
 "let g:airline_theme='gruvbox'
