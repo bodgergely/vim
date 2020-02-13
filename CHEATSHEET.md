@@ -809,9 +809,15 @@ int bash() {
 }
 ```
 
+grep
+====
+To output the match only (-oh), -E means extended regex
+$ grep -oh -R -E "=\s+ngx\..*\." --include=*.lua .
+
+
 
 Vim
----
+===
 :wq - write and quit
 :q! - write and discard changes
 :w  - save
