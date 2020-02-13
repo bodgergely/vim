@@ -327,15 +327,6 @@ alias php7_disable='sudo a2dismod php7.2'
 
 export LD_LIBRARY_PATH=$HOME/lib
 
-# cloudflare vpn
-alias vpn_connect_1=$HOME/vpn/vpn_sf.sh
-alias vpn_connect_2=$HOME/vpn/vpn_lhr.sh
-
-# cloudflare
-alias cdcf='cd $HOME/workspace/cf'
-alias questions='vim $HOME/Dropbox/cloudflare/questions.md'
-alias learn_nginx='vim $HOME/Dropbox/cloudflare/nginx.md'
-alias learn_opentracing='vim $HOME/Dropbox/cloudflare/opentracing.md'
 
 # chrome detach the gchat
 alias chrome-chat="google-chrome --app=https://chat.google.com/ --profile-directory='Profile 1'"
