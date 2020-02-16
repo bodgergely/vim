@@ -300,8 +300,8 @@ export NET=10.11.1
 #metasploit
 alias msfconsole='sudo msfconsole'
 
-#ssl key log file
-export SSLKEYLOGFILE=~/sslkeylog.log
+#ssl key log file for wireshark
+#export SSLKEYLOGFILE=~/sslkeylog.log
 
 #MINGW - mingw
 alias mingw_32_g++=i686-w64-mingw32-g++
