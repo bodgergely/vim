@@ -146,8 +146,8 @@ let ayucolor="mirage" " for mirage version of theme
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-colorscheme PaperColor
-"colorscheme gruvbox
+"colorscheme PaperColor
+colorscheme gruvbox
 "colorscheme focuspoint
 "colorscheme hybrid         " very basic, not much syntax coloring
 "colorscheme dracula        " nice blueish with white text
