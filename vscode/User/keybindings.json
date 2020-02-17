@@ -15,6 +15,10 @@
         "command": "workbench.action.navigateBack"
     },
     {
+        "key": "ctrl+o",
+        "command": "workbench.action.navigateBack"
+    },
+    {
         "key": "ctrl+alt+-",
         "command": "-workbench.action.navigateBack"
     },
@@ -167,5 +171,9 @@
     {
         "key": "ctrl+h",
         "command": "-editor.action.startFindReplaceAction"
+    },
+    {
+        "key": "ctrl+o",
+        "command": "-workbench.action.files.openFile"
     }
 ]
