@@ -242,6 +242,7 @@ alias torbrowser='~/tor/tor-browser_en-US/start-tor-browser.desktop'
 alias terminal_theme_chooser='wget -O gogh https://git.io/vQgMr && chmod +x gogh && ./gogh && rm gogh'
 
 alias network_restart='sudo systemctl restart network-manager.service'
+alias network_check='ping -w 2 1.1.1.1'
 alias sound_restart='pulseaudio -k && sudo alsa force-reload'
 alias ping_google='ping www.google.com'
 alias ports_open='sudo netstat -peanut'
