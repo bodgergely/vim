@@ -500,3 +500,8 @@ map <Leader>vl :VimuxRunLastCommand<CR>
 " Zoom the tmux runner pane
 map <Leader>vz :VimuxZoomRunner<CR>
 " end of Vimux
+
+" lua
+let lua_version = 5
+let lua_version = 1
+
