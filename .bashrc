@@ -138,7 +138,7 @@ unset __conda_setup
 source <(kubectl completion bash | sed s/kubectl/k/g)
 
 stty -ixon
-set -o emacs
+#set -o emacs
 
 # generate core file if crash happens
 ulimit -c unlimited
