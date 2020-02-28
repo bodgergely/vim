@@ -3,6 +3,15 @@
 #  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 #fi
 
+# VIM MODE !!!!
+# set vi/vim mode
+# https://catonmat.net/bash-vi-editing-mode-cheat-sheet
+# hit ESC to get out from editing mode
+# k - to go back in history and n-> to go forward in history
+set -o vi
+## END OF VI/VIM MODE
+
+
 alias aer="source $HOME/.bash_aliases"
 alias reload="source $HOME/.bashrc"
 alias ae="vim $HOME/.bash_aliases; aer;"
