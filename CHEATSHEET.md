@@ -959,6 +959,18 @@ alias k=kubectl
 k get pods
 k cluster-info
 
+Docker
+======
+
+Post install steps:
+
+$ sudo groupadd docker
+$ sudo usermod -aG docker $USER
+Verify:
+$ docker run hello-world
+
+$ sudo systemctl enable docker
+
 Filesystem
 ==========
 
