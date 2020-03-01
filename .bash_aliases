@@ -9,6 +9,7 @@
 # hit ESC to get out from editing mode
 # k - to go back in history and n-> to go forward in history
 set -o vi
+bind '"jk":vi-movement-mode'
 ## END OF VI/VIM MODE
 
 
