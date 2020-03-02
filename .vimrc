@@ -88,6 +88,7 @@ Plugin 'ncm2/ncm2-go'
 Plugin 'ncm2/ncm2-jedi'
 Plugin 'ncm2/ncm2-ultisnips'
 " END OF NCM2
+Plugin 'vim-scripts/vim-auto-save'
 
 " ---------------------------------------
 " All of your Plugins must be added before the following line
@@ -505,3 +506,7 @@ map <Leader>vz :VimuxZoomRunner<CR>
 let lua_version = 5
 let lua_version = 1
 
+" autosave plugin
+"let g:auto_save = 1        " this would enable the plugin on vim startup
+let g:auto_save_in_insert_mode = 0
+let g:auto_save_silent = 1    " no notification when autosaving
