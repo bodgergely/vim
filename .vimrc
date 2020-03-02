@@ -89,6 +89,7 @@ Plugin 'ncm2/ncm2-jedi'
 Plugin 'ncm2/ncm2-ultisnips'
 " END OF NCM2
 Plugin 'vim-scripts/vim-auto-save'
+Plugin 'tmux-plugins/vim-tmux-focus-events'
 
 " ---------------------------------------
 " All of your Plugins must be added before the following line
@@ -510,3 +511,7 @@ let lua_version = 1
 "let g:auto_save = 1        " this would enable the plugin on vim startup
 let g:auto_save_in_insert_mode = 0
 let g:auto_save_silent = 1    " no notification when autosaving
+
+" autoread - reload external changes to file in vim editor
+set autoread
+au FocusGained,BufEnter * :checktime    " this is to reload changes
