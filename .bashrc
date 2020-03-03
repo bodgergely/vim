@@ -156,17 +156,17 @@ export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
 export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
 # if this is interactive shell, then bind hstr to Ctrl-r (for Vi mode check doc)
 ## START of default mapping
-#if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
-## if this is interactive shell, then bind 'kill last command' to Ctrl-x k
-#if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
+if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
+# if this is interactive shell, then bind 'kill last command' to Ctrl-x k
+if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
 ## EOF default mapping
 ##############################################################################
 # START OF VI MODE
 # and this is when bash is in vi mode 
 # https://github.com/dvorka/hstr/blob/master/CONFIGURATION.md
-if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\e^ihstr -- \n"'; fi
-# if this is interactive shell, then bind 'kill last command' to Ctrl-x k
-if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
+#if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\e^ihstr -- \n"'; fi
+## if this is interactive shell, then bind 'kill last command' to Ctrl-x k
+#if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
 # EOF VI MODE
 export HSTR_CONFIG=raw-history-view
 ############ END of hstr ######################################################
