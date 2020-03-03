@@ -900,7 +900,10 @@ Ctrl W + J - Move the current window to the "very bottom"
 Ctrl W + K - Move the current window to the "very top"
 
 Quit shortcut - save and quit:
+:x
+or
 ZZ
+
 Quit shortcut - quit/exit without saving:
 ESC Z Q
 
