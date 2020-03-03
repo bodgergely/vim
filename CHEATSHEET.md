@@ -901,6 +901,8 @@ Ctrl W + K - Move the current window to the "very top"
 
 Quit shortcut - save and quit:
 shift + zz
+Quit shortcut - quit/exit without saving:
+ESC Z Q
 
 
 gcc
