@@ -899,6 +899,9 @@ Ctrl W + H - Move the current window to the "far left"
 Ctrl W + J - Move the current window to the "very bottom"
 Ctrl W + K - Move the current window to the "very top"
 
+Quit shortcut - save and quit:
+shift + zz
+
 
 gcc
 ---
