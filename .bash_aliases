@@ -8,9 +8,11 @@
 # https://catonmat.net/bash-vi-editing-mode-cheat-sheet
 # hit ESC to get out from editing mode
 # k - to go back in history and n-> to go forward in history
-#set -o vi
+# v - to enter to vim and edit the command
+# with emacs mode you can do ctrl+x and ctrl+e to enter vim mode otherwise
+set -o vi
 # remap the jk to be the esc key
-#bind '"jk":vi-movement-mode'
+bind '"jk":vi-movement-mode'
 ## END OF VI/VIM MODE
 
 
