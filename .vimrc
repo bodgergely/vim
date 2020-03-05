@@ -131,7 +131,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 " EOF NCM2
 
-set background=dark
+set background=light
 let g:gruvbox_contrast_dark='medium'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
 let g:gruvbox_contrast_light='medium'
 "let g:airline_theme='papercolor'
@@ -148,8 +148,8 @@ let ayucolor="mirage" " for mirage version of theme
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-"colorscheme PaperColor
-colorscheme gruvbox
+colorscheme PaperColor
+"colorscheme gruvbox
 "colorscheme focuspoint
 "colorscheme hybrid         " very basic, not much syntax coloring
 "colorscheme dracula        " nice blueish with white text
@@ -186,6 +186,8 @@ set path+=**
 set modifiable
 
 let mapleader = ","
+
+set dir=.,~/.local/share/nvim/swap/,/tmp/
 
 " easymotion - bind to <leader>(easymotion prefix) - byu default it is <leader><leader>(prefix)
 map <Leader> <Plug>(easymotion-prefix)
