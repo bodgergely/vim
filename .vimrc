@@ -52,6 +52,7 @@ Plugin 'dkprice/vim-easygrep'   " very good!! - visual select text and use <lead
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'morhetz/gruvbox'
 Plugin 'ayu-theme/ayu-vim'
+Plugin 'chriskempson/base16-vim'
 "Plugin 'dracula/vim'
 Plugin 'hdima/python-syntax'
 "Plugin 'altercation/vim-colors-solarized'
@@ -131,7 +132,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 " EOF NCM2
 
-set background=light
+set background=dark
 let g:gruvbox_contrast_dark='medium'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
 let g:gruvbox_contrast_light='medium'
 "let g:airline_theme='papercolor'
@@ -148,8 +149,10 @@ let ayucolor="mirage" " for mirage version of theme
 "colorscheme black_angus
 "colorscheme space-vim-dark
 "hi Comment guifg=#5C6370 ctermfg=59
-colorscheme PaperColor
-"colorscheme gruvbox
+"colorscheme PaperColor
+colorscheme gruvbox
+"colorscheme solarized8_light_high
+"colorscheme base16-default-dark
 "colorscheme focuspoint
 "colorscheme hybrid         " very basic, not much syntax coloring
 "colorscheme dracula        " nice blueish with white text
@@ -157,7 +160,7 @@ colorscheme PaperColor
 "colorscheme mustang
 "colorscheme hybrid_reverse
 "colorscheme abbott
-""colorscheme solarized
+"colorscheme solarized
 "colorscheme badwolf
 "colorscheme murphy
 filetype plugin indent on    " required
