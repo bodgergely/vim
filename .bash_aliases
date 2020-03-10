@@ -19,6 +19,9 @@ vimode() {
     set -o vi
     bind '"jk":vi-movement-mode'
 }
+emacsmode() {
+    set -o emacs
+}
 
 alias aer="source $HOME/.bash_aliases"
 alias reload="source $HOME/.bashrc"
