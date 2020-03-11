@@ -1,5 +1,15 @@
 {
-    "vim.useCtrlKeys": false,
+    "vim.useCtrlKeys": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["u"],
+            "commands": ["undo"]
+        },
+        {
+            "before": ["<C-r>"],
+            "commands": ["redo"]
+        }
+    ],
     "vim.insertModeKeyBindings": [
         {
             "before": [
