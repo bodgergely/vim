@@ -1,0 +1,6 @@
+let mapleader = ","
+map <A-h> previousTab
+map <A-l> nextTab
+let blacklists = ["https://wiki.cfops.it/*","https://www.typingtest.com/*","https://play.typeracer.com/*"]
+" Displays your public IP address in the status bar
+map ci :call getIP<CR>
