@@ -908,6 +908,21 @@ Quit shortcut - quit/exit without saving:
 ESC Z Q
 
 
+vscode VSCode
+=============
+```
+C+b - minimize side panel (like search and file navigator)
+C+S+p - command select (select a command from here - very useful)
+C+p - select a file to open
+C+n - new file
+C+w - close window
+C+' - maximize terminal
+C+` - open/hide terminal view
+C+S+n - new vscode window
+A+F4 - close vscode window (the whole app) - this is more a universal ubuntu thing
+C+h,j,k,l - to move around in the windows
+```
+
 gcc
 ---
 
