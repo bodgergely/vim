@@ -1,5 +1,5 @@
 {
-    "vim.useCtrlKeys": true,
+    "vim.useCtrlKeys": false,
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["u"],
