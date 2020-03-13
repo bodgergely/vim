@@ -691,6 +691,8 @@ alt-f: move forward one word
 ctrl+left arrow: move bach one word
 ctrl+right arrow: move forward one word
 
+ctrl+x,ctrl+e: to edit current bash command in vim
+
 alt+.: inserts the last "word" of the previous command at the cursor. Repeat it to get the last word from older commands. 
 ctrl+/: undo previosuly typed word
 
