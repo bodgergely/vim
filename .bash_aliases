@@ -588,6 +588,10 @@ function url_enc() {
     fi
 }
 
+function curl-time() {
+    curl -i -w "@$HOME/curl-format.txt" -o /dev/null -s $@
+}
+
 # completions
 #rust
 #if type rustup 2> /dev/null; then
