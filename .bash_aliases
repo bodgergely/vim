@@ -603,6 +603,10 @@ function curl-time() {
     curl -i -w "@$HOME/curl-format.txt" -o /dev/null -s $@
 }
 
+function laptop-model-version() {
+    sudo dmidecode | grep -A 9 "System Information"
+}
+
 # completions
 #rust
 #if type rustup 2> /dev/null; then
