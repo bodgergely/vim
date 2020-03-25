@@ -137,6 +137,8 @@ alias scheme_vim="MYVIMRC=~/.scheme_vimrc vim"
 alias git_developers='git shortlog -sne'
 alias gcl='git clone'
 alias gpu='git push'
+alias gpl='git pull'
+alias gfe='git fetch'
 alias gs="git status"
 alias gl="git log"
 alias gb="git branch"
@@ -144,6 +146,7 @@ alias ga="git add"
 alias gc="git checkout"
 alias git_discard="git checkout --"
 alias git_unstage="git reset HEAD"
+alias git_update="git fetch && git pull"
 alias gco="git commit"
 alias gd="git diff"
 alias git_submodule_recursive="git submodule update --init --recursive"
