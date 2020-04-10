@@ -1013,6 +1013,17 @@ mkfs.ext4 /mnt/ramdisk/ext4.image
 mkdir /mnt/ext4ramdisk
 mount -o loop /mnt/ramdisk/ext4.image /mnt/ext4ramdisk
 
+Disk/harddrive/filesystem utilities
+-----------------------------------
+$ parted
+$ fdisk
+Use below to get filesystems mount points/ sizes
+$ df -Th
+$ lsblk
+$ fsck
+$ mke2fs - create ext2/3/4 file systems
+$ fstab
+
 
 
 
