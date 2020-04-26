@@ -208,7 +208,6 @@ alias cdweb="cd $WORKSPACE/my_repos/website"
 #alias cdhtb='cd $WARGAMES/pentestlabs/hackthebox'
 alias cdhtb='cd $HOME/htb'
 alias cdbhp='cd $WORKSPACE/my_repos/black_hat_python/BHP-Code'
-alias cdrust_tutorial='cd $WARGAMES/tutorials/lang-tut/rust'
 alias cddropbox='cd $HOME/Dropbox'
 alias cdlangtut='cd $HOME/tutorials/lang-tut/'
 alias cdsysprog='cd $HOME/tutorials/sysprog/'
@@ -219,7 +218,9 @@ alias cdflasktut='cd $HOME/flask_tutorial/microblog'
 alias cdgo='cd $HOME/workspace/go/src'
 alias cdgo_playground='cd $GOPATH/src/playground'
 #rust
-alias cdrustlib_nightly='cd $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust'
+alias cdrust_tutorial='cd $WORKSPACE/rustlings'
+alias cdrustlib_nightly='cd $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+alias cdcargo='cd $HOME/.cargo'
 
 #tools
 alias cdutility_tools='cd $WORKSPACE/my_repos/utility_tools'
