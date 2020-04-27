@@ -410,7 +410,18 @@ go-playground-vim()
 }
 
 # rust playground
-rust-playground()
+RUSTPLAYGROUND="$WORKSPACE/my_repos/rust-playground"
+alias cdrustplayground="cd $RUSTPLAYGROUND && alias e='vim src/main.rs' && alias r='cargo run' && alias t='cargo test'"
+rust-play()
+{
+    cd $RUSTPLAYGROUND && \
+        alias e="vim $RUSTPLAYGROUND/src/main.rs" && \
+        alias r='cargo run' && \
+        alias t='cargo test' && \
+        vim src/main.rs && \
+        cargo run
+}
+rust-temp()
 {
     ORIGDIR=$PWD
     PROJECT=playground
