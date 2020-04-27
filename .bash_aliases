@@ -399,14 +399,30 @@ http_server() { python3 -m http.server $1; }
 http_server_python2() { python2 -m SimpleHTTPServer $1; }
 
 # go playground
-go_playground()
+go-playground()
 {
     code $GOPATH/src/playground
 }
-go_playground_vim()
+go-playground-vim()
 {
     cdgo_playground
     vim $GOPATH/src/playground/play.go
+}
+
+# rust playground
+rust-playground()
+{
+    ORIGDIR=$PWD
+    PROJECT=playground
+    TMPDIR=`mktemp -d` && cd $TMPDIR && \
+        cargo new $PROJECT && \
+        cd "$PROJECT" && \
+        vim src/main.rs && \
+        cargo run
+    alias e="vim $TMPDIR/$PROJECT/src/main.rs" && \
+    alias r="cargo run" && \
+    alias t="cargo test"
+    alias cleanup="cd $ORIGDIR && rm -rf $TMPDIR"
 }
 
 alias f='fzf | xargs vim'
