@@ -332,9 +332,15 @@ nnoremap ; :
 "map vv 0
 "map nn <S-$>
 map f y
-" autocompletion remap to ctrl space
+
+""""autocompletion remap to ctrl space
 "inoremap <C-Space> <C-x><C-o>
 "inoremap <C-@> <C-Space>
+"remove mapping
+inoremap <C-Space> <C-n>
+"tnoremap <NUL> <C-Space>
+""""EOF ctrl space remapping stuff
+
 let g:user_emmet_expandword_key = '<C-c>,' " html tag expansion keyword
 "let g:user_emmet_expand_abbr_key = '<C-c>,' " html tag expansion keyword
 :noremap <F4> :set hlsearch! hlsearch?<CR>
@@ -472,7 +478,8 @@ augroup END
 au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
+au FileType rust nmap <C-Space> <Plug>(rust-doc)
+"au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 
 " syntastic
