@@ -916,6 +916,11 @@ C-r - redo
 :tag <TagName> - jump to tag name
 :YcmCompleter GoTo - jump to tag
 ,-nt - Nerdtree
+Nerdtree:
+s - open file in vertical split
+i - open file in horizontal split
+m - the make changes in the directory
+Eof Nerdtree
 ,-f - grep
 ,ww - grep for word under cursor (EasyGrep)
 ,-w - easymotion forward
