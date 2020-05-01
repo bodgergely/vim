@@ -216,7 +216,7 @@ alias cdudemy='cd $WORKSPACE/my_repos/udemy'
 alias cdflasktut='cd $HOME/flask_tutorial/microblog'
 #go
 alias cdgo='cd $HOME/workspace/go/src'
-alias cdgo_playground='cd $GOPATH/src/playground'
+alias cdgoplayground="cd $GOPATH/src/playground && alias e='vim $GOPATH/src/playground/play.go' && alias r='go run play.go'"
 #rust
 alias cdrust_tutorial='cd $WORKSPACE/rustlings'
 alias cdrustlib_nightly='cd $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
@@ -399,13 +399,13 @@ http_server() { python3 -m http.server $1; }
 http_server_python2() { python2 -m SimpleHTTPServer $1; }
 
 # go playground
-go-playground()
+goplaygroundcode()
 {
     code $GOPATH/src/playground
 }
-go-playground-vim()
+goplayground()
 {
-    cdgo_playground
+    cdgoplayground
     vim $GOPATH/src/playground/play.go
 }
 
