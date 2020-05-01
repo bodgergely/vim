@@ -234,6 +234,42 @@ on github iovisor/bcc
 
 /usr/share/bcc/tools
 
+bpftrace
+--------
+
+Measure time spent on ipset processing - place into file ipset.bt
+```
+kprobe:ip_set_test {
+  @ipsets[pid] = arg0;
+  @started[pid] = nsecs;
+}
+ 
+kretprobe:ip_set_test {
+  $started = @started[pid];
+  if ($started) {
+    delete(@started[pid]);
+ 
+    $ipset_id = @ipsets[pid];
+ 
+    $duration_ns = nsecs - $started;
+ 
+    @times_ns[(uint64) $ipset_id] += $duration_ns;
+    @total_time_ns += $duration_ns;
+ 
+    @total_count++;
+  }
+}
+ 
+interval:s:10 {
+  exit();
+}
+ 
+END {
+  clear(@ipsets);
+  clear(@started);
+}
+```
+
 cpu info
 --------
 Use Awk to filter output from below commands
@@ -688,6 +724,8 @@ ctrl-p: prev command
 ctrl-n: next command
 alt-b: move bach one word
 alt-f: move forward one word
+ctrl-f: move one letter forward
+ctrl-b: move one letter back
 ctrl+left arrow: move bach one word
 ctrl+right arrow: move forward one word
 
@@ -695,6 +733,8 @@ ctrl+x,ctrl+e: to edit current bash command in vim
 
 alt+.: inserts the last "word" of the previous command at the cursor. Repeat it to get the last word from older commands. 
 ctrl+/: undo previosuly typed word
+
+ctrl+x + ctrl+e: Enter VIM to edit the current command!
 
 
 Lua
