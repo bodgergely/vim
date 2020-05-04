@@ -931,9 +931,11 @@ Nerdtree:
 s - open file in vertical split
 i - open file in horizontal split
 m - the make changes in the directory
+show current file in NT
+nmap <silent><leader>nf :NERDTreeFind<CR>
 Eof Nerdtree
 ,-f - grep
-,ww - grep for word under cursor (EasyGrep)
+,vv - grep for word under cursor (EasyGrep) search word
 ,-w - easymotion forward
 ,-b - easymotion backward
 ,q - quick open search results
@@ -950,6 +952,9 @@ Changing a block selection:
     - hit c to get into insert mode
     - Write your change
     - escape from insert mode -> replaces with your text all block selection
+
+zo - expand/open the block - unhide contents
+zc - close the block
 
 Move windows/panes:
 Ctrl W + L - Move the current window to the "far right"

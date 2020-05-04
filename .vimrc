@@ -205,6 +205,7 @@ noremap <C-d> 5<C-d>
 let g:NERDTreeWinSize=30
 let NERDTreeIgnore = ['\.o$', '\.ko$']
 nmap <silent><leader>nt :NERDTreeToggle<CR>
+" show the current file in Nerdtree
 nmap <silent><leader>nf :NERDTreeFind<CR>
 " NERDCommenter
 map <leader>/ <plug>NERDCommenterToggle<CR>
