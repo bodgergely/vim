@@ -762,12 +762,23 @@ Also possible to copy the tmux window contents by simply highlighting using the 
 alt-h - go to left pane
 alt-l - go to right pane
 
+alt-u - get into scrolling mode
+
 Links:
 https://www.bugsnag.com/blog/tmux-and-vim
 https://pragprog.com/book/bhtmux/tmux
 https://tmuxcheatsheet.com/
 https://github.com/tmux-plugins/tpm     -- Tmux plugin manager
 https://github.com/tmux-plugins         -- Tmux plugins
+
+https://github.com/tmux-plugins/tmux-open -- open in vim the file
+o - open selected file with vim
+
+https://github.com/tmux-plugins/tmux-copycat - advanced searching in tmux
+C-b + / - to do search (then press n for next and N for prev)
+C-b + C-f - to search for files
+C-b + C-u - URL search
+Copy a highlighted match with hitting Enter
 
 Apt, dpkg, package, apt-get
 ---------------------------
