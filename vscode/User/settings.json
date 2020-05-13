@@ -136,6 +136,6 @@
     },
     "code-runner.clearPreviousOutput": true,
     "editor.fontSize": 13,
-    "workbench.colorTheme": "Gruvbox Light Medium",
+    "workbench.colorTheme": "Visual Studio Light",
     "go.autocompleteUnimportedPackages": true
 }

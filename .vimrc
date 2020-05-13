@@ -132,7 +132,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 " EOF NCM2
 
-set background=light
+set background=dark
 let g:gruvbox_contrast_dark='medium'  " needs to come before setting the gruvbox colorscheme (hard,medium,soft)
 let g:gruvbox_contrast_light='medium'
 "let g:airline_theme='papercolor'
