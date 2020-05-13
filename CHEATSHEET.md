@@ -759,6 +759,8 @@ C-b + <bracket> : to escape the command line and scroll into the text buffer
 Also possible to copy the tmux window contents by simply highlighting using the mouse and releasing it and it will
     be copied to the clipboard
 
+C-b + C + Arrow Keys : to resize the panes
+
 alt-h - go to left pane
 alt-l - go to right pane
 
