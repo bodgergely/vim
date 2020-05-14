@@ -115,7 +115,8 @@ findc()
 }
 
 alias grep='grep --color'
-alias g=grep.py "$@"
+#alias g=grep.py "$@"
+alias g='grep --color'
 
 #ripgrep, rg
 alias rgg='rg -uuu'
