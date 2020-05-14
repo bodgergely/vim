@@ -978,7 +978,7 @@ RipGrep, ripgrep, Ripgrep
 
 Search for int main() in C files, globbing
 `
-rg -e ".*int\w+main\w*(" -g "*.c"
+rg -e ".*int\w+main\w*\(" -g "*.c"
 `
 
 
