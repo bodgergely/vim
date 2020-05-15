@@ -1069,6 +1069,17 @@ $ docker run hello-world
 
 $ sudo systemctl enable docker
 
+Enter into a bash by creating a container from an image:
+$ docker run -ti --entrypoint=/bin/bash ubuntu:latest -i
+
+Enter into bash on a running container:
+$ docker exec -it $CONTAINERID /bin/bash
+
+Docker-Compose
+--------------
+
+$ docker-compose up
+
 Filesystem
 ==========
 
