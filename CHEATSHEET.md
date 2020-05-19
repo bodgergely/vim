@@ -742,6 +742,20 @@ Lua
 
 Lua in 15 minutes: http://tylerneylon.com/a/learn-lua/
 
+Systemd
+-------
+https://www.linode.com/docs/quick-answers/linux/how-to-use-journalctl/
+
+$ systemctl status network-manager.service
+$ vim /lib/systemd/system/network-manager.service
+
+View logs since last boot:
+$ journalctl -b
+View logs in reverse order:
+$ journalctl -r
+Up to specific time:
+$ journalctl --since "2018-08-30 14:10:10"
+
 Tmux shortcuts
 --------------
 
