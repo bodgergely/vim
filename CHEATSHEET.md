@@ -736,6 +736,18 @@ ctrl+/: undo previosuly typed word
 
 ctrl+x + ctrl+e: Enter VIM to edit the current command!
 
+Google Chrome
+=============
+https://support.google.com/chrome/answer/157179?hl=en-GB
+
+A + e - open chrome menu
+C + h - open history tab
+C + j - open downloads tab
+C+S+b - show/hide bookmarks toolbar
+C+S+o - open bookmarks manager
+S + Esc - chrome Task Manager
+
+
 
 Lua
 ---
@@ -755,6 +767,13 @@ View logs in reverse order:
 $ journalctl -r
 Up to specific time:
 $ journalctl --since "2018-08-30 14:10:10"
+Wait for events, watch journalctl:
+$ journalctl -f
+Show only kernel msgs
+$ journalctl -k
+Show a specified systemd unit:
+$ journalctl -u name-of-the-unit-or-pattern
+
 
 Tmux shortcuts
 --------------
