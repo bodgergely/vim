@@ -119,7 +119,7 @@ alias grep='grep --color'
 alias g='grep --color'
 
 #ripgrep, rg
-alias rgg='rg -uuu'
+alias rgg='rg -uu'
 
 #vim
 alias vim_background_color="$HOME/bin/vim_background_color.py"
