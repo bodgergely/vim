@@ -1029,6 +1029,7 @@ C+` - open/hide terminal view
 C+S+n - new vscode window
 A+F4 - close vscode window (the whole app) - this is more a universal ubuntu thing
 C+h,j,k,l - to move around in the windows
+S+A+right-arrow - to select word under cursor!!!
 ```
 
 gcc
