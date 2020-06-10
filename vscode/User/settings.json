@@ -136,7 +136,7 @@
     },
     "code-runner.clearPreviousOutput": true,
     "editor.fontSize": 13,
-    "workbench.colorTheme": "Visual Studio Light",
     "go.autocompleteUnimportedPackages": true,
-    "go.lintTool": "staticcheck"
+    "go.lintTool": "staticcheck",
+    "workbench.colorTheme": "Visual Studio Light"
 }
