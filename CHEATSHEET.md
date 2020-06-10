@@ -628,11 +628,21 @@ MOTD - PAM - Pluggable Authentication Module (searchsploit motd)
 
 DNS
 ---
+
+Good guide on how DNS works in practice:
+https://webhostinggeeks.com/guides/dns/
+
 Tools:
     - nslookup, dig, host, dnsrecon
 
 Usually on port 53 and UDP. If TCP then probably dns zone transfer is enabled.
     `dig axfr @<dnsserverIP>` - does zone transfer
+
+Dig/dig
+----
+
+Trace the DNS name resolution process:
+dig @1.1.1.1 index.hu +trace
 
 ```
 $nslookup
