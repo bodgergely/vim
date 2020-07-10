@@ -514,6 +514,13 @@ For instance we try a login form, capture that and copy the request to login.req
            recognize that we try something fishy.
     - Reverse shell file upload
 
+Subdomain enumerate
+-------------------
+
+Is good to see what subdomains were ever on a given domain.
+
+Sublist3r:
+https://github.com/aboul3la/Sublist3r
 
 Web App Fuzzing
 ---------------
