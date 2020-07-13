@@ -123,7 +123,6 @@
     "editor.fontLigatures": true,
     "rust.mode": "rls",
     "rust-client.channel": "nightly",
-    "terminal.integrated.inheritEnv": false,
     "rust.rustup": {
         "toolchain": "nightly-x86_64-unknown-linux-gnu",
         "nightlyToolchain": "nightly-x86_64-unknown-linux-gnu"
