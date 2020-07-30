@@ -135,7 +135,7 @@ unset __conda_setup
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-source <(kubectl completion bash | sed s/kubectl/k/g)
+#source <(kubectl completion bash | sed s/kubectl/k/g)
 
 stty -ixon
 #set -o emacs
