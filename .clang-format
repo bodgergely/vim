@@ -1,0 +1,6 @@
+---
+BreakBeforeBraces: Stroustrup
+IndentWidth: 4
+AccessModifierOffset: '-4'
+...
+
