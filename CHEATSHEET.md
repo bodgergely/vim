@@ -832,6 +832,8 @@ C-b + C-f - to search for files
 C-b + C-u - URL search
 Copy a highlighted match with hitting Enter
 
+prefix + shift + p  - start logging with tmux-logging plugin
+
 Apt, dpkg, package, apt-get
 ---------------------------
 
