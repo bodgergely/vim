@@ -1,0 +1,8 @@
+---
+BasedOnStyle: Microsoft
+AccessModifierOffset: '-4'
+AllowAllConstructorInitializersOnNextLine: 'true'
+PointerAlignment: Left
+...
+
+

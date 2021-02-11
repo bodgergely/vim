@@ -11,6 +11,13 @@ https://github.com/awesome-lists/awesome-bash
 https://github.com/alebcay/awesome-shell  -- AWESOME!!!!
 https://github.com/vinta/awesome-python
 
+Hacking resources
+-----------------
+
+https://github.com/mzet-/linux-exploit-suggester
+https://github.com/jondonas/linux-exploit-suggester-2
+https://github.com/InteliSecureLabs/Linux_Exploit_Suggester
+
 How2
 ----
 git clone https://github.com/VladimirMikulic/how2
@@ -152,6 +159,8 @@ Basic tools
 - tee: write stdin to file and to stdout
 - jq: JSON decoding, `jq . filename`
 - ctags - https://github.com/universal-ctags/ctags-snap
+- crontab - scheduled jobs
+    - crobtab -l - list jobs
 
 
 Network tools
@@ -163,7 +172,27 @@ Network tools
 - nethogs => analyze which processes are doing network IO bandwidth
 - traceroute (with icmp option)
 - curl
+- wget
 - nc
+
+Ssh (ssh)
+---------
+
+ssh tunnel
+
+The below will open a port locally on port 9000 and forward to the 10.10.10.73 which will then
+send it to 10.10.10.75 port 80. This can be used to mask your IP and use 10.10.10.73 IP instead.
+ssh -i box.key -L9000:10.10.10.75.80 10.10.10.73
+
+flag: -D is dynamic port SOCKS proxy
+use this to connect from another machine (https://www.youtube.com/watch?v=d2nVDoVr0jE&list=PLidcsTyj9JXK-fnabFLVEvHinQ14Jy5tf&index=3)
+
+Edit /etc/proxychains.conf to tunnel your connection requests through proxy machine. See the above video.
+Use socks5. (ie: socks5   127.0.0.1 1080)
+
+Then you can do:
+proxychains curl -k <URL-that-banned-you>
+
 
 Curl
 ----
@@ -179,6 +208,16 @@ curl --insecure host:port
 To send a HEAD request:
 curl -I host:port
 
+Crontab
+-------
+
+- crontab -l  - to list cron jobs
+
+printscreen
+-----------
+
+ctrl+shift+printscreen
+then ctrl+v
 
 Perf tools
 ----------
@@ -445,6 +484,8 @@ Reckon tools
 
 - Worldlists:
     - /usr/share/wordlists/ on Kali
+    - /usr/share/wordlists/dirbuster/directly-list-2.3-medium.txt
+    - ~/workspace/hacking/wordlists/
     - `cewl` -> worlist generator based on spidering a website, wordlist can be used for john the ripper
 
 - Burp Suite - get the Firefox plugin FoxyProxy to use it
@@ -457,7 +498,24 @@ Reckon tools
     - /opt/LinEnum/LinEnum.sh
         You can just spawn a simple HTTPServer on your pentest box and curl the script into the
             victim's machine
+    - use spawn SimpleHTTPServer locally in a folder and place there LinEnum.sh and curl/wget it from
+        remote machine (place it under /dev/shm in remote machine)
 
+Nmap
+----
+nmap -sC -sV -oA nmap <IP>
+Full TCP connect(-sT) scan when SYN scan can not be done. connect syscall is done with it.
+SYN scan is usually the better option.
+SYN scan (you send the initial SYN packet and then wait for receiving the SYN/ACK reply)
+Firewalls are usually smart enough to block you if you do this often.
+nmap -sC -sV -sT -oA nmap <IP>
+
+Gobuster
+--------
+
+gobuster -u <URL> -w ~/workspace/hacking/wordlists/dirbuster/directory-list-2.3-medium.txt
+
+Also try flags (-k and -x)
 
 Password Cracking
 -----------------
@@ -468,6 +526,21 @@ we need a wordlist, like rockyou.txt
 - cewl - to generate wordlist
 - hashcat
 - hydra, hydra-gtk
+
+Hydra
+-----
+
+Warning: Lockout warning, running hydra can easily blacklist your IP!
+
+SecLists is on GitHub
+/usr/share/wordlists/SecLists/Passwords/rockyou-50.txt
+which is the top 10 thousand pwds
+or the bigger one
+/usr/share/wordlists/rockyou.txt
+
+hydra -l admin -P rockyou-50.txt 10.10.10.75 http-post-form "nibbleblog/admin.php:username=^USER^&password=^PASS^:Incorrect username"
+
+the :Incorrect username tells hydra what the incorrect username+password looks like in the response
 
 Metasploit
 ----------
@@ -491,6 +564,8 @@ python library for CTF and hacking.
 
 Web Application hacking
 -----------------------
+
+https://github.com/swisskyrepo/PayloadsAllTheThings
 
 When filling out web forms we can capture that request with Burp.
 Then copy the request to a file and use sqlmap to try and to sql injection.
@@ -594,9 +669,11 @@ Exploit tools
 - searchsploit
     Searches exploitdb to look for exploits for a given application version.
     searchsploit -x 11746.txt to open the exploit
+    searchsploit -m 11746.txt to mirror(copy) the exploit
 
 Reverse shells
 --------------
+- https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md
 - reverse shells:
     - python-pty-shells: just google it on GitHub:
         tcp_pty_backconnect.py
@@ -831,6 +908,8 @@ C-b + / - to do search (then press n for next and N for prev)
 C-b + C-f - to search for files
 C-b + C-u - URL search
 Copy a highlighted match with hitting Enter
+
+prefix + shift + p  - start logging with tmux-logging plugin
 
 Apt, dpkg, package, apt-get
 ---------------------------
@@ -1158,6 +1237,23 @@ $ lsblk
 $ fsck
 $ mke2fs - create ext2/3/4 file systems
 $ fstab
+
+
+Compilers
+=========
+
+Parsing
+=======
+
+LL1 Parsing tables
+------------------
+
+First sets
+----------
+
+Follow sets
+-----------
+
 
 
 

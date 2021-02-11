@@ -302,7 +302,7 @@ alias nmap_top_ports_20='sudo nmap -v -sT --top-ports 20'
 # places results inside nmap directory
 function nmap_all()
 {
-    nmap -v -sC -sV -oA nmap $1
+    nmap -vvv -sC -sV -oA nmap $1
 }
 
 #ssh

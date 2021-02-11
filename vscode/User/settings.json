@@ -112,9 +112,6 @@
     "editor.cursorBlinking": "solid",
     "C_Cpp.updateChannel": "Insiders",
     "window.zoomLevel": 0,
-    "files.associations": {
-        "*.html": "html"
-    },
     "sqltools.useNodeRuntime": true,
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
@@ -134,8 +131,13 @@
         "useRustfmt": true
     },
     "code-runner.clearPreviousOutput": true,
-    "editor.fontSize": 13,
     "go.autocompleteUnimportedPackages": true,
     "go.lintTool": "staticcheck",
-    "workbench.colorTheme": "Visual Studio Light"
+    "workbench.colorTheme": "Default Light+",
+    "notebook.kernelProviderAssociations": [
+    
+    ],
+    "python.languageServer": "Microsoft",
+    "editor.fontSize": 13,
+    "java.configuration.checkProjectSettingsExclusions": false
 }
