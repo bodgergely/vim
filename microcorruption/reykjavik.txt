@@ -1,0 +1,75 @@
+Reykjavik
+=========
+
+Aliases:
+
+#define uta untrack r4;untrack r9;untrack r10;untrack r11;untrack r12;untrack r13;untrack r14;untrack r15
+#define ta track r4;track r9;track r10;track r11;track r12;track r13;track r14;track r15
+#define ic insncount
+
+b enc
+#define b-utils b __init_stack;b __low_level_init;b __do_copy_data;b __do_clear_bss;b main;b __ctors_end;b 445a;b do_nothing;b _unexpected_
+#define u-utils u __init_stack;u __low_level_init;u __do_copy_data;u __do_clear_bss;u main;u __ctors_end;u 445a;u do_nothing;u _unexpected_
+#define b-2400 b 444a
+#define u-2400 u 444a
+
+
+Asks for input, seems to accept max 31 bytes as input.
+Input will be placed at 43da.
+0x43da-0x43ed
+
+enc method:
+
+First from 247c counts up from 0 to 255 and fills that buffer with those numbers.
+
+0x247c + 0x54 (was found at 0x4472) becomes a referenced memory.
+Copies 256 bytes from 24d0 to 247c.
+
+0x4472 has the magic string: "ThisIsSecureRight?"
+
+0x247c is the alphabet and we are choosing from there the decoded message or maybe instructions based.
+on some calculation using the magic string. It is adding the bytes and of the magic string and does and 0xff on the byte which will be the offset into the alpabet store(0x247c)
+
+It is decoding its own instructions(starting at 0x2400) first and then jumps there to execute.  
+
+Last loop in the Enc method is:
+0x44dc - 0x450e
+
+Decoded code lands in 0x2400 and will be called in main. starts from 2400 and after input the pc will be at 2478.
+2400-2478
+
+
+Input:
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+2478 - pop sr;
+247a is a ret intstruction which lands us back to 2440.
+
+pc 2448 is where the processing of the input will start. At this point the sp is at 43da.
+
+***0x8480 is compared with the first 2 bytes of this input. So let's start input with: 8084****!!!!!!!!!
+
+Use this:
+b 2448
+b 2454
+
+After that 0x7f is pushed on the stack and placed into r14.
+Some manipulation of the sr starts:
+- We mov to status register (sr) 0x7f00. (First we push the original (0x0003) to the stack)
+- then also set the last bit so sr is 0xff00
+Now we call 0x10 which is the trap interrupt.
+Which will just do a 'ret' and we have on stack the return address (0x2478)
+
+
+$$$$$$$$$$ Okay solution is simply: 8084 as hex $$$$$$$$$$$$$$$$$
+8084
+
+Our operatives are entering the building. Go back to the world map to see what new warehouses they find. The CPU completed in 22714 cycles.
+
+
+
+
+
+
+
+
