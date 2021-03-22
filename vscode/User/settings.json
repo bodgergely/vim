@@ -112,6 +112,9 @@
     "editor.cursorBlinking": "solid",
     "C_Cpp.updateChannel": "Insiders",
     "window.zoomLevel": 0,
+    "files.associations": {
+        "*.html": "html"
+    },
     "sqltools.useNodeRuntime": true,
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
@@ -133,11 +136,16 @@
     "code-runner.clearPreviousOutput": true,
     "go.autocompleteUnimportedPackages": true,
     "go.lintTool": "staticcheck",
-    "workbench.colorTheme": "Default Light+",
-    "notebook.kernelProviderAssociations": [
-    
-    ],
-    "python.languageServer": "Microsoft",
-    "editor.fontSize": 13,
-    "java.configuration.checkProjectSettingsExclusions": false
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "python.languageServer": "Pylance",
+    "workbench.activityBar.visible": true,
+    "workbench.list.smoothScrolling": true,
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "workbench.editorAssociations": [],
+    "jupyter.alwaysTrustNotebooks": true,
+    "editor.fontFamily": "Consolas",
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "tabnine.experimentalAutoImports": true
 }
