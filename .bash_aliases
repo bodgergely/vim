@@ -101,11 +101,11 @@ alias ls="ls -X --color=auto"
 alias l="ls -XFlha"
 
 ff() {
-    find . -name "$1"
+    find . -name "$1" -follow
 }
 
 ffi() {
-    find . -iname "$1"
+    find . -iname "$1" -follow
 }
 
 # to find files ending with .c or .h
