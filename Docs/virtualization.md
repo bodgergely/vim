@@ -30,6 +30,7 @@ https://github.com/tandasat/HyperPlatform
 https://github.com/wbenny/hvpp
 https://github.com/ionescu007/SimpleVisor
 https://github.com/Gbps/gbhv  - Simple x64 Hypervisor Framework
+https://github.com/Bareflank/hypervisor
 
 https://github.com/SinaKarvandi/Hypervisor-From-Scratch
 
