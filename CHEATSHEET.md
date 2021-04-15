@@ -1232,11 +1232,15 @@ Disk/harddrive/filesystem utilities
 $ parted
 $ fdisk
 Use below to get filesystems mount points/ sizes
-$ df -Th
+$ df -Th        - Disk space free
+$ du -c         - Disk usage per dirs
 $ lsblk
+$ findmnt
 $ fsck
 $ mke2fs - create ext2/3/4 file systems
 $ fstab
+$ blkid
+$ lspci - PCI device discovery
 
 
 Compilers
