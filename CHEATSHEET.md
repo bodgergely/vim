@@ -1243,19 +1243,10 @@ $ blkid
 $ lspci - PCI device discovery
 
 
-Compilers
-=========
 
-Parsing
-=======
+Powershell
+==========
 
-LL1 Parsing tables
-------------------
-
-First sets
-----------
-
-Follow sets
------------
+https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.1
 
 
