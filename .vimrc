@@ -305,7 +305,9 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 "let g:ycm_min_num_identifier_candidate_chars = 4
 " Don't show YCM's preview window [ I find it really annoying ]
 let g:ycm_add_preview_to_completeopt = 0
+" the below is whether show any diagnostics
 "let g:ycm_show_diagnostics_ui = 0
+" the below is to not show the gutter column
 set signcolumn=no
 
 " If the current buffer has never been saved, it will have no name,
