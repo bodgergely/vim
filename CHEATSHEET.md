@@ -1181,6 +1181,11 @@ Kernel modules
 $ lsmod
 $ ls /lib/modules/`uname -r`/kernel
 
+Kernel symbols
+==============
+
+cat /proc/kallsyms
+
 
 Kubernetes
 ==========
