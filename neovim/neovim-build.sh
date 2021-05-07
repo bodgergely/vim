@@ -35,6 +35,7 @@ export PATH=/usr/bin:$PATH
 alias python='/usr/bin/python3'
 
 make clean
+rm -rf ./build
 if [[ $TYPE == "release" ]]; then
     make -j`nproc` CMAKE_INSTALL_PREFIX=$INSTALL_PATH CMAKE_BUILD_TYPE=RelWithDebInfo
 elif [[ $TYPE == "debug" ]]; then
