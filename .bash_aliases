@@ -119,7 +119,7 @@ alias grep='grep --color'
 alias g='grep --color'
 
 #ripgrep, rg
-alias rgg='rg -uu'
+alias rgg='rg -uuu'
 
 #vim
 alias vim_background_color="$HOME/bin/vim_background_color.py"
@@ -251,6 +251,7 @@ alias tmux_conf='vim ~/.tmux.conf'
 tmux source-file ~/.tmux.conf
 
 alias diskspace_check='ncdu'
+alias diskspace-free='df -Th | grep /dev/nvme'
 
 # jekyll (blog generator)
 alias jekyll_serve="bundle exec jekyll serve"
@@ -305,6 +306,27 @@ function nmap_all()
     nmap -vvv -sC -sV -oA nmap $1
 }
 
+function nmap_vuln()
+{
+    FOLDER=vulnscan
+    IP=99.99.99.99
+    REST=""
+    if [[ "$#" -lt 1 ]]; then
+        echo "Need to specify at least the IP as first arg."
+        exit 255
+    elif [[ "$#" -eq 1 ]]; then
+        IP=$1
+    elif [[ "$#" -eq 2 ]]; then
+        FOLDER=$1
+        IP=$2
+    else
+        FOLDER=$1
+        IP=$2
+        REST=$3
+    fi
+    nmap --script vuln -oA $FOLDER $IP $REST
+}
+
 #ssh
 alias ssh_start='sudo service ssh start'
 alias ssh_stop='sudo service ssh stop'
@@ -346,6 +368,8 @@ alias targz_compress='tar -czvf'
 alias bzip2_compress='tar -cjvf'
 alias targz_uncompress='tar -xzvf'
 alias bzip2_uncompress='tar -xjvf'
+
+alias code="GTK_IM_MODULE=xim code"
 
 alias cl='clear'
 

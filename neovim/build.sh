@@ -23,6 +23,8 @@ trap finish EXIT INT TERM
 
 export PATH=/usr/bin:$PATH
 alias python='/usr/bin/python3'
+make clean
+rm -rf ./build
 make -j`nproc` CMAKE_INSTALL_PREFIX=$PATH_INSTALL CMAKE_BUILD_TYPE=RelWithDebInfo 
 make install
 

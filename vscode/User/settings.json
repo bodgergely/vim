@@ -2,12 +2,20 @@
     "vim.useCtrlKeys": false,
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": ["u"],
-            "commands": ["undo"]
+            "before": [
+                "u"
+            ],
+            "commands": [
+                "undo"
+            ]
         },
         {
-            "before": ["<C-r>"],
-            "commands": ["redo"]
+            "before": [
+                "<C-r>"
+            ],
+            "commands": [
+                "redo"
+            ]
         }
     ],
     "vim.insertModeKeyBindings": [
@@ -138,14 +146,20 @@
     "go.lintTool": "staticcheck",
     "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
     "python.languageServer": "Pylance",
-    "workbench.activityBar.visible": true,
+    "workbench.activityBar.visible": false,
     "workbench.list.smoothScrolling": true,
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
-    "workbench.editorAssociations": [],
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
     "jupyter.alwaysTrustNotebooks": true,
-    "editor.fontFamily": "Consolas",
-    "workbench.colorTheme": "Gruvbox Dark Medium",
-    "tabnine.experimentalAutoImports": true
+    "workbench.colorTheme": "Gruvbox Light Hard",
+    "tabnine.experimentalAutoImports": true,
+    "editor.fontSize": 13,
+    "go.toolsManagement.autoUpdate": true
 }

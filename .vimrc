@@ -24,7 +24,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
@@ -291,11 +291,11 @@ let g:racer_experimental_completer = 1
 
 let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '(', ')', '{', '}']
 "let g:ycm_server_python_interpreter="/usr/bin/python2.7"
-let g:ycm_server_python_interpreter="/usr/bin/python3.7"
+"let g:ycm_server_python_interpreter="/usr/bin/python3.8"
 let g:ycm_confirm_extra_conf = 0 " do not ask for confirmation to load the ycm_extra_conf.py
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "let g:ycm_python_binary_path = '/usr/bin/python2.7'
-let g:ycm_python_binary_path = '/usr/bin/python3.6'
+let g:ycm_python_binary_path = '/usr/bin/python3.8'
 let g:ycm_enable_diagnostic_highlighting = 0
 "nnoremap gd         :YcmCompleter GoTo<CR>
 nnoremap gd <C-]>
@@ -305,6 +305,10 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 "let g:ycm_min_num_identifier_candidate_chars = 4
 " Don't show YCM's preview window [ I find it really annoying ]
 let g:ycm_add_preview_to_completeopt = 0
+" the below is whether show any diagnostics
+"let g:ycm_show_diagnostics_ui = 0
+" the below is to not show the gutter column
+set signcolumn=no
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.

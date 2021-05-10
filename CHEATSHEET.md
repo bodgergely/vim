@@ -509,11 +509,13 @@ SYN scan is usually the better option.
 SYN scan (you send the initial SYN packet and then wait for receiving the SYN/ACK reply)
 Firewalls are usually smart enough to block you if you do this often.
 nmap -sC -sV -sT -oA nmap <IP>
+nmap --script vuln -oA nmap_vuln <IP>
 
 Gobuster
 --------
 
-gobuster -u <URL> -w ~/workspace/hacking/wordlists/dirbuster/directory-list-2.3-medium.txt
+# -t means 50 threads
+gobuster -u <URL> -w ~/workspace/hacking/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50
 
 Also try flags (-k and -x)
 
@@ -1178,6 +1180,11 @@ Kernel modules
 ==============
 $ lsmod
 $ ls /lib/modules/`uname -r`/kernel
+
+Kernel symbols
+==============
+
+cat /proc/kallsyms
 
 
 Kubernetes
