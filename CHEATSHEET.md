@@ -1294,14 +1294,14 @@ Value	0xF
 
 # Register driver
 right click 'Install' on nullFilter.inf
-sc start nullFilter
+sc.exe start nullFilter
 
 # filter will be the name - register
 https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/sc-create
 sc create filter type= filesys start= demand binpath= C:\Users\bodge\Desktop\nullFilter.sys
-sc start filter
-sc stop filter
-sc delete filter
+sc.exe start filter
+sc.exe stop filter
+sc.exe delete filter
 
 WinDbg (windbg)
 ---------------
