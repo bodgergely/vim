@@ -1249,4 +1249,54 @@ Powershell
 
 https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.1
 
+Windows Kernel
+==============
+https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/attaching-to-a-virtual-machine--kernel-mode-
+https://github.com/repnz/windbg-cheat-sheet
+https://reverseengineering.stackexchange.com/questions/16685/how-can-i-receive-dbgprint-messages-in-windbg-on-windows-10
+https://blahcat.github.io/2017/08/07/setting-up-a-windows-vm-lab-for-kernel-debugging/
+https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/compiling-first-kernel-driver-kdprint-dbgprint-and-debugview
+https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/loading-a-windows-kernel-driver-osr-driver-loader-debugging-with-source-code
+https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals
+```
+bcdedit /set TESTSIGNING OFF
+bcdedit -set nointegritychecks ON
+bcdedit /debug on
+bcdedit /dbgsettings serial debugport:1 baudrate:115200
+
+Type to check if debug is on: 
+bcdedit /enum
+
+Type the below path to pipe to VirtuaBox Serial Port COM1/Host Pipe
+\\.\pipe\myvbox
+Uncheck Connect to existing pipe/socket
+Start first WinDbg with Admin and Kernel Debug...->COM->Port:
+\\.\pipe\myvbox
+Also check Pipe and Reconnect
+In WinDbg to get all the DbgPrint() messages type:
+ed nt!Kd_Default_Mask 0xf
+```
+
+Set
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Debug Print Filter
+to DWORD
+Path	HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Debug Print Filter
+Name	DEFAULT
+Type	REG_DWORD
+Value	0xF
+
+# Register driver
+right click 'Install' on nullFilter.inf
+sc start nullFilter
+
+# filter will be the name - register
+https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/sc-create
+sc create filter type= filesys start= demand binpath= C:\Users\bodge\Desktop\nullFilter.sys
+sc start filter
+sc stop filter
+sc delete filter
+
+WinDbg (windbg)
+---------------
+dd [location/variable] - dissassembly data at variable
 
