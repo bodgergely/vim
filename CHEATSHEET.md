@@ -1316,6 +1316,15 @@ Try fuzzy find some command:
 get-help *alia*
 Get-Command *alia*
 
+Basic OS recon: (use Get-WmiObject)
+Link: https://adamtheautomator.com/get-wmiobject/
+
+Get-WmiObject -Class win32_OperatingSystem | select *
+Get-WmiObject -Class win32_process | select *
+Get-WmiObject -Class win32_service | select *
+Get-WmiObject -Class win32_bios | select *
+
+
 get-help get-service -examples
 Get-Service | Where-Object {$_.Status -eq "Running"}
 ls | Get-Member -MemberType * | Select-Object MemberType
@@ -1386,6 +1395,7 @@ Get-Service | ? Status -like Running
 Network interfaces:
 Get-NetIPConfiguration | ft InterfaceAlias,InterfaceDescription,IPv4Address
 Get-DnsClientServerAddress -AddressFamily IPv4 | ft
+
 
 ```
 
