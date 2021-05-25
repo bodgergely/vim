@@ -1260,6 +1260,10 @@ https://blahcat.github.io/2017/08/07/setting-up-a-windows-vm-lab-for-kernel-debu
 https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/compiling-first-kernel-driver-kdprint-dbgprint-and-debugview
 https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/loading-a-windows-kernel-driver-osr-driver-loader-debugging-with-source-code
 https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals
+
+Kernel debugging!!! Very good link, use this:
+https://github.com/repnz/windbg-cheat-sheet
+
 ```
 bcdedit /set TESTSIGNING OFF
 bcdedit -set nointegritychecks ON
