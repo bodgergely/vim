@@ -1265,8 +1265,8 @@ Kernel debugging!!! Very good link, use this:
 https://github.com/repnz/windbg-cheat-sheet
 
 ```
-bcdedit /set TESTSIGNING OFF
-bcdedit -set nointegritychecks ON
+bcdedit /set testsigning on
+#bcdedit -set nointegritychecks ON
 bcdedit /debug on
 bcdedit /dbgsettings serial debugport:1 baudrate:115200
 
