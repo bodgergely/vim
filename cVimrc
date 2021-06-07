@@ -1,3 +1,5 @@
+map ; :
+map : ;
 let mapleader = ","
 map <A-h> previousTab
 map <A-l> nextTab
