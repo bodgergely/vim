@@ -1499,4 +1499,6 @@ Notes
 1 us = 10^-6 seconds = 1,000 ns
 1 ms = 10^-3 seconds = 1,000 us = 1,000,000 ns
 
-
+Visualization of latency numbers
+--------------------------------
+https://gist.github.com/hellerbarde/2843375
