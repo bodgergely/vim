@@ -1,16 +1,15 @@
 {
   "main": {
-    "id": "80df3491f57b1940",
+    "id": "2294b8d7ead46236",
     "type": "split",
     "children": [
       {
-        "id": "a2f55ec8988c9e65",
+        "id": "3814fa34cb744e65",
         "type": "leaf",
-        "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "hacking.md",
+            "file": "CHEATSHEET.md",
             "mode": "source"
           }
         }
@@ -19,15 +18,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "fe14b1abb94a38dd",
+    "id": "79dd218634aa91d0",
     "type": "split",
     "children": [
       {
-        "id": "abe8798ade16d5c7",
+        "id": "4b28fe09dbcdd587",
         "type": "tabs",
         "children": [
           {
-            "id": "11e424132d6424d8",
+            "id": "737fa53f9bf84e30",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -35,7 +34,7 @@
             }
           },
           {
-            "id": "c0d2e4adb9b10689",
+            "id": "c830e54073490c93",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -56,23 +55,25 @@
     "width": 300
   },
   "right": {
-    "id": "d9bdec87753dcba1",
+    "id": "2174082fc7bc4487",
     "type": "split",
     "children": [
       {
-        "id": "57373c33e8b0f5ad",
+        "id": "9a11160a46217fd1",
         "type": "tabs",
         "children": [
           {
-            "id": "dec371eac18d6052",
+            "id": "f0dc2e944f9fd804",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "hacking.md",
+                "file": "CHEATSHEET.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -85,10 +86,8 @@
     "width": 300,
     "collapsed": true
   },
+  "active": "3814fa34cb744e65",
   "lastOpenFiles": [
-    "hacking.md",
-    "virtualization.md",
-    "Untitled.md",
-    "windows.md"
+    "CHEATSHEET.md"
   ]
 }

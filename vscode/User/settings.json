@@ -146,7 +146,6 @@
     "go.lintTool": "staticcheck",
     "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
     "python.languageServer": "Pylance",
-    "workbench.activityBar.visible": false,
     "workbench.list.smoothScrolling": true,
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
@@ -158,8 +157,8 @@
         }
     ],
     "jupyter.alwaysTrustNotebooks": true,
-    "workbench.colorTheme": "Gruvbox Light Hard",
     "tabnine.experimentalAutoImports": true,
     "editor.fontSize": 13,
-    "go.toolsManagement.autoUpdate": true
+    "go.toolsManagement.autoUpdate": true,
+    "workbench.colorTheme": "Gruvbox Dark Hard"
 }

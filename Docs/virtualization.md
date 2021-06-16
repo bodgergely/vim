@@ -6,6 +6,9 @@ Explains the basics
 https://rayanfam.com/topics/hypervisor-from-scratch-part-1/
 https://github.com/SinaKarvandi/Hypervisor-From-Scratch
 
+Hypervisor (UEFI)
+https://github.com/tandasat/MiniVisorPkg
+
 Blackhat 2014 talk from Bromium dev on breaking hypervisors
 https://www.youtube.com/watch?v=PJWJjb0uxXE
 
@@ -27,6 +30,7 @@ Minimalistic Hypervisors basedon Intel VT-X
 
 https://github.com/DarthTon/HyperBone
 https://github.com/tandasat/HyperPlatform
+https://github.com/tandasat/MiniVisorPkg
 https://github.com/wbenny/hvpp
 https://github.com/ionescu007/SimpleVisor
 https://github.com/Gbps/gbhv  - Simple x64 Hypervisor Framework
