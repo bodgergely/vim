@@ -34,12 +34,13 @@
                 "CONFIG_BLOCK",
                 "CONFIG_MMU",
                 "CONFIG_MMU_NOTIFIER",
-                "CONFIG_ACPI_HOTPLUG_CPU"
+                "CONFIG_ACPI_HOTPLUG_CPU",
+                "CONFIG_FS_ENCRYPTION"
             ],
             "compilerPath": "/usr/bin/gcc",
-            "cStandard": "c11",
+            "cStandard": "gnu89",
             "cppStandard": "c++98",
-            "intelliSenseMode": "clang-x64"
+            "intelliSenseMode": "gcc-x64"
         }
     ],
     "version": 4
