@@ -1311,6 +1311,21 @@ Powershell
 ==========
 
 https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.1
+https://docs.microsoft.com/en-us/learn/modules/introduction-to-powershell/3-exercise-powershell
+
+Start on Linux by `pwsh`.
+
+To get info on powershell:
+$PSVersionTable
+$PSVersionTable.PSVersion
+
+Cmdlets:
+https://docs.microsoft.com/en-us/learn/modules/introduction-to-powershell/4-cmdlets
+
+
+
+
+=======
 https://resources.infosecinstitute.com/topic/powershell-for-pentesters-part-1-introduction-to-powershell-and-cmdlets/
 
 Examples
