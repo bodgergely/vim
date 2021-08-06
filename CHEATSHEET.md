@@ -1304,8 +1304,22 @@ sc.exe delete filter
 
 WinDbg (windbg)
 ---------------
-dd [location/variable] - dissassembly data at variable
+List of commands:
+https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/commands
 
+dd [location/variable] - dissassembly data at variable
+bp $exentry - break on entry
+bl - list breakpoints
+p - step over
+t - step into
+gu - step out
+tt - resume until return
+.reload /f - load with symbols
+.restart
+q - quit/stop debugging session
+g - resume,go
+u $exentry - disassemble the entry point
+uf <address> - disassemble as function
 
 Powershell
 ==========
