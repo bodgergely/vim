@@ -1250,9 +1250,34 @@ $ blkid
 $ lspci - PCI device discovery
 
 
-
 Windows Kernel
 ==============
+
+## slow kernel mode debugging
+
+Use VirtualKD-Redux! Not the original one
+https://github.com/4d61726b/VirtualKD-Redux
+https://github.com/4d61726b/VirtualKD-Redux/issues/2
+
+https://sysprogs.com/legacy/virtualkd/
+
+Explained here:
+https://reverseengineering.stackexchange.com/questions/16588/faster-kernel-debugging-for-windows
+https://reverseengineering.stackexchange.com/questions/16209/slow-kernel-dbg-with-virtualbox-and-windbg/16213
+https://reverseengineering.stackexchange.com/questions/11914/advice-about-first-steps-on-reversing-windows-kernel
+
+## Using VirtualKD-Redux
+
+- Use the snapshot
+- Start from vmmon64.exe and run debugger (windbg)
+- Restart
+- At boot always use that special boot option but press F8 instead of ENTER
+- Choose Disable Driver Signature Enforcement
+- hit g when windbg breaks
+
+## About kernel functions
+https://www.geoffchappell.com/studies/windows/km/index.htm
+
 https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/attaching-to-a-virtual-machine--kernel-mode-
 https://github.com/repnz/windbg-cheat-sheet
 https://reverseengineering.stackexchange.com/questions/16685/how-can-i-receive-dbgprint-messages-in-windbg-on-windows-10
@@ -1264,11 +1289,17 @@ https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals
 Kernel debugging!!! Very good link, use this:
 https://github.com/repnz/windbg-cheat-sheet
 
+## kerneldebugging with vmware
+https://stackoverflow.com/questions/33820520/kernel-debug-with-a-vmware-machine
+
 ```
 bcdedit /set testsigning on
 #bcdedit -set nointegritychecks ON
 bcdedit /debug on
 bcdedit /dbgsettings serial debugport:1 baudrate:115200
+or
+bcdedit /debug on
+bcdedit /dbgsettings serial debugport:2 baudrate:115200
 
 Type to check if debug is on: 
 bcdedit /enum
@@ -1320,6 +1351,51 @@ q - quit/stop debugging session
 g - resume,go
 u $exentry - disassemble the entry point
 uf <address> - disassemble as function
+lm - list loaded modules
+`x nt!KiSystemService*` - list symbols starting with...
+.load,.loadby - Load library
+
+## kernelmode windbg
+
+- `bp /p <address of EPROCESS> ntdll!NtCreateThreadEx`
+How to get EPROCESS address?
+- `!process <pid>` - pid should be in hexidecimal!
+After this grab the address after PROCESS in windbg output following above cmd
+- `dt nt!_EPROCESS <EPROCESSADDR>`
+- `? @$proc` - current EPROCESS id
+- `?? @$proc->UniqueProcessId`
+
+`dt _eprocess` - to query the EPROCESS structure
+`dt _kprocess` - to query the KPROCESS structure
+
+dt shows the structure of the struct not its contents. Specify and address if you want to
+show an instance of an actual process.
+`!process 0 0` - get all the EPROCESS blocks in the system
+
+Links:
+https://stackoverflow.com/questions/11106402/dumping-eprocess-with-windbg
+https://reverseengineering.stackexchange.com/questions/16474/getting-the-current-process-in-windows
+
+## windbg extensions
+
+### View various system callbacks, system tables, object types
+https://github.com/swwwolf/wdbgark
+
+## windows kernel systemcall
+
+### Syscall numbers
+https://j00ru.vexillium.org/syscalls/nt/64/
+
+### Syscalls explained
+https://www.n4r1b.com/posts/2019/03/system-calls-on-windows-x64/
+
+### Hooking systemcalls
+https://resources.infosecinstitute.com/topic/hooking-system-service-dispatch-table-ssdt/#gref
+
+nt!KiSystemServiceUser is the entry point when `syscall` executes.
+
+### Python extension for windbg
+https://github.com/SeanCline/PyExt
 
 Powershell
 ==========

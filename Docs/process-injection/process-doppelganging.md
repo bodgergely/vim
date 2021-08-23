@@ -2,6 +2,12 @@
 
 Category: Process injection
 
+## Links
+
+### Mitigation in Windows Defender
+https://www.kernelmode.info/forum/viewtopic0b8b.html?t=4879
+https://hackforums.net/printthread.php?tid=6036393&page=1
+
 ## Original researchers
 
 ### Lost in Transaction: Process Doppelganging - Youtube

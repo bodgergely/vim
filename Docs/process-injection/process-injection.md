@@ -1,5 +1,12 @@
 # Process Injection
 
+## POCs (Links)
+
+[process hollowing](https://github.com/hasherezade/libpeconv/tree/master/run_pe)
+[process doppelganging](https://github.com/hasherezade/process_doppelganging)
+[process ghosting](https://github.com/hasherezade/process_ghosting)
+[transacted hollowing](https://github.com/hasherezade/transacted_hollowing)
+
 ## General Concept
 
 1. Get a Handle on the target process
@@ -139,5 +146,11 @@ https://www.youtube.com/watch?v=xewv122qxnk
 # Resources on Internet
 
 ## Really good with examples (might be dated)
+
 http://www.rohitab.com/discuss/topic/39535-code-injections-beginner-and-advanced/
+
+Uses CreateRemoteThread + NtCreateThreadEx then waits on them etc
+
+- `NtCreateProcessEx`
+http://www.rohitab.com/discuss/topic/42229-start-a-process-using-ntcreateprocessex-usermode/
 
