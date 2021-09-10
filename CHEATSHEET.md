@@ -1312,6 +1312,7 @@ Start first WinDbg with Admin and Kernel Debug...->COM->Port:
 Also check Pipe and Reconnect
 In WinDbg to get all the DbgPrint() messages type:
 ed nt!Kd_Default_Mask 0xf
+ed nt!Kd_IHVDRIVER_Mask 0xf
 ```
 
 Set
@@ -1337,6 +1338,9 @@ WinDbg (windbg)
 ---------------
 List of commands:
 https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/commands
+
+Good resource:
+https://fishilico.github.io/generic-config/windows/windbg-kd.html
 
 dd [location/variable] - dissassembly data at variable
 bp $exentry - break on entry
@@ -1375,6 +1379,17 @@ show an instance of an actual process.
 Links:
 https://stackoverflow.com/questions/11106402/dumping-eprocess-with-windbg
 https://reverseengineering.stackexchange.com/questions/16474/getting-the-current-process-in-windows
+
+### Log messages (kernel logging)
+
+Enter these into WinDbg command window:
+```
+ed nt!Kd_Default_Mask 0xf
+ed nt!Kd_IHVDRIVER_Mask 0xf
+```
+
+After this the log messages should appear in the Command window.
+
 
 ## windbg extensions
 
@@ -1607,3 +1622,39 @@ Notes
 Visualization of latency numbers
 --------------------------------
 https://gist.github.com/hellerbarde/2843375
+
+
+
+Visual Studio compilation (visualstudio compile manual)
+========================================================
+
+Open Visual Studio command prompt (either x64 or x86)
+
+Tools:
+
+* cl
+* ml
+* ml64
+* link
+* dumpbin
+
+```
+cl /c /FA demo.cpp (compiles to assembly too)
+link demo.obj /defaultlib:user32.lib /out:demo_cpp.exe
+```
+
+```
+ml64 /c demo64.asm
+link demo64.obj /subsystem:console /defaultlib:kernel32.lib /defaultlib:user32.lib /entry:main /out:demo64_masm.exe
+```
+
+cl: compile cpp file
+ml or ml64: assemble masm file (ml64 /c filename.asm)
+link: link object files into executable (link filename.obj /entry:main)
+
+## view exports (inspect binary like objdump instead called dumpbin)
+https://stackoverflow.com/questions/50978611/how-do-you-identify-exported-functions-in-a-windows-static-library
+dumbbin /exports ntdll.dll
+dumpbin /symbols ntdll.dll
+dumpbin /directives ntdll.dll
+
