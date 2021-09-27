@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2021-09-23 17:30:08" build="210912">
+		<key name=".Vanilla" modified="2021-09-27 21:40:16" build="210912">
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
@@ -41,8 +41,8 @@
 			<value name="FontSize" type="ulong" data="14"/>
 			<value name="StatusFontHeight" type="long" data="12"/>
 			<value name="TabFontHeight" type="long" data="13"/>
-			<key name="HotKeys" modified="2021-09-23 17:30:08" build="210912">
-				<value name="MinimizeRestore" type="dword" data="000011c0"/>
+			<key name="HotKeys" modified="2021-09-27 21:40:16" build="210912">
+				<value name="MinimizeRestore" type="dword" data="00000000"/>
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="000000a2"/>
 				<value name="Multi.ArrowsModifier" type="dword" data="0000005b"/>
@@ -342,11 +342,11 @@
 			<value name="AutoSaveSizePos" type="hex" data="01"/>
 			<value name="Cascaded" type="hex" data="01"/>
 			<value name="IntegralSize" type="hex" data="00"/>
-			<value name="WindowMode" type="dword" data="00000520"/>
+			<value name="WindowMode" type="dword" data="0000051f"/>
 			<value name="ConWnd X" type="long" data="0"/>
 			<value name="ConWnd Y" type="long" data="0"/>
 			<value name="LastMonitor" type="string" data="0,0,1920,1040"/>
-			<value name="ConWnd Width" type="dword" data="00000076"/>
+			<value name="ConWnd Width" type="dword" data="00000075"/>
 			<value name="ConWnd Height" type="dword" data="0000001b"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="Restore2ActiveMon" type="hex" data="00"/>
@@ -512,7 +512,7 @@
 			<value name="Tabs" type="hex" data="01"/>
 			<value name="TabsLocation" type="hex" data="01"/>
 			<value name="TabIcons" type="hex" data="01"/>
-			<value name="OneTabPerGroup" type="hex" data="00"/>
+			<value name="OneTabPerGroup" type="hex" data="01"/>
 			<value name="ActivateSplitMouseOver" type="hex" data="01"/>
 			<value name="TabSelf" type="hex" data="01"/>
 			<value name="TabLazy" type="hex" data="01"/>
@@ -742,6 +742,7 @@
 			</key>
 			<value name="CmdLineHistory" type="multi">
 				<line data="{Bash::Git bash}"/>
+				<line data="R"/>
 				<line data="{Shells::PowerShell}"/>
 			</value>
 		</key>
