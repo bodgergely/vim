@@ -1,23 +1,5 @@
 {
     "vim.useCtrlKeys": false,
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "u"
-            ],
-            "commands": [
-                "undo"
-            ]
-        },
-        {
-            "before": [
-                "<C-r>"
-            ],
-            "commands": [
-                "redo"
-            ]
-        }
-    ],
     "vim.insertModeKeyBindings": [
         {
             "before": [
@@ -66,6 +48,22 @@
             "after": [
                 ":"
             ]
+        },
+        {
+            "before": [
+                "u"
+            ],
+            "commands": [
+                "undo"
+            ]
+        },
+        {
+            "before": [
+                "<C-r>"
+            ],
+            "commands": [
+                "redo"
+            ]
         }
     ],
     "vim.leader": ",",
@@ -100,7 +98,7 @@
         "**/*.o": true,
         "build/**": true
     },
-    "workbench.tree.indent": 25,
+    "workbench.tree.indent": 18,
     "go.inferGopath": true,
     "editor.formatOnSave": true,
     "vs-kubernetes": {
@@ -109,6 +107,7 @@
         "vs-kubernetes.draft-path": "/home/greg/.vs-kubernetes/tools/draft/linux-amd64/draft"
     },
     "[python]": {
+    
         "editor.defaultFormatter": "ms-python.python"
     },
     "yaml.validate": false,
@@ -150,15 +149,17 @@
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "jupyter.alwaysTrustNotebooks": true,
     "tabnine.experimentalAutoImports": true,
     "editor.fontSize": 13,
     "go.toolsManagement.autoUpdate": true,
-    "workbench.colorTheme": "Gruvbox Dark Hard"
+    "gitlens.codeLens.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "editor.mouseWheelScrollSensitivity": 0.7,
+    "gitlens.hovers.enabled": false,
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "workbench.colorTheme": "Visual Studio Light - C++"
 }
