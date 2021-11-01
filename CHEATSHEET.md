@@ -1412,7 +1412,7 @@ nt!KiSystemServiceUser is the entry point when `syscall` executes.
 ### Python extension for windbg
 https://github.com/SeanCline/PyExt
 
-Powershell
+Powershell (#powershell)
 ==========
 
 https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.1
@@ -1428,13 +1428,23 @@ Cmdlets:
 https://docs.microsoft.com/en-us/learn/modules/introduction-to-powershell/4-cmdlets
 
 
-
-
-=======
 https://resources.infosecinstitute.com/topic/powershell-for-pentesters-part-1-introduction-to-powershell-and-cmdlets/
 
 Examples
 --------
+
+### Linux equivalents
+
+- wc -l
+- Measure-Object -Line
+
+- grep
+- findstr OR get-content + select-string
+- Get-Content .\doc.txt | Select-String -Pattern (Get-Content .\regex.txt)
+
+
+
+
 ```bash
 Try fuzzy find some command:
 get-help *alia*
