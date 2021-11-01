@@ -11,8 +11,6 @@ nnoremap ; :
 nnoremap : ;
 imap jk <esc>
 imap kj <esc>
-map vv 0
-map nn <S-$>
 map f y
 set tabstop=4
 set shiftwidth=4
@@ -25,3 +23,5 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+set hlsearch
+:noremap <F4> :set hlsearch! hlsearch?<CR>
