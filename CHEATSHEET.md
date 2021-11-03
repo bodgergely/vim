@@ -1000,6 +1000,9 @@ grep
 To output the match only (-oh), -E means extended regex
 $ grep -oh -R -E "=\s+ngx\..*\." --include=*.lua .
 
+Match the word between foo and bar
+$ grep -oP 'foo \K\w+(?= bar)'
+
 
 
 Vim
@@ -1429,6 +1432,15 @@ https://docs.microsoft.com/en-us/learn/modules/introduction-to-powershell/4-cmdl
 
 
 https://resources.infosecinstitute.com/topic/powershell-for-pentesters-part-1-introduction-to-powershell-and-cmdlets/
+
+Important commands
+------------------
+
+gcm *event* - Search fuzzily for commands containing event
+help *event* - get fuzzy help
+ft - format table 
+ft -wrap    -> to expand the ... 
+select      -> Select-Object
 
 Examples
 --------
