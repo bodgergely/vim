@@ -1256,7 +1256,7 @@ $ lspci - PCI device discovery
 Windows Kernel
 ==============
 
-## slow kernel mode debugging
+## slow kernel mode debugging (#kerneldebugging)
 
 Use VirtualKD-Redux! Not the original one
 https://github.com/4d61726b/VirtualKD-Redux
@@ -1293,6 +1293,9 @@ Kernel debugging!!! Very good link, use this:
 https://github.com/repnz/windbg-cheat-sheet
 
 ## kerneldebugging with vmware
+
+
+
 https://stackoverflow.com/questions/33820520/kernel-debug-with-a-vmware-machine
 
 ```
