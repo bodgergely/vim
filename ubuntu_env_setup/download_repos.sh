@@ -39,3 +39,6 @@ git clone git@github.com:bodgergely/linux_kernel_hacking.git
 git clone git@github.com:bodgergely/wargames.git
 git clone git@github.com:bodgergely/utility_tools.git $WORKSPACE/utility_tools
 git clone git@github.com:nmap/nmap.git && cd nmap && ./configure && make -j4 && sudo make install
+
+# the below is interactive! - to set vim as default editor
+#sudo update-alternatives --config editor

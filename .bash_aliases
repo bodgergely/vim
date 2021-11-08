@@ -15,6 +15,10 @@
 #bind '"jk":vi-movement-mode'
 ## END OF VI/VIM MODE
 
+export TERMINAL=gnome-terminal
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 vimode() {
     set -o vi
     bind '"jk":vi-movement-mode'
@@ -550,7 +554,7 @@ NNN_USE_EDITOR=0
 function color_picker()
 {
     # can't run under tmux - use it without tmux
-    bash -c  "$(curl -sLo- https://git.io/vQgMr)"
+    bash -c  "$(wget -qO- https://git.io/vQgMr)"
 }
 
 ## digital ocean
