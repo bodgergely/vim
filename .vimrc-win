@@ -7,6 +7,8 @@ set mouse=a
 " disable swap file creation because on windows issues
 set noswapfile
 
+set hlsearch
+
 " set Vim-specific sequences for RGB colors
 "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -225,10 +227,15 @@ set autoread
 
 set wildignore+=tags,**/tags
 " grep - ripgrep - rg
-if executable('rg')
-  set grepprg=rg\ --no-heading\ --vimgrep
-  set grepformat^=%f:%l:%c:%m
-endif
+"if executable('rg')
+  "set grepprg=rg\ --no-heading\ --vimgrep
+  "set grepformat^=%f:%l:%c:%m
+"endif
+" on windows use git grep instead
+" https://vi.stackexchange.com/questions/8855/how-can-i-change-the-default-grep-call-grepprg-to-exclude-directories
+set grepprg=git\ --no-pager\ grep\ --no-color\ -n\ $*
+set grepformat=%f:%l:%m,%m\ %f\ match%ts,%f
+
 " make EasyGrep use grepprg (basically to use rg otherwise it will use the slow vimgrep)
 let g:EasyGrepCommand=1
 " bind K to grep word under cursor
@@ -300,7 +307,8 @@ let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '
 let g:ycm_confirm_extra_conf = 0 " do not ask for confirmation to load the ycm_extra_conf.py
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "let g:ycm_python_binary_path = '/usr/bin/python2.7'
-let g:ycm_python_binary_path = '/usr/bin/python3.8'
+"let g:ycm_python_binary_path = '/usr/bin/python3.8'
+let g:ycm_python_binary_path = 'C:\\Users\\gergely.bod\\Anaconda3\\python.exe'
 let g:ycm_enable_diagnostic_highlighting = 0
 "nnoremap gd         :YcmCompleter GoTo<CR>
 nnoremap gd <C-]>
