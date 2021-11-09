@@ -832,6 +832,15 @@ ctrl+/: undo previosuly typed word
 
 ctrl+x + ctrl+e: Enter VIM to edit the current command!
 
+Heredoc (heredoc)
+=================
+```
+cat <<HEREDOC > $DIR/heredoc.txt
+This is good
+Yes very good
+HEREDOC
+```
+
 Google Chrome
 =============
 https://support.google.com/chrome/answer/157179?hl=en-GB
