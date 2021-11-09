@@ -8,6 +8,7 @@ function usage()
 
 if [[ "$#" -lt 1 ]]; then
     usage
+    exit 255
 fi
 
 DIR=$1
