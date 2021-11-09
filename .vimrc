@@ -4,6 +4,9 @@ set encoding=utf-8
 " enable mouse support
 set mouse=a
 
+" disable swap file creation because on windows issues
+" set noswapfile
+
 " set Vim-specific sequences for RGB colors
 "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
