@@ -5,7 +5,11 @@ set encoding=utf-8
 set mouse=a
 
 " disable swap file creation because on windows issues
-" set noswapfile
+set noswapfile
+
+set hlsearch
+set ignorecase
+set smartcase
 
 " set Vim-specific sequences for RGB colors
 "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -27,8 +31,10 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'codota/tabnine-vim'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 "Plugin 'scrooloose/syntastic'
@@ -36,21 +42,21 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
 "Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mattn/emmet-vim'
-Plugin 'rust-lang/rust.vim'
-Plugin 'racer-rust/vim-racer'
-Plugin 'christoomey/vim-tmux-navigator'
+"Plugin 'rust-lang/rust.vim'
+"Plugin 'racer-rust/vim-racer'
+"Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'flazz/vim-colorschemes'
 "Plugin 'rafi/awesome-vim-colorschemes'
 "Plugin 'liuchengxu/space-vim-dark'
 Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'fatih/vim-go'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'fatih/vim-go'
+"Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
-"Plugin 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 Plugin 'dkprice/vim-easygrep'   " very good!! - visual select text and use <leader> vv to grep for the text - make it use ripgrep! (vimgrep is slow)
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'morhetz/gruvbox'
@@ -60,8 +66,8 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'hdima/python-syntax'
 "Plugin 'altercation/vim-colors-solarized'
 "Plugin 'rdnetto/YCM-Generator'  " generate YouCompleteMe config file for C++ projects
-Plugin 'SirVer/ultisnips'       " snippet engine
-Plugin 'honza/vim-snippets'     " actual snippets for languages
+"Plugin 'SirVer/ultisnips'       " snippet engine
+"Plugin 'honza/vim-snippets'     " actual snippets for languages
 Plugin 'prettier/vim-prettier'
 "Plugin 'ternjs/tern_for_vim'   " javascript
 "Plugin 'pangloss/vim-javascript'
@@ -71,34 +77,34 @@ Plugin 'prettier/vim-prettier'
 "Plugin 'cocopon/iceberg.vim'
 Plugin 'xolox/vim-misc'          " for lua
 Plugin 'xolox/vim-lua-ftplugin'  " for lua
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'szw/vim-maximizer'
 Plugin 'yssl/QFEnter'   " plugin to quickly open Quick Window results - open file in vertical split: <leader><Enter>, horizontal split: <leader>,
-Plugin 'guns/vim-clojure-static'
-Plugin 'saltstack/salt-vim'
-Plugin 'benmills/vimux'  " plugin to interact with tmux - to run commands, use :Vimux..., or <leader>vp
+"Plugin 'guns/vim-clojure-static'
+"Plugin 'saltstack/salt-vim'
+"Plugin 'benmills/vimux'  " plugin to interact with tmux - to run commands, use :Vimux..., or <leader>vp
 "Plugin 'neovim/nvim-lsp' " Language Server Plugin - need to sinstall individual language servers with LspInstall, LspInstallInfo
 "Plugin 'autozimu/LanguageClient-neovim'  " Language Server Plugin
 " START OF NCM2
-Plugin 'ncm2/ncm2'
-Plugin 'roxma/nvim-yarp'
-Plugin 'ncm2/ncm2-bufword'
-Plugin 'ncm2/ncm2-path'
-Plugin 'ncm2/ncm2-racer'
+"Plugin 'ncm2/ncm2'
+"Plugin 'roxma/nvim-yarp'
+"Plugin 'ncm2/ncm2-bufword'
+"Plugin 'ncm2/ncm2-path'
+"Plugin 'ncm2/ncm2-racer'
 "Plugin 'ncm2/ncm2-pyclang'
-Plugin 'ncm2/ncm2-go'
-Plugin 'ncm2/ncm2-jedi'
-Plugin 'ncm2/ncm2-ultisnips'
+"Plugin 'ncm2/ncm2-go'
+"Plugin 'ncm2/ncm2-jedi'
+"Plugin 'ncm2/ncm2-ultisnips'
 " END OF NCM2
 Plugin 'vim-scripts/vim-auto-save'
-Plugin 'tmux-plugins/vim-tmux-focus-events'
+"Plugin 'tmux-plugins/vim-tmux-focus-events'
 
 " ---------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-set rtp+=~/workspace/go/src/golang.org/x/lint/misc/vim
+"set rtp+=~/workspace/go/src/golang.org/x/lint/misc/vim
 filetype on " required
 syntax on
 syntax enable
@@ -119,20 +125,20 @@ syntax enable
 
 " NCM2/NCM2 related ncm2
 " enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
+"autocmd BufEnter * call ncm2#enable_for_buffer()
 " IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
+"set completeopt=noinsert,menuone,noselect
 " NOTE: you need to install completion sources to get completions. Check
 " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
 "Plug 'ncm2/ncm2-bufword'
 "Plug 'ncm2/ncm2-path'
-set shortmess+=c
-inoremap <c-c> <ESC>
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+"set shortmess+=c
+"inoremap <c-c> <ESC>
+"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 " Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 " EOF NCM2
 
 set background=dark
@@ -252,9 +258,9 @@ nmap <leader>q :copen<CR>
 nmap <leader>qc :cclose<CR>
 
 " Fugitive
-nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gb :Git blame<CR>
+nnoremap <leader>gs :Git<CR>
+nnoremap <leader>gd :Git diff<CR>
 nnoremap <leader>dp :diffput<CR>
 nnoremap <leader>dg :diffget<CR>
 
@@ -303,7 +309,8 @@ let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '
 let g:ycm_confirm_extra_conf = 0 " do not ask for confirmation to load the ycm_extra_conf.py
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "let g:ycm_python_binary_path = '/usr/bin/python2.7'
-let g:ycm_python_binary_path = '/usr/bin/python3.8'
+"let g:ycm_python_binary_path = '/usr/bin/python3.8'
+let g:ycm_python_binary_path = 'C:\\Users\\gergely.bod\\Anaconda3\\python.exe'
 let g:ycm_enable_diagnostic_highlighting = 0
 "nnoremap gd         :YcmCompleter GoTo<CR>
 nnoremap gd <C-]>
@@ -316,7 +323,7 @@ let g:ycm_add_preview_to_completeopt = 0
 " the below is whether show any diagnostics
 "let g:ycm_show_diagnostics_ui = 0
 " the below is to not show the gutter column
-set signcolumn=no
+"set signcolumn=no
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
@@ -373,7 +380,7 @@ noremap <Leader>P "*p
 noremap <Leader>y "+y
 noremap <Leader>p "+p
 
-let g:pymode_python = 'python3'
+let g:pymode_python = 'python2'
 
 " disable Preview window
 set completeopt-=preview
