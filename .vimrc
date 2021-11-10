@@ -11,6 +11,12 @@ set hlsearch
 set ignorecase
 set smartcase
 
+" on windows especially if using neovim (nvim), you need the below
+"if has ('win32') || has('win64')
+    "let &shell='cmd.exe'
+"endif
+
+
 " set Vim-specific sequences for RGB colors
 "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"

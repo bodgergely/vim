@@ -126,6 +126,23 @@ https://github.com/github/hub/releases
 Then you can checkout a PR like below:
 hub checkout https://github.com/neovim/neovim/pull/1820
 
+Neovim(neovim)
+==============
+
+Transitioning from Vim
+https://neovim.io/doc/user/nvim.html#nvim-from-vim
+```
+:call mkdir(stdpath('config'), 'p')
+:exe 'edit '.stdpath('config').'/init.vim'
+```
+Then add the below to the contents of the file
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+```
+let &packpath = &runtimepath
+source ~/.vimrc
+```
+
+
 Basic tools
 -----------
 - whatis - Basic info about a program
