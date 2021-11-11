@@ -110,6 +110,8 @@ Plugin 'ncm2/ncm2-ultisnips'
 " END OF NCM2
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plugin 'RRethy/vim-illuminate'  "highlights word under cursor
+Plugin 'derekwyatt/vim-fswitch' "switch between header and source files (c/c++)
 
 " ---------------------------------------
 " All of your Plugins must be added before the following line
@@ -208,6 +210,7 @@ set path+=**
 set modifiable
 
 let mapleader = ","
+let maplocalleader="\<space>"
 
 "Control the swap file location with the below. Uncomment to make it save into current folder
 "set dir=.,~/.local/share/nvim/swap/,/tmp/
@@ -337,6 +340,26 @@ let g:ycm_add_preview_to_completeopt = 0
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
+
+" vim-illuminate 
+" Time in milliseconds (default 0)
+let g:Illuminate_delay = 10
+" Don't highlight word under cursor (default: 1)
+let g:Illuminate_highlightUnderCursor = 1
+let g:Illuminate_ftblacklist = ['nerdtree']
+
+" vim-fswitch
+au BufEnter *.h  let b:fswitchdst = "c,cpp,cc,m"
+au BufEnter *.cc let b:fswitchdst = "h,hpp"
+au BufEnter *.h let b:fswitchdst = 'c,cpp,m,cc' | let b:fswitchlocs = 'reg:|include.*|src/**|'
+nnoremap <silent> <A-o> :FSHere<cr>
+" Extra hotkeys to open header/source in the split
+nnoremap <silent> <localleader>oh :FSSplitLeft<cr>
+nnoremap <silent> <localleader>oj :FSSplitBelow<cr>
+nnoremap <silent> <localleader>ok :FSSplitAbove<cr>
+nnoremap <silent> <localleader>ol :FSSplitRight<cr>
+" END OF vim-fswitch
+
 
 
 noremap <silent> <C-S>          :update<CR>
