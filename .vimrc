@@ -4,8 +4,6 @@ set encoding=utf-8
 " enable mouse support
 set mouse=a
 
-" disable swap file creation because on windows issues
-set noswapfile
 
 set hlsearch
 set ignorecase
@@ -13,6 +11,8 @@ set smartcase
 
 " on windows especially if using neovim (nvim), you need the below
 "if has ('win32') || has('win64')
+    " disable swap file creation because on windows issues
+    set noswapfile
     "let &shell='cmd.exe'
 "endif
 
@@ -53,13 +53,13 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
 "Plugin 'rust-lang/rust.vim'
 "Plugin 'racer-rust/vim-racer'
-"Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'flazz/vim-colorschemes'
 "Plugin 'rafi/awesome-vim-colorschemes'
 "Plugin 'liuchengxu/space-vim-dark'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 "Plugin 'fatih/vim-go'
-"Plugin 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
@@ -72,8 +72,8 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'hdima/python-syntax'
 "Plugin 'altercation/vim-colors-solarized'
 "Plugin 'rdnetto/YCM-Generator'  " generate YouCompleteMe config file for C++ projects
-"Plugin 'SirVer/ultisnips'       " snippet engine
-"Plugin 'honza/vim-snippets'     " actual snippets for languages
+Plugin 'SirVer/ultisnips'       " snippet engine
+Plugin 'honza/vim-snippets'     " actual snippets for languages
 Plugin 'prettier/vim-prettier'
 "Plugin 'ternjs/tern_for_vim'   " javascript
 "Plugin 'pangloss/vim-javascript'
@@ -94,18 +94,18 @@ Plugin 'yssl/QFEnter'   " plugin to quickly open Quick Window results - open fil
 "Plugin 'neovim/nvim-lsp' " Language Server Plugin - need to sinstall individual language servers with LspInstall, LspInstallInfo
 "Plugin 'autozimu/LanguageClient-neovim'  " Language Server Plugin
 " START OF NCM2
-"Plugin 'ncm2/ncm2'
-"Plugin 'roxma/nvim-yarp'
-"Plugin 'ncm2/ncm2-bufword'
-"Plugin 'ncm2/ncm2-path'
+Plugin 'ncm2/ncm2'
+Plugin 'roxma/nvim-yarp'
+Plugin 'ncm2/ncm2-bufword'
+Plugin 'ncm2/ncm2-path'
 "Plugin 'ncm2/ncm2-racer'
-"Plugin 'ncm2/ncm2-pyclang'
+Plugin 'ncm2/ncm2-pyclang'
 "Plugin 'ncm2/ncm2-go'
-"Plugin 'ncm2/ncm2-jedi'
-"Plugin 'ncm2/ncm2-ultisnips'
+Plugin 'ncm2/ncm2-jedi'
+Plugin 'ncm2/ncm2-ultisnips'
 " END OF NCM2
 Plugin 'vim-scripts/vim-auto-save'
-"Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plugin 'tmux-plugins/vim-tmux-focus-events'
 
 " ---------------------------------------
 " All of your Plugins must be added before the following line
@@ -315,8 +315,8 @@ let g:SuperTabNoCompleteAfter = ['^', '\s', '"', "'", ',', '.', ':', '[', ']', '
 let g:ycm_confirm_extra_conf = 0 " do not ask for confirmation to load the ycm_extra_conf.py
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "let g:ycm_python_binary_path = '/usr/bin/python2.7'
-"let g:ycm_python_binary_path = '/usr/bin/python3.8'
-let g:ycm_python_binary_path = 'C:\\Users\\gergely.bod\\Anaconda3\\python.exe'
+let g:ycm_python_binary_path = '/usr/bin/python3.8'
+"let g:ycm_python_binary_path = 'C:\\Users\\gergely.bod\\Anaconda3\\python.exe'
 let g:ycm_enable_diagnostic_highlighting = 0
 "nnoremap gd         :YcmCompleter GoTo<CR>
 nnoremap gd <C-]>
@@ -386,7 +386,7 @@ noremap <Leader>P "*p
 noremap <Leader>y "+y
 noremap <Leader>p "+p
 
-let g:pymode_python = 'python2'
+let g:pymode_python = 'python3'
 
 " disable Preview window
 set completeopt-=preview
