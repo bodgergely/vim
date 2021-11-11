@@ -1,6 +1,10 @@
 set nocompatible              " be iMproved, required
 set encoding=utf-8
 
+"#Links
+"configure vim for cpp(c++) development
+"https://idie.ru/posts/vim-modern-cpp
+
 " enable mouse support
 set mouse=a
 

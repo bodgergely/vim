@@ -1031,7 +1031,7 @@ $ grep -oP 'foo \K\w+(?= bar)'
 
 
 
-Vim
+Vim (#vim)
 ===
 :wq - write and quit
 :q! - write and discard changes
@@ -1131,6 +1131,9 @@ ZZ
 
 Quit shortcut - quit/exit without saving:
 ESC Z Q
+
+Using vim for c++(cpp) dev:
+https://idie.ru/posts/vim-modern-cpp
 
 
 RipGrep, ripgrep, Ripgrep
