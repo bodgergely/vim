@@ -963,6 +963,10 @@ https://likegeeks.com/awk-command/
 Sum numbers on each line the first element and save to file
     awk '{s+=$1} END {print s}' mydatafile
 
+Sed (#sed)
+===
+
+sed -e 's/few/asd/g' hello.txt
 
 Python
 ======
