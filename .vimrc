@@ -570,8 +570,8 @@ map <Leader>vz :VimuxZoomRunner<CR>
 " end of Vimux
 
 " lua
-let lua_version = 5
-let lua_version = 1
+let lua_version = 5.3
+"let lua_version = 1
 
 " autosave plugin
 "let g:auto_save = 1        " this would enable the plugin on vim startup
