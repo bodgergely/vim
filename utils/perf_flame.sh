@@ -1,3 +1,6 @@
+#!/usr/bin/bash
+# install perf tool with:
+# sudo apt install linux-tools-`uname -r`
 BIN=`which perf`
 PERF_DATA_PATH=/tmp/perf.data
 PERF_SVG_PATH=/tmp/perf.svg
