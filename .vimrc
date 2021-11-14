@@ -343,7 +343,7 @@ let g:ycm_add_preview_to_completeopt = 0
 
 " vim-illuminate 
 " Time in milliseconds (default 0)
-let g:Illuminate_delay = 10
+let g:Illuminate_delay = 300
 " Don't highlight word under cursor (default: 1)
 let g:Illuminate_highlightUnderCursor = 1
 let g:Illuminate_ftblacklist = ['nerdtree']
