@@ -242,14 +242,14 @@ set autoread
 
 set wildignore+=tags,**/tags
 " grep - ripgrep - rg
-"if executable('rg')
-  "set grepprg=rg\ --no-heading\ --vimgrep
-  "set grepformat^=%f:%l:%c:%m
-"endif
+if executable('rg')
+  set grepprg=rg\ --no-heading\ --vimgrep
+  set grepformat^=%f:%l:%c:%m
+endif
 " on windows use git grep instead
 " https://vi.stackexchange.com/questions/8855/how-can-i-change-the-default-grep-call-grepprg-to-exclude-directories
-set grepprg=git\ --no-pager\ grep\ --no-color\ -n\ $*
-set grepformat=%f:%l:%m,%m\ %f\ match%ts,%f
+"set grepprg=git\ --no-pager\ grep\ --no-color\ -n\ $*
+"set grepformat=%f:%l:%m,%m\ %f\ match%ts,%f
 
 " make EasyGrep use grepprg (basically to use rg otherwise it will use the slow vimgrep)
 let g:EasyGrepCommand=1
