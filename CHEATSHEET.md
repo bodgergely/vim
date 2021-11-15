@@ -263,6 +263,8 @@ Perf tools
 
 Perf commands
 -------------
+install perf with this
+sudo apt install linux-tools-`uname -r`
 https://github.com/brendangregg/perf-tools
 
 Measure syscall rate:
