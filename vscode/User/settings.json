@@ -107,7 +107,6 @@
         "vs-kubernetes.draft-path": "/home/greg/.vs-kubernetes/tools/draft/linux-amd64/draft"
     },
     "[python]": {
-    
         "editor.defaultFormatter": "ms-python.python"
     },
     "yaml.validate": false,
@@ -116,7 +115,6 @@
     "python.terminal.activateEnvironment": false,
     "editor.minimap.maxColumn": 1200,
     "editor.minimap.enabled": false,
-    "editor.cursorBlinking": "solid",
     "C_Cpp.updateChannel": "Insiders",
     "window.zoomLevel": 0,
     "files.associations": {
@@ -127,7 +125,6 @@
         "editor.defaultFormatter": "vscode.html-language-features"
     },
     "python.formatting.autopep8Path": "",
-    "editor.fontLigatures": true,
     "rust.mode": "rls",
     "rust-client.channel": "nightly",
     "rust.rustup": {
@@ -154,12 +151,21 @@
     },
     "jupyter.alwaysTrustNotebooks": true,
     "tabnine.experimentalAutoImports": true,
-    "editor.fontSize": 13,
     "go.toolsManagement.autoUpdate": true,
     "gitlens.codeLens.enabled": false,
     "gitlens.currentLine.enabled": false,
     "editor.mouseWheelScrollSensitivity": 0.7,
     "gitlens.hovers.enabled": false,
     "terminal.integrated.defaultProfile.windows": "Git Bash",
-    "workbench.colorTheme": "Visual Studio Light - C++"
+    "redhat.telemetry.enabled": false,
+    "xml.symbols.maxItemsComputed": 15000,
+    "editor.fontSize": 13,
+    // Controls the line height. Use 0 to compute the lineHeight from the fontSize.
+    "editor.lineHeight": 0,
+    // Enables font ligatures
+    "editor.fontLigatures": true,
+    "workbench.activityBar.visible": false,
+    "terminal.integrated.cursorBlinking": true,
+    "editor.cursorBlinking": "solid",
+    "workbench.colorTheme": "Default Light+"
 }
