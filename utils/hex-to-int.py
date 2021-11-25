@@ -1,0 +1,6 @@
+import fileinput
+
+for line in fileinput.input():
+    print int(line, 16)
+
+

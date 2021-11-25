@@ -225,6 +225,13 @@ curl --insecure host:port
 To send a HEAD request:
 curl -I host:port
 
+ls (#ls)
+--------
+Sort by size (for reverse use -Sr)
+ls -S
+Sort by last modified date or reverse (most recent last)
+ls -t or ls -tr
+
 Crontab
 -------
 
