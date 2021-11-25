@@ -375,7 +375,7 @@ alias bzip2_uncompress='tar -xjvf'
 
 alias code="GTK_IM_MODULE=xim code"
 
-alias cl='clear'
+alias cls='clear'
 
 alias trace='sudo trace-cmd record -p function_graph'
 
