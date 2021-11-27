@@ -1,5 +1,6 @@
 {
     "vim.useCtrlKeys": false,
+    "vim.scroll": 5,
     "vim.insertModeKeyBindings": [
         {
             "before": [
@@ -164,8 +165,7 @@
     "editor.lineHeight": 0,
     // Enables font ligatures
     "editor.fontLigatures": true,
-    "workbench.activityBar.visible": false,
     "terminal.integrated.cursorBlinking": true,
     "editor.cursorBlinking": "solid",
-    "workbench.colorTheme": "Default Light+"
+    "workbench.colorTheme": "Visual Studio 2019 Light"
 }
