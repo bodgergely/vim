@@ -94,6 +94,6 @@ map ci :call getIP<CR>
 echo(link) -> {{
   alert(link.href);
 }}
-map <C-f> createScriptHint(echo)
+" map <C-f> createScriptHint(echo)
 
 
