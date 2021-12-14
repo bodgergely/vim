@@ -163,6 +163,10 @@ git_lazy_push()
     if [[ -z $1 ]]; then echo "Usage: git_lazy_push <filepath>"; return 127; fi
     git add $1 && git commit -m "changing $1" && git push
 }
+git_config_global()
+{
+    git config --global --edit
+}
 
 
 
