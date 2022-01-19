@@ -1,0 +1,11 @@
+{
+	"dark_theme": "Default.sublime-theme",
+	"light_theme": "Default.sublime-theme",
+	"theme": "auto",
+	"font_size": 10,
+	"color_scheme": "Packages/Notepad++ Color Scheme/Default Stylers.tmTheme",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+}

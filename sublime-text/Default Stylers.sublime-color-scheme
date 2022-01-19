@@ -1,0 +1,39 @@
+// Documentation at https://www.sublimetext.com/docs/color_schemes.html
+{
+	"variables":
+	{
+	},
+	"globals":
+	{
+	},
+	"rules":
+	[
+		{
+            "name": "Class",
+            "scope": "entity.name.class",
+            "foreground": "red",
+            "font_style": "bold",
+        },
+        {
+            "name": "Function",
+            "scope": "entity.name.function",
+            "foreground": "#3ba8d4",
+            "background": "#ffffe6",
+            "font_style": "bold",
+        },
+        {
+            "name": "Parameters",
+            "scope": "variable.parameter",
+            "background": "white",
+            "foreground": "black",
+            "font_style": "normal",
+        },
+        {
+            "name": "Keywords",
+            "scope": "keyword.declaration.class",
+            "foreground": "#0000FF",
+            "font_style": "bold",
+        }
+
+	]
+}
