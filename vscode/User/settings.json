@@ -155,7 +155,7 @@
     "go.toolsManagement.autoUpdate": true,
     "gitlens.codeLens.enabled": false,
     "gitlens.currentLine.enabled": false,
-    "editor.mouseWheelScrollSensitivity": 0.7,
+    "editor.mouseWheelScrollSensitivity": 0.6,
     "gitlens.hovers.enabled": false,
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     "redhat.telemetry.enabled": false,
@@ -164,8 +164,11 @@
     // Controls the line height. Use 0 to compute the lineHeight from the fontSize.
     "editor.lineHeight": 0,
     // Enables font ligatures
-    "editor.fontLigatures": true,
+    "editor.fontLigatures": false,
     "terminal.integrated.cursorBlinking": true,
     "editor.cursorBlinking": "solid",
-    "workbench.colorTheme": "Visual Studio 2019 Light"
+    "problems.decorations.enabled": false,
+    "Lua.diagnostics.enable": false,
+    "workbench.statusBar.visible": false,
+    "workbench.colorTheme": "Gruvbox Dark Hard"
 }
