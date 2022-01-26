@@ -160,7 +160,6 @@
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     "redhat.telemetry.enabled": false,
     "xml.symbols.maxItemsComputed": 15000,
-    "editor.fontSize": 13,
     // Controls the line height. Use 0 to compute the lineHeight from the fontSize.
     "editor.lineHeight": 0,
     // Enables font ligatures
@@ -169,6 +168,6 @@
     "editor.cursorBlinking": "solid",
     "problems.decorations.enabled": false,
     "Lua.diagnostics.enable": false,
-    "workbench.statusBar.visible": false,
-    "workbench.colorTheme": "Gruvbox Dark Hard"
+    "workbench.colorTheme": "Default Light+",
+    "workbench.iconTheme": "Monokai Pro Icons"
 }
