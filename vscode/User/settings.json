@@ -116,7 +116,6 @@
     "python.terminal.activateEnvironment": false,
     "editor.minimap.maxColumn": 1200,
     "editor.minimap.enabled": false,
-    "C_Cpp.updateChannel": "Insiders",
     "window.zoomLevel": 0,
     "files.associations": {
         "*.html": "html"
@@ -150,6 +149,14 @@
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter.notebook.ipynb"
     },
+    "workbench.colorCustomizations": {
+        "[Abyss][Red]": {
+            "activityBar.background": "#ff0000"
+        },
+        "[Visual*][Light*][Default Light*]": {
+            "statusBar.background": "#353434",
+        }
+    },
     "jupyter.alwaysTrustNotebooks": true,
     "tabnine.experimentalAutoImports": true,
     "go.toolsManagement.autoUpdate": true,
@@ -168,6 +175,8 @@
     "editor.cursorBlinking": "solid",
     "problems.decorations.enabled": false,
     "Lua.diagnostics.enable": false,
-    "workbench.colorTheme": "Default Light+",
-    "workbench.iconTheme": "Monokai Pro Icons"
+    "editor.fontSize": 13,
+    "C_Cpp.enhancedColorization": "Enabled",
+    "C_Cpp.intelliSenseEngine": "Default",
+    "workbench.colorTheme": "Visual Studio Light - C++"
 }
