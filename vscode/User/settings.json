@@ -155,6 +155,17 @@
         },
         "[Visual*][Light*][Default Light*]": {
             "statusBar.background": "#353434",
+        },
+        "[Real Visual Studio*]": {
+            // "tab.activeBackground": "#f5cc84",
+            "tab.activeBackground": "#f5f9ff",
+            "tab.inactiveBackground": "#ccd5f0",
+            "tab.inactiveForeground": "#000000",
+            "tab.hoverBackground": "#fff5f0",
+            "tab.border": "#cce5f0",
+            "breadcrumb.background": "#f5f9ff",
+            "breadcrumb.foreground": "#473d3d",
+            "editor.selectionHighlightBackground": "#ebeeeb"
         }
     },
     "jupyter.alwaysTrustNotebooks": true,
@@ -175,8 +186,9 @@
     "editor.cursorBlinking": "solid",
     "problems.decorations.enabled": false,
     "Lua.diagnostics.enable": false,
-    "editor.fontSize": 13,
     "C_Cpp.enhancedColorization": "Enabled",
     "C_Cpp.intelliSenseEngine": "Default",
-    "workbench.colorTheme": "Visual Studio Light - C++"
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.fontSize": 13,
+    "workbench.colorTheme": "Real Visual Studio - Light Terminal"
 }
