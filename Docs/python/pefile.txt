@@ -1,0 +1,15 @@
+Constructor
+-----------
+pe = pefile.PE('module.dll')
+pe = pefile.PE(name='module.dll')
+pe = pefile.PE(data=module_dll_data)
+
+Sections:
+---------
+pe.sections
+
+def get_section(pe: pefile.PE, section_name):
+    return [sec for sec in pe.sections if sec.Name.decode('utf-8').strip() == section_name]
+
+text_sections = get_section(pe, ".text")
+
