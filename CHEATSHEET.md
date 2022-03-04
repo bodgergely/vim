@@ -1309,6 +1309,8 @@ Use VirtualKD-Redux! Not the original one
 https://github.com/4d61726b/VirtualKD-Redux
 https://github.com/4d61726b/VirtualKD-Redux/issues/2
 
+https://github.com/4d61726b/VirtualKD-Redux/blob/master/VirtualKD-Redux/Docs/Tutorial.md
+
 https://sysprogs.com/legacy/virtualkd/
 
 Explained here:
@@ -1376,7 +1378,7 @@ Name	DEFAULT
 Type	REG_DWORD
 Value	0xF
 
-# Register driver
+# Register driver (#driver, #windowsdriver)
 right click 'Install' on nullFilter.inf
 sc.exe start nullFilter
 
@@ -1386,6 +1388,12 @@ sc create filter type= filesys start= demand binpath= C:\Users\bodge\Desktop\nul
 sc.exe start filter
 sc.exe stop filter
 sc.exe delete filter
+
+## devcon.exe
+
+"%WindowsSdkDir%\tools\x64\devcon.exe" help
+"%WindowsSdkDir%\tools\x64\devcon.exe" install .\K_MSRs.inf Root\K_MSRs
+"%WindowsSdkDir%\tools\x64\devcon.exe" remove .\K_MSRs.inf Root\K_MSRs
 
 WinDbg (windbg)
 ---------------
