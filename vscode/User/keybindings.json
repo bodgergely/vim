@@ -274,5 +274,9 @@
         "key": "ctrl+k ctrl+i",
         "command": "-editor.action.showHover",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "workbench.files.action.showActiveFileInExplorer"
     }
 ]

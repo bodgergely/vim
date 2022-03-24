@@ -165,14 +165,16 @@
             "tab.border": "#cce5f0",
             "breadcrumb.background": "#f5f9ff",
             "breadcrumb.foreground": "#473d3d",
-            "editor.selectionHighlightBackground": "#ebeeeb"
+            "editor.selectionHighlightBackground": "#e3ece3",
+            //"activityBar.background": "#c3c9dd"
+            "activityBar.background": "#333333",
+            "activityBar.foreground": "#b9b5b5"
+            //"activityBar.background": "#e8e8ec"
         }
     },
     "jupyter.alwaysTrustNotebooks": true,
     "tabnine.experimentalAutoImports": true,
     "go.toolsManagement.autoUpdate": true,
-    "gitlens.codeLens.enabled": false,
-    "gitlens.currentLine.enabled": false,
     "editor.mouseWheelScrollSensitivity": 0.6,
     "gitlens.hovers.enabled": false,
     "terminal.integrated.defaultProfile.windows": "Git Bash",
@@ -190,5 +192,10 @@
     "C_Cpp.intelliSenseEngine": "Default",
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.fontSize": 13,
-    "workbench.colorTheme": "Real Visual Studio - Light Terminal"
+    "workbench.colorTheme": "Visual Studio Light - C++",
+    "Lua.telemetry.enable": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.codeLens.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "explorer.autoReveal": false
 }
