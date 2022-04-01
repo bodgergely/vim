@@ -1405,11 +1405,13 @@ https://fishilico.github.io/generic-config/windows/windbg-kd.html
 
 dd [location/variable] - dissassembly data at variable
 bp $exentry - break on entry
+bm /a elamsample!Elam* - pattern based breakpoint set
 bl - list breakpoints
 p - step over
 t - step into
 gu - step out
 tt - resume until return
+.sympath - symbol path query and setting
 .reload /f - load with symbols
 .restart
 q - quit/stop debugging session
@@ -1421,6 +1423,9 @@ lm - list loaded modules
 .load,.loadby - Load library
 
 ## kernelmode windbg
+
+- .reload
+- .reload /f
 
 - `bp /p <address of EPROCESS> ntdll!NtCreateThreadEx`
 How to get EPROCESS address?
@@ -1436,6 +1441,9 @@ After this grab the address after PROCESS in windbg output following above cmd
 dt shows the structure of the struct not its contents. Specify and address if you want to
 show an instance of an actual process.
 `!process 0 0` - get all the EPROCESS blocks in the system
+ !process 0 0 fssm32.exe - look for the process name pattern
+ .process /r /p 868c07a0 - once you have the PROCESS pointer from above cmd
+ lm - loaded modules
 
 Links:
 https://stackoverflow.com/questions/11106402/dumping-eprocess-with-windbg
