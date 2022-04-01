@@ -70,6 +70,7 @@ std::ostream& operator<<(std::ostream& os, const std::map<K, V>& cont)
         buf << it->first;
         buf << ": ";
         buf << it->second;
+        res.push_back('}');
     }
     auto res = buf.str();
     res.pop_back();
@@ -88,6 +89,7 @@ std::ostream& operator<<(std::ostream& os, const std::unordered_map<K, V>& cont)
         buf << it->first;
         buf << ": ";
         buf << it->second;
+        res.push_back('}');
     }
     auto res = buf.str();
     res.pop_back();
