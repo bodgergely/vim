@@ -1746,3 +1746,24 @@ dumbbin /exports ntdll.dll
 dumpbin /symbols ntdll.dll
 dumpbin /directives ntdll.dll
 
+# Remapping capslock (caps lock) to be a ctrl key
+
+## Windows
+https://gist.github.com/joshschmelzle/5e88dabc71014d7427ff01bca3fed33d
+
+### Powershell as admin
+https://renenyffenegger.ch/notes/Windows/registry/tree/HKEY_LOCAL_MACHINE/System/CurrentControlSet/Control/Keyboard-Layout/index
+
+$hexified = "00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00".Split(',') | % { "0x$_"};
+$kbLayout = 'HKLM:\System\CurrentControlSet\Control\Keyboard Layout';
+New-ItemProperty -Path $kbLayout -Name "Scancode Map" -PropertyType Binary -Value ([byte[]]$hexified);
+
+### Registry file
+
+Create a new .reg file and name it something meaningful like capstoctrl.reg. Edit the file and paste in the following:
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00
+
+
+
