@@ -581,3 +581,6 @@ let g:auto_save_silent = 1    " no notification when autosaving
 " autoread - reload external changes to file in vim editor
 set autoread
 au FocusGained,BufEnter * :checktime    " this is to reload changes
+
+" set column/ruler/border limit vertical line to see line border
+":set colorcolumn=80

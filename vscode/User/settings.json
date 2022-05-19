@@ -144,16 +144,16 @@
     "python.languageServer": "Pylance",
     "workbench.list.smoothScrolling": true,
     "[cpp]": {
-        "editor.defaultFormatter": "xaver.clang-format"
+        "editor.defaultFormatter": "ms-vscode.cpptools"
     },
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
+        "*.ipynb": "jupyter-notebook"
     },
     "workbench.colorCustomizations": {
         "[Abyss][Red]": {
             "activityBar.background": "#ff0000"
         },
-        "[Visual*][Light*][Default Light*]": {
+        "[Visual*][Light*][Default Light*][Default Dark*]": {
             "statusBar.background": "#353434",
         },
         "[Real Visual Studio*]": {
@@ -175,7 +175,6 @@
     "jupyter.alwaysTrustNotebooks": true,
     "tabnine.experimentalAutoImports": true,
     "go.toolsManagement.autoUpdate": true,
-    "editor.mouseWheelScrollSensitivity": 0.6,
     "gitlens.hovers.enabled": false,
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     "redhat.telemetry.enabled": false,
@@ -191,11 +190,14 @@
     "C_Cpp.enhancedColorization": "Enabled",
     "C_Cpp.intelliSenseEngine": "Default",
     "diffEditor.ignoreTrimWhitespace": false,
-    "editor.fontSize": 13,
-    "workbench.colorTheme": "Visual Studio Light - C++",
     "Lua.telemetry.enable": false,
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.codeLens.enabled": false,
     "gitlens.currentLine.enabled": false,
-    "explorer.autoReveal": false
+    "explorer.autoReveal": false,
+    "terminal.integrated.fontSize": 13,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    }
 }

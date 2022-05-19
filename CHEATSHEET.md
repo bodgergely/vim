@@ -1148,6 +1148,9 @@ ESC Z Q
 Using vim for c++(cpp) dev:
 https://idie.ru/posts/vim-modern-cpp
 
+Ruler/vertical line/column to visually see the border on a line.
+:set colorcolumn=80
+
 
 RipGrep, ripgrep, Ripgrep
 =========================
