@@ -1406,6 +1406,26 @@ https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/commands
 Good resource:
 https://fishilico.github.io/generic-config/windows/windbg-kd.html
 
+### Symbols
+
+https://stackoverflow.com/questions/30019889/how-to-set-up-symbols-in-windbg
+
+Most of the time (80% use case)
+.symfix+ c:\symbols
+.reload
+
+More advanced:
+.sympath c:\mysymbols ; *** Symbols of your application, locally, flat list of PDB files
+.sympath+ cache*c:\symbolcache ; *** (optional) Create a cache for everything
+.sympath+ \\server\symbols ; *** Symbols provided from a network share
+.symfix+ c:\symbols ; *** Microsoft symbols
+
+Or in the menu (File/Symbol File Path...) or ctrl+s:
+c:\mysymbols;cache*c:\symbolcache;\\server\symbols;SRV*c:\symbols*http://msdl.microsoft.com/download/symbols
+
+Or by environment var (_NT_SYMBOL_PATH)
+c:\mysymbols;cache*c:\symbolcache;\\server\symbols;SRV*c:\symbols*http://msdl.microsoft.com/download/symbols
+
 dd [location/variable] - dissassembly data at variable
 bp $exentry - break on entry
 bm /a elamsample!Elam* - pattern based breakpoint set
@@ -1768,5 +1788,14 @@ Create a new .reg file and name it something meaningful like capstoctrl.reg. Edi
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
 "Scancode Map"=hex:00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00
 
+Hyper-V vs VMWare (#vmware)
+===========================
+
+After Hyper-V installation old VMWare live snapshots won't work.
+Do this:
+
+bcdedit /set hypervisorlaunchtype off
+
+Then restart.
 
 

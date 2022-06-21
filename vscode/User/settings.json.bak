@@ -1,0 +1,205 @@
+{
+    "vim.useCtrlKeys": false,
+    "vim.scroll": 5,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        },
+        {
+            "before": [
+                "k",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "f"
+            ],
+            "after": [
+                "y"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "f",
+                "f"
+            ],
+            "after": [
+                "y",
+                "y"
+            ]
+        },
+        {
+            "before": [
+                ";"
+            ],
+            "after": [
+                ":"
+            ]
+        },
+        {
+            "before": [
+                "u"
+            ],
+            "commands": [
+                "undo"
+            ]
+        },
+        {
+            "before": [
+                "<C-r>"
+            ],
+            "commands": [
+                "redo"
+            ]
+        }
+    ],
+    "vim.leader": ",",
+    "files.autoSave": "afterDelay",
+    "explorer.confirmDragAndDrop": false,
+    "editor.wordWrap": "on",
+    "python.condaPath": "/home/geri/anaconda3/bin/conda",
+    "python.venvPath": "~/anaconda3/envs",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/*.o": true,
+        "**/node_modules/**": true,
+        "**/target/**": true,
+        "build": true
+    },
+    "C_Cpp.clang_format_style": "none",
+    "C_Cpp.clang_format_fallbackStyle": "none",
+    "editor.mouseWheelZoom": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.jediEnabled": false,
+    "files.exclude": {
+        ".GOPATH": true,
+        "**/*.a": true,
+        "**/*.o": true,
+        "build": true
+    },
+    "search.exclude": {
+        "**/*.o": true,
+        "build/**": true
+    },
+    "workbench.tree.indent": 18,
+    "go.inferGopath": true,
+    "editor.formatOnSave": true,
+    "vs-kubernetes": {
+        "vs-kubernetes.helm-path": "/home/greg/.vs-kubernetes/tools/helm/linux-amd64/helm",
+        "vs-kubernetes.minikube-path": "/home/greg/.vs-kubernetes/tools/minikube/linux-amd64/minikube",
+        "vs-kubernetes.draft-path": "/home/greg/.vs-kubernetes/tools/draft/linux-amd64/draft"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "yaml.validate": false,
+    "yaml.format.enable": false,
+    "python.linting.enabled": false,
+    "python.terminal.activateEnvironment": false,
+    "editor.minimap.maxColumn": 1200,
+    "editor.minimap.enabled": false,
+    "window.zoomLevel": 0,
+    "files.associations": {
+        "*.html": "html"
+    },
+    "sqltools.useNodeRuntime": true,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "python.formatting.autopep8Path": "",
+    "rust.mode": "rls",
+    "rust-client.channel": "nightly",
+    "rust.rustup": {
+        "toolchain": "nightly-x86_64-unknown-linux-gnu",
+        "nightlyToolchain": "nightly-x86_64-unknown-linux-gnu"
+    },
+    "cmake.configureOnOpen": false,
+    "[rust]": {},
+    "go.useLanguageServer": true,
+    "rust.rls": {
+        "useRustfmt": true
+    },
+    "code-runner.clearPreviousOutput": true,
+    "go.autocompleteUnimportedPackages": true,
+    "go.lintTool": "staticcheck",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "python.languageServer": "Pylance",
+    "workbench.list.smoothScrolling": true,
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "workbench.colorCustomizations": {
+        "[Abyss][Red]": {
+            "activityBar.background": "#ff0000"
+        },
+        "[Visual*][Light*][Default Light*][Default Dark*]": {
+            "statusBar.background": "#353434",
+        },
+        "[Real Visual Studio*]": {
+            // "tab.activeBackground": "#f5cc84",
+            "tab.activeBackground": "#f5f9ff",
+            "tab.inactiveBackground": "#ccd5f0",
+            "tab.inactiveForeground": "#000000",
+            "tab.hoverBackground": "#fff5f0",
+            "tab.border": "#cce5f0",
+            "breadcrumb.background": "#f5f9ff",
+            "breadcrumb.foreground": "#473d3d",
+            "editor.selectionHighlightBackground": "#e3ece3",
+            //"activityBar.background": "#c3c9dd"
+            "activityBar.background": "#333333",
+            "activityBar.foreground": "#b9b5b5"
+            //"activityBar.background": "#e8e8ec"
+        }
+    },
+    "jupyter.alwaysTrustNotebooks": true,
+    "tabnine.experimentalAutoImports": true,
+    "go.toolsManagement.autoUpdate": true,
+    "gitlens.hovers.enabled": false,
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "redhat.telemetry.enabled": false,
+    "xml.symbols.maxItemsComputed": 15000,
+    // Controls the line height. Use 0 to compute the lineHeight from the fontSize.
+    "editor.lineHeight": 0,
+    // Enables font ligatures
+    "editor.fontLigatures": false,
+    "terminal.integrated.cursorBlinking": true,
+    "editor.cursorBlinking": "solid",
+    "problems.decorations.enabled": false,
+    "Lua.diagnostics.enable": false,
+    "C_Cpp.enhancedColorization": "Enabled",
+    "C_Cpp.intelliSenseEngine": "Default",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "Lua.telemetry.enable": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.codeLens.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "explorer.autoReveal": false,
+    "terminal.integrated.fontSize": 13,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.guides.indentation": false,
+    "workbench.colorTheme": "Visual Studio Light - C++"
+}
