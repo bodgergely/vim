@@ -1,0 +1,3 @@
+alias e='vim main.asm'
+alias b='fasm.exe main.asm main.exe'
+alias r='b && ./main.exe'
