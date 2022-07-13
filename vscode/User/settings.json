@@ -82,7 +82,6 @@
         "**/target/**": true,
         "build": true
     },
-    "editor.renderIndentGuides": false,
     "C_Cpp.clang_format_style": "none",
     "C_Cpp.clang_format_fallbackStyle": "none",
     "editor.mouseWheelZoom": true,
@@ -182,7 +181,7 @@
     // Controls the line height. Use 0 to compute the lineHeight from the fontSize.
     "editor.lineHeight": 0,
     // Enables font ligatures
-    "editor.fontLigatures": false,
+    "editor.fontLigatures": true,
     "terminal.integrated.cursorBlinking": true,
     "editor.cursorBlinking": "solid",
     "problems.decorations.enabled": false,
@@ -195,9 +194,21 @@
     "gitlens.codeLens.enabled": false,
     "gitlens.currentLine.enabled": false,
     "explorer.autoReveal": false,
-    "terminal.integrated.fontSize": 13,
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "left"
-    }
+    },
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.guides.indentation": false,
+    "explorer.excludeGitIgnore": true,
+    "git.branchProtection": [
+        "master",
+        "origin/master"
+    ],
+    "git.branchPrefix": "gergely-bod_KRY-",
+    "git.mergeEditor": true,
+    "window.commandCenter": true,
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.shellIntegration.enabled": true,
+    "workbench.colorTheme": "Default Light+"
 }
