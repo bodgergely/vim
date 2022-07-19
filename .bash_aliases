@@ -1,7 +1,9 @@
 stty -ixon
 shopt -s histverify
 
-alias l='ls -lharSt'
+function l() { 
+    ls -lharSt $@
+}
 
 export PYTHON3_DIR="/c/Program Files/Python310"
 export PYTHON3_DIR_SCRIPTS="$PYTHON3_DIR"/Scripts
@@ -54,9 +56,17 @@ function np() {
 #export PATH='/cygdrive/c/Windows/System32':$PATH
 export PATH="$HOME/bin:$PATH"
 export PATH="/c/Program Files/LLVM/bin:$PATH"
+export PATH="$HOME/AppData/Local/SumatraPDF:$PATH"
+export PATH="$HOME/Progs/fasm:$PATH"
+export INCLUDE="$HOME/Progs/fasm/INCLUDE"
 
-export WORKSPACE='~/workspace'
+export PROGRAMFILES_x86="/c/Program Files (x86)"
+export PROGRAMFILES="/c/Program Files"
+export PROGRAMDATA="/c/ProgramData"
+
+export WORKSPACE="$HOME/workspace"
 export DEV="/c/dev/"
+export MYREPOS="$WORKSPACE/myrepos"
 export VIMRC="$WORKSPACE/vimrc"
 export CPPPLAY="$WORKSPACE/cpp"
 export ONEDRIVE="$HOME/\"OneDrive - HP Inc/\""
@@ -65,7 +75,7 @@ export CHEATSHEET="$WORKSPACE/vimrc/cheatsheet.md"
 export NOTES="$ONEDRIVE/notes.md"
 export KRYPTON="$DEV/Krypton"
 export BEM="$KRYPTON/bem"
-export OUT="$DEV/out/win7-64bit-ninja/"
+export OUT="$DEV/out/win7-64bit-ninja"
 export BRS="/c/Program Files/HP/Sure Click/servers"
 export SURECLICK_INSTALL_FOLDER="/c/Program Files/HP/Sure Click/"
 export SURECLICK_LOGS="/c/Users/gergely.bod/AppData/LocalLow/Bromium/vSentry/Logs"
@@ -73,11 +83,14 @@ export BEM_LOGS="/c/ProgramData/Bromium/BEM/logs"
 export BEMK_LOGS="/c/ProgramData/Bromium/BEM/logs/Bemk"
 export BEMSVC_LOGS="/c/ProgramData/Bromium/BEM/logs/BemSvc"
 export GUEST_INSTALL="/c/Windows/GuestInstall"
-export BEM_BUILD_LOCATION="/c/dev/out/win7-64bit-ninja/bem"
+export BEM_BUILD_LOCATION="$OUT/bem"
 export DESKTOP="$HOME/Desktop"
 export DOCUMENTS="$HOME/Documents"
-export WIN_KIT="/c/Program Files (x86)/Windows Kits/10/bin/10.0.18362.0/x64"
+export WINKIT="$PROGRAMFILES_x86/Windows Kits"
+export WINKIT_BIN="/c/Program Files (x86)/Windows Kits/10/bin/10.0.22621.0/x64"
+export VISUAL_STUDIO_DIR="$PROGRAMFILES_x86/Microsoft Visual Studio"
 export WIN_DRIVER_SAMPLES="~/workspace/microsoft/Windows-driver-samples"
+
 
 export P2VTOOLS="$DEV/p2v-tools/bin"
 
@@ -90,6 +103,7 @@ alias cdcpp="cd $CPPPLAY"
 alias cddocs="cd $VIMRC/Docs"
 alias cdonedrive="cd $ONEDRIVE"
 alias cdjiras="cd $ONEDRIVE/jiras"
+alias pushdjiras="pushd $ONEDRIVE/jiras"
 alias cddesktop="cd $DESKTOP"
 alias cddocuments="cd $DOCUMENTS"
 alias cdkrypton="cd $KRYPTON"
@@ -110,15 +124,26 @@ alias cheatsheet="vim $CHEATSHEET"
 alias cpp="code $CPPPLAY"
 alias cpp-vim="cd $CPPPLAY && vim cpp/main.cpp"
 alias cdscratch="cd ~/scratchpad"
-alias cdwinkit="cd '$WIN_KIT'"
+alias cdwinkit="cd '$WINKIT'"
+alias cdwinkitbin="cd '$WINKIT_BIN'"
+alias cdvisualstudio="cd '$VISUAL_STUDIO_DIR'"
+alias cdprogramfiles="cd '$PROGRAMFILES'"
+alias cdprogramfiles86="cd '$PROGRAMFILES_x86'"
+alias cdprogramdata="cd '$PROGRAMDATA'"
+alias cdsys32="cd /c/Windows/System32"
 alias cddriversamples="cd $WIN_DRIVER_SAMPLES"
+alias cdplayground="cd $MYREPOS/playground"
+alias cdtmp="cd $HOME/Desktop/tmp"
+alias cdtemp="cdtmr"
 
 
+alias brake-conf="vim $HOME/.config/brake/brake.config"
 
-alias bem-kill="python.exe /c/dev/p2v-tools/bin/vSentry.py kill"
-alias bem-resurrect="python.exe /c/dev/p2v-tools/bin/vSentry.py resurrect"
-alias bem-clear-logs="python.exe /c/dev/p2v-tools/bin/vSentry.py clear-logs"
-alias bem-grep-logs="python.exe /c/dev/p2v-tools/bin/vSentry.py grep-logs"
+
+alias bem-kill="python.exe /c/dev/p2v-tools/bin/bem.py kill"
+alias bem-resurrect="python.exe /c/dev/p2v-tools/bin/bem.py resurrect"
+alias bem-clear-logs="python.exe /c/dev/p2v-tools/bin/bem.py clear-logs"
+alias vsentry-grep-logs="python.exe /c/dev/p2v-tools/bin/vSentry.py grep-logs"
 alias bem-test="python.exe $BEM/tests/run.py"
 alias clear-test-logs="rm -rf /c/test/*"
 
@@ -148,22 +173,28 @@ function brman-config-set() {
 }
 
 function ls-install() {
-    l "$SURECLICK_INSTALL_FOLDER/servers/"
-    
+    FOLDER="$SURECLICK_INSTALL_FOLDER/servers/"
+    cd "$FOLDER"
+    pwd
+    l
+    cd -
 }
 function ls-build() {
-    l "$OUT/servers/"
-    
+    FOLDER="$OUT/servers/"
+    cd "$FOLDER"
+    pwd
+    l
+    cd -
 }
 
 function bem-update(){
-    python.exe /c/dev/p2v-tools/bin/vSentry.py --verbose update --refresh-guest
+    #python.exe /c/dev/p2v-tools/bin/vSentry.py --verbose update --refresh-guest
+    python.exe /c/dev/p2v-tools/bin/bem.py --verbose update $1
     ret=$?
     echo "bem-update finished with ret val: $ret"
-    if [[ $ret -eq 0 ]]; then
-        state-watch
-        ls-build
-    fi
+    #if [[ $ret -eq 0 ]]; then
+        #state-watch
+    #fi
     return $ret
 }
 function rm-build-log() {
@@ -182,11 +213,12 @@ alias bk='cd $KRYPTON && build-clear && ./brake.bat krypton > /tmp/build.txt; re
 alias bkupdate='bk; if [[ $ret -eq 0 ]]; then bem-update; else echo "Build failed so wont run bem-update"; fi'
 alias bkiupdate='bki; if [[ $ret -eq 0 ]]; then bem-update; else echo "Build failed so wont run bem-update"; fi'
 function bk-bemsvc() {
-    cd $KRYPTON && clear && clock; ./brake.bat krypton --target BemSvc-dist; ret="$?"; clock; echo "Build returned: $ret";
+    cd $KRYPTON && clear && clock; ./brake.bat krypton --target BemSvc-dist; ret="$?"; clock; cd -; echo "Build returned: $ret";
     return $ret;
 }
 #alias bk-bemsvc="cd $KRYPTON && clear && ./brake.bat krypton --target BemSvc-sign; notepad.exe"
 function bk-bemsvc-update() {
+    #if bk-bemsvc; then bem-update --skip-vsentry; fi;
     if bk-bemsvc; then bem-update; fi;
 }
 
@@ -295,22 +327,58 @@ function 7z-unzip() {
 }
 
 function makecert() {
-    "$WIN_KIT"/makecert.exe $@
+    "$WINKIT_BIN"/makecert.exe $@
 }
 
 function pvk2pfx() {
-    "$WIN_KIT"/pvk2pfx.exe $@
+    "$WINKIT_BIN"/pvk2pfx.exe $@
 }
 
 function signtool() {
-    "$WIN_KIT"/signtool.exe $@
+    "$WINKIT_BIN"/signtool.exe $@
 } 
 
-function python_project() {
-    if [[ -z $1 ]]; then echo "Usage: python_project <projname>"; return 127; fi
+function gen-python-project() {
+    if [[ -z $1 ]]; then echo "Usage: gen-python-project <projname>"; return 127; fi
     bash ~/bin/gen_python_project.sh $1
+}
+
+function gen-cpp-project() {
+    if [[ -z $1 ]]; then echo "Usage: gen-python-project <projname>"; return 127; fi
+    bash ~/bin/gen_cpp_project.sh $1
+    cp -r "$VIMRC/vscode/.vscode" $1
 }
 
 function source_pytest3() {
     alias pytest='"$PYTHON3_DIR_SCRIPTS"/pytest.exe'
 }
+
+function currnotes() {
+    pushdjiras
+    cd win-store
+    vim KRY-72901.md 
+    popd
+}
+
+function services-list() {
+    sc queryex type=service state=all
+}
+
+
+function services-list-running() {
+    sc queryex type=service
+}
+
+function services-query() {
+    sc query $1
+}
+
+
+# nand2tetris
+alias cdnand="cd $WORKSPACE/myrepos/nand2tetris"
+# eof nand2tetris
+
+
+source ~/.bash_aliases_extra
+
+

@@ -13,6 +13,7 @@ set hlsearch
 set ignorecase
 set smartcase
 
+set noswapfile
 " on windows especially if using neovim (nvim), you need the below
 "if has ('win32') || has('win64')
     " disable swap file creation because on windows issues
@@ -49,7 +50,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'vim-syntastic/syntastic'
-Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'         " make a visual selection -> hit 'S' -> hit <CHAR to surround with selection>
 Plugin 'jiangmiao/auto-pairs'
 "Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'vim-airline/vim-airline'
@@ -63,7 +64,7 @@ Plugin 'flazz/vim-colorschemes'
 "Plugin 'liuchengxu/space-vim-dark'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 "Plugin 'fatih/vim-go'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
@@ -76,7 +77,7 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'hdima/python-syntax'
 "Plugin 'altercation/vim-colors-solarized'
 "Plugin 'rdnetto/YCM-Generator'  " generate YouCompleteMe config file for C++ projects
-Plugin 'SirVer/ultisnips'       " snippet engine
+"Plugin 'SirVer/ultisnips'       " snippet engine
 Plugin 'honza/vim-snippets'     " actual snippets for languages
 Plugin 'prettier/vim-prettier'
 "Plugin 'ternjs/tern_for_vim'   " javascript
@@ -98,18 +99,18 @@ Plugin 'yssl/QFEnter'   " plugin to quickly open Quick Window results - open fil
 "Plugin 'neovim/nvim-lsp' " Language Server Plugin - need to sinstall individual language servers with LspInstall, LspInstallInfo
 "Plugin 'autozimu/LanguageClient-neovim'  " Language Server Plugin
 " START OF NCM2
-Plugin 'ncm2/ncm2'
-Plugin 'roxma/nvim-yarp'
-Plugin 'ncm2/ncm2-bufword'
-Plugin 'ncm2/ncm2-path'
+"Plugin 'ncm2/ncm2'
+"Plugin 'roxma/nvim-yarp'
+"Plugin 'ncm2/ncm2-bufword'
+"Plugin 'ncm2/ncm2-path'
 "Plugin 'ncm2/ncm2-racer'
-Plugin 'ncm2/ncm2-pyclang'
+"Plugin 'ncm2/ncm2-pyclang'
 "Plugin 'ncm2/ncm2-go'
-Plugin 'ncm2/ncm2-jedi'
-Plugin 'ncm2/ncm2-ultisnips'
+"Plugin 'ncm2/ncm2-jedi'
+"Plugin 'ncm2/ncm2-ultisnips'
 " END OF NCM2
 Plugin 'vim-scripts/vim-auto-save'
-Plugin 'tmux-plugins/vim-tmux-focus-events'
+"Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'RRethy/vim-illuminate'  "highlights word under cursor
 Plugin 'derekwyatt/vim-fswitch' "switch between header and source files (c/c++)
 
@@ -242,14 +243,14 @@ set autoread
 
 set wildignore+=tags,**/tags
 " grep - ripgrep - rg
-if executable('rg')
-  set grepprg=rg\ --no-heading\ --vimgrep
-  set grepformat^=%f:%l:%c:%m
-endif
+"if executable('rg')
+  "set grepprg=rg\ --no-heading\ --vimgrep
+  "set grepformat^=%f:%l:%c:%m
+"endif
 " on windows use git grep instead
 " https://vi.stackexchange.com/questions/8855/how-can-i-change-the-default-grep-call-grepprg-to-exclude-directories
-"set grepprg=git\ --no-pager\ grep\ --no-color\ -n\ $*
-"set grepformat=%f:%l:%m,%m\ %f\ match%ts,%f
+set grepprg=git\ --no-pager\ grep\ --no-color\ -n\ $*
+set grepformat=%f:%l:%m,%m\ %f\ match%ts,%f
 
 " make EasyGrep use grepprg (basically to use rg otherwise it will use the slow vimgrep)
 let g:EasyGrepCommand=1
@@ -343,10 +344,17 @@ let g:ycm_add_preview_to_completeopt = 0
 
 " vim-illuminate 
 " Time in milliseconds (default 0)
-let g:Illuminate_delay = 300
+let g:Illuminate_delay = 10
 " Don't highlight word under cursor (default: 1)
 let g:Illuminate_highlightUnderCursor = 1
 let g:Illuminate_ftblacklist = ['nerdtree']
+" use the search highlight color for vim-illuminate - remove this if too bright the color!
+"augroup illuminate_augroup
+    "autocmd!
+    "autocmd VimEnter * hi link illuminatedWord Search
+"augroup END
+" END OF vim-illuminate
+
 
 " vim-fswitch
 au BufEnter *.h  let b:fswitchdst = "c,cpp,cc,m"
@@ -390,7 +398,7 @@ map f y
 "inoremap <C-Space> <C-x><C-o>
 "inoremap <C-@> <C-Space>
 "remove mapping
-inoremap <C-Space> <C-n>
+"inoremap <C-Space> <C-n>
 "tnoremap <NUL> <C-Space>
 """"EOF ctrl space remapping stuff
 
@@ -425,6 +433,8 @@ autocmd FileType js UltiSnipsAddFiletypes javascript-jasmine
 " enhance YCM JS completion with tern's smarts
 "autocmd FileType javascript setlocal omnifunc=tern#Complete
 "au BufNewFile,BufRead *.ejs set filetype=html     "ejs syntax highlighting
+
+set omnifunc=syntaxcomplete#Complete
 
 
 if exists('$TMUX')
@@ -506,7 +516,7 @@ function ExpandSnippetOrCarriageReturn()
         return "\<CR>"
     endif
 endfunction
-inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
+"inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 " END OF INSTER
 
 
@@ -570,8 +580,9 @@ map <Leader>vz :VimuxZoomRunner<CR>
 " end of Vimux
 
 " lua
-let lua_version = 5.3
+"let lua_version = 5.3
 "let lua_version = 1
+"let g:lua_compiler_name='/c/dev/Krypton/deps/lua_vs2015/out/bin/luac.exe'
 
 " autosave plugin
 "let g:auto_save = 1        " this would enable the plugin on vim startup
@@ -581,6 +592,3 @@ let g:auto_save_silent = 1    " no notification when autosaving
 " autoread - reload external changes to file in vim editor
 set autoread
 au FocusGained,BufEnter * :checktime    " this is to reload changes
-
-" set column/ruler/border limit vertical line to see line border
-":set colorcolumn=80
