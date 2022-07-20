@@ -1799,3 +1799,16 @@ bcdedit /set hypervisorlaunchtype off
 Then restart.
 
 
+
+
+
+WinRt(cppwinrt, #winrt)
+=======================
+
+https://www.youtube.com/watch?v=nOFNc2uTmGs
+
+Build from command line:
+x64 Native Tools Command Prompt for VS2019
+cl.exe /nologo /EHsc /std:c++17 main.cpp /link windowsapp.lib
+
+
