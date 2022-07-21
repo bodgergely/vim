@@ -52,6 +52,7 @@ chmod +x $DIR/build.sh
 
 # aliases file
 cat <<HEREDOC > $DIR/aliases
+alias format='clang-format.exe -i *.cpp'
 alias b='./build.sh'
 alias rr='./build/main'
 alias r='b && rr'
