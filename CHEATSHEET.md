@@ -152,6 +152,7 @@ Basic tools
 - less, more, cat, most
 - wc, sort, uniq, bc, column
 - sed, awk
+- xargs (xargs -i ls -lha {} or just xargs ls -lha)
 - searchsploit
 - dirbuster, dirb, gobuster, dirsearch
 - sqlmap
@@ -236,6 +237,20 @@ Crontab
 -------
 
 - crontab -l  - to list cron jobs
+
+xargs (#xargs)
+--------------
+
+find . -type d | xargs ls -lha
+find . -type d | xargs -i ls -lha {}
+
+find (#find)
+------------
+
+exclude directories (at any level name .git or .vs)
+find . -name "*" -not -path "*.git/*" -not -path "*.vs/*"
+find . -mindepth 2 -maxdepth 3
+
 
 printscreen
 -----------
@@ -1034,13 +1049,19 @@ int bash() {
 }
 ```
 
-grep
+grep (#grep)
 ====
 To output the match only (-oh), -E means extended regex
 $ grep -oh -R -E "=\s+ngx\..*\." --include=*.lua .
 
 Match the word between foo and bar
 $ grep -oP 'foo \K\w+(?= bar)'
+
+-i: case insensitive
+-F: fixed-string (do not use regex when searching)
+-v: invert match - show all not matching
+-h: no filename
+-l: show only filename
 
 
 
