@@ -18,4 +18,7 @@ PointerAlignment: Left
 AlwaysBreakTemplateDeclarations: 'true'
 UseTab: Never
 IndentCaseLabels: false
+EmptyLineAfterAccessModifier: Leave
+EmptyLineBeforeAccessModifier: Leave
+AllowShortFunctionsOnASingleLine: All
 ...
