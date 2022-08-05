@@ -1181,6 +1181,20 @@ Search for int main() in C files, globbing
 rg -e ".*int\w+main\w*\(" -g "*.c"
 `
 
+exclude file patterns: -g \!<pattern1> -g \!<pattern2>
+`
+rg -g \!*.wixobj -g \!*.wxs 833378FE-1986-46BA-9B4E-F8F1DEBC986F
+`
+
+print the filename on the same line as search hit:
+`--no-heading`
+
+include binary files:
+`--binary`
+
+case insensitive:
+-i
+
 Compression/decompression/zip
 =============================
 

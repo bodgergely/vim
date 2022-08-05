@@ -37,3 +37,30 @@ program and more care taken is needed.
 
 - Atomic operations:
     Operation executed atomically.
+
+
+Wrap printf or variadiac arg functions with macro
+=================================================
+```
+#include <stdarg.h>
+#include <stdio.h>
+
+void my_printf(const char *fmt, ...) {
+    va_list args;
+    va_start(args, fmt);
+    vprintf(fmt, args);
+    va_end(args);
+}
+```
+
+or with macros:
+
+```
+#define TM_PRINTF(f_, ...) printf((f_), __VA_ARGS__)
+#define TM_SNPRINTF(s_, sz_, f_, ...) snprintf((s_), (sz_), (f_), __VA_ARGS__)
+```
+
+
+Also #define TM_PRINTF(f_, ...) printf((f_), ##__VA_ARGS__)
+
+https://en.cppreference.com/w/c/preprocessor/replace
