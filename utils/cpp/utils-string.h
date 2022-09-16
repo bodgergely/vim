@@ -1,21 +1,22 @@
 #pragma once
 
-#include <algorithm> 
+#include <algorithm>
 #include <cctype>
-#include <locale>
 #include <fstream>
-#include <vector>
-#include <set>
-#include <unordered_set>
+#include <locale>
 #include <map>
+#include <set>
+#include <sstream>
 #include <unordered_map>
+#include <unordered_set>
+#include <vector>
 
-template<typename T>
+template <typename T>
 std::ostream& operator<<(std::ostream& os, const std::vector<T>& vec)
 {
     std::stringstream buf;
     buf << "[";
-    for(int i=0;i<vec.size();i++) {
+    for (int i = 0; i < vec.size(); i++) {
         buf << vec[i];
         buf << ", ";
     }
@@ -27,12 +28,12 @@ std::ostream& operator<<(std::ostream& os, const std::vector<T>& vec)
     return os;
 }
 
-template<typename T>
+template <typename T>
 std::ostream& operator<<(std::ostream& os, const std::set<T>& cont)
 {
     std::stringstream buf;
     buf << "[";
-    for(auto it=cont.begin();it!=cont.end();it++) {
+    for (auto it = cont.begin(); it != cont.end(); it++) {
         buf << *it;
         buf << ", ";
     }
@@ -44,12 +45,12 @@ std::ostream& operator<<(std::ostream& os, const std::set<T>& cont)
     return os;
 }
 
-template<typename T>
+template <typename T>
 std::ostream& operator<<(std::ostream& os, const std::unordered_set<T>& cont)
 {
     std::stringstream buf;
     buf << "{";
-    for(auto it=cont.begin();it!=cont.end();it++) {
+    for (auto it = cont.begin(); it != cont.end(); it++) {
         buf << *it;
         buf << ", ";
     }
@@ -61,16 +62,15 @@ std::ostream& operator<<(std::ostream& os, const std::unordered_set<T>& cont)
     return os;
 }
 
-template<typename K, typename V>
+template <typename K, typename V>
 std::ostream& operator<<(std::ostream& os, const std::map<K, V>& cont)
 {
     std::stringstream buf;
     buf << "{";
-    for(auto it=cont.begin();it!=cont.end();it++) {
+    for (auto it = cont.begin(); it != cont.end(); it++) {
         buf << it->first;
         buf << ": ";
         buf << it->second;
-        res.push_back('}');
     }
     auto res = buf.str();
     res.pop_back();
@@ -80,16 +80,15 @@ std::ostream& operator<<(std::ostream& os, const std::map<K, V>& cont)
     return os;
 }
 
-template<typename K, typename V>
+template <typename K, typename V>
 std::ostream& operator<<(std::ostream& os, const std::unordered_map<K, V>& cont)
 {
     std::stringstream buf;
     buf << "{";
-    for(auto it=cont.begin();it!=cont.end();it++) {
+    for (auto it = cont.begin(); it != cont.end(); it++) {
         buf << it->first;
         buf << ": ";
         buf << it->second;
-        res.push_back('}');
     }
     auto res = buf.str();
     res.pop_back();
@@ -99,41 +98,47 @@ std::ostream& operator<<(std::ostream& os, const std::unordered_map<K, V>& cont)
     return os;
 }
 
-
 // trim from start (in place)
-static inline void ltrim(std::string &s) {
+static inline void ltrim(std::string& s)
+{
     s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch) {
-        return !std::isspace(ch);
-    }));
+                return !std::isspace(ch);
+            }));
 }
 
 // trim from end (in place)
-static inline void rtrim(std::string &s) {
-    s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char ch) {
-        return !std::isspace(ch);
-    }).base(), s.end());
+static inline void rtrim(std::string& s)
+{
+    s.erase(std::find_if(s.rbegin(), s.rend(),
+                         [](unsigned char ch) { return !std::isspace(ch); })
+                .base(),
+            s.end());
 }
 
 // trim from both ends (in place)
-static inline void trim(std::string &s) {
+static inline void trim(std::string& s)
+{
     ltrim(s);
     rtrim(s);
 }
 
 // trim from start (copying)
-static inline std::string ltrim_copy(std::string s) {
+static inline std::string ltrim_copy(std::string s)
+{
     ltrim(s);
     return s;
 }
 
 // trim from end (copying)
-static inline std::string rtrim_copy(std::string s) {
+static inline std::string rtrim_copy(std::string s)
+{
     rtrim(s);
     return s;
 }
 
 // trim from both ends (copying)
-static inline std::string trim_copy(std::string s) {
+static inline std::string trim_copy(std::string s)
+{
     trim(s);
     return s;
 }
