@@ -45,7 +45,7 @@ cat <<HEREDOC > $DIR/build.sh
 CC=g++
 FLAGS="-std=c++17 -g"
 OPT="-O0"
-WARN="-Wall -Wextra -Werror -Weffc++ -Wpedantic -Wshadow -Wconversion -Wno-sign-compare"
+WARN="-Wall -Wextra -Werror -Weffc++ -Wpedantic -Wshadow -Wconversion -Wno-sign-compare -Wno-unused-parameter"
 \$CC \$FLAGS \$OPT \$WARN -o build/main main.cpp
 HEREDOC
 chmod +x $DIR/build.sh
