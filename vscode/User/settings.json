@@ -188,6 +188,7 @@
     ],
     "git.branchPrefix": "gergely-bod_KRY-",
     "git.mergeEditor": true,
+    "window.titleBarStyle": "custom",
     "window.commandCenter": true,
     "terminal.integrated.shellIntegration.enabled": true,
     "C_Cpp.clang_format_fallbackStyle": "none",
@@ -198,7 +199,16 @@
     "telemetry.telemetryLevel": "crash",
     "C_Cpp.default.cppStandard": "c++17",
     "editor.mouseWheelZoom": true,
-    "window.zoomLevel": 0.7,
+    "window.zoomLevel": 0,
     "editor.fontSize": 13,
-    "workbench.colorTheme": "Default Light+"
+    "terminal.integrated.fontSize": 14,
+    "workbench.colorTheme": "Default Light+",
+    "terminal.integrated.smoothScrolling": true,
+    "terminal.integrated.mouseWheelScrollSensitivity": 0.7,
+    "git.confirmSync": false,
+    "workbench.iconTheme": "vscode-icons",
+    "settingsSync.ignoredExtensions": [
+        "vscode-icons-team.vscode-icons"
+    ],
+    "tabnine.receiveBetaChannelUpdates": true,
 }
