@@ -519,3 +519,4 @@ function update-vimrc() {
     cdvimrc && git_lazy_push .;
     cd -;
 }
+
