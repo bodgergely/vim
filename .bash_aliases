@@ -13,6 +13,7 @@ export PYTHON3_SITE_PACKAGES_DIR="$PYTHON3_DIR"/Lib/site-packages
 alias aer="source $HOME/.bash_aliases"
 alias reload="source $HOME/.bashrc"
 alias ae="vim $HOME/.bash_aliases; aer;"
+alias pae="cat $HOME/.bash_aliases"
 alias vimrc="vim $HOME/.vimrc"
 alias bashrc="vim $HOME/.bashrc; reload"
 alias python="winpty python.exe"
@@ -79,6 +80,9 @@ export OUT="$DEV/out/win7-64bit-ninja"
 export BRS="/c/Program Files/HP/Sure Click/servers"
 export SURECLICK_INSTALL_FOLDER="/c/Program Files/HP/Sure Click/"
 export SURECLICK_LOGS="/c/Users/gergely.bod/AppData/LocalLow/Bromium/vSentry/Logs"
+export LOCALLOW="$HOME/AppData/LocalLow"
+export PROGRAMDATA_BROMIUM="$PROGRAMDATA/Bromium"
+export BEM_LOGS_LOCAL="$LOCALLOW/Bromium/BEM/Logs"
 export BEM_LOGS="/c/ProgramData/Bromium/BEM/logs"
 export BEMK_LOGS="/c/ProgramData/Bromium/BEM/logs/Bemk"
 export BEMSVC_LOGS="/c/ProgramData/Bromium/BEM/logs/BemSvc"
@@ -87,9 +91,10 @@ export BEM_BUILD_LOCATION="$OUT/bem"
 export DESKTOP="$HOME/Desktop"
 export DOCUMENTS="$HOME/Documents"
 export WINKIT="$PROGRAMFILES_x86/Windows Kits"
-export WINKIT_BIN="/c/Program Files (x86)/Windows Kits/10/bin/10.0.22621.0/x64"
+export WINKIT_BIN="/c/Program Files (x86)/Windows Kits/10/bin/10.0.18362.0/x64"
 export VISUAL_STUDIO_DIR="$PROGRAMFILES_x86/Microsoft Visual Studio"
 export WIN_DRIVER_SAMPLES="~/workspace/microsoft/Windows-driver-samples"
+export BD_DEFINITIONS_ZIP="/c/dev/bd_definitions.zip"   # this one for BEM python tests needed
 
 
 export P2VTOOLS="$DEV/p2v-tools/bin"
@@ -108,20 +113,28 @@ alias cddesktop="cd $DESKTOP"
 alias cddocuments="cd $DOCUMENTS"
 alias cdkrypton="cd $KRYPTON"
 alias cdlogs="cd $BEM_LOGS"
+alias cdlocallow="cd $LOCALLOW"
+alias cdlogsbem="cd $BEM_LOGS"
+alias cdlogsbemlocal="cd $BEM_LOGS_LOCAL"
 alias cdlogsbemk="cd $BEMK_LOGS"
 alias cdlogssureclick="cd $SURECLICK_LOGS"
 alias cdlogsbemsvc="cd $BEMSVC_LOGS"
 alias cdlogsvsentry="cd /c/ProgramData/Bromium/vSentry/Logs"
+alias cdbem-progdata="cd $PROGRAMDATA_BROMIUM/Bem"
+alias cdbem-settings="cd $PROGRAMDATA_BROMIUM/Bem/Settings"
+alias bem-settings="vim $PROGRAMDATA_BROMIUM/Bem/Settings/policy.xml"
 alias cdevents="cd ~/AppData/Local/Bromium/vSentry/BrMVData/Security/Events"
 alias cdbem="cd $BEM"
 alias cdsureclick='cd "$SURECLICK_INSTALL_FOLDER"'
 alias cdp2vtools='cd "$DEV/p2v-tools/bin"'
 alias cdguestinstall="cd $GUEST_INSTALL"
 alias cdtests="cd $BEM/tests"
+alias cdtestlogs="cd /c/test"
+alias cdashtestartifacts="cd /c/AshTestArtifacts/sure_sense/"
 alias notes="vim $NOTES"
 alias notes-npp="notepad++ $NOTES"
 alias cheatsheet="vim $CHEATSHEET"
-alias cpp="code $CPPPLAY"
+alias cpp-code="code $CPPPLAY"
 alias cpp-vim="cd $CPPPLAY && vim cpp/main.cpp"
 alias cdscratch="cd ~/scratchpad"
 alias cdwinkit="cd '$WINKIT'"
@@ -140,12 +153,28 @@ alias cdtemp="cdtmr"
 alias brake-conf="vim $HOME/.config/brake/brake.config"
 
 
+export BEMSVC_SERVICE_NAME="BrEndpointSvc"
+
+function bem() {
+    python.exe /c/dev/p2v-tools/bin/bem.py "$@"
+}
+
+function vsentry() {
+    python.exe /c/dev/p2v-tools/bin/vsentry.py "$@"
+}
+
 alias bem-kill="python.exe /c/dev/p2v-tools/bin/bem.py kill"
+alias vsentry-kill="python.exe /c/dev/p2v-tools/bin/vSentry.py kill"
 alias bem-resurrect="python.exe /c/dev/p2v-tools/bin/bem.py resurrect"
+alias vsentry-resurrect="python.exe /c/dev/p2v-tools/bin/vsentry.py resurrect"
 alias bem-clear-logs="python.exe /c/dev/p2v-tools/bin/bem.py clear-logs"
+alias vsentry-clear-logs="python.exe /c/dev/p2v-tools/bin/vSentry.py clear-logs"
 alias vsentry-grep-logs="python.exe /c/dev/p2v-tools/bin/vSentry.py grep-logs"
 alias bem-test="python.exe $BEM/tests/run.py"
-alias clear-test-logs="rm -rf /c/test/*"
+function clear-test-logs { rm -rf /c/test/*; }
+function clear-test-artifacts { 
+    rm -rf /c/AshTestArtifacts/sure_sense/temp_av_ignore_dirs/tmp*;
+}
 
 alias brman='"$BRS/BrManage.exe"'
 alias bemman='"$BRS/BemMan.exe"'
@@ -160,6 +189,19 @@ alias brman-init-system-status='"$BRS/BrManage.exe" init-system status'
 alias brman-init-user-request='"$BRS/BrManage.exe" init-user request && state-watch'
 alias brman-init-system-request='"$BRS/BrManage.exe" init-system request && state-watch'
 alias brman-init-cancel='"$BRS/BrManage.exe" init-system cancel'
+
+function bemsvc-stop() {
+    sc.exe stop $BEMSVC_SERVICE_NAME
+}
+
+function bemsvc-start() {
+    sc.exe start $BEMSVC_SERVICE_NAME
+}
+
+function bemsvc-query() {
+    sc.exe query $BEMSVC_SERVICE_NAME
+}
+
 function brman-config-get() {
     "$BRS/BrManage.exe" config get --name=$1
 }
@@ -187,9 +229,19 @@ function ls-build() {
     cd -
 }
 
+function cdinstall() {
+    FOLDER="$SURECLICK_INSTALL_FOLDER/servers/"
+    cd "$FOLDER"
+}
+
+function cdbuild() {
+    FOLDER="$OUT/servers/"
+    cd "$FOLDER"
+}
+
 function bem-update(){
-    #python.exe /c/dev/p2v-tools/bin/vSentry.py --verbose update --refresh-guest
-    python.exe /c/dev/p2v-tools/bin/bem.py --verbose update $1
+    python.exe /c/dev/p2v-tools/bin/vSentry.py --verbose update --refresh-guest
+    python.exe /c/dev/p2v-tools/bin/bem.py --verbose update $@
     ret=$?
     echo "bem-update finished with ret val: $ret"
     #if [[ $ret -eq 0 ]]; then
@@ -206,8 +258,61 @@ function build-clear() {
     clear;
     rm-build-log;
 }
+
+function bk-hostshellextension() {
+    cd $KRYPTON
+    ./brake.bat krypton --target HostShellExtension; ret="$?"; cd -; echo "Build returned: $ret";
+    if [[ $ret -ne 0 ]]; then return $ret; fi;
+    cd $KRYPTON
+    ./brake.bat krypton --target HostShellExtension-sign; ret="$?"; cd -; echo "Build returned: $ret";
+    return $ret;
+}
+
+function bk-bemshellext() {
+    /c/dev/Krypton/brake.bat krypton --target bemshellext-dist; ret="$?"; 
+    if [[ $ret -eq 0 ]]; then
+        echo Build successful
+    else
+        echo Build failed
+    fi
+    clock;
+    return $ret;
+}
+
+function bk-bemshellext-cp() {
+    FOLDER=~/Desktop/tmp/
+    bk-bemshellext && cp /c/dev/out/win7-64bit-ninja/servers/bemshellext.dll $FOLDER
+    if [[ $? -eq 0 ]]; then
+        echo Copied /c/dev/out/win7-64bit-ninja/servers/bemshellext.dll to $FOLDER
+    else
+        echo Failed copying bemshellext.dll
+    fi
+}
+
+function bem-hostshellextension-update() {
+    FILENAME="HostShellExtension.dll"
+    FILENAME_PDB="HostShellExtension.pdb"
+    FOLDER="$SURECLICK_INSTALL_FOLDER/4.3.20.0/servers"
+    rm "$FOLDER/$FILENAME" "$SURECLICK_INSTALL_FOLDER/servers/$FILENAME"
+    cp "$OUT/servers/$FILENAME" "$FOLDER/"
+    cp "$OUT/servers/$FILENAME_PDB" "$FOLDER/"
+    cp  "$OUT/servers/$FILENAME" "$SURECLICK_INSTALL_FOLDER/servers/"
+    cp  "$OUT/servers/$FILENAME_PDB" "$SURECLICK_INSTALL_FOLDER/servers/"
+    echo "DLLs:"
+    md5sum "$OUT/servers/$FILENAME"
+    md5sum "$FOLDER/$FILENAME"
+    md5sum "$SURECLICK_INSTALL_FOLDER/servers/$FILENAME"
+    echo ""
+    echo "PDB files:"
+    md5sum "$OUT/servers/$FILENAME_PDB"
+    md5sum "$FOLDER/$FILENAME_PDB"
+    md5sum "$SURECLICK_INSTALL_FOLDER/servers/$FILENAME_PDB"
+}
+
+
 alias bki-installer='cd $KRYPTON && build-clear &&  ./brake.bat init krypton installer > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
 alias bk-installer='cd $KRYPTON && build-clear && ./brake.bat krypton installer > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
+alias bk-installer-apppack='cd $KRYPTON && build-clear && ./brake.bat krypton installer apppack --appname sure_sense --noguestinstaller > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
 alias bki='cd $KRYPTON && build-clear &&  ./brake.bat init krypton > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
 alias bk='cd $KRYPTON && build-clear && ./brake.bat krypton > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
 alias bkupdate='bk; if [[ $ret -eq 0 ]]; then bem-update; else echo "Build failed so wont run bem-update"; fi'
@@ -216,13 +321,21 @@ function bk-bemsvc() {
     cd $KRYPTON && clear && clock; ./brake.bat krypton --target BemSvc-dist; ret="$?"; clock; cd -; echo "Build returned: $ret";
     return $ret;
 }
-#alias bk-bemsvc="cd $KRYPTON && clear && ./brake.bat krypton --target BemSvc-sign; notepad.exe"
+function bk-bemsvc-cp() {
+    FOLDER=~/Desktop/tmp/
+    bk-bemsvc && cp "$OUT/servers/BemSvc.exe" $FOLDER
+    if [[ $? -eq 0 ]]; then
+        echo Copied /c/dev/out/win7-64bit-ninja/servers/bemshellext.dll to $FOLDER
+    else
+        echo Failed copying bemshellext.dll
+    fi
+}
 function bk-bemsvc-update() {
     #if bk-bemsvc; then bem-update --skip-vsentry; fi;
     if bk-bemsvc; then bem-update; fi;
 }
 
-alias btests="$KRYPTON/brake.bat init_bem bem krypton --target bem-test-deps; cd $KRYPTON/bem/tests && python.exe build.py --build && notepad.exe"
+alias bk-build-bem-tests="$KRYPTON/brake.bat init_bem bem krypton --target bem-test-deps && cd $KRYPTON/bem/tests && python.exe build.py --build; echo Return aval: $?; notepad.exe"
 alias nuke="cd $KRYPTON && clear && ./brake.bat nuke;"
 function update-etl() {
     python.exe $P2VTOOLS/updateTmfs.py $OUT/servers/BemK_4_3_4_0.pdb
@@ -246,8 +359,6 @@ function grep-bemk() {
     grep -P "$@" ./bemk.txt
 }
 
-
-alias clear-test-logs="rm -rf /c/test/*"
 
 # windows stuff
 alias cffexplorer="'/c/Program Files/NTCore/Explorer Suite/CFF Explorer.exe'"
@@ -311,6 +422,18 @@ function test-comment() {
     echo -n "retest this please, vSentry build with pr_smoke" | cs ;
 }
 
+function test-scanpath() {
+    clear-test-logs && bem-test $SYTEMDRIVE/dev/Krypton/bem/tests/tests/sure_sense/test_com_interface.py::StatusReportingTests::test_scan_path
+}
+
+function test-unzip-bemsvc() {
+    filename=$1;
+    7z-unzip-cdtodir $filename;
+    cd Logs;
+    7z-unzip-cdtodir BemLogs.7z
+    cd BEM_Logs;
+}
+
 
 function jira-70183() {
     cdjiras; vim KRY-70183.md; cd -;
@@ -324,6 +447,13 @@ function 7z-unzip() {
     filename=$1
     basename="${filename%%.*}"
     7z x -o$basename "$1"
+}
+
+function 7z-unzip-cdtodir() {
+    filename=$1;
+    basename="${filename%%.*}";
+    7z-unzip $filename;
+    cd $basename;
 }
 
 function makecert() {
@@ -347,6 +477,8 @@ function gen-cpp-project() {
     if [[ -z $1 ]]; then echo "Usage: gen-python-project <projname>"; return 127; fi
     bash ~/bin/gen_cpp_project.sh $1
     cp -r "$VIMRC/vscode/.vscode" $1
+    cp "$VIMRC/.clang-format" $1
+    cp "$VIMRC/.clang-tidy" $1
 }
 
 function source_pytest3() {
@@ -355,8 +487,8 @@ function source_pytest3() {
 
 function currnotes() {
     pushdjiras
-    cd win-store
-    vim KRY-72901.md 
+    cd context-menu-scan
+    vim README.md
     popd
 }
 
@@ -373,12 +505,17 @@ function services-query() {
     sc query $1
 }
 
+# ripgrep/rg
+function rg() {
+    rg.exe --no-heading "$@"
+}
+
 
 # nand2tetris
 alias cdnand="cd $WORKSPACE/myrepos/nand2tetris"
 # eof nand2tetris
 
-
-source ~/.bash_aliases_extra
-
-
+function update-vimrc() {
+    cdvimrc && git_lazy_push .;
+    cd -;
+}
