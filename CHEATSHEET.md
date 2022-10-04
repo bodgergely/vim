@@ -978,7 +978,7 @@ gdb shortcuts
 C-x + a - enter tui window/exit tui window
 C-x + o - switch to next focus (focus cmd -> focus src)
 
-Awk
+Awk (#awk)
 ===
 
 https://stackoverflow.com/questions/450799/shell-command-to-sum-integers-one-per-line
@@ -986,6 +986,15 @@ https://likegeeks.com/awk-command/
 
 Sum numbers on each line the first element and save to file
     awk '{s+=$1} END {print s}' mydatafile
+
+Last column (field):
+awk -F'.' 'j{print $NF}'
+
+First column:
+awk '{print $1}'
+
+Print all file extensions:
+find . -type f | awk -F'.' '{print $NF}' | sort | uniq -c
 
 Sed (#sed)
 ===
