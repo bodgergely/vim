@@ -176,3 +176,31 @@ std::vector<std::string> split(const std::string& str, char delimiter = ' ')
     }
     return tokens;
 }
+
+std::string toLower(const std::string& str)
+{
+    auto cp = str;
+    std::transform(cp.begin(), cp.end(), cp.begin(),
+                   [](unsigned char ch) { return std::tolower(ch); });
+    return cp;
+}
+
+void toLowerIP(std::string& str)
+{
+    std::transform(str.begin(), str.end(), str.begin(),
+                   [](unsigned char ch) { return std::tolower(ch); });
+}
+
+std::string toUpper(const std::string& str)
+{
+    auto cp = str;
+    std::transform(cp.begin(), cp.end(), cp.begin(),
+                   [](unsigned char ch) { return std::toupper(ch); });
+    return cp;
+}
+
+void toUpperIP(std::string& str)
+{
+    std::transform(str.begin(), str.end(), str.begin(),
+                   [](unsigned char ch) { return std::toupper(ch); });
+}
