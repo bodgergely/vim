@@ -12,5 +12,7 @@ int main(int argc, char const *argv[])
     string name1 = "test,file,name";
     cout << split(name1, ',') << endl;
 
+    cout << split("", ';') << endl;
+
     return 0;
 }
