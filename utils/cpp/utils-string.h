@@ -155,3 +155,5 @@ static inline std::string trim_copy(std::string s)
     trim(s);
     return s;
 }
+
+std::vec
