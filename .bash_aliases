@@ -281,11 +281,11 @@ function bk-bemshellext() {
 
 function bk-bemshellext-cp() {
     FOLDER=~/Desktop/tmp/
-    bk-bemshellext && cp /c/dev/out/win7-64bit-ninja/servers/bemshellext.dll $FOLDER
+    bk-bemshellext && cp /c/dev/out/win7-64bit-ninja/servers/SureSenseShellExt.dll $FOLDER
     if [[ $? -eq 0 ]]; then
-        echo Copied /c/dev/out/win7-64bit-ninja/servers/bemshellext.dll to $FOLDER
+        echo Copied /c/dev/out/win7-64bit-ninja/servers/SureSenseShellExt.dll to $FOLDER
     else
-        echo Failed copying bemshellext.dll
+        echo Failed copying SureSenseShellExt.dll
     fi
 }
 
@@ -325,9 +325,9 @@ function bk-bemsvc-cp() {
     FOLDER=~/Desktop/tmp/
     bk-bemsvc && cp "$OUT/servers/BemSvc.exe" $FOLDER
     if [[ $? -eq 0 ]]; then
-        echo Copied /c/dev/out/win7-64bit-ninja/servers/bemshellext.dll to $FOLDER
+        echo Copied /c/dev/out/win7-64bit-ninja/servers/BemSvc.exe to $FOLDER
     else
-        echo Failed copying bemshellext.dll
+        echo Failed copying BemSvc.exe
     fi
 }
 function bk-bemsvc-update() {
@@ -520,3 +520,6 @@ function update-vimrc() {
     cd -;
 }
 
+function commit-message() {
+    echo -n "KRY-73761 - $@" | cs
+}
