@@ -1429,6 +1429,23 @@ Value	0xF
 right click 'Install' on nullFilter.inf
 sc.exe start nullFilter
 
+# PS script - place in your $profile
+
+```
+function Install-Driver($name)
+{
+	$cleanName = $name -replace ".sys|.\\", ""
+
+	sc.exe stop $cleanName
+	sc.exe delete $cleanName
+
+	cp $name c:\windows\system32\drivers\ -verbose -force
+	sc.exe create $cleanName type= kernel start= demand error= normal binPath= c:\windows\System32\Drivers\$cleanName.sys DisplayName= $cleanName
+
+	sc.exe start $cleanName
+}
+```
+
 # filter will be the name - register
 https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/sc-create
 sc create filter type= filesys start= demand binpath= C:\Users\bodge\Desktop\nullFilter.sys
