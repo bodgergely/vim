@@ -13,6 +13,7 @@ export PYTHON3_SITE_PACKAGES_DIR="$PYTHON3_DIR"/Lib/site-packages
 alias aer="source $HOME/.bash_aliases"
 alias reload="source $HOME/.bashrc"
 alias ae="vim $HOME/.bash_aliases; aer;"
+alias ae-code="code $HOME/.bash_aliases; aer;"
 alias pae="cat $HOME/.bash_aliases"
 alias vimrc="vim $HOME/.vimrc"
 alias bashrc="vim $HOME/.bashrc; reload"
@@ -90,9 +91,11 @@ export GUEST_INSTALL="/c/Windows/GuestInstall"
 export BEM_BUILD_LOCATION="$OUT/bem"
 export DESKTOP="$HOME/Desktop"
 export DOCUMENTS="$HOME/Documents"
-export WINKIT="$PROGRAMFILES_x86/Windows Kits"
-export WINKIT_BIN="/c/Program Files (x86)/Windows Kits/10/bin/10.0.18362.0/x64"
+export WINKIT="$PROGRAMFILES_x86/Windows Kits/10/"
+export WINKIT_BIN="$WINKIT/bin/10.0.18362.0/x64"
+export WINKIT_INCLUDE="$WINKIT/include/10.0.18362.0/"
 export VISUAL_STUDIO_DIR="$PROGRAMFILES_x86/Microsoft Visual Studio"
+export MSVC="$VISUAL_STUDIO_DIR/2019/Enterprise/VC/Tools/MSVC/14.24.28314"
 export WIN_DRIVER_SAMPLES="~/workspace/microsoft/Windows-driver-samples"
 export BD_DEFINITIONS_ZIP="/c/dev/bd_definitions.zip"   # this one for BEM python tests needed
 
@@ -128,18 +131,23 @@ alias cdbem="cd $BEM"
 alias cdsureclick='cd "$SURECLICK_INSTALL_FOLDER"'
 alias cdp2vtools='cd "$DEV/p2v-tools/bin"'
 alias cdguestinstall="cd $GUEST_INSTALL"
-alias cdtests="cd $BEM/tests"
+alias cdbemtests="cd $BEM/tests"
 alias cdtestlogs="cd /c/test"
 alias cdashtestartifacts="cd /c/AshTestArtifacts/sure_sense/"
 alias notes="vim $NOTES"
 alias notes-npp="notepad++ $NOTES"
+alias notes-code="code $NOTES"
 alias cheatsheet="vim $CHEATSHEET"
 alias cpp-code="code $CPPPLAY"
 alias cpp-vim="cd $CPPPLAY && vim cpp/main.cpp"
 alias cdscratch="cd ~/scratchpad"
 alias cdwinkit="cd '$WINKIT'"
 alias cdwinkitbin="cd '$WINKIT_BIN'"
+alias cdwinkitinclude="cd '$WINKIT_INCLUDE'"
+alias winkit-code="code '$WINKIT_INCLUDE'"
 alias cdvisualstudio="cd '$VISUAL_STUDIO_DIR'"
+alias cdmsvc="cd '$MSVC'"
+alias msvc-code="code '$MSVC'"
 alias cdprogramfiles="cd '$PROGRAMFILES'"
 alias cdprogramfiles86="cd '$PROGRAMFILES_x86'"
 alias cdprogramdata="cd '$PROGRAMDATA'"
@@ -171,7 +179,7 @@ alias bem-clear-logs="python.exe /c/dev/p2v-tools/bin/bem.py clear-logs"
 alias vsentry-clear-logs="python.exe /c/dev/p2v-tools/bin/vSentry.py clear-logs"
 alias vsentry-grep-logs="python.exe /c/dev/p2v-tools/bin/vSentry.py grep-logs"
 alias bem-test="python.exe $BEM/tests/run.py"
-function clear-test-logs { rm -rf /c/test/*; }
+function clear-test-logs { rm -rf /c/test/*; rm -rf $BEM/tests/test-results/*; }
 function clear-test-artifacts { 
     rm -rf /c/AshTestArtifacts/sure_sense/temp_av_ignore_dirs/tmp*;
 }
@@ -269,7 +277,7 @@ function bk-hostshellextension() {
 }
 
 function bk-bemshellext() {
-    /c/dev/Krypton/brake.bat krypton --target bemshellext-dist; ret="$?"; 
+    /c/dev/Krypton/brake.bat krypton --target SureSenseShellExt-dist; ret="$?"; 
     if [[ $ret -eq 0 ]]; then
         echo Build successful
     else
@@ -309,9 +317,11 @@ function bem-hostshellextension-update() {
     md5sum "$SURECLICK_INSTALL_FOLDER/servers/$FILENAME_PDB"
 }
 
-
-alias bki-installer='cd $KRYPTON && build-clear &&  ./brake.bat init krypton installer > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
-alias bk-installer='cd $KRYPTON && build-clear && ./brake.bat krypton installer > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
+# how to pass version or cmake define to brake
+#./brake.bat init krypton installer --version 4.4.2.1 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON"
+# --version 4.4.2.888 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON"
+alias bki-installer='cd $KRYPTON && build-clear &&  ./brake.bat init krypton installer --version 4.4.2.888 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON" > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
+alias bk-installer='cd $KRYPTON && build-clear && ./brake.bat krypton installer --version 4.4.2.888 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON" > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
 alias bk-installer-apppack='cd $KRYPTON && build-clear && ./brake.bat krypton installer apppack --appname sure_sense --noguestinstaller > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
 alias bki='cd $KRYPTON && build-clear &&  ./brake.bat init krypton > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
 alias bk='cd $KRYPTON && build-clear && ./brake.bat krypton > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
@@ -335,16 +345,24 @@ function bk-bemsvc-update() {
     if bk-bemsvc; then bem-update; fi;
 }
 
-alias bk-build-bem-tests="$KRYPTON/brake.bat init_bem bem krypton --target bem-test-deps && cd $KRYPTON/bem/tests && python.exe build.py --build; echo Return aval: $?; notepad.exe"
+function bem-build-isuresense() {
+    $KRYPTON/brake.bat init krypton --target ISureSenseInterface_wheel
+}
+function bem-build-tests() {
+    bem-build-isuresense &&
+    $KRYPTON/brake.bat init_bem bem krypton --target bem-test-deps && cd $KRYPTON/bem/tests && python.exe build.py --build; echo Return aval: $?; notepad.exe
+}
+
 alias nuke="cd $KRYPTON && clear && ./brake.bat nuke;"
-function update-etl() {
+
+function etl-update() {
     python.exe $P2VTOOLS/updateTmfs.py $OUT/servers/BemK_4_3_4_0.pdb
 }
-function decode-etl() {
+function etl-decode() {
     python.exe $P2VTOOLS/decodeEtl.py -o bemk.txt "$@"
 }
-function decode-etl-guest() {
-    decode-etl --uxen 4.3.4.419 "$@"
+function etl-decode-guest() {
+    etl-decode --uxen 4.3.4.419 "$@"
 }
 function decode-brf() {
     python.exe /c/dev/Krypton/bem/scripts/decode_brf.py "$@"
@@ -422,8 +440,16 @@ function test-comment() {
     echo -n "retest this please, vSentry build with pr_smoke" | cs ;
 }
 
-function test-scanpath() {
-    clear-test-logs && bem-test $SYTEMDRIVE/dev/Krypton/bem/tests/tests/sure_sense/test_com_interface.py::StatusReportingTests::test_scan_path
+function bem-test-scanpath() {
+    clear-test-logs && bem-test $SYSTEMDRIVE/dev/Krypton/bem/tests/tests/sure_sense/test_com_interface.py::StatusReportingTests::test_scan_path
+}
+
+function bem-test-com-interface() {
+    clear-test-logs && bem-test $SYSTEMDRIVE/dev/Krypton/bem/tests/tests/sure_sense/test_com_interface.py
+}
+
+function bem-test-license() {
+    clear-test-logs && bem-test $SYSTEMDRIVE/dev/Krypton/bem/tests/tests/sure_sense/test_com_interface.py::ErrorStateTests::test_no_hp_license
 }
 
 function test-unzip-bemsvc() {
@@ -487,8 +513,8 @@ function source_pytest3() {
 
 function currnotes() {
     pushdjiras
-    cd context-menu-scan
-    vim README.md
+    vim KRY-75780-bemsvc-doesnt-run-on-upgrade-pre-mvi-to-mvi.md
+    #vim README.md
     popd
 }
 
@@ -512,7 +538,9 @@ function rg() {
 
 
 # nand2tetris
-alias cdnand="cd $WORKSPACE/myrepos/nand2tetris"
+export NAND2TETRIS=$WORKSPACE/myrepos/nand2tetris
+alias cdnand="cd $NAND2TETRIS"
+alias nand2tetris-code="code $NAND2TETRIS"
 # eof nand2tetris
 
 function update-vimrc() {
@@ -521,5 +549,6 @@ function update-vimrc() {
 }
 
 function commit-message() {
-    echo -n "KRY-73761 - $@" | cs
+    #echo | cs
+    echo -n "KRY-76151 - $@" | cs
 }

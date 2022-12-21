@@ -1442,7 +1442,7 @@ sc.exe delete filter
 "%WindowsSdkDir%\tools\x64\devcon.exe" install .\K_MSRs.inf Root\K_MSRs
 "%WindowsSdkDir%\tools\x64\devcon.exe" remove .\K_MSRs.inf Root\K_MSRs
 
-WinDbg (windbg)
+WinDbg (#windbg)
 ---------------
 List of commands:
 https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/commands
