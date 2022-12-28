@@ -29,6 +29,7 @@ alias ipython="ip3"
 alias ipy='ipython'
 alias hex2int="$HOME/bin/hex-to-int.sh"
 alias int2hex="$HOME/bin/int-to-hex.sh"
+alias calc="p3 $HOME/bin/calc.py $@"
 alias newline-remove="$HOME/bin/newline-remove.sh"
 
 alias clock="date +'%H:%M:%S'"
