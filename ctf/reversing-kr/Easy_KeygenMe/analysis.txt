@@ -1,0 +1,12 @@
+ReversingKr KeygenMe
+
+
+Find the Name when the Serial is 5B134977135E7D13
+
+
+Input Name: geriket
+
+It will xor the bytes of the inputted name ("geriket") (0x19fe08) with the key (0x10, 0x20, 0x30) (0x19fe04), looping back to beginning of the key if name longer than key.
+It stores the generated key as string of 2 digit hex of the result of the xor operations above to: 0x19FE6C
+
+Generated XOR-ed name at 0x19FE6C, with "geriket" x (0x10 0x20 0x30) ==> 77 45 42 79 4B 55 64
