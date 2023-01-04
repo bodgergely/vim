@@ -405,6 +405,9 @@ alias gco="git commit"
 alias gd="git diff"
 alias git_submodule_recursive="git submodule update --init --recursive"
 alias git_submodule_sync='git submodule sync'
+alias git_submodule_sync_update='git_submodule_sync && git_submodule_recursive'
+alias git_update_master="git fetch origin master:master"
+alias git_merge_master_to_current_branch="git merge origin/master"
 alias git_log_pretty="git log --graph --decorate --pretty=oneline --abbrev-commit"
 alias gg="git grep -n --color"
 git_lazy_push()
