@@ -101,7 +101,7 @@ export VISUAL_STUDIO_DIR="$PROGRAMFILES_x86/Microsoft Visual Studio"
 export MSVC="$VISUAL_STUDIO_DIR/2019/Enterprise/VC/Tools/MSVC/14.24.28314"
 export WIN_DRIVER_SAMPLES="~/workspace/microsoft/Windows-driver-samples"
 export BD_DEFINITIONS_ZIP="/c/dev/bd_definitions.zip"   # this one for BEM python tests needed
-
+export BITDEFENDER_SDKS="/c/dev/Krypton/deps/bitdefender_sdk/sdks"
 
 export P2VTOOLS="$DEV/p2v-tools/bin"
 
@@ -159,6 +159,9 @@ alias cddriversamples="cd $WIN_DRIVER_SAMPLES"
 alias cdplayground="cd $MYREPOS/playground"
 alias cdtmp="cd $HOME/Desktop/tmp"
 alias cdtemp="cdtmr"
+alias cdbitdefender_sdks="cd $BITDEFENDER_SDKS"
+alias cdbitdefender_cst_sdk="cd $BITDEFENDER_SDKS/Bitdefender_CSTSDK_EDR"
+alias cdwin32examples="cd $HOME/source/repos/Win32Examples"
 
 
 alias brake-conf="vim $HOME/.config/brake/brake.config"
@@ -178,7 +181,7 @@ alias bem-kill="python.exe /c/dev/p2v-tools/bin/bem.py kill"
 alias vsentry-kill="python.exe /c/dev/p2v-tools/bin/vSentry.py kill"
 alias bem-resurrect="python.exe /c/dev/p2v-tools/bin/bem.py resurrect"
 alias vsentry-resurrect="python.exe /c/dev/p2v-tools/bin/vsentry.py resurrect"
-alias bem-clear-logs="python.exe /c/dev/p2v-tools/bin/bem.py clear-logs"
+#alias bem-clear-logs="python.exe /c/dev/p2v-tools/bin/bem.py clear-logs"
 alias vsentry-clear-logs="python.exe /c/dev/p2v-tools/bin/vSentry.py clear-logs"
 alias vsentry-grep-logs="python.exe /c/dev/p2v-tools/bin/vSentry.py grep-logs"
 alias bem-test="python.exe $BEM/tests/run.py"
@@ -204,14 +207,30 @@ alias brman-init-cancel='"$BRS/BrManage.exe" init-system cancel'
 function bemsvc-stop() {
     sc.exe stop $BEMSVC_SERVICE_NAME
 }
+alias bem-stop="bemsvc-stop"
 
 function bemsvc-start() {
     sc.exe start $BEMSVC_SERVICE_NAME
 }
+alias bem-start="bemsvc-start"
 
 function bemsvc-query() {
     sc.exe query $BEMSVC_SERVICE_NAME
 }
+alias bem-query="bemsvc-query"
+
+function bem-delete-logs() {
+    rm /c/ProgramData/Bromium/BEM/logs/BemSvc/*
+}
+
+function bem-clear-logs() {
+	bemsvc-stop
+	sleep 5
+    bemsvc-query
+	bem-delete-logs
+	bemsvc-start
+}
+
 
 function brman-config-get() {
     "$BRS/BrManage.exe" config get --name=$1
@@ -323,13 +342,17 @@ function bem-hostshellextension-update() {
 # how to pass version or cmake define to brake
 #./brake.bat init krypton installer --version 4.4.2.1 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON"
 # --version 4.4.2.888 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON"
-alias bki-installer='cd $KRYPTON && build-clear &&  ./brake.bat init krypton installer --version 4.4.2.888 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON" > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
-alias bk-installer='cd $KRYPTON && build-clear && ./brake.bat krypton installer --version 4.4.2.888 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON" > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
+alias bki-installer='cd $KRYPTON && build-clear &&  ./brake.bat init krypton installer > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
+alias bk-installer='cd $KRYPTON && build-clear && ./brake.bat krypton installer > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
 alias bk-installer-apppack='cd $KRYPTON && build-clear && ./brake.bat krypton installer apppack --appname sure_sense --noguestinstaller > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
 alias bki='cd $KRYPTON && build-clear &&  ./brake.bat init krypton > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
 alias bk='cd $KRYPTON && build-clear && ./brake.bat krypton > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
 alias bkupdate='bk; if [[ $ret -eq 0 ]]; then bem-update; else echo "Build failed so wont run bem-update"; fi'
 alias bkiupdate='bki; if [[ $ret -eq 0 ]]; then bem-update; else echo "Build failed so wont run bem-update"; fi'
+function bk-monscan() {
+    cd $KRYPTON && clear && clock; ./brake.bat krypton --target monscan-dist; ret="$?"; clock; cd -; echo "Build returned: $ret";
+    return $ret;
+}
 function bk-bemsvc() {
     cd $KRYPTON && clear && clock; ./brake.bat krypton --target BemSvc-dist; ret="$?"; clock; cd -; echo "Build returned: $ret";
     return $ret;
@@ -359,7 +382,7 @@ function bem-build-tests() {
 alias nuke="cd $KRYPTON && clear && ./brake.bat nuke;"
 
 function etl-update() {
-    python.exe $P2VTOOLS/updateTmfs.py $OUT/servers/BemK_4_3_4_0.pdb
+    python.exe $P2VTOOLS/updateTmfs.py $OUT/servers/BemK_4_4_2_888.pdb
 }
 function etl-decode() {
     python.exe $P2VTOOLS/decodeEtl.py -o bemk.txt "$@"
@@ -481,6 +504,9 @@ function 7z-unzip() {
     7z x -o$basename "$1"
 }
 
+alias uz="7z-unzip"
+alias uzb="cd Logs && uz BemLogs.7z"
+
 function 7z-unzip-cdtodir() {
     filename=$1;
     basename="${filename%%.*}";
@@ -557,4 +583,8 @@ function update-vimrc() {
 function commit-message() {
     #echo | cs
     echo -n "KRY-76151 - $@" | cs
+}
+
+function log-bemsvc-np() {
+    notepad++.exe /c/ProgramData/Bromium/BEM/logs/BemSvc &
 }

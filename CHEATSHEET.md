@@ -1873,3 +1873,29 @@ x64 Native Tools Command Prompt for VS2019
 cl.exe /nologo /EHsc /std:c++17 main.cpp /link windowsapp.lib
 
 
+CreateFile (#windows, #win32)
+==============================
+
+```
+This argument:           |             Exists            Does not exist
+-------------------------+------------------------------------------------------
+CREATE_ALWAYS            |            Truncates             Creates
+CREATE_NEW         +-----------+        Fails               Creates
+OPEN_ALWAYS     ===| does this |===>    Opens               Creates
+OPEN_EXISTING      +-----------+        Opens                Fails
+TRUNCATE_EXISTING        |            Truncates              Fails
+```
+
+
+Malware (#malware)
+==================
+
+https://bazaar.abuse.ch/browse
+tag:AgentTesla, tag:TrickBot
+
+Download a zip full of malware:
+https://datalake.abuse.ch/malware-bazaar/
+
+(Url for signatures to set to: https://upgrade.bitdefender.com/)
+
+
