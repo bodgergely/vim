@@ -98,7 +98,7 @@ export WINKIT="$PROGRAMFILES_x86/Windows Kits/10/"
 export WINKIT_BIN="$WINKIT/bin/10.0.18362.0/x64"
 export WINKIT_INCLUDE="$WINKIT/include/10.0.18362.0/"
 export VISUAL_STUDIO_DIR="$PROGRAMFILES_x86/Microsoft Visual Studio"
-export MSVC="$VISUAL_STUDIO_DIR/2019/Enterprise/VC/Tools/MSVC/14.24.28314"
+export MSVC="$VISUAL_STUDIO_DIR/2019/Enterprise/VC/Tools/MSVC/14.29.30133"
 export WIN_DRIVER_SAMPLES="~/workspace/microsoft/Windows-driver-samples"
 export BD_DEFINITIONS_ZIP="/c/dev/bd_definitions.zip"   # this one for BEM python tests needed
 export BITDEFENDER_SDKS="/c/dev/Krypton/deps/bitdefender_sdk/sdks"
@@ -112,6 +112,7 @@ alias cdout="cd $OUT"
 alias cdvimrc="cd $VIMRC"
 alias cdcpp="cd $CPPPLAY"
 alias cddocs="cd $VIMRC/Docs"
+alias cdstuff="cd $WORKSPACE/stuff"
 alias cdonedrive="cd $ONEDRIVE"
 alias cdjiras="cd $ONEDRIVE/jiras"
 alias pushdjiras="pushd $ONEDRIVE/jiras"
@@ -186,7 +187,7 @@ alias vsentry-clear-logs="python.exe /c/dev/p2v-tools/bin/vSentry.py clear-logs"
 alias vsentry-grep-logs="python.exe /c/dev/p2v-tools/bin/vSentry.py grep-logs"
 alias bem-test="python.exe $BEM/tests/run.py"
 function clear-test-logs { rm -rf /c/test/*; rm -rf $BEM/tests/test-results/*; }
-function clear-test-artifacts { 
+function clear-test-ashtestartifacts { 
     rm -rf /c/AshTestArtifacts/sure_sense/temp_av_ignore_dirs/tmp*;
 }
 
@@ -339,16 +340,45 @@ function bem-hostshellextension-update() {
     md5sum "$SURECLICK_INSTALL_FOLDER/servers/$FILENAME_PDB"
 }
 
+#######################################################
+############ Krypton/BEM build functions ##############
+#######################################################
+
+function grep-build-failure() {
+    file=$1
+    #if grep -l "FAILED" file > /dev/null 2>&1; then return 1; else return 0; fi;
+    if grep -P "(FAILED|error C\d.*:)" $file; then return 1; else return 0; fi;
+}
 # how to pass version or cmake define to brake
 #./brake.bat init krypton installer --version 4.4.2.1 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON"
 # --version 4.4.2.888 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON"
-alias bki-installer='cd $KRYPTON && build-clear &&  ./brake.bat init krypton installer > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
-alias bk-installer='cd $KRYPTON && build-clear && ./brake.bat krypton installer > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
-alias bk-installer-apppack='cd $KRYPTON && build-clear && ./brake.bat krypton installer apppack --appname sure_sense --noguestinstaller > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
-alias bki='cd $KRYPTON && build-clear &&  ./brake.bat init krypton > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
-alias bk='cd $KRYPTON && build-clear && ./brake.bat krypton > /tmp/build.txt; ret="$?"; echo "Build script returned: $ret"; clock; notepad.exe /tmp/build.txt & cd -'
-alias bkupdate='bk; if [[ $ret -eq 0 ]]; then bem-update; else echo "Build failed so wont run bem-update"; fi'
-alias bkiupdate='bki; if [[ $ret -eq 0 ]]; then bem-update; else echo "Build failed so wont run bem-update"; fi'
+function bki() {
+    cd $KRYPTON && build-clear && ./brake.bat init krypton 2>&1 | tee /tmp/build.txt; grep-build-failure /tmp/build.txt; echo "Return code: $?"; clock; notepad.exe /tmp/build.txt & cd -;
+}
+
+function bk() {
+    cd $KRYPTON && build-clear && ./brake.bat krypton 2>&1 | tee /tmp/build.txt; grep-build-failure /tmp/build.txt; echo "Return code: $?"; clock; notepad.exe /tmp/build.txt & cd -;
+}
+
+function bki-installer() {
+    cd $KRYPTON && build-clear && ./brake.bat init krypton installer 2>&1 | tee /tmp/build.txt; grep-build-failure /tmp/build.txt; echo "Return code: $?"; clock; notepad.exe /tmp/build.txt & cd -;
+}
+
+function bk-installer() {
+    cd $KRYPTON && build-clear && ./brake.bat krypton installer 2>&1 | tee /tmp/build.txt; grep-build-failure /tmp/build.txt; echo "Return code: $?"; clock; notepad.exe /tmp/build.txt & cd -;
+}
+
+function bk-installer-apppack() {
+    cd $KRYPTON && build-clear && ./brake.bat krypton installer apppack --appname sure_sense --noguestinstaller 2>&1 | tee /tmp/build.txt; grep-build-failure /tmp/build.txt; echo "Return code: $?"; clock; notepad.exe /tmp/build.txt & cd -;
+}
+
+function bkupdate() {
+    bk; if [[ $ret -eq 0 ]]; then bem-update; else echo "Build failed so wont run bem-update"; fi;
+}
+function bkiupdate() {
+    bki; if [[ $ret -eq 0 ]]; then bem-update; else echo "Build failed so wont run bem-update"; fi;
+}
+
 function bk-monscan() {
     cd $KRYPTON && clear && clock; ./brake.bat krypton --target monscan-dist; ret="$?"; clock; cd -; echo "Build returned: $ret";
     return $ret;
@@ -374,12 +404,20 @@ function bk-bemsvc-update() {
 function bem-build-isuresense() {
     $KRYPTON/brake.bat init krypton --target ISureSenseInterface_wheel
 }
-function bem-build-tests() {
-    bem-build-isuresense &&
-    $KRYPTON/brake.bat init_bem bem krypton --target bem-test-deps && cd $KRYPTON/bem/tests && python.exe build.py --build; echo Return aval: $?; notepad.exe
+
+function bem-build-test-deps() {
+    $KRYPTON/brake.bat init_bem bem krypton --target bem-test-deps
 }
 
-alias nuke="cd $KRYPTON && clear && ./brake.bat nuke;"
+function bem-build-tests() {
+    bem-build-isuresense && bem-build-test-deps && cd $KRYPTON/bem/tests && (python.exe build.py --build 2>&1; ret=$?) | tee /tmp/build-bem-tests.txt; cd -; echo Return eval: $ret; notepad.exe /tmp/build-bem-tests.txt;
+}
+
+alias nuke="cd $KRYPTON && rm -rf /c/dev/temp/* && clear && ./brake.bat nuke;"
+
+###############################
+##### Decoding log files ######
+###############################
 
 function etl-update() {
     python.exe $P2VTOOLS/updateTmfs.py $OUT/servers/BemK_4_4_2_888.pdb
@@ -407,8 +445,6 @@ function grep-bemk() {
 # windows stuff
 alias cffexplorer="'/c/Program Files/NTCore/Explorer Suite/CFF Explorer.exe'"
 # eof windows stuff
-
-
 
 
 alias git_developers='git shortlog -sne'
@@ -467,6 +503,10 @@ alias cs="clip.exe"
 
 function test-comment() {
     echo -n "retest this please, vSentry build with pr_smoke" | cs ;
+}
+
+function test-comment-bem-tests() {
+    echo -n "retest this please, vSentry build with pr_smoke, trigger BEM tests" | cs ;
 }
 
 function bem-test-scanpath() {
@@ -582,7 +622,7 @@ function update-vimrc() {
 
 function commit-message() {
     #echo | cs
-    echo -n "KRY-76151 - $@" | cs
+    echo -n "KRY-76157 - $@" | cs
 }
 
 function log-bemsvc-np() {

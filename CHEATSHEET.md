@@ -1899,3 +1899,21 @@ https://datalake.abuse.ch/malware-bazaar/
 (Url for signatures to set to: https://upgrade.bitdefender.com/)
 
 
+Visual Studio (#visualstudio)
+=============================
+
+Word Highlight settings:
+
+Lightmode:
+Occurences Background Color:
+192, 192, 255
+Occurences Border Color:
+0, 0, 255
+
+Select Background Color:
+255, 224, 192
+Select Border Color:
+0, 0, 255
+
+
+
