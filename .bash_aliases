@@ -584,6 +584,11 @@ function gen-cpp-project() {
     cp "$VIMRC/.clang-tidy" $1
 }
 
+function gen-asm-fasm-project() {
+    if [[ -z $1 ]]; then echo "Usage: gen-asm-fasm-project <projname>"; return 127; fi
+    bash ~/bin/gen_asm_fasm_project.sh $1
+}
+
 function source_pytest3() {
     alias pytest='"$PYTHON3_DIR_SCRIPTS"/pytest.exe'
 }
