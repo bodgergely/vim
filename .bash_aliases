@@ -349,6 +349,11 @@ function grep-build-failure() {
     #if grep -l "FAILED" file > /dev/null 2>&1; then return 1; else return 0; fi;
     if grep -P "(FAILED|error C\d.*:)" $file; then return 1; else return 0; fi;
 }
+function grep-build-failure-installer() {
+    file=$1
+    #if grep -l "FAILED" file > /dev/null 2>&1; then return 1; else return 0; fi;
+    if grep -P "FAILED with" $file; then return 1; else return 0; fi;
+}
 # how to pass version or cmake define to brake
 #./brake.bat init krypton installer --version 4.4.2.1 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON"
 # --version 4.4.2.888 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON"
@@ -361,15 +366,15 @@ function bk() {
 }
 
 function bki-installer() {
-    cd $KRYPTON && build-clear && ./brake.bat init krypton installer 2>&1 | tee /tmp/build.txt; grep-build-failure /tmp/build.txt; echo "Return code: $?"; clock; notepad.exe /tmp/build.txt & cd -;
+    cd $KRYPTON && build-clear && ./brake.bat init krypton installer 2>&1 | tee /tmp/build.txt; grep-build-failure-installer /tmp/build.txt; echo "Return code: $?"; clock; notepad.exe /tmp/build.txt & cd -;
 }
 
 function bk-installer() {
-    cd $KRYPTON && build-clear && ./brake.bat krypton installer 2>&1 | tee /tmp/build.txt; grep-build-failure /tmp/build.txt; echo "Return code: $?"; clock; notepad.exe /tmp/build.txt & cd -;
+    cd $KRYPTON && build-clear && ./brake.bat krypton installer 2>&1 | tee /tmp/build.txt; grep-build-failure-installer /tmp/build.txt; echo "Return code: $?"; clock; notepad.exe /tmp/build.txt & cd -;
 }
 
 function bk-installer-apppack() {
-    cd $KRYPTON && build-clear && ./brake.bat krypton installer apppack --appname sure_sense --noguestinstaller 2>&1 | tee /tmp/build.txt; grep-build-failure /tmp/build.txt; echo "Return code: $?"; clock; notepad.exe /tmp/build.txt & cd -;
+    cd $KRYPTON && build-clear && ./brake.bat krypton installer apppack --appname sure_sense --noguestinstaller 2>&1 | tee /tmp/build.txt; grep-build-failure-installer /tmp/build.txt; echo "Return code: $?"; clock; notepad.exe /tmp/build.txt & cd -;
 }
 
 function bkupdate() {
