@@ -77,7 +77,7 @@ export CPPPLAY="$WORKSPACE/cpp"
 export ONEDRIVE="$HOME/\"OneDrive - HP Inc/\""
 #export CHEATSHEET="$ONEDRIVE/cheatsheet.md"
 export CHEATSHEET="$WORKSPACE/vimrc/cheatsheet.md"
-export NOTES="$ONEDRIVE/notes.md"
+export NOTES="$WORKSPACE/stuff/notes.md"
 export KRYPTON="$DEV/Krypton"
 export BEM="$KRYPTON/bem"
 export OUT="$DEV/out/win7-64bit-ninja"
@@ -415,7 +415,7 @@ function bem-build-test-deps() {
 }
 
 function bem-build-tests() {
-    bem-build-isuresense && bem-build-test-deps && cd $KRYPTON/bem/tests && (python.exe build.py --build 2>&1; ret=$?) | tee /tmp/build-bem-tests.txt; cd -; echo Return eval: $ret; notepad.exe /tmp/build-bem-tests.txt;
+    bem-build-isuresense && bem-build-test-deps && cd $KRYPTON/bem/tests && (python.exe build.py --build 2>&1; ret=$?) | tee /tmp/build-bem-tests.txt; grep-build-failure /tmp/build-bem-tests.txt; ret=$?; cd -; echo Return eval: $ret; notepad.kxe /tmp/build-bem-tests.txt;
 }
 
 alias nuke="cd $KRYPTON && rm -rf /c/dev/temp/* && clear && ./brake.bat nuke;"

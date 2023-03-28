@@ -28,7 +28,7 @@ mkdir $BUILD_DIR
 
 # main.asm file
 cat <<HEREDOC > $DIR/main.asm
-format PE
+format PE console
 
 section '.text' code readable executable
 
