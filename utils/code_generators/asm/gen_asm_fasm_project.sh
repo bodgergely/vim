@@ -28,17 +28,28 @@ mkdir $BUILD_DIR
 
 # main.asm file
 cat <<HEREDOC > $DIR/main.asm
-format PE64 console
+format PE console
+entry start
+
+include "win32a.inc"
 
 section '.text' code readable executable
-
 start:
-    mov rax, 0xe
-    cmp rax, 0xf
-    cmp rax, 0xe
-    cmp rax, 0xd
-    nop
-    ret
+    push hello
+    call [printf]
+    pop ecx
+
+    push 0
+    call [ExitProcess]
+
+section '.rdata' data readable
+    hello db 'Hello world!', 10, 0
+
+section '.idata' data readable import
+    library kernel32, 'kernel32.dll', \
+            msvcrt,   'msvcrt.dll'
+    import kernel32, ExitProcess, 'ExitProcess'
+    import msvcrt, printf, 'printf'
 HEREDOC
 
 # aliases file
@@ -46,6 +57,7 @@ cat <<HEREDOC > $DIR/aliases
 alias e="vim main.asm"
 alias b="fasm.exe main.asm ./build/main.exe"
 alias r="b && ./build/main.exe"
+alias run="./build/main.exe"
 HEREDOC
 
 cd $DIR
