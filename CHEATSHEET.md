@@ -1066,6 +1066,7 @@ $ grep -oh -R -E "=\s+ngx\..*\." --include=*.lua .
 Match the word between foo and bar
 $ grep -oP 'foo \K\w+(?= bar)'
 
+-o: match only
 -i: case insensitive
 -F: fixed-string (do not use regex when searching)
 -v: invert match - show all not matching

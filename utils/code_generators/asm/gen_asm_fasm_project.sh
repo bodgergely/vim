@@ -28,15 +28,15 @@ mkdir $BUILD_DIR
 
 # main.asm file
 cat <<HEREDOC > $DIR/main.asm
-format PE console
+format PE64 console
 
 section '.text' code readable executable
 
 start:
-    mov eax, 0xe
-    cmp eax, 0xf
-    cmp eax, 0xe
-    cmp eax, 0xd
+    mov rax, 0xe
+    cmp rax, 0xf
+    cmp rax, 0xe
+    cmp rax, 0xd
     nop
     ret
 HEREDOC

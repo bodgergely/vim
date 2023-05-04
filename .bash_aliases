@@ -7,7 +7,7 @@ function l() {
 
 export PYTHON3_DIR="/c/Program Files/Python310"
 export PYTHON3_DIR_SCRIPTS="$PYTHON3_DIR"/Scripts
-export PYTHON3_EXE="$PYTHON3_DIR"/python.exe
+export PYTHON3_EXE='"$PYTHON3_DIR"/python.exe'
 export PYTHON3_SITE_PACKAGES_DIR="$PYTHON3_DIR"/Lib/site-packages
 
 alias aer="source $HOME/.bash_aliases"
@@ -18,11 +18,10 @@ alias pae="cat $HOME/.bash_aliases"
 alias vimrc="vim $HOME/.vimrc"
 alias bashrc="vim $HOME/.bashrc; reload"
 alias python="winpty python.exe"
-#alias python3="winpty '$PYTHON3_DIR'/python.exe"
-alias python3="'$PYTHON3_DIR'/python.exe"
-alias p='python'
+alias python3="winpty $PYTHON3_EXE"
+alias p3="python3"
+alias p='python3'
 alias p3='python3'
-alias ip3="winpty '$PYTHON3_DIR'/python.exe"
 alias pip3="'$PYTHON3_DIR_SCRIPTS'/pip.exe"
 alias ip3="winpty '$PYTHON3_DIR'/Scripts/ipython.exe"
 alias ipython="ip3"
@@ -290,6 +289,8 @@ function build-clear() {
     rm-build-log;
 }
 
+
+
 function bk-hostshellextension() {
     cd $KRYPTON
     ./brake.bat krypton --target HostShellExtension; ret="$?"; cd -; echo "Build returned: $ret";
@@ -354,6 +355,12 @@ function grep-build-failure-installer() {
     #if grep -l "FAILED" file > /dev/null 2>&1; then return 1; else return 0; fi;
     if grep -P "FAILED with" $file; then return 1; else return 0; fi;
 }
+
+alias magic='python "$KRYPTON\scripts\magic\magic"'
+bk-magic-update() {
+    magic --non-interactive update --force;
+}
+
 # how to pass version or cmake define to brake
 #./brake.bat init krypton installer --version 4.4.2.1 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON"
 # --version 4.4.2.888 --cmakedefine "BRC_WSC_SUPPORT:BOOL=ON"
@@ -385,7 +392,11 @@ function bkiupdate() {
 }
 
 function bk-monscan() {
-    cd $KRYPTON && clear && clock; ./brake.bat krypton --target monscan-dist; ret="$?"; clock; cd -; echo "Build returned: $ret";
+    cd $KRYPTON && clear && clock; ./brake.bat krypton --target monscan-dist; ret="$?"; clock;
+    ./brake.bat krypton --target monscanTest; testRet="$?";
+    cd -; 
+    echo "Build returned: $ret";
+    echo "Test build returned: $testRet";
     return $ret;
 }
 function bk-bemsvc() {
@@ -415,7 +426,7 @@ function bem-build-test-deps() {
 }
 
 function bem-build-tests() {
-    bem-build-isuresense && bem-build-test-deps && cd $KRYPTON/bem/tests && (python.exe build.py --build 2>&1; ret=$?) | tee /tmp/build-bem-tests.txt; grep-build-failure /tmp/build-bem-tests.txt; ret=$?; cd -; echo Return eval: $ret; notepad.kxe /tmp/build-bem-tests.txt;
+    bem-build-isuresense && bem-build-test-deps && cd $KRYPTON/bem/tests && (python.exe build.py --build 2>&1; ret=$?) | tee /tmp/build-bem-tests.txt; grep-build-failure /tmp/build-bem-tests.txt; ret=$?; cd -; echo Return eval: $ret; notepad.exe /tmp/build-bem-tests.txt;
 }
 
 alias nuke="cd $KRYPTON && rm -rf /c/dev/temp/* && clear && ./brake.bat nuke;"
@@ -637,4 +648,8 @@ function commit-message() {
 
 function log-bemsvc-np() {
     notepad++.exe /c/ProgramData/Bromium/BEM/logs/BemSvc &
+}
+
+function bem-license-key() {
+    curl http://supportservices.bromium.net/LatestKey
 }
