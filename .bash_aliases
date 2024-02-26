@@ -18,7 +18,8 @@ alias pae="cat $HOME/.bash_aliases"
 alias vimrc="vim $HOME/.vimrc"
 alias bashrc="vim $HOME/.bashrc; reload"
 alias python="winpty python.exe"
-alias python3="winpty $PYTHON3_EXE"
+#alias python3="winpty $PYTHON3_EXE"
+alias python3="$PYTHON3_EXE"
 alias p3="python3"
 alias p='python3'
 alias p3='python3'
@@ -62,6 +63,7 @@ export PATH="$HOME/bin:$PATH"
 export PATH="/c/Program Files/LLVM/bin:$PATH"
 export PATH="$HOME/AppData/Local/SumatraPDF:$PATH"
 export PATH="$HOME/Progs/fasm:$PATH"
+#export PATH="$HOME/Progs/UnxUtils/usr/local/wbin:$PATH"
 export INCLUDE="$HOME/Progs/fasm/INCLUDE"
 
 export PROGRAMFILES_x86="/c/Program Files (x86)"
@@ -69,10 +71,12 @@ export PROGRAMFILES="/c/Program Files"
 export PROGRAMDATA="/c/ProgramData"
 
 export WORKSPACE="$HOME/workspace"
-export DEV="/c/dev/"
+export DEV="/c/dev"
 export MYREPOS="$WORKSPACE/myrepos"
 export VIMRC="$WORKSPACE/vimrc"
-export CPPPLAY="$WORKSPACE/cpp"
+export PLAYGROUND="$MYREPOS/playground"
+export PLAY_CPP="$WORKSPACE/cpp"
+export PLAY_PYTHON="$PLAYGROUND/python"
 export ONEDRIVE="$HOME/\"OneDrive - HP Inc/\""
 #export CHEATSHEET="$ONEDRIVE/cheatsheet.md"
 export CHEATSHEET="$WORKSPACE/vimrc/cheatsheet.md"
@@ -109,7 +113,8 @@ alias cdmyrepos="cd $WORKSPACE/myrepos"
 alias cdbio="cd $WORKSPACE/myrepos/bioinformatics"
 alias cdout="cd $OUT"
 alias cdvimrc="cd $VIMRC"
-alias cdcpp="cd $CPPPLAY"
+alias cdcpp="cd $PLAY_CPP"
+alias cdplay-python="cd $PLAY_PYTHON"
 alias cddocs="cd $VIMRC/Docs"
 alias cdstuff="cd $WORKSPACE/stuff"
 alias cdonedrive="cd $ONEDRIVE"
@@ -141,8 +146,10 @@ alias notes="vim $NOTES"
 alias notes-npp="notepad++ $NOTES"
 alias notes-code="code $NOTES"
 alias cheatsheet="vim $CHEATSHEET"
-alias cpp-code="code $CPPPLAY"
-alias cpp-vim="cd $CPPPLAY && vim cpp/main.cpp"
+alias play-cpp-code="code $PLAY_CPP"
+alias play-cpp-vim="cd $PLAY_CPP && vim cpp/main.cpp"
+alias play-python-code="code $PLAY_PYTHON"
+alias play-python-vim="cd $PLAY_PYTHON && vim cpp/main.cpp"
 alias cdscratch="cd ~/scratchpad"
 alias cdwinkit="cd '$WINKIT'"
 alias cdwinkitbin="cd '$WINKIT_BIN'"
@@ -156,7 +163,7 @@ alias cdprogramfiles86="cd '$PROGRAMFILES_x86'"
 alias cdprogramdata="cd '$PROGRAMDATA'"
 alias cdsys32="cd /c/Windows/System32"
 alias cddriversamples="cd $WIN_DRIVER_SAMPLES"
-alias cdplayground="cd $MYREPOS/playground"
+alias cdplayground="cd $PLAYGROUND"
 alias cdtmp="cd $HOME/Desktop/tmp"
 alias cdtemp="cdtmr"
 alias cdbitdefender_sdks="cd $BITDEFENDER_SDKS"
@@ -185,8 +192,8 @@ alias vsentry-resurrect="python.exe /c/dev/p2v-tools/bin/vsentry.py resurrect"
 alias vsentry-clear-logs="python.exe /c/dev/p2v-tools/bin/vSentry.py clear-logs"
 alias vsentry-grep-logs="python.exe /c/dev/p2v-tools/bin/vSentry.py grep-logs"
 alias bem-test="python.exe $BEM/tests/run.py"
-function clear-test-logs { rm -rf /c/test/*; rm -rf $BEM/tests/test-results/*; }
-function clear-test-ashtestartifacts { 
+function bem-delete-test-logs { rm -rf /c/test/*; rm -rf $BEM/tests/test-results/*; }
+function bem-delete-test-ashtestartifacts { 
     rm -rf /c/AshTestArtifacts/sure_sense/temp_av_ignore_dirs/tmp*;
 }
 
@@ -219,15 +226,15 @@ function bemsvc-query() {
 }
 alias bem-query="bemsvc-query"
 
-function bem-delete-logs() {
+function _bem-delete-logs() {
     rm /c/ProgramData/Bromium/BEM/logs/BemSvc/*
 }
 
-function bem-clear-logs() {
+function bem-delete-logs() {
 	bemsvc-stop
 	sleep 5
     bemsvc-query
-	bem-delete-logs
+	_bem-delete-logs
 	bemsvc-start
 }
 
@@ -313,9 +320,9 @@ function bk-bemshellext() {
 
 function bk-bemshellext-cp() {
     FOLDER=~/Desktop/tmp/
-    bk-bemshellext && cp /c/dev/out/win7-64bit-ninja/servers/SureSenseShellExt.dll $FOLDER
+    bk-bemshellext && cp $OUT/servers/SureSenseShellExt.dll $FOLDER
     if [[ $? -eq 0 ]]; then
-        echo Copied /c/dev/out/win7-64bit-ninja/servers/SureSenseShellExt.dll to $FOLDER
+        echo Copied $OUT/servers/SureSenseShellExt.dll to $FOLDER
     else
         echo Failed copying SureSenseShellExt.dll
     fi
@@ -407,7 +414,7 @@ function bk-bemsvc-cp() {
     FOLDER=~/Desktop/tmp/
     bk-bemsvc && cp "$OUT/servers/BemSvc.exe" $FOLDER
     if [[ $? -eq 0 ]]; then
-        echo Copied /c/dev/out/win7-64bit-ninja/servers/BemSvc.exe to $FOLDER
+        echo Copied $OUT/servers/BemSvc.exe to $FOLDER
     else
         echo Failed copying BemSvc.exe
     fi
@@ -427,6 +434,19 @@ function bem-build-test-deps() {
 
 function bem-build-tests() {
     bem-build-isuresense && bem-build-test-deps && cd $KRYPTON/bem/tests && (python.exe build.py --build 2>&1; ret=$?) | tee /tmp/build-bem-tests.txt; grep-build-failure /tmp/build-bem-tests.txt; ret=$?; cd -; echo Return eval: $ret; notepad.exe /tmp/build-bem-tests.txt;
+}
+
+# builds the brdev.zip under OUT/bem/tests/artifacts/brdev.zip
+function bem-build-test-artifacts()
+{
+    python.exe $KRYPTON/bem/tests/build.py --make-artifacts
+}
+
+function bem-build-test-all()
+{
+    bem-build-tests && bem-build-test-artifacts;
+    ret=$?;
+    echo "Final test build result: $ret"
 }
 
 alias nuke="cd $KRYPTON && rm -rf /c/dev/temp/* && clear && ./brake.bat nuke;"
@@ -502,7 +522,7 @@ alias mex="chmod +x"
 alias grep="grep --color"
 alias ff="find . -iname $@"
 function g() {
-    grep -R "$@" .
+    grep -Ri "$@" .
 }
 #function gp() {
     #if [ "$#" -eq 1 ]; then
@@ -516,28 +536,27 @@ alias fzfrc='vim $HOME/.fzf.bash'
 alias f="v -c Files"
 alias cs="clip.exe"
 
-
 function test-comment() {
-    echo -n "retest this please, vSentry build with pr_smoke" | cs ;
-}
-
-function test-comment-bem-tests() {
     echo -n "retest this please, vSentry build with pr_smoke, trigger BEM tests" | cs ;
 }
 
+function test-comment-pr_smoke() {
+    echo -n "retest this please, vSentry build with pr_smoke" | cs ;
+}
+
 function bem-test-scanpath() {
-    clear-test-logs && bem-test $SYSTEMDRIVE/dev/Krypton/bem/tests/tests/sure_sense/test_com_interface.py::StatusReportingTests::test_scan_path
+    bem-delete-test-logs && bem-test $SYSTEMDRIVE/dev/Krypton/bem/tests/tests/sure_sense/test_com_interface.py::StatusReportingTests::test_scan_path
 }
 
 function bem-test-com-interface() {
-    clear-test-logs && bem-test $SYSTEMDRIVE/dev/Krypton/bem/tests/tests/sure_sense/test_com_interface.py
+    bem-delete-test-logs && bem-test $SYSTEMDRIVE/dev/Krypton/bem/tests/tests/sure_sense/test_com_interface.py
 }
 
 function bem-test-license() {
-    clear-test-logs && bem-test $SYSTEMDRIVE/dev/Krypton/bem/tests/tests/sure_sense/test_com_interface.py::ErrorStateTests::test_no_hp_license
+    bem-delete-test-logs && bem-test $SYSTEMDRIVE/dev/Krypton/bem/tests/tests/sure_sense/test_com_interface.py::ErrorStateTests::test_no_hp_license
 }
 
-function test-unzip-bemsvc() {
+function unzip-bemsvc() {
     filename=$1;
     7z-unzip-cdtodir $filename;
     cd Logs;
@@ -641,15 +660,20 @@ function update-vimrc() {
     cd -;
 }
 
-function commit-message() {
+function current-jira() {
     #echo | cs
-    echo -n "KRY-76157 - $@" | cs
+    echo -n "KRY-82581 - $@" | cs
 }
 
-function log-bemsvc-np() {
-    notepad++.exe /c/ProgramData/Bromium/BEM/logs/BemSvc &
+function bemsvc-log-open-np() {
+    notepad++.exe /c/ProgramData/Bromium/BEM/logs/BemSvc/BemSvc.log &
 }
 
-function bem-license-key() {
-    curl http://supportservices.bromium.net/LatestKey
+function bemsvc-log-open() {
+    vim /c/ProgramData/Bromium/BEM/logs/BemSvc/BemSvc.log
+}
+alias bemlog="bemsvc-log-open"
+
+function license-key() {
+    curl -s http://supportservices.bromium.net/LatestKey
 }

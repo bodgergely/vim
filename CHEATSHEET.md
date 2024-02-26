@@ -91,6 +91,22 @@ Cheatsheet:
 https://devhints.io/git-log
 
 
+Git statistics
+--------------
+
+About developer performance:
+Number of lines added/removed and diff:
+
+git log --author="Greg Bod" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; } END { printf "added lines: %s removed lines: %s total lines: %s\n", add, subs, add-subs }'
+
+Total number of lines added by a developer on master branch?
+
+git checkout master
+git log --author="Greg Bod" --pretty=tformat: --numstat | awk '{ add += $1; } END { printf "added lines: %s\n", add }'
+
+
+
+
 Git diff - to see changes
 --------
 
@@ -1430,6 +1446,50 @@ Value	0xF
 right click 'Install' on nullFilter.inf
 sc.exe start nullFilter
 
+# New way to install the driver !!! (devcon)
+https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/writing-a-very-small-kmdf--driver
+
+In the .inf file place:
+```
+[Standard.NT$ARCH$]
+%KmdfHelloWorld.DeviceDesc%=KmdfHelloWorld_Device, Root\KmdfHelloWorld
+```
+
+Copy .sys file to C:\Windows\System32\drivers
+then
+
+```
+devcon install <INF file> <hardware ID>
+```
+```
+devcon install kmdfhelloworld.inf root\kmdfhelloworld
+```
+
+```
+#name is the filename of the .sys file
+function Install-Driver($name)
+{
+	# devcon install <INF file> <hardware ID>
+	$cleanName = $name -replace ".sys|.\\", ""
+	.\devcon.exe install $cleanName".inf" Root\$cleanName
+}
+```
+```
+function Remove-Driver($name)
+{
+    .\devcon.exe remove Root\$name
+}
+
+function Update-Driver($sysfile)
+{
+	$cleanName = $sysfile -replace ".sys|.\\", ""
+	echo "Removing driver $cleanName"
+	Remove-Driver $cleanName
+	echo "Installing driver $sysfile"
+	Install-Driver $sysfile
+}
+```
+
 # PS script - place in your $profile
 
 ```
@@ -1506,6 +1566,7 @@ uf <address> - disassemble as function
 lm - list loaded modules
 `x nt!KiSystemService*` - list symbols starting with...
 .load,.loadby - Load library
+~8s - switch to thread 8 (display thread ids by using the '~')
 
 ## kernelmode windbg
 
@@ -1544,6 +1605,29 @@ ed nt!Kd_IHVDRIVER_Mask 0xf
 
 After this the log messages should appear in the Command window.
 
+## Current process information
+!process -1 0
+
+## Switch to userspace process?
+!process 0 0 notepad.exe
+.process /r /p <ProcAddress>
+## Switch to kernel mode
+.process /k
+
+## switch to a given thread
+~8s
+The above will switch to thread number 8.
+
+## Stack frames
+### change stack fram context
+.frame /c
+### inspect registers of the stack frame
+.frame /r
+
+## Break on system call when specific process initiates it
+!process 0 0 notepad.exe
+bp /p ffffbe8e593d3080 nt!NtCreateFile
+
 
 ## windbg extensions
 
@@ -1565,6 +1649,21 @@ nt!KiSystemServiceUser is the entry point when `syscall` executes.
 
 ### Python extension for windbg
 https://github.com/SeanCline/PyExt
+
+
+### Scripting windbg
+
+Use $t0, $t1 etc pseudoregisters
+
+Loop through callstack of many threads
+Thread syntax: ~
+Choose thread based on pseudoregister:
+~[@$t0]
+
+```
+.for(r $t0=0; @$t0<100; r $t0=@$t0+1) { .printf "Thread %d\n", @$t0; ~[@$t0] k }
+```
+
 
 Powershell (#powershell)
 ==========
@@ -1916,5 +2015,27 @@ Select Background Color:
 Select Border Color:
 0, 0, 255
 
+WerFault.exe (Windows Error reporting, #crash, #dump)
+=====================================================
+
+https://learn.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps
 
 
+https://learn.microsoft.com/en-us/windows/win32/debug/configuring-automatic-debugging#configuring-automatic-debugging-for-application-crashes
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AeDebug
+Also add the REG_SZ key: Auto with value 1
+Original value in Debugger:
+"C:\WINDOWS\system32\vsjitdebugger.exe" -p %ld -e %ld
+change to:
+"C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\windbg.exe" -p %ld -e %ld -g
+
+If automatic debugging is enabled then no crash dump is generated.
+
+
+DEVBMS SureSense
+================
+
+[16:36] Bingham, Joseph
+
+I can't find a confluence page, but basically you need to point your endpoint at https://devbms.bromium.net/ (either when you run the installer; SERVERURL=https://devbms.bromium.net/) or change it with BrManage.exe management-server (print|del|<address>), then go to the controller in your browser and under Device Security go to Device Groups. Add a new group (I just named mine Joe's Group) and add either the Published Channels - EARLY SAE + SCE or the Published Channels - GA SAE + SCE group to it (I think SAE is every sprint and GA is less frequent). Next, under Device Security, go to Devices, find your device, and click it. Top-right select Device Groups and add your device to your group. Then you can go to Policies under Configuration and create a new policy and apply it to your group.
