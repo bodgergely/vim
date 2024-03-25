@@ -267,6 +267,9 @@ exclude directories (at any level name .git or .vs)
 find . -name "*" -not -path "*.git/*" -not -path "*.vs/*"
 find . -mindepth 2 -maxdepth 3
 
+Find multiple patterns:
+find . -iname "*.exe" -o -iname "*.dll" -o -iname "*.lnk"
+
 
 printscreen
 -----------
@@ -1088,6 +1091,8 @@ $ grep -oP 'foo \K\w+(?= bar)'
 -v: invert match - show all not matching
 -h: no filename
 -l: show only filename
+-a: equivalent to --text and --binary-files=text. To fix the issue of "Binary file matches."
+    Process a binary file as if it were text
 
 
 
@@ -2027,6 +2032,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AeDebug
 Also add the REG_SZ key: Auto with value 1
 Original value in Debugger:
 "C:\WINDOWS\system32\vsjitdebugger.exe" -p %ld -e %ld
+or after vs2022 "C:\WINDOWS\system32\vsjitdebugger.exe" -p %ld -e %ld -j 0x%p
 change to:
 "C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\windbg.exe" -p %ld -e %ld -g
 
