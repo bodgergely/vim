@@ -82,7 +82,12 @@
         "**/target/**": true,
         "build": true
     },
+    "C_Cpp.clang_format_style": "none",
+    "C_Cpp.clang_format_fallbackStyle": "none",
+    "editor.mouseWheelZoom": true,
     "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.jediEnabled": false,
     "files.exclude": {
         ".GOPATH": true,
         "**/*.a": true,
@@ -93,11 +98,19 @@
         "**/*.o": true,
         "build/**": true
     },
-    "workbench.tree.indent": 18,
+    "workbench.tree.indent": 12,
     "go.inferGopath": true,
+    "editor.formatOnSave": true,
+    "vs-kubernetes": {
+        "vs-kubernetes.helm-path": "/home/greg/.vs-kubernetes/tools/helm/linux-amd64/helm",
+        "vs-kubernetes.minikube-path": "/home/greg/.vs-kubernetes/tools/minikube/linux-amd64/minikube",
+        "vs-kubernetes.draft-path": "/home/greg/.vs-kubernetes/tools/draft/linux-amd64/draft"
+    },
     "[python]": {
         "editor.defaultFormatter": "ms-python.python"
     },
+    "yaml.validate": false,
+    "yaml.format.enable": false,
     "python.linting.enabled": false,
     "python.terminal.activateEnvironment": false,
     "editor.minimap.maxColumn": 1200,
@@ -124,6 +137,8 @@
     },
     "code-runner.clearPreviousOutput": true,
     "go.autocompleteUnimportedPackages": true,
+    "go.lintTool": "staticcheck",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
     "python.languageServer": "Pylance",
     "workbench.list.smoothScrolling": true,
     "[cpp]": {
@@ -133,7 +148,7 @@
         "*.ipynb": "jupyter-notebook"
     },
     "workbench.colorCustomizations": {
-        "[Abyss]": {
+        "[Abyss][Red]": {
             "activityBar.background": "#ff0000"
         },
         "[Visual*][Light*][Default Light*][Default Dark*]": {
@@ -157,8 +172,11 @@
     },
     "jupyter.alwaysTrustNotebooks": true,
     "tabnine.experimentalAutoImports": true,
+    "go.toolsManagement.autoUpdate": true,
     "gitlens.hovers.enabled": false,
     "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "redhat.telemetry.enabled": false,
+    "xml.symbols.maxItemsComputed": 15000,
     // Controls the line height. Use 0 to compute the lineHeight from the fontSize.
     "editor.lineHeight": 0,
     // Enables font ligatures
@@ -167,13 +185,20 @@
     "editor.cursorBlinking": "solid",
     "problems.decorations.enabled": false,
     "Lua.diagnostics.enable": false,
-    "C_Cpp.intelliSenseEngine": "default",
-    "C_Cpp.enhancedColorization": "enabled",
+    "C_Cpp.enhancedColorization": "Enabled",
+    "C_Cpp.intelliSenseEngine": "Default",
     "diffEditor.ignoreTrimWhitespace": false,
     "Lua.telemetry.enable": false,
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.codeLens.enabled": false,
     "gitlens.currentLine.enabled": false,
+    "gitlens.integrations.enabled": true,
+    "gitlens.remotes": [
+        {
+            "domain": "github.bromium.net",
+            "type": "GitHub"
+        }
+    ],
     "explorer.autoReveal": false,
     "notebook.cellToolbarLocation": {
         "default": "right",
@@ -186,27 +211,27 @@
         "master",
         "origin/master"
     ],
-    "git.branchPrefix": "gergely-bod_KRY-",
+    "git.branchPrefix": "greg_KRY-",
     "git.mergeEditor": true,
-    "window.titleBarStyle": "custom",
     "window.commandCenter": true,
-    "terminal.integrated.shellIntegration.enabled": true,
-    "C_Cpp.clang_format_fallbackStyle": "none",
-    "workbench.welcomePage.experimental.videoTutorials": "experimental",
-    "workbench.editor.revealIfOpen": true,
-    "zenMode.hideLineNumbers": false,
-    "terminal.integrated.scrollback": 3000,
-    "telemetry.telemetryLevel": "crash",
-    "C_Cpp.default.cppStandard": "c++17",
-    "editor.mouseWheelZoom": true,
     "editor.fontSize": 13,
-    "window.zoomLevel": 0.29,
     "terminal.integrated.fontSize": 13,
-    "terminal.integrated.smoothScrolling": true,
-    "terminal.integrated.mouseWheelScrollSensitivity": 0.7,
-    "git.confirmSync": false,
-    "tabnine.receiveBetaChannelUpdates": true,
-    "workbench.colorTheme": "Default Light+",
-    "editor.renderWhitespace": "none",
+    "terminal.integrated.shellIntegration.enabled": false,
+    "editor.mouseWheelScrollSensitivity": 0.8,
+    "window.zoomLevel": 0.10,
+    "workbench.colorTheme": "Visual Studio Light - C++",
+    "scm.showIncomingChanges": "never",
+    "scm.showOutgoingChanges": "never",
     "git.enableSmartCommit": true,
+    "githubPullRequests.commentExpandState": "collapseAll",
+    "githubPullRequests.notifications": "pullRequests",
+    "git.confirmSync": false,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": false,
+        "scminput": false
+    },
+    "editor.stickyScroll.enabled": false,
+    "github.copilot.editor.enableAutoCompletions": true,
 }

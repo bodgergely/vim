@@ -1541,6 +1541,11 @@ Most of the time (80% use case)
 .symfix+ c:\symbols
 .reload
 
+This works well:
+!sym noisy
+.sympath C:\dev\out\win7-64bit-ninja\servers;SRV*c:\symbols*http://msdl.microsoft.com/download/symbols
+.reload /f
+
 More advanced:
 .sympath c:\mysymbols ; *** Symbols of your application, locally, flat list of PDB files
 .sympath+ cache*c:\symbolcache ; *** (optional) Create a cache for everything
@@ -2025,6 +2030,12 @@ WerFault.exe (Windows Error reporting, #crash, #dump)
 
 https://learn.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps
+
+https://spitfireaudio.zendesk.com/hc/en-us/articles/11727762149661-How-to-enable-crash-dumps-on-windows
+
+Need to have this folder in registry:
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps
+Under this DumpType value should be 2.
 
 
 https://learn.microsoft.com/en-us/windows/win32/debug/configuring-automatic-debugging#configuring-automatic-debugging-for-application-crashes
