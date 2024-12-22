@@ -137,11 +137,6 @@
     },
     {
         "key": "shift+tab",
-        "command": "-acceptSelectedSuggestion",
-        "when": "suggestWidgetVisible && textInputFocus"
-    },
-    {
-        "key": "shift+tab",
         "command": "selectPrevSuggestion",
         "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     },
@@ -278,5 +273,15 @@
     {
         "key": "ctrl+e",
         "command": "workbench.files.action.showActiveFileInExplorer"
+    },
+    {
+        "key": "tab",
+        "command": "tabnine.tab-override",
+        "when": "suggestWidgetVisible && tabnine.tab-override && textInputFocus"
+    },
+    {
+        "key": "tab",
+        "command": "-tabnine.tab-override",
+        "when": "suggestWidgetVisible && tabnine.tab-override && textInputFocus"
     }
 ]
