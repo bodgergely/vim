@@ -50,7 +50,7 @@ export PATH=$HOME/neovim/bin:$PATH
 export PATH=$PATH:~/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:~/arduino/arduino-1.8.5-linux64/arduino-1.8.5
-export PATH=~/anaconda3/bin:$PATH
+#export PATH=~/anaconda3/bin:$PATH
 export PATH=$HOME/Qt/5.13.1/gcc_64/bin/:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 
@@ -377,7 +377,7 @@ alias bzip2_compress='tar -cjvf'
 alias targz_uncompress='tar -xzvf'
 alias bzip2_uncompress='tar -xjvf'
 
-alias code="GTK_IM_MODULE=xim code"
+#alias code="GTK_IM_MODULE=xim code"
 
 alias cls='clear'
 
