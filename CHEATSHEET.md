@@ -335,6 +335,22 @@ END {
 }
 ```
 
+debugfs
+=======
+
+Mounted on /sys/kernel/debug/
+
+mount -t debugfs none /sys/kernel/debug
+
+/sys/kernel/debug/kprobes
+
+blacklisted functions
+cat /sys/kernel/debug/kprobes/blacklist
+
+enable:
+echo 1 > /sys/kernel/debug/kprobes/enabled
+
+
 cpu info
 --------
 Use Awk to filter output from below commands
@@ -977,11 +993,20 @@ Sed (#sed)
 
 sed -e 's/few/asd/g' hello.txt
 
-Python
+Python (#python)
 ======
 
 navigate back and forth with C+p and C+n to get prev, next command
 Better to use ipython for code completion
+
+Choosing python version:
+sudo update-alternatives --set python3 /usr/bin/python3.8
+or
+sudo update-alternatives --set python /usr/bin/python3.8
+
+venv
+----
+python -m venv <path-to-virtual-env>
 
 
 requests
