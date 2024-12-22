@@ -112,6 +112,8 @@ Plugin 'vim-scripts/vim-auto-save'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'RRethy/vim-illuminate'  "highlights word under cursor
 Plugin 'derekwyatt/vim-fswitch' "switch between header and source files (c/c++)
+" autocompleter
+"Plugin 'neoclide/coc.nvim'
 
 " ---------------------------------------
 " All of your Plugins must be added before the following line
@@ -241,6 +243,32 @@ nmap <silent><leader>t :TagbarOpen<CR>
 set autoread
 
 set wildignore+=tags,**/tags
+"set tags=./tags;/
+"set tags=./tags
+
+"cscope stuff
+"if has("cscope")
+    "set csprg=/usr/bin/cscope
+    "set csto=0
+    "set cst
+    "set nocsverb
+    "" add any database in current directory
+    "if filereadable("cscope.out")
+        "cs add cscope.out
+        "" else add database pointed to by environment
+    "elseif $CSCOPE_DB != ""
+        "cs add $CSCOPE_DB
+    "endif
+    "set csverb
+"endif
+" jump to a function definition
+"nmap <silent> <C-\> :cs find g <C-R>=expand("<cword>")<CR><CR>1<CR><CR>
+" jump to a function declaration
+"nmap <silent> <C-\> :cs find s <C-R>=expand("<cword>")<CR><CR>1<CR><CR>
+" show a list of where function is called
+"nmap <silent> <C-_> :cs find c <C-R>=expand("<cword>")<CR><CR>
+"EOF cscope stuff
+
 " grep - ripgrep - rg
 if executable('rg')
   set grepprg=rg\ --no-heading\ --vimgrep
