@@ -61,6 +61,7 @@ export PATH=$PATH:$HOME/opt/cross/bin
 alias cross_gcc=i686-elf-gcc
 
 export WORKSPACE=$HOME/workspace
+export VIMRC="$WORKSPACE/vimrc"
 export UI=/usr/include
 export AI_PATH="$WORKSPACE/AI/"
 export HACKING="$WORKSPACE/hacking/"
@@ -171,6 +172,7 @@ git_config_global()
 
 
 # gdb
+export PWNDBG_VENV_PATH="$HOME/pwndbg/.venv"
 alias gdb_vanilla="gdb --command $WORKSPACE/vimrc/gdb_scripts/gdbvanilla --args"
 alias gdb_peda="gdb --command $WORKSPACE/vimrc/gdb_scripts/peda.gdb --args"
 alias gdb_pwndbg="gdb --command $WORKSPACE/vimrc/gdb_scripts/pwndbg.gdb --args"
@@ -193,7 +195,7 @@ alias cdnatas="cd $WARGAMES/natas"
 alias cdcraft='cd $HOME/htb/boxes/Craft'
 
 #directories
-alias cdvimrc="cd $WORKSPACE/vimrc"
+alias cdvimrc="cd $VIMRC"
 alias cdblog="cd $WORKSPACE/bodgergely.github.io"
 alias cdhacking="cd $HACKING"
 alias cdworkspace="cd $HOME/workspace/"
@@ -512,6 +514,25 @@ function gen_bash_file()
         echo "Usage: gen_bash_file <filename>"
     fi
 }
+
+function gen-python-project() {
+    if [[ -z $1 ]]; then echo "Usage: gen-python-project <projname>"; return 127; fi
+    bash ~/bin/gen_python_project.sh $1
+}
+
+function gen-cpp-project() {
+    if [[ -z $1 ]]; then echo "Usage: gen-python-project <projname>"; return 127; fi
+    bash ~/bin/gen_cpp_project.sh $1
+    cp -r "$VIMRC/vscode/.vscode" $1
+    cp "$VIMRC/.clang-format" $1
+    cp "$VIMRC/.clang-tidy" $1
+}
+
+function gen-asm-fasm-project() {
+    if [[ -z $1 ]]; then echo "Usage: gen-asm-fasm-project <projname>"; return 127; fi
+    bash ~/bin/gen_asm_fasm_project.sh $1
+}
+
 # memory
 # $ free
 

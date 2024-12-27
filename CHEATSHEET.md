@@ -1161,6 +1161,8 @@ Ctrl W + L - Move the current window to the "far right"
 Ctrl W + H - Move the current window to the "far left"
 Ctrl W + J - Move the current window to the "very bottom"
 Ctrl W + K - Move the current window to the "very top"
+Ctrl W + x(exchange) - Swap the current window with the adjacent one
+Ctrl W + r(rotate) - Rotates the window layout, moving the active window to the next positon
 
 Quit shortcut - save and quit:
 :x
