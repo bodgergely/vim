@@ -259,6 +259,7 @@ xargs (#xargs)
 
 find . -type d | xargs ls -lha
 find . -type d | xargs -i ls -lha {}
+find . -type f | xargs -I {} ls -lha {}
 
 find (#find)
 ------------
@@ -269,6 +270,9 @@ find . -mindepth 2 -maxdepth 3
 
 Find multiple patterns:
 find . -iname "*.exe" -o -iname "*.dll" -o -iname "*.lnk"
+
+Find all the file extensions and their numbers under a given folder:
+find . -type f | sed -n 's/.*\.//p' | sort | uniq -c | sort -nr
 
 
 printscreen
@@ -1107,6 +1111,9 @@ C-s - save
 :vs - open vertical split
 :%s/foo/bar/g   - replace 'foo' with 'bar' globally
 :%!xdd - invoke HEX editor
+:%!xdd -r - to get out from the hex editor
+Open in hex editor right away from the command line:
+vim -c ':%!xxd' filename
 
 :help - invoke help on subject
 r - replace character
@@ -1451,6 +1458,18 @@ Value	0xF
 right click 'Install' on nullFilter.inf
 sc.exe start nullFilter
 
+OR
+
+Have the .sys and the .inf file next to each other and:
+
+sc create KernDriverWDM type=kernel binpath=C:\\Users\\gergely.bod\\Desktop\\KernDriverWDM.sys
+sc start KernDriverWDM
+
+to stop and delete:
+
+sc stop KernDriverWDM
+sc delete KernDriverWDM
+
 # New way to install the driver !!! (devcon)
 https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/writing-a-very-small-kmdf--driver
 
@@ -1591,6 +1610,15 @@ After this grab the address after PROCESS in windbg output following above cmd
 - `? @$proc` - current EPROCESS id
 - `?? @$proc->UniqueProcessId`
 
+Current process:
+r @$proc
+!process <ADDRESS>
+Current process name and pid:
+dt _EPROCESS @$proc ImageFileName UniqueProcessId
+
+Current thread:
+!thread @$curthread
+
 `dt _eprocess` - to query the EPROCESS structure
 `dt _kprocess` - to query the KPROCESS structure
 
@@ -1600,6 +1628,61 @@ show an instance of an actual process.
  !process 0 0 fssm32.exe - look for the process name pattern
  .process /r /p 868c07a0 - once you have the PROCESS pointer from above cmd
  lm - loaded modules
+? @$proc - to inspect the current process, (EPROCESS)
+!process - to inspect the current process
+.sympath - see the current symbol path
+To manually add symbol path:
+.sympath srv*C:\Symbols*https://msdl.microsoft.com/download/symbols
+.symfix
+.sympath
+.reload /f - reload symbols
+!sym noisy - enables verbose symbol loading (for troubleshooting)
+
+Information
+--------------
+lm - list loaded modules (start&end addresses, module names(nt, hal, win32kfull etc), symbol status(pdb symbols, no symbols))
+lm m nt - list module named "nt"
+uf ntdll!NtCreateFile - unassemble function
+x ntdll!NtCreateFile - x means export, see if it resolves
+ReactOS shows the NT API function definitions well
+https://github.com/reactos/reactos/blob/master/
+https://github.com/reactos/reactos/blob/master/dll/ntdll/include/ntdll.h
+
+ntoskrnl.exe is mapped as ntkrnlmp.pdb
+
+Breakpoints
+-----------
+Scenario: I want to break on ntdll!NtCreateFile but only in a given process (notepad.exe)
+!process 0 0 notepad.exe
+The above gives the EPROCESS number (ffffe182d6d04080)
+.process /p /r ffffe182d6d04080
+.reload /f or just .reload
+
+Breakpoint on usermode process, when certain function is hit:
+bp ntdll!NtCreateFile ".if (@$proc == 0xffffe182d6d04080) {.echo [BREAK] NtCreateFile in notepad.exe; } .else {gc}"
+bp ntdll!NtCreateFile ".if (@$proc == 0xffffe182d6d04080) {.echo [BREAK] Hit NtCreateFile; !process; } .else {gc}"
+
+Debugging
+---------
+r rcx - inspect the register rcx
+dt nt!_OBJECT_ATTRIBUTES <pointer value> - to dump the values of a structure
+dt nt!_OBJECT_ATTRIBUTES @rcx - to dump the values of a structure pointed to by rcx
+du - "display unicode string"
+k - callframe
+.frame 3 - go to call frame 3
+
+Stack frame explanation
+-----------------------
+
+Child-SP: This value is the RSP after the respective function was called and
+usually is also after the function prologue.
+"The stack pointer in this function, at the moment it was called (after prologue) — from the point of view of the caller frame above."
+It would be a better name to be called "Callee-RSP" because it's the callee's post-prologue SP.
+Basically it is the top of the function's stack frame, excluding the prologue. The prologue values (pushed local variables are above this value) and of course the return address is above those after.
+
+Miscellanious
+=============
+.cls - clear command window
 
 Links:
 https://stackoverflow.com/questions/11106402/dumping-eprocess-with-windbg
@@ -1673,6 +1756,54 @@ Choose thread based on pseudoregister:
 ```
 .for(r $t0=0; @$t0<100; r $t0=@$t0+1) { .printf "Thread %d\n", @$t0; ~[@$t0] k }
 ```
+
+
+Windows Kernel Internals
+========================
+
+Let's see where System Calls are stored.
+
+dps nt!KeServiceDescriptorTable
+dps nt!KiServiceTable
+
+KeServiceDescriptorTable contains the Base pointer that points to KiServiceTable.
+KiServiceTable is an array of function pointers to syscall functions (on x86) and array of
+32bit integers on that describe the (offsest + num func args) syscalls.
+
+Let's say 0x55 is the syscall number of nt!NtCreateFile. You can see this by
+u ntdll!NtCreateFile
+and look what the eax is set up with before "syscall" instruction.
+Look up the descriptor contained in the KiServiceTable at index 0x55:
+
+dd nt!KiServiceTable + (0x55*4) L1
+
+Let's say this gives the value there 03ea2c07. This encodes on the lowest 4 bits the num of arguments to NtCreateFile:
+dps nt!KiServiceTable + (0x03ea2c07>>4)
+
+So basically the function pointer to the syscall is calculated by adding to the base of the (KiServiceTable + offset).
+
+Num of arguments of NtCreateFile is 11 because the first 4 passed via registers (rcx, rdx, r8, r9) and 7 passed on the stack:
+kd> ? 0x03ea2c07 & 0xf
+Evaluate expression: 7 = 00000000'00000007
+
+
+Creating Drivers
+================
+
+
+Loading drivers
+===============
+
+sc create KernDriverWDM type=kernel binpath=C:\\Users\\gergely.bod\\Desktop\\KernDriverWDM.sys
+sc start KernDriverWDM
+
+to stop and delete:
+
+sc stop KernDriverWDM
+sc delete KernDriverWDM
+
+Also devcon.exe and OSRLOADER.exe (OSR Driver Loader) can be used.
+
 
 
 Powershell (#powershell)
@@ -2056,3 +2187,27 @@ DEVBMS SureSense
 [16:36] Bingham, Joseph
 
 I can't find a confluence page, but basically you need to point your endpoint at https://devbms.bromium.net/ (either when you run the installer; SERVERURL=https://devbms.bromium.net/) or change it with BrManage.exe management-server (print|del|<address>), then go to the controller in your browser and under Device Security go to Device Groups. Add a new group (I just named mine Joe's Group) and add either the Published Channels - EARLY SAE + SCE or the Published Channels - GA SAE + SCE group to it (I think SAE is every sprint and GA is less frequent). Next, under Device Security, go to Devices, find your device, and click it. Top-right select Device Groups and add your device to your group. Then you can go to Policies under Configuration and create a new policy and apply it to your group.
+
+
+Registry Run keys
+=================
+https://learn.microsoft.com/en-us/windows/win32/setupapi/run-and-runonce-registry-keys
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce
+
+Use Run or RunOnce registry keys to make a program run when a user logs on. The Run key makes the program run every time the user logs on, while the RunOnce key makes the program run one time, and then the key is deleted. These keys can be set for the user or the machine.
+
+Windows Update
+==============
+#windowsupdate
+
+Get-Service -Name wuauserv
+Stop-Service -Name wuauserv -Force
+Start-Service -Name wuauserv
+
+Get-Service | Where-Object { $_.Name -like "*wuauserv*" }
+
+
