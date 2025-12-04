@@ -660,15 +660,6 @@ function update-vimrc() {
     cd -;
 }
 
-function current-jira() {
-    #echo | cs
-    echo -n "KRY-82581 - $@" | cs
-}
-
-function bemsvc-log-open-np() {
-    notepad++.exe /c/ProgramData/Bromium/BEM/logs/BemSvc/BemSvc.log &
-}
-
 function bemsvc-log-open() {
     vim /c/ProgramData/Bromium/BEM/logs/BemSvc/BemSvc.log
 }
@@ -677,3 +668,16 @@ alias bemlog="bemsvc-log-open"
 function license-key() {
     curl -s http://supportservices.bromium.net/LatestKey
 }
+
+function web-server-python() {
+    PORT=8000
+    if [[ ! -z $1 ]]; then
+        PORT=$1
+    fi
+    python3 -m http.server $PORT
+}
+
+function file-extension-list() {
+    find . -type f | sed -n 's/.*\.//p' | sort | uniq -c | sort -nr
+}
+
