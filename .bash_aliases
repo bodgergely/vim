@@ -82,7 +82,14 @@ alias ycm_tern_gen='cp $WORKSPACE/vimrc/.tern-project $PWD'
 
 alias pcalc=$HOME/bin/pcalc.py
 
-alias clion=$HOME/clion/clion-2018.1/bin/clion.sh
+alias hex2int="$HOME/bin/hex-to-int.sh"
+alias h2i="hex2int"
+alias int2hex="$HOME/bin/int-to-hex.sh"
+alias i2h="int2hex"
+alias calc="p3 $HOME/bin/calc.py $@"
+alias newline-remove="$HOME/bin/newline-remove.sh"
+
+alias clock="date +'%H:%M:%S'"
 
 # copy paste - xclip
 alias cs="xclip -selection clipboard"
