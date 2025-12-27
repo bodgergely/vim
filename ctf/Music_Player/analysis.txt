@@ -1,0 +1,10 @@
+When 1 minute expires, info window pops up with this string:
+"1? ????? ?????."
+
+This gets called when the 1 min expires and the info popup window is triggered:
+004045D8 - rctMsgBox
+Inside function sub_4044C0
+
+At 00404563 we compare the the number of microsecs passed vs 0xea60 (60.000 in eax).
+If not less then we stop the play.
+Patch instruction at 40456B to a simply jmp

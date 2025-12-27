@@ -6,7 +6,6 @@ def bad_version_func_factory(bad_from: int):
             return False
     return isBadVersion
 
-
 class Solution:
     def firstBadVersion(self, n: int, isBadVersion) -> int:
         a = 0

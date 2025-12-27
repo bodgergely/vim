@@ -91,6 +91,22 @@ Cheatsheet:
 https://devhints.io/git-log
 
 
+Git statistics
+--------------
+
+About developer performance:
+Number of lines added/removed and diff:
+
+git log --author="Greg Bod" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; } END { printf "added lines: %s removed lines: %s total lines: %s\n", add, subs, add-subs }'
+
+Total number of lines added by a developer on master branch?
+
+git checkout master
+git log --author="Greg Bod" --pretty=tformat: --numstat | awk '{ add += $1; } END { printf "added lines: %s\n", add }'
+
+
+
+
 Git diff - to see changes
 --------
 
@@ -152,6 +168,7 @@ Basic tools
 - less, more, cat, most
 - wc, sort, uniq, bc, column
 - sed, awk
+- xargs (xargs -i ls -lha {} or just xargs ls -lha)
 - searchsploit
 - dirbuster, dirb, gobuster, dirsearch
 - sqlmap
@@ -236,6 +253,27 @@ Crontab
 -------
 
 - crontab -l  - to list cron jobs
+
+xargs (#xargs)
+--------------
+
+find . -type d | xargs ls -lha
+find . -type d | xargs -i ls -lha {}
+find . -type f | xargs -I {} ls -lha {}
+
+find (#find)
+------------
+
+exclude directories (at any level name .git or .vs)
+find . -name "*" -not -path "*.git/*" -not -path "*.vs/*"
+find . -mindepth 2 -maxdepth 3
+
+Find multiple patterns:
+find . -iname "*.exe" -o -iname "*.dll" -o -iname "*.lnk"
+
+Find all the file extensions and their numbers under a given folder:
+find . -type f | sed -n 's/.*\.//p' | sort | uniq -c | sort -nr
+
 
 printscreen
 -----------
@@ -979,7 +1017,7 @@ gdb shortcuts
 C-x + a - enter tui window/exit tui window
 C-x + o - switch to next focus (focus cmd -> focus src)
 
-Awk
+Awk (#awk)
 ===
 
 https://stackoverflow.com/questions/450799/shell-command-to-sum-integers-one-per-line
@@ -987,6 +1025,15 @@ https://likegeeks.com/awk-command/
 
 Sum numbers on each line the first element and save to file
     awk '{s+=$1} END {print s}' mydatafile
+
+Last column (field):
+awk -F'.' 'j{print $NF}'
+
+First column:
+awk '{print $1}'
+
+Print all file extensions:
+find . -type f | awk -F'.' '{print $NF}' | sort | uniq -c
 
 Sed (#sed)
 ===
@@ -1059,13 +1106,22 @@ int bash() {
 }
 ```
 
-grep
+grep (#grep)
 ====
 To output the match only (-oh), -E means extended regex
 $ grep -oh -R -E "=\s+ngx\..*\." --include=*.lua .
 
 Match the word between foo and bar
 $ grep -oP 'foo \K\w+(?= bar)'
+
+-o: match only
+-i: case insensitive
+-F: fixed-string (do not use regex when searching)
+-v: invert match - show all not matching
+-h: no filename
+-l: show only filename
+-a: equivalent to --text and --binary-files=text. To fix the issue of "Binary file matches."
+    Process a binary file as if it were text
 
 
 
@@ -1080,6 +1136,9 @@ C-s - save
 :vs - open vertical split
 :%s/foo/bar/g   - replace 'foo' with 'bar' globally
 :%!xdd - invoke HEX editor
+:%!xdd -r - to get out from the hex editor
+Open in hex editor right away from the command line:
+vim -c ':%!xxd' filename
 
 :help - invoke help on subject
 r - replace character
@@ -1173,6 +1232,9 @@ ESC Z Q
 Using vim for c++(cpp) dev:
 https://idie.ru/posts/vim-modern-cpp
 
+Ruler/vertical line/column to visually see the border on a line.
+:set colorcolumn=80
+
 
 RipGrep, ripgrep, Ripgrep
 =========================
@@ -1181,6 +1243,20 @@ Search for int main() in C files, globbing
 `
 rg -e ".*int\w+main\w*\(" -g "*.c"
 `
+
+exclude file patterns: -g \!<pattern1> -g \!<pattern2>
+`
+rg -g \!*.wixobj -g \!*.wxs 833378FE-1986-46BA-9B4E-F8F1DEBC986F
+`
+
+print the filename on the same line as search hit:
+`--no-heading`
+
+include binary files:
+`--binary`
+
+case insensitive:
+-i
 
 Compression/decompression/zip
 =============================
@@ -1407,6 +1483,79 @@ Value	0xF
 right click 'Install' on nullFilter.inf
 sc.exe start nullFilter
 
+OR
+
+Have the .sys and the .inf file next to each other and:
+
+sc create KernDriverWDM type=kernel binpath=C:\\Users\\gergely.bod\\Desktop\\KernDriverWDM.sys
+sc start KernDriverWDM
+
+to stop and delete:
+
+sc stop KernDriverWDM
+sc delete KernDriverWDM
+
+# New way to install the driver !!! (devcon)
+https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/writing-a-very-small-kmdf--driver
+
+In the .inf file place:
+```
+[Standard.NT$ARCH$]
+%KmdfHelloWorld.DeviceDesc%=KmdfHelloWorld_Device, Root\KmdfHelloWorld
+```
+
+Copy .sys file to C:\Windows\System32\drivers
+then
+
+```
+devcon install <INF file> <hardware ID>
+```
+```
+devcon install kmdfhelloworld.inf root\kmdfhelloworld
+```
+
+```
+#name is the filename of the .sys file
+function Install-Driver($name)
+{
+	# devcon install <INF file> <hardware ID>
+	$cleanName = $name -replace ".sys|.\\", ""
+	.\devcon.exe install $cleanName".inf" Root\$cleanName
+}
+```
+```
+function Remove-Driver($name)
+{
+    .\devcon.exe remove Root\$name
+}
+
+function Update-Driver($sysfile)
+{
+	$cleanName = $sysfile -replace ".sys|.\\", ""
+	echo "Removing driver $cleanName"
+	Remove-Driver $cleanName
+	echo "Installing driver $sysfile"
+	Install-Driver $sysfile
+}
+```
+
+# PS script - place in your $profile
+
+```
+function Install-Driver($name)
+{
+	$cleanName = $name -replace ".sys|.\\", ""
+
+	sc.exe stop $cleanName
+	sc.exe delete $cleanName
+
+	cp $name c:\windows\system32\drivers\ -verbose -force
+	sc.exe create $cleanName type= kernel start= demand error= normal binPath= c:\windows\System32\Drivers\$cleanName.sys DisplayName= $cleanName
+
+	sc.exe start $cleanName
+}
+```
+
 # filter will be the name - register
 https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/sc-create
 sc create filter type= filesys start= demand binpath= C:\Users\bodge\Desktop\nullFilter.sys
@@ -1420,13 +1569,38 @@ sc.exe delete filter
 "%WindowsSdkDir%\tools\x64\devcon.exe" install .\K_MSRs.inf Root\K_MSRs
 "%WindowsSdkDir%\tools\x64\devcon.exe" remove .\K_MSRs.inf Root\K_MSRs
 
-WinDbg (windbg)
+WinDbg (#windbg)
 ---------------
 List of commands:
 https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/commands
 
 Good resource:
 https://fishilico.github.io/generic-config/windows/windbg-kd.html
+
+### Symbols
+
+https://stackoverflow.com/questions/30019889/how-to-set-up-symbols-in-windbg
+
+Most of the time (80% use case)
+.symfix+ c:\symbols
+.reload
+
+This works well:
+!sym noisy
+.sympath C:\dev\out\win7-64bit-ninja\servers;SRV*c:\symbols*http://msdl.microsoft.com/download/symbols
+.reload /f
+
+More advanced:
+.sympath c:\mysymbols ; *** Symbols of your application, locally, flat list of PDB files
+.sympath+ cache*c:\symbolcache ; *** (optional) Create a cache for everything
+.sympath+ \\server\symbols ; *** Symbols provided from a network share
+.symfix+ c:\symbols ; *** Microsoft symbols
+
+Or in the menu (File/Symbol File Path...) or ctrl+s:
+c:\mysymbols;cache*c:\symbolcache;\\server\symbols;SRV*c:\symbols*http://msdl.microsoft.com/download/symbols
+
+Or by environment var (_NT_SYMBOL_PATH)
+c:\mysymbols;cache*c:\symbolcache;\\server\symbols;SRV*c:\symbols*http://msdl.microsoft.com/download/symbols
 
 dd [location/variable] - dissassembly data at variable
 bp $exentry - break on entry
@@ -1446,6 +1620,7 @@ uf <address> - disassemble as function
 lm - list loaded modules
 `x nt!KiSystemService*` - list symbols starting with...
 .load,.loadby - Load library
+~8s - switch to thread 8 (display thread ids by using the '~')
 
 ## kernelmode windbg
 
@@ -1460,6 +1635,15 @@ After this grab the address after PROCESS in windbg output following above cmd
 - `? @$proc` - current EPROCESS id
 - `?? @$proc->UniqueProcessId`
 
+Current process:
+r @$proc
+!process <ADDRESS>
+Current process name and pid:
+dt _EPROCESS @$proc ImageFileName UniqueProcessId
+
+Current thread:
+!thread @$curthread
+
 `dt _eprocess` - to query the EPROCESS structure
 `dt _kprocess` - to query the KPROCESS structure
 
@@ -1469,6 +1653,61 @@ show an instance of an actual process.
  !process 0 0 fssm32.exe - look for the process name pattern
  .process /r /p 868c07a0 - once you have the PROCESS pointer from above cmd
  lm - loaded modules
+? @$proc - to inspect the current process, (EPROCESS)
+!process - to inspect the current process
+.sympath - see the current symbol path
+To manually add symbol path:
+.sympath srv*C:\Symbols*https://msdl.microsoft.com/download/symbols
+.symfix
+.sympath
+.reload /f - reload symbols
+!sym noisy - enables verbose symbol loading (for troubleshooting)
+
+Information
+--------------
+lm - list loaded modules (start&end addresses, module names(nt, hal, win32kfull etc), symbol status(pdb symbols, no symbols))
+lm m nt - list module named "nt"
+uf ntdll!NtCreateFile - unassemble function
+x ntdll!NtCreateFile - x means export, see if it resolves
+ReactOS shows the NT API function definitions well
+https://github.com/reactos/reactos/blob/master/
+https://github.com/reactos/reactos/blob/master/dll/ntdll/include/ntdll.h
+
+ntoskrnl.exe is mapped as ntkrnlmp.pdb
+
+Breakpoints
+-----------
+Scenario: I want to break on ntdll!NtCreateFile but only in a given process (notepad.exe)
+!process 0 0 notepad.exe
+The above gives the EPROCESS number (ffffe182d6d04080)
+.process /p /r ffffe182d6d04080
+.reload /f or just .reload
+
+Breakpoint on usermode process, when certain function is hit:
+bp ntdll!NtCreateFile ".if (@$proc == 0xffffe182d6d04080) {.echo [BREAK] NtCreateFile in notepad.exe; } .else {gc}"
+bp ntdll!NtCreateFile ".if (@$proc == 0xffffe182d6d04080) {.echo [BREAK] Hit NtCreateFile; !process; } .else {gc}"
+
+Debugging
+---------
+r rcx - inspect the register rcx
+dt nt!_OBJECT_ATTRIBUTES <pointer value> - to dump the values of a structure
+dt nt!_OBJECT_ATTRIBUTES @rcx - to dump the values of a structure pointed to by rcx
+du - "display unicode string"
+k - callframe
+.frame 3 - go to call frame 3
+
+Stack frame explanation
+-----------------------
+
+Child-SP: This value is the RSP after the respective function was called and
+usually is also after the function prologue.
+"The stack pointer in this function, at the moment it was called (after prologue) — from the point of view of the caller frame above."
+It would be a better name to be called "Callee-RSP" because it's the callee's post-prologue SP.
+Basically it is the top of the function's stack frame, excluding the prologue. The prologue values (pushed local variables are above this value) and of course the return address is above those after.
+
+Miscellanious
+=============
+.cls - clear command window
 
 Links:
 https://stackoverflow.com/questions/11106402/dumping-eprocess-with-windbg
@@ -1483,6 +1722,29 @@ ed nt!Kd_IHVDRIVER_Mask 0xf
 ```
 
 After this the log messages should appear in the Command window.
+
+## Current process information
+!process -1 0
+
+## Switch to userspace process?
+!process 0 0 notepad.exe
+.process /r /p <ProcAddress>
+## Switch to kernel mode
+.process /k
+
+## switch to a given thread
+~8s
+The above will switch to thread number 8.
+
+## Stack frames
+### change stack fram context
+.frame /c
+### inspect registers of the stack frame
+.frame /r
+
+## Break on system call when specific process initiates it
+!process 0 0 notepad.exe
+bp /p ffffbe8e593d3080 nt!NtCreateFile
 
 
 ## windbg extensions
@@ -1505,6 +1767,69 @@ nt!KiSystemServiceUser is the entry point when `syscall` executes.
 
 ### Python extension for windbg
 https://github.com/SeanCline/PyExt
+
+
+### Scripting windbg
+
+Use $t0, $t1 etc pseudoregisters
+
+Loop through callstack of many threads
+Thread syntax: ~
+Choose thread based on pseudoregister:
+~[@$t0]
+
+```
+.for(r $t0=0; @$t0<100; r $t0=@$t0+1) { .printf "Thread %d\n", @$t0; ~[@$t0] k }
+```
+
+
+Windows Kernel Internals
+========================
+
+Let's see where System Calls are stored.
+
+dps nt!KeServiceDescriptorTable
+dps nt!KiServiceTable
+
+KeServiceDescriptorTable contains the Base pointer that points to KiServiceTable.
+KiServiceTable is an array of function pointers to syscall functions (on x86) and array of
+32bit integers on that describe the (offsest + num func args) syscalls.
+
+Let's say 0x55 is the syscall number of nt!NtCreateFile. You can see this by
+u ntdll!NtCreateFile
+and look what the eax is set up with before "syscall" instruction.
+Look up the descriptor contained in the KiServiceTable at index 0x55:
+
+dd nt!KiServiceTable + (0x55*4) L1
+
+Let's say this gives the value there 03ea2c07. This encodes on the lowest 4 bits the num of arguments to NtCreateFile:
+dps nt!KiServiceTable + (0x03ea2c07>>4)
+
+So basically the function pointer to the syscall is calculated by adding to the base of the (KiServiceTable + offset).
+
+Num of arguments of NtCreateFile is 11 because the first 4 passed via registers (rcx, rdx, r8, r9) and 7 passed on the stack:
+kd> ? 0x03ea2c07 & 0xf
+Evaluate expression: 7 = 00000000'00000007
+
+
+Creating Drivers
+================
+
+
+Loading drivers
+===============
+
+sc create KernDriverWDM type=kernel binpath=C:\\Users\\gergely.bod\\Desktop\\KernDriverWDM.sys
+sc start KernDriverWDM
+
+to stop and delete:
+
+sc stop KernDriverWDM
+sc delete KernDriverWDM
+
+Also devcon.exe and OSRLOADER.exe (OSR Driver Loader) can be used.
+
+
 
 Powershell (#powershell)
 ==========
@@ -1790,5 +2115,124 @@ Create a new .reg file and name it something meaningful like capstoctrl.reg. Edi
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
 "Scancode Map"=hex:00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00
 
+Hyper-V vs VMWare (#vmware)
+===========================
+
+After Hyper-V installation old VMWare live snapshots won't work.
+Do this:
+
+bcdedit /set hypervisorlaunchtype off
+
+Then restart.
+
+
+
+
+
+WinRt(cppwinrt, #winrt)
+=======================
+
+https://www.youtube.com/watch?v=nOFNc2uTmGs
+
+Build from command line:
+x64 Native Tools Command Prompt for VS2019
+cl.exe /nologo /EHsc /std:c++17 main.cpp /link windowsapp.lib
+
+
+CreateFile (#windows, #win32)
+==============================
+
+```
+This argument:           |             Exists            Does not exist
+-------------------------+------------------------------------------------------
+CREATE_ALWAYS            |            Truncates             Creates
+CREATE_NEW         +-----------+        Fails               Creates
+OPEN_ALWAYS     ===| does this |===>    Opens               Creates
+OPEN_EXISTING      +-----------+        Opens                Fails
+TRUNCATE_EXISTING        |            Truncates              Fails
+```
+
+
+Malware (#malware)
+==================
+
+https://bazaar.abuse.ch/browse
+tag:AgentTesla, tag:TrickBot
+
+Download a zip full of malware:
+https://datalake.abuse.ch/malware-bazaar/
+
+(Url for signatures to set to: https://upgrade.bitdefender.com/)
+
+
+Visual Studio (#visualstudio)
+=============================
+
+Word Highlight settings:
+
+Lightmode:
+Occurences Background Color:
+192, 192, 255
+Occurences Border Color:
+0, 0, 255
+
+Select Background Color:
+255, 224, 192
+Select Border Color:
+0, 0, 255
+
+WerFault.exe (Windows Error reporting, #crash, #dump)
+=====================================================
+
+https://learn.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps
+
+https://spitfireaudio.zendesk.com/hc/en-us/articles/11727762149661-How-to-enable-crash-dumps-on-windows
+
+Need to have this folder in registry:
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps
+Under this DumpType value should be 2.
+
+
+https://learn.microsoft.com/en-us/windows/win32/debug/configuring-automatic-debugging#configuring-automatic-debugging-for-application-crashes
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AeDebug
+Also add the REG_SZ key: Auto with value 1
+Original value in Debugger:
+"C:\WINDOWS\system32\vsjitdebugger.exe" -p %ld -e %ld
+or after vs2022 "C:\WINDOWS\system32\vsjitdebugger.exe" -p %ld -e %ld -j 0x%p
+change to:
+"C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\windbg.exe" -p %ld -e %ld -g
+
+If automatic debugging is enabled then no crash dump is generated.
+
+
+DEVBMS SureSense
+================
+
+[16:36] Bingham, Joseph
+
+I can't find a confluence page, but basically you need to point your endpoint at https://devbms.bromium.net/ (either when you run the installer; SERVERURL=https://devbms.bromium.net/) or change it with BrManage.exe management-server (print|del|<address>), then go to the controller in your browser and under Device Security go to Device Groups. Add a new group (I just named mine Joe's Group) and add either the Published Channels - EARLY SAE + SCE or the Published Channels - GA SAE + SCE group to it (I think SAE is every sprint and GA is less frequent). Next, under Device Security, go to Devices, find your device, and click it. Top-right select Device Groups and add your device to your group. Then you can go to Policies under Configuration and create a new policy and apply it to your group.
+
+
+Registry Run keys
+=================
+https://learn.microsoft.com/en-us/windows/win32/setupapi/run-and-runonce-registry-keys
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce
+
+Use Run or RunOnce registry keys to make a program run when a user logs on. The Run key makes the program run every time the user logs on, while the RunOnce key makes the program run one time, and then the key is deleted. These keys can be set for the user or the machine.
+
+Windows Update
+==============
+#windowsupdate
+
+Get-Service -Name wuauserv
+Stop-Service -Name wuauserv -Force
+Start-Service -Name wuauserv
+
+Get-Service | Where-Object { $_.Name -like "*wuauserv*" }
 
 

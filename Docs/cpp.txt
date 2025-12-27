@@ -1,0 +1,66 @@
+Memory model
+============
+
+https://www.modernescpp.com/index.php/c-memory-model
+
+- Single threading                      STRONGEST
+    - One control flow
+- Multithreading
+    - Tasks
+    - Threads
+    - Condition variables
+- Atomics
+    - Sequential consistency
+    - Acquire-Release semantics
+    - Relaxed semantics                 WEAKEST
+
+Contract
+--------
+
+The stricter the contract - the less options for the compiler to optimize.
+Weaker contract -> more options to optimize.
+
+
+Sequence points: Points in the program at which the effects of all instructions
+--------------   before must be observable.
+
+For example, the start or the end of the functions are sequence points.
+But i.e. the arguments passed to the function are evaluated in unspecified
+order. The comma operator is not a sequence point.
+
+The more **weaker** the memory model - the more difficult to write the
+program and more care taken is needed.
+
+**Sequential consistency** is the **strong memory model**.
+**Relaxed semantics** is the **weak memory model**.
+
+
+- Atomic operations:
+    Operation executed atomically.
+
+
+Wrap printf or variadiac arg functions with macro
+=================================================
+```
+#include <stdarg.h>
+#include <stdio.h>
+
+void my_printf(const char *fmt, ...) {
+    va_list args;
+    va_start(args, fmt);
+    vprintf(fmt, args);
+    va_end(args);
+}
+```
+
+or with macros:
+
+```
+#define TM_PRINTF(f_, ...) printf((f_), __VA_ARGS__)
+#define TM_SNPRINTF(s_, sz_, f_, ...) snprintf((s_), (sz_), (f_), __VA_ARGS__)
+```
+
+
+Also #define TM_PRINTF(f_, ...) printf((f_), ##__VA_ARGS__)
+
+https://en.cppreference.com/w/c/preprocessor/replace

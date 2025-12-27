@@ -45,13 +45,14 @@ cat <<HEREDOC > $DIR/build.sh
 CC=g++
 FLAGS="-std=c++17 -g"
 OPT="-O0"
-WARN=""
+WARN="-Wall -Wextra -Werror -Weffc++ -Wpedantic -Wshadow -Wconversion -Wno-sign-compare -Wno-unused-parameter"
 \$CC \$FLAGS \$OPT \$WARN -o build/main main.cpp
 HEREDOC
 chmod +x $DIR/build.sh
 
 # aliases file
 cat <<HEREDOC > $DIR/aliases
+alias format='clang-format.exe -i *.cpp'
 alias b='./build.sh'
 alias rr='./build/main'
 alias r='b && rr'

@@ -20,5 +20,6 @@ UseTab: Never
 IndentCaseLabels: false
 EmptyLineAfterAccessModifier: Leave
 EmptyLineBeforeAccessModifier: Leave
-AllowShortFunctionsOnASingleLine: All
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
 ...

@@ -7,17 +7,17 @@
 #sudo apt-get -y update
 #sudo apt-get -y upgrade
 
-#sudo apt-get -y install tmux
-#sudo apt-get -y install htop
+sudo apt-get -y install tmux
+sudo apt-get -y install htop
 sudo apt-get -y install ranger
 #sudo apt-get -y install vim-gtk
-sudo apt-get -y install okular
-sudo apt-get -y install okular okular-extra-backends
+#sudo apt-get -y install okular
+#sudo apt-get -y install okular okular-extra-backends
 sudo apt-get -y install net-tools
 sudo apt-get -y install xclip
 sudo apt-get -y install git
 sudo apt-get -y install cmake
-sudo apt-get -y install ctags
+sudo apt-get -y install exuberant-ctags
 sudo apt-get -y install cscope
 sudo apt-get -y install libncurses-dev  # for busybox menuconfig
 sudo apt-get -y install bison        # linux kernel dev
@@ -25,8 +25,9 @@ sudo apt-get -y install flex         # linux kernel dev
 sudo apt-get -y install libelf-dev   # linux kernel dev
 sudo apt-get -y install wireshark
 sudo apt-get -y install python-ipython
-sudo apt-get -y install ipython
-sudo apt-get -y install ipython3
+#sudo apt-get -y install ipython
+#sudo apt-get -y install ipython3
+sudo apt-get -y install autoconf
 sudo apt-get -y install qemu
 sudo apt-get -y install qemu-system-x86
 sudo apt-get -y install qemu-kvm
@@ -47,11 +48,11 @@ sudo apt-get -y install openvpn
 sudo apt-get -y install curl
 sudo apt-get -y install libcap-dev
 #rust
-curl https://sh.rustup.rs -sSf | sh
+#curl https://sh.rustup.rs -sSf | sh
 
-sudo apt-get -y install python3.7
-sudo apt-get -y install python3.7-dev
-sudo apt-get -y install python3-pip
+#sudo apt-get -y install python3.7
+#sudo apt-get -y install python3.7-dev
+#sudo apt-get -y install python3-pip
 
 #pip3.6 install mod_wsgi
 
