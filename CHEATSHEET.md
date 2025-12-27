@@ -703,9 +703,6 @@ base64
 `find /home -type f -printf "%f\t%p\t%u\t%g\t%m" -maxdepth=2`
     Print files, and print different properties of the files to a certain depth.
 
-`dpkg -l` | grep -i <name-of-package-of-interest>
-    dpkg -l: will list all the installed software packages
-    
 
 Exploit tools
 -------------
@@ -922,7 +919,7 @@ Show a specified systemd unit:
 $ journalctl -u name-of-the-unit-or-pattern
 
 
-Tmux shortcuts
+Tmux shortcuts (#tmux)
 --------------
 
 C-b + n : next tab
@@ -940,6 +937,9 @@ Also possible to copy the tmux window contents by simply highlighting using the 
     be copied to the clipboard
 
 C-b + C + Arrow Keys : to resize the panes
+
+C-b + { : swap panes
+C-b + } : swap panes
 
 alt-h - go to left pane
 alt-l - go to right pane
@@ -964,8 +964,39 @@ Copy a highlighted match with hitting Enter
 
 prefix + shift + p  - start logging with tmux-logging plugin
 
+tmux sessions
+
+inside tmux: "C-b + :" then type "list-sessions"
+- list-sessions
+- kill-session -t <name> or kill-session to kill current session
+- attach-session -t <name>
+- switch-client -t <name>
+
+Or built-in shortcut:
+C-b + s
+This open the session selector, navigate with the arrow keys and then ENTER.
+
+or using the tmux program from the command line:
+tmux attach-session -t <name>
+tmux list-sessions
+
+
+
 Apt, dpkg, package, apt-get
 ---------------------------
+#apt
+apt show -a <package-name>
+
+#dpkg
+
+list the names of all installed packages: 
+dpkg -l | grep -i <name-of-package-of-interest>
+dpkg -l: will list all the installed software packages
+
+List the location of the installed files of the given package:
+dpkg -L <package-name>
+
+
 
 Links
 
@@ -1004,9 +1035,23 @@ sudo update-alternatives --set python3 /usr/bin/python3.8
 or
 sudo update-alternatives --set python /usr/bin/python3.8
 
-venv
+How to locate where a package's file lives?
+
+import inspect, some_package
+print(inspect.getfile(some_package))
+
+#venv
 ----
 python -m venv <path-to-virtual-env>
+
+To create new venv:
+##########################################
+python -m venv ~/.venvs/myproject
+source ~/.venvs/myproject/bin/activate
+pip install --upgrade pip setuptools wheel
+##########################################
+
+It is important to upgrade the pip after creating the new venv.
 
 
 requests
@@ -1183,6 +1228,22 @@ Search for int main() in C files, globbing
 `
 rg -e ".*int\w+main\w*\(" -g "*.c"
 `
+
+Networking, ports
+=================
+#ss
+List all processes listening on network ports:
+
+sudo ss -tulpn
+
+Flags:
+-t: TCP
+-u: UDP
+-l: listening sockets
+-p: show process using the socket
+-n: show numeric address (do not perform DNS lookup)
+
+Without sudo, the owning process won't be shown.
 
 Compression/decompression/zip
 =============================

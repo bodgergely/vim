@@ -67,6 +67,10 @@ export AI_PATH="$WORKSPACE/AI/"
 export HACKING="$WORKSPACE/hacking/"
 export HANDSON_ML_PATH="$AI_PATH/handson-ml/"
 export SITE_PACKAGES="/usr/local/lib/python3.6/site-packages"
+export STEAM="$HOME/.local/share/Steam"
+export STEAMAPPS="$STEAM/steamapps/common"
+export CIV5_BIN="$STEAMAPPS/Sid Meier's Civilization V"
+export CIV5_DIR="$HOME/.local/share/Aspyr/Sid Meier's Civilization 5"
 
 #export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/usr/include/python3.6m"
 #export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:/home/geri/boost/boost_1_66_0/include"
@@ -102,8 +106,8 @@ alias convert_ipy_notebook="jupyter nbconvert --to script"
 alias linecount=loc
 alias objd='objdump -Mintel -D'
 
-alias ls="ls -X --color=auto"
-alias l="ls -XFlha"
+#alias ls="ls -X --color=auto"
+alias l="ls -Flhat"
 
 ff() {
     find . -name "$1" -follow
@@ -180,6 +184,7 @@ alias gdb_pwndbg="gdb --command $WORKSPACE/vimrc/gdb_scripts/pwndbg.gdb --args"
 # wargames !!!
 export WARGAMES="$HACKING/wargames/"
 export PWNABLE="$WARGAMES/pwnable_kr/"
+export RAYLIB="$WORKSPACE/raylib"
 alias cdsoftmmu="cd $PWNABLE/HackersSecret/softmmu"
 alias cdpwn="cd $WARGAMES/pwnable_kr"
 alias cdwar="cd $WARGAMES"
@@ -210,8 +215,13 @@ alias cdplayground="cd $WORKSPACE/playground"
 alias cdgym="cd $WORKSPACE/AI/openai/gym"
 alias cdtlpi="cd $WORKSPACE/sysprog/tlpi"
 alias cdbooks="cd $HOME/Dropbox/books"
+alias cdsteam="cd $STEAM"
+alias cdsteamapps="cd $STEAMAPPS"
+alias cdciv5_data='cd "$CIV5_DIR"'
+alias cdciv5_bin='cd "$CIV5_BIN"'
 alias cdlinux="cd $WORKSPACE/linux"
 alias cdkernelhacking="cd $HACKING/kernel_hacking"
+alias cdraylib="cd $RAYLIB"
 alias cdbusybox="cd $HOME/busybox/build"
 alias cdnand2tetris="cd $WORKSPACE/coursera/nand2tetris"
 alias cdembedded="cd $WORKSPACE/coursera/embedded_boulder/ese-coursera-course1"
@@ -660,6 +670,9 @@ function laptop-model-version() {
     sudo dmidecode | grep -A 9 "System Information"
 }
 
+function currdircopy() {
+    echo "cd" `pwd` | cs
+}
 # completions
 #rust
 #if type rustup 2> /dev/null; then
